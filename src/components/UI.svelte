@@ -13,7 +13,7 @@
 	}
 
 	function onBackgroundReady(event: CustomEvent) {
-		event.detail.target.setVolume(25);
+		event.detail.target.setVolume(15);
 	}
 
 	function onBackgroundEnded(event: CustomEvent) {
