@@ -6,5 +6,6 @@ export default {
 	[Country.china]: '🇨🇳',
 	[Country.japan]: '🇯🇵',
 	[Country.india]: '🇮🇳',
-	[Country.italy]: '🇮🇹'
+	[Country.italy]: '🇮🇹',
+	[Country.france]: '🇫🇷'
 };

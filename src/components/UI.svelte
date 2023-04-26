@@ -2,6 +2,7 @@
 	import { random } from 'radash';
 
 	import YouTube from './YouTube.svelte';
+	import ControlsOverlay from './ControlsOverlay.svelte';
 
 	export let playing;
 	export let videoID: string;
@@ -25,6 +26,8 @@
 		event.detail.target.playVideo();
 	}
 </script>
+
+<ControlsOverlay />
 
 <YouTube
 	on:end={onBackgroundEnded}

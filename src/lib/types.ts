@@ -22,6 +22,7 @@ export enum Country {
 	korea = 'South Korea',
 	us = 'United States',
 	china = 'China',
+	france = 'France',
 	japan = 'Japan',
 	india = 'India',
 	italy = 'Italy'

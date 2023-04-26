@@ -5,7 +5,7 @@ export default {
 
 	theme: {
 		fontFamily: {
-			sans: ['Work SansVariable']
+			sans: ['DM Sans']
 		},
 		extend: {}
 	},

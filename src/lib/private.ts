@@ -2,15 +2,15 @@ import { Country, type Background } from './types';
 
 export const _tracks = {
 	hindiLofi: {
-		name: 'Indian Lofi',
+		name: 'Hindi Lofi🎵| Chill n Relax | 24/7 Bollywood Radio',
 		trackID: 'c__Br1xUVK8'
 	},
 	koreanRB: {
 		trackID: 'IUT1qAhMY4w',
-		name: 'Korean R&B'
+		name: '24/7 Korean Underground Indie/R&B/Hip-hop Radio'
 	},
 	chillBeats: {
-		name: 'Chill Beats to Study/Relax To',
+		name: 'lofi hip hop radio 📚 - beats to relax/study to',
 		trackID: 'jfKfPfyJRdk'
 	},
 	cityPop: {
@@ -18,16 +18,20 @@ export const _tracks = {
 		trackID: 'uUGJpJuwCY4'
 	},
 	jazz: {
-		name: 'Rainy Jazz',
+		name: 'Relaxing Jazz Piano Radio - Slow Jazz Music - 24/7 Live Stream - Music For Work & Study',
 		trackID: 'Dx5qFachd3A'
 	},
 	chineseClassical: {
-		name: 'Chinese Classical',
+		name: 'Breath of the Night 🌑 Asian Inspired Lofi Beats',
 		trackID: 'lL6rDj40NZk'
 	},
 	synthHop: {
 		name: 'synthwave radio 🌌 - beats to chill/game to',
 		trackID: 'MVPTGNGiI-4'
+	},
+	frenchCafe: {
+		name: 'French Cafe - Accordion Romantic French Music, Jazz & Bossa Nova',
+		trackID: 'yvhPcuqyIig'
 	}
 };
 
@@ -95,6 +99,16 @@ export const _backgrounds: Record<Country, Background[]> = {
 			suggestedTrack: _tracks.cityPop
 		}
 	],
+	[Country.france]: [
+		{
+			name: 'Paris',
+			videoID: '0OnX6znBj_I',
+			type: 'walk',
+			offset: 30,
+			suggestedTrack: _tracks.frenchCafe,
+			tags: ['night']
+		}
+	],
 	[Country.italy]: [
 		{
 			name: 'Cinque Terre',
@@ -157,7 +171,7 @@ export const _backgrounds: Record<Country, Background[]> = {
 			suggestedTrack: _tracks.koreanRB
 		},
 		{
-			name: 'Korea',
+			name: 'Seoul',
 			videoID: 'KGAIumGxQeY',
 			tags: ['evening'],
 			type: 'drive',
