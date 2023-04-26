@@ -1,6 +1,6 @@
 <script lang="ts">
 	import UI from '$components/UI.svelte';
-	import ChangeScene from '$components/ChangeScene.svelte';
+	import ChangeScene from '$components/ChangeScene';
 	import backgrounds from '$lib/backgrounds';
 	import tracks from '$lib/tracks';
 	import type { BackgroundWithCountry, Country } from '$lib/types';

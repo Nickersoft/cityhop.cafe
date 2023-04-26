@@ -50,7 +50,7 @@
 	on:ready={onAudioReady}
 	options={{
 		playerVars: {
-			start: 0,
+			start: random(videoOffset, videoOffset + 1800),
 			autoplay: 1,
 			playsinline: 1
 		}

@@ -1,4 +1,4 @@
-export type Tag = 'snow' | 'rain' | 'night' | 'day' | 'drive' | 'evening';
+export type Tag = 'snow' | 'rain' | 'night' | 'day' | 'evening';
 
 export interface Track {
 	name: string;
@@ -7,6 +7,7 @@ export interface Track {
 
 export interface Background {
 	name: string;
+	type: 'walk' | 'drive';
 	videoID: string;
 	tags?: Tag[];
 	suggestedTrack?: Track;
