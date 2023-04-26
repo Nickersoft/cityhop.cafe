@@ -3,7 +3,7 @@
 	import ChangeScene from '$components/ChangeScene.svelte';
 	import backgrounds from '$lib/backgrounds';
 	import tracks from '$lib/tracks';
-	import type { Country } from '$lib/types';
+	import type { BackgroundWithCountry, Country } from '$lib/types';
 
 	import { draw } from 'radash';
 
@@ -36,9 +36,14 @@
 	function showChangeScene() {
 		isChangeSceneShowing = true;
 	}
+
+	function handleSceneChange(event: CustomEvent & { detail: BackgroundWithCountry }) {
+		randomBackground = event.detail;
+		isChangeSceneShowing = false;
+	}
 </script>
 
-<ChangeScene bind:open={isChangeSceneShowing} />
+<ChangeScene on:select={handleSceneChange} bind:open={isChangeSceneShowing} />
 
 {#if !playing}
 	<div

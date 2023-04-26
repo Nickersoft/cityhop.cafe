@@ -1,6 +1,7 @@
 <script lang="ts">
+	import { createEventDispatcher } from 'svelte';
 	import { scale } from 'svelte/transition';
-	import type { ChangeEventHandler } from 'svelte/elements';
+	import { group } from 'radash';
 
 	import Fuse from 'fuse.js';
 
@@ -8,9 +9,14 @@
 
 	import countryFlags from '$lib/flags';
 	import backgrounds from '$lib/backgrounds';
-	import { group } from 'radash';
+
+	import Rain from '$icons/Rain.svelte';
+	import Snow from '$icons/Snow.svelte';
+	import { clickOutside } from '$lib/actions';
 
 	export let open: boolean;
+
+	const dispatch = createEventDispatcher();
 
 	const fuse = new Fuse(backgrounds, {
 		keys: ['name', 'country'],
@@ -29,18 +35,30 @@
 		console.log(fuse.search(query));
 	}
 
+	function handleBGClick() {
+		open = false;
+	}
+
+	function handleSceneSelect(scene: BackgroundWithCountry) {
+		dispatch('select', scene);
+	}
+
 	$: groupedBackgrounds = group(results, (r) => r.country);
 	$: countries = Object.keys(groupedBackgrounds) as Country[];
 </script>
 
 {#if open}
 	<div class="bg" transition:scale={{ start: 1.1, duration: 350 }}>
-		<div class="mx-auto h-full -w flex flex-col justify-center items-center">
+		<div class="mx-auto h-full flex flex-col justify-center items-center">
+			<ul class="flex flex-row w-full max-w-lg text-center p-8">
+				<li class="flex-1">Walks</li>
+				<li class="flex-1">Drives</li>
+			</ul>
 			<input
 				on:keyup={handleSearch}
 				type="text"
 				placeholder="Search places"
-				class="mx-auto p-4 max-w-lg w-full mt-8 text-2xl text-center outline-none border-b border-white border-opacity-20 bg-transparent"
+				class="mx-auto p-4 max-w-lg w-full text-2xl text-center outline-none border-b border-white border-opacity-20 bg-transparent"
 			/>
 
 			<div class="flex overflow-y-scroll flex-col gap-8 p-8 w-full flex-grow">
@@ -55,7 +73,19 @@
 
 						<ul class="flex flex-col w-full">
 							{#each groupedBackgrounds[country] ?? [] as background}
-								<li on:click={() => console.log('hi')} class="list-item">{background.name}</li>
+								{@const cb = () => handleSceneSelect(background)}
+
+								<li on:click={cb} on:keyup={cb} class="list-item">
+									{background.name}
+
+									{#if background.tags?.includes('rain')}
+										<Rain width={22} height={22} />
+									{/if}
+
+									{#if background.tags?.includes('snow')}
+										<Snow width={22} height={22} />
+									{/if}
+								</li>
 							{/each}
 						</ul>
 					</div>
@@ -67,17 +97,28 @@
 
 <style lang="postcss">
 	.bg {
-		@apply fixed z-50 inset-0;
+		@apply fixed z-50 inset-0 backdrop-blur-sm;
 		background-image: radial-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.95) 100%);
 	}
 
 	.list-item {
-		@apply hover:opacity-100 opacity-80 transform-gpu transition-all duration-150 text-2xl px-4 py-1;
-		@apply cursor-pointer;
-		@apply bg-slate-800 rounded-lg p-4 w-full text-left bg-opacity-0 active:!scale-95;
+		@apply hover:text-yellow-500 transform-gpu transition-all duration-150 text-2xl px-4 py-1;
+		@apply cursor-pointer relative;
+		@apply p-4 w-full text-left active:opacity-50;
+		@apply flex flex-row gap-2 justify-start items-center;
 
-		&:hover {
-			@apply bg-opacity-50 shadow-md backdrop-blur-md scale-[1.05];
+		&:hover:before {
+			@apply -left-2 opacity-100;
+		}
+
+		&:before {
+			@apply w-0 h-0 absolute -left-4 top-1/2 -translate-y-1/2 transition-all duration-150 opacity-0;
+
+			border-style: solid;
+			border-width: 6px 0 6px 10.4px;
+			border-color: transparent transparent transparent theme('colors.yellow.500');
+
+			content: '';
 		}
 	}
 </style>

@@ -19,7 +19,11 @@ export const _tracks = {
 	},
 	chineseClassical: {
 		name: 'Chinese Classical',
-		trackID: 'XmBji07OtwA'
+		trackID: 'lL6rDj40NZk'
+	},
+	synthHop: {
+		name: 'synthwave radio 🌌 - beats to chill/game to',
+		trackID: 'MVPTGNGiI-4'
 	}
 };
 
@@ -30,6 +34,13 @@ export const _backgrounds: Record<Country, Background[]> = {
 			videoID: 'KXkkKm4AwBg',
 			offset: 10,
 			suggestedTrack: _tracks.jazz
+		},
+		{
+			name: 'Miami',
+			videoID: 'Cod_ggrs69U',
+			offset: 48,
+			tags: ['night', 'drive'],
+			suggestedTrack: _tracks.synthHop
 		}
 	],
 	[Country.india]: [
@@ -37,6 +48,12 @@ export const _backgrounds: Record<Country, Background[]> = {
 			name: 'New Delhi',
 			videoID: '-bF43jowdps',
 			offset: 28,
+			tags: ['night'],
+			suggestedTrack: _tracks.hindiLofi
+		},
+		{
+			name: 'Mumbai',
+			videoID: '0UWkt9BgkXQ',
 			tags: ['night'],
 			suggestedTrack: _tracks.hindiLofi
 		}
@@ -56,6 +73,7 @@ export const _backgrounds: Record<Country, Background[]> = {
 		{
 			name: 'Tokyo',
 			videoID: 'VqS9_CIm64E',
+			offset: 100,
 			tags: ['night', 'rain']
 		}
 	],

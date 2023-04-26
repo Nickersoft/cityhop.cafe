@@ -35,7 +35,7 @@
 	options={{
 		playerVars: {
 			controls: 0,
-			start: random(videoOffset, videoOffset + 500),
+			start: random(videoOffset, videoOffset + 1800),
 			autoplay: 1,
 			disablekb: 1,
 			modestbranding: 1,
