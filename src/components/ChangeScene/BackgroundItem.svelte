@@ -5,6 +5,8 @@
 	import Snow from '$icons/Snow.svelte';
 
 	import type { BackgroundWithCountry } from '$lib/types';
+	import tracks from '$lib/tracks';
+	import Equalizer from '$components/Equalizer.svelte';
 
 	export let background: BackgroundWithCountry;
 
@@ -16,15 +18,17 @@
 </script>
 
 <li on:click={handleSceneSelect} on:keyup={handleSceneSelect} class="list-item">
-	{background.name}
+	<div class="flex flex-row justify-start items-center gap-2">
+		{background.name}
 
-	{#if background.tags?.includes('rain')}
-		<Rain width={22} height={22} />
-	{/if}
+		{#if background.tags?.includes('rain')}
+			<Rain width={22} height={22} />
+		{/if}
 
-	{#if background.tags?.includes('snow')}
-		<Snow width={22} height={22} />
-	{/if}
+		{#if background.tags?.includes('snow')}
+			<Snow width={22} height={22} />
+		{/if}
+	</div>
 </li>
 
 <style lang="postcss">
@@ -32,7 +36,7 @@
 		@apply hover:text-yellow-500 transform-gpu transition-all duration-150 text-2xl px-4 py-1;
 		@apply cursor-pointer relative;
 		@apply p-4 w-full text-left active:opacity-50;
-		@apply flex flex-row gap-2 justify-start items-center;
+		@apply flex flex-row gap-2 justify-between items-start;
 
 		&:hover:before {
 			@apply -left-2 opacity-100;

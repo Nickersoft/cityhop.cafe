@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { draw } from 'radash';
 	import { onMount } from 'svelte';
-	import { fade, fly } from 'svelte/transition';
+	import { fade, fly, scale } from 'svelte/transition';
 
 	import UI from '$components/UI.svelte';
 
@@ -38,14 +38,14 @@
 	>
 		{#key started}
 			<div
-				out:fly|local={{ y: -10, duration: 300 }}
-				in:fly|local={{ y: 10, duration: 300 }}
+				out:scale|local={{ start: 0.95, duration: 800 }}
+				in:fly|local={{ y: 10, duration: 800, delay: 100 }}
 				class="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2"
 			>
 				{#if started}
 					Let's go...
 				{:else}
-					Press any key to begin
+					Press any key or click anywhere to begin
 				{/if}
 			</div>
 		{/key}

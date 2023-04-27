@@ -20,12 +20,10 @@
 	import createYTPlayer from 'youtube-player';
 	import type { Options, YouTubePlayer } from 'youtube-player/dist/types';
 
-	export { className as class }; // HTML class names for container element (optional)
 	export let id: string | undefined = undefined; // HTML element ID for player (optional)
 	export let videoId: string; // Youtube video ID (required)
 	export let options: Options | undefined = undefined; // YouTube player options (optional)
 
-	let className: string = ''; // HTML class names for container element
 	let playerElem: HTMLElement; // player DOM element reference
 	let player: YouTubePlayer; // player API instance
 
@@ -140,6 +138,4 @@
 	}
 </script>
 
-<div class={className}>
-	<div class="w-full h-full" {id} bind:this={playerElem} />
-</div>
+<div {id} bind:this={playerElem} />
