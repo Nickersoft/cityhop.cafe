@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { draw } from 'radash';
 	import { onMount } from 'svelte';
-	import { fade } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 
 	import UI from '$components/UI.svelte';
 
@@ -36,11 +36,19 @@
 		out:fade={{ duration: 2000 }}
 		class="flex justify-center items-center w-full h-full text-white fixed inset-0 z-50 bg-black"
 	>
-		{#if started}
-			Let's go...
-		{:else}
-			Press any key to begin
-		{/if}
+		{#key started}
+			<div
+				out:fly|local={{ y: -10, duration: 300 }}
+				in:fly|local={{ y: 10, duration: 300 }}
+				class="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2"
+			>
+				{#if started}
+					Let's go...
+				{:else}
+					Press any key to begin
+				{/if}
+			</div>
+		{/key}
 	</div>
 {/if}
 

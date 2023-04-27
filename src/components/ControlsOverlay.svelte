@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { currentScene } from '$lib/stores';
+	import { currentScene, currentTrack } from '$lib/stores';
+	import tracks from '$lib/tracks';
 	import type { BackgroundWithCountry } from '$lib/types';
 
 	import AudioPlayer from './AudioPlayer.svelte';
@@ -13,6 +14,7 @@
 
 	function handleSceneChange(event: CustomEvent & { detail: BackgroundWithCountry }) {
 		$currentScene = event.detail;
+		$currentTrack = $currentScene.suggestedTrack ?? tracks.default;
 		isChangeSceneShowing = false;
 	}
 </script>
@@ -53,12 +55,12 @@
 		@apply fixed z-30 inset-0 flex justify-end flex-col;
 
 		&:hover > .controls {
-			@apply opacity-100;
+			@apply opacity-100 translate-y-0;
 		}
 	}
 
 	.controls {
-		@apply opacity-0 transition-opacity duration-300;
+		@apply opacity-0 transition-all duration-300 translate-y-2;
 		@apply flex flex-row justify-between items-end bg-gradient-to-t from-[rgba(0,0,0,0.75)] to-transparent p-4 pt-64;
 	}
 </style>

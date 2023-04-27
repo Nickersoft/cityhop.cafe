@@ -1,7 +1,10 @@
 <script lang="ts">
+	import { alphabetical } from 'radash';
+
 	import countryFlags from '$lib/flags';
 
 	import type { BackgroundWithCountry, Country } from '$lib/types';
+
 	import BackgroundItem from './BackgroundItem.svelte';
 
 	export let country: Country;
@@ -17,7 +20,7 @@
 	</div>
 
 	<ul class="flex flex-col w-full">
-		{#each backgrounds ?? [] as background}
+		{#each alphabetical(backgrounds ?? [], (b) => b.name) as background}
 			<BackgroundItem on:select {background} />
 		{/each}
 	</ul>

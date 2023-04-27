@@ -13,12 +13,41 @@
 
 		<span>Now playing</span>
 	</div>
-	<span class="text-lg">{$currentTrack.name}</span>
+
+	{#if $currentTrack.name.length < 45}
+		<span class="text-lg">{$currentTrack.name}</span>
+	{:else}
+		<div class="marquee">
+			<span>{$currentTrack.name}&nbsp;&nbsp;{$currentTrack.name}</span>
+		</div>
+	{/if}
 </div>
 
 <style lang="postcss">
+	.marquee {
+		@apply text-lg max-w-sm overflow-hidden relative w-80 h-6 border-x border-white border-opacity-10;
+
+		span {
+			@apply absolute block will-change-transform whitespace-nowrap;
+			animation: marquee 30s linear infinite;
+			animation-delay: 4s;
+		}
+
+		@keyframes marquee {
+			0% {
+				transform: translateX(0);
+			}
+			90% {
+				transform: translateX(-50%);
+			}
+			100% {
+				transform: translateX(-50%);
+			}
+		}
+	}
+
 	.equalizer {
-		@apply flex flex-row gap-[1px] justify-end items-end w-4 h-3;
+		@apply flex flex-row gap-[1px] justify-end items-end w-4 h-2;
 	}
 
 	.bar {

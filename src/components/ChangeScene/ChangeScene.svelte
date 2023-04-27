@@ -1,17 +1,13 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
 	import { scale } from 'svelte/transition';
-	import { group } from 'radash';
+	import { group, sort } from 'radash';
 
 	import Fuse from 'fuse.js';
 
-	import type { Background, BackgroundWithCountry, Country } from '$lib/types';
+	import type { BackgroundWithCountry, Country } from '$lib/types';
 
-	import countryFlags from '$lib/flags';
 	import backgrounds from '$lib/backgrounds';
 
-	import Rain from '$icons/Rain.svelte';
-	import Snow from '$icons/Snow.svelte';
 	import { clickOutside } from '$lib/actions';
 	import CountrySection from './CountrySection.svelte';
 	import CategorySelection from './CategorySelection.svelte';
@@ -19,8 +15,6 @@
 	export let open: boolean;
 
 	let selectedCategory: 'walk' | 'drive' = 'walk';
-
-	const dispatch = createEventDispatcher();
 
 	const fuse = new Fuse(backgrounds, {
 		keys: ['name', 'country'],
@@ -43,26 +37,17 @@
 		open = false;
 	}
 
-	function handleSceneSelect(scene: BackgroundWithCountry) {
-		dispatch('select', scene);
-	}
-
 	$: filteredResults = results.filter((r) => r.type === selectedCategory);
 	$: groupedBackgrounds = group(filteredResults, (r) => r.country);
-	$: countries = Object.keys(groupedBackgrounds) as Country[];
-
-	function selectWalk() {
-		selectedCategory = 'walk';
-	}
-
-	function selectDrive() {
-		selectedCategory = 'drive';
-	}
+	$: countries = Object.keys(groupedBackgrounds).sort() as Country[];
 </script>
 
 {#if open}
 	<div class="bg" transition:scale={{ start: 1.1, duration: 350 }}>
-		<div class="mx-auto p-8 max-w-6xl gap-8 h-full flex flex-row justify-center items-center">
+		<div
+			use:clickOutside={handleBGClick}
+			class="mx-auto py-8 max-w-4xl gap-8 h-full flex flex-row justify-center items-center"
+		>
 			<CategorySelection bind:selectedCategory />
 
 			<div class="flex flex-col flex-1 justify-center h-full items-center">
@@ -75,7 +60,11 @@
 
 				<div class="flex overflow-y-scroll flex-col gap-8 p-8 w-full flex-grow">
 					{#each countries as country}
-						<CountrySection on:select {country} backgrounds={groupedBackgrounds[country] ?? []} />
+						<CountrySection
+							on:select
+							{country}
+							backgrounds={groupedBackgrounds[country]?.sort() ?? []}
+						/>
 					{/each}
 				</div>
 			</div>

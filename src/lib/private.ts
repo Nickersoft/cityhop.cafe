@@ -21,13 +21,33 @@ export const _tracks = {
 		name: 'Relaxing Jazz Piano Radio - Slow Jazz Music - 24/7 Live Stream - Music For Work & Study',
 		trackID: 'Dx5qFachd3A'
 	},
+	coffeeShopLofi: {
+		name: 'Coffee Shop Radio ☕ - 24/7 lofi & jazzy hip-hop beats',
+		trackID: 'e3L1PIY1pN8'
+	},
 	chineseClassical: {
 		name: 'Breath of the Night 🌑 Asian Inspired Lofi Beats',
 		trackID: 'lL6rDj40NZk'
 	},
+	vaporwave: {
+		name: 'VaporFunk Station 📼 | 24/7 Vaporwave Radio',
+		trackID: 'cVibfBy77Yg'
+	},
 	synthHop: {
 		name: 'synthwave radio 🌌 - beats to chill/game to',
 		trackID: 'MVPTGNGiI-4'
+	},
+	house: {
+		name: 'The Good Life Radio • 24/7 Live Radio',
+		trackID: '36YnV9STBqc'
+	},
+	pop: {
+		name: "Hits Radio 1 Live Pop Radio' Top Hits 2023",
+		trackID: 'HQtFR3mhzOY'
+	},
+	baroqueMusic: {
+		name: '🔴 ♫ Baroque Live Music 24/7 - Classical Music from the Baroque Period ♫ クラシック ライブ',
+		trackID: '2gO1v2GPMFk'
 	},
 	frenchCafe: {
 		name: 'French Cafe - Accordion Romantic French Music, Jazz & Bossa Nova',
@@ -40,6 +60,34 @@ export const _backgrounds: Record<Country, Background[]> = {
 		{
 			name: 'Chicago',
 			videoID: 'KXkkKm4AwBg',
+			type: 'walk',
+			offset: 10,
+			suggestedTrack: _tracks.coffeeShopLofi
+		},
+		{
+			name: 'Los Angeles',
+			videoID: '_gJe9JPgwLM',
+			type: 'drive',
+			offset: 30,
+			suggestedTrack: _tracks.pop
+		},
+		{
+			name: 'Honolulu',
+			videoID: '-GSHhsSPcdo',
+			offset: 40,
+			type: 'drive',
+			suggestedTrack: _tracks.house
+		},
+		{
+			name: 'New York',
+			videoID: 'UPrPATfWJ2g',
+			type: 'drive',
+			offset: 50,
+			suggestedTrack: _tracks.vaporwave
+		},
+		{
+			name: 'New York',
+			videoID: 'F8MN0o6RS9o',
 			type: 'walk',
 			offset: 10,
 			suggestedTrack: _tracks.jazz
@@ -76,6 +124,20 @@ export const _backgrounds: Record<Country, Background[]> = {
 			videoID: 'm6y03y_9ruA',
 			type: 'walk',
 			tags: ['snow', 'night']
+		},
+		{
+			name: 'Kyoto',
+			videoID: 'qgfd-uWTVwg',
+			type: 'walk',
+			offset: 50,
+			tags: ['rain', 'night']
+		},
+		{
+			name: 'Shibuya',
+			videoID: 'b3yQXprMj3s',
+			type: 'walk',
+			offset: 45,
+			tags: ['day']
 		},
 		{
 			name: 'Osaka',
@@ -116,6 +178,14 @@ export const _backgrounds: Record<Country, Background[]> = {
 			offset: 10,
 			type: 'walk',
 			tags: ['rain', 'evening']
+		},
+		{
+			name: 'Venice',
+			videoID: 'kccv6YJZ0P4',
+			offset: 50,
+			type: 'walk',
+			tags: ['evening'],
+			suggestedTrack: _tracks.baroqueMusic
 		}
 	],
 	[Country.china]: [
@@ -125,6 +195,14 @@ export const _backgrounds: Record<Country, Background[]> = {
 			offset: 2058,
 			type: 'walk',
 			tags: ['night', 'evening']
+		},
+		{
+			name: 'Wuhan',
+			videoID: 'wVHgby6hBDA',
+			offset: 2058,
+			type: 'walk',
+			suggestedTrack: _tracks.chineseClassical,
+			tags: ['night', 'day']
 		},
 		{
 			name: 'Hangzhou',
