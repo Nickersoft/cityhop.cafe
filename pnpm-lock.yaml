@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@fontsource/dm-sans': ^4.5.9
   '@playwright/test': ^1.28.1
-  '@sveltejs/adapter-auto': ^2.0.0
+  '@sveltejs/adapter-static': ^2.0.2
   '@sveltejs/kit': ^1.5.0
   '@types/youtube-player': ^5.5.7
   '@typescript-eslint/eslint-plugin': ^5.45.0
@@ -36,7 +36,7 @@ dependencies:
 
 devDependencies:
   '@playwright/test': 1.32.3
-  '@sveltejs/adapter-auto': 2.0.0_@sveltejs+kit@1.15.7
+  '@sveltejs/adapter-static': 2.0.2_@sveltejs+kit@1.15.7
   '@sveltejs/kit': 1.15.7_svelte@3.58.0+vite@4.3.1
   '@types/youtube-player': 5.5.7
   '@typescript-eslint/eslint-plugin': 5.59.0_chh3ljgpke5ydgcjpmkmu4hz5q
@@ -389,13 +389,12 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
-  /@sveltejs/adapter-auto/2.0.0_@sveltejs+kit@1.15.7:
-    resolution: {integrity: sha512-b+gkHFZgD771kgV3aO4avHFd7y1zhmMYy9i6xOK7m/rwmwaRO8gnF5zBc0Rgca80B2PMU1bKNxyBTHA14OzUAQ==}
+  /@sveltejs/adapter-static/2.0.2_@sveltejs+kit@1.15.7:
+    resolution: {integrity: sha512-9wYtf6s6ew7DHUHMrt55YpD1FgV7oWql2IGsW5BXquLxqcY9vjrqCFo0TzzDpo+ZPZkW/v77k0eOP6tsAb8HmQ==}
     peerDependencies:
-      '@sveltejs/kit': ^1.0.0
+      '@sveltejs/kit': ^1.5.0
     dependencies:
       '@sveltejs/kit': 1.15.7_svelte@3.58.0+vite@4.3.1
-      import-meta-resolve: 2.2.2
     dev: true
 
   /@sveltejs/kit/1.15.7_svelte@3.58.0+vite@4.3.1:
@@ -1298,10 +1297,6 @@ packages:
     dependencies:
       parent-module: 1.0.1
       resolve-from: 4.0.0
-    dev: true
-
-  /import-meta-resolve/2.2.2:
-    resolution: {integrity: sha512-f8KcQ1D80V7RnqVm+/lirO9zkOxjGxhaTC1IPrBGd3MEfNgmNG67tSUO9gTi2F3Blr2Az6g1vocaxzkVnWl9MA==}
     dev: true
 
   /imurmurhash/0.1.4:
