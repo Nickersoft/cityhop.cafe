@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { preferences } from '$lib/stores';
+
 	import CategorySelectionItem from './CategorySelectionItem.svelte';
 
 	export let selectedCategory: 'walk' | 'drive';
@@ -21,4 +23,9 @@
 	<CategorySelectionItem on:click={selectDrive} active={selectedCategory === 'drive'}>
 		🚙 Drives
 	</CategorySelectionItem>
+
+	<div class="flex mt-4 flex-row gap-2 text-sm text-opacity-75 text-white">
+		<input bind:checked={$preferences.preserveAudio} type="checkbox" class="toggle toggle-sm" />
+		Keep my music selection
+	</div>
 </ul>

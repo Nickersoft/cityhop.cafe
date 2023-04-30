@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { alphabetical } from 'radash';
 
-	import countryFlags from '$lib/flags';
+	import { flags } from '$lib/emojis';
 
 	import type { BackgroundWithCountry, Country } from '$lib/types';
+	import { Section } from '$components/SearchScreen';
 
 	import BackgroundItem from './BackgroundItem.svelte';
 
@@ -11,17 +12,17 @@
 	export let backgrounds: BackgroundWithCountry[];
 </script>
 
-<div class="flex flex-col w-full justify-center items-start gap-4">
-	<div class="flex flex-row gap-4 justify-start items-center">
-		{countryFlags[country]}
-		<span class="uppercase opacity-50 font-medium">
+<Section>
+	<svelte:fragment slot="header">
+		{flags[country]}
+		<span class="opacity-50">
 			{country}
 		</span>
-	</div>
+	</svelte:fragment>
 
-	<ul class="flex flex-col w-full">
+	<svelte:fragment slot="list">
 		{#each alphabetical(backgrounds ?? [], (b) => b.name) as background}
 			<BackgroundItem on:select {background} />
 		{/each}
-	</ul>
-</div>
+	</svelte:fragment>
+</Section>

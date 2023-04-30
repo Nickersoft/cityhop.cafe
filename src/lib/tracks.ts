@@ -11,4 +11,11 @@ const countryTracks = Object.entries(_backgrounds).reduce((acc, [country, bgs]) 
 	};
 });
 
-export default { default: _tracks.chillBeats, popular: popularTracks, country: countryTracks };
+const all = Object.values(_tracks);
+
+export default {
+	all,
+	default: _tracks.chillBeats,
+	popular: popularTracks,
+	country: countryTracks
+};

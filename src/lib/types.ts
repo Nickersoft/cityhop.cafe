@@ -3,6 +3,7 @@ export type Tag = 'snow' | 'rain' | 'night' | 'day' | 'evening';
 export interface Track {
 	name: string;
 	trackID: string;
+	genre: Genre;
 }
 
 export interface Background {
@@ -25,5 +26,15 @@ export enum Country {
 	france = 'France',
 	japan = 'Japan',
 	india = 'India',
-	italy = 'Italy'
+	italy = 'Italy',
+	mexico = 'Mexico'
+}
+
+export enum Genre {
+	pop = 'Pop',
+	jazz = 'Jazz',
+	lofi = 'Lofi',
+	rnb = 'R&B',
+	classical = 'Classical',
+	electronic = 'Electronic'
 }

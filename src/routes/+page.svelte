@@ -14,7 +14,9 @@
 	let playing = false;
 
 	onMount(() => {
-		function start() {
+		function start(event: KeyboardEvent) {
+			event.stopPropagation();
+			event.preventDefault();
 			started = true;
 		}
 
@@ -26,7 +28,7 @@
 	});
 
 	onMount(() => {
-		$currentScene = draw(backgrounds)!;
+		$currentScene = draw(backgrounds.filter((b) => !b.suggestedTrack))!;
 		$currentTrack = $currentScene?.suggestedTrack ?? tracks.default;
 	});
 </script>

@@ -3,6 +3,7 @@
 
 	import YouTube from './YouTube.svelte';
 	import ControlsOverlay from './ControlsOverlay.svelte';
+	import { onMount } from 'svelte';
 
 	export let playing;
 	export let videoID: string;
@@ -25,6 +26,28 @@
 		event.detail.target.setVolume(100);
 		event.detail.target.playVideo();
 	}
+
+	let inactiveTimeout: NodeJS.Timeout;
+
+	onMount(() => {
+		function handleMouseMove() {
+			document.body.classList.remove('inactive');
+
+			if (inactiveTimeout) {
+				clearTimeout(inactiveTimeout);
+			}
+
+			inactiveTimeout = setTimeout(() => {
+				document.body.classList.add('inactive');
+			}, 10000);
+		}
+
+		document.addEventListener('mousemove', handleMouseMove);
+
+		return () => {
+			document.removeEventListener('mousemove', handleMouseMove);
+		};
+	});
 </script>
 
 <ControlsOverlay />
@@ -58,13 +81,19 @@
 			playerVars: {
 				start: random(videoOffset, videoOffset + 1800),
 				autoplay: 1,
-				playsinline: 1
+				playsinline: 1,
+				rel: 0,
+				disablekb: 1
 			}
 		}}
 	/>
 </div>
 
 <style lang="postcss">
+	:global(body.inactive) {
+		@apply cursor-none;
+	}
+
 	.video-background {
 		background: #000;
 		position: fixed;
