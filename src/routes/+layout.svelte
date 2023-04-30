@@ -27,4 +27,8 @@
 	});
 </script>
 
+<svelte:head>
+	<title>CityHop | Aesthetic walks and drives from around the world</title>
+</svelte:head>
+
 <slot />
