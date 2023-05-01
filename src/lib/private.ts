@@ -153,6 +153,7 @@ export const _backgrounds: Record<Country, Background[]> = {
 			videoID: 'F8MN0o6RS9o',
 			type: 'walk',
 			offset: 10,
+			tags: ['snow', 'day'],
 			suggestedTrack: _tracks.jazz
 		},
 		{
@@ -240,6 +241,15 @@ export const _backgrounds: Record<Country, Background[]> = {
 			suggestedTrack: _tracks.cityPopLive
 		}
 	],
+	[Country.uk]: [
+		{
+			name: 'London',
+			videoID: 'eevoNMKpNDw',
+			tags: ['evening'],
+			offset: 120,
+			type: 'walk'
+		}
+	],
 	[Country.france]: [
 		{
 			name: 'Paris',
@@ -282,6 +292,13 @@ export const _backgrounds: Record<Country, Background[]> = {
 			offset: 2058,
 			type: 'walk',
 			tags: ['night', 'evening']
+		},
+		{
+			name: 'Ningbo',
+			videoID: 'JcxscDzP4Oc',
+			offset: 120,
+			type: 'walk',
+			tags: ['night', 'day']
 		},
 		{
 			name: 'Wuhan',
@@ -327,11 +344,27 @@ export const _backgrounds: Record<Country, Background[]> = {
 			tags: ['rain', 'night']
 		}
 	],
+	[Country.taiwan]: [
+		{
+			name: 'Taipei',
+			videoID: 'P8Uh9f0EaU8',
+			offset: 60,
+			type: 'drive',
+			tags: ['day']
+		}
+	],
 	[Country.korea]: [
 		{
 			name: 'Myeongdong',
-			videoID: 'i1KRgqkr3fU',
+			videoID: 'nR9dvyAf-DY',
+			offset: 30,
 			tags: ['evening'],
+			type: 'walk'
+		},
+		{
+			name: 'Euljiro',
+			videoID: 'g010nClpG2U',
+			tags: ['morning', 'rain'],
 			type: 'walk'
 		},
 		{
@@ -339,6 +372,12 @@ export const _backgrounds: Record<Country, Background[]> = {
 			videoID: 'KGAIumGxQeY',
 			tags: ['evening'],
 			type: 'drive'
+		},
+		{
+			name: 'Yeosu City',
+			videoID: 'NV-7yREq7DA',
+			tags: ['evening'],
+			type: 'walk'
 		},
 		{
 			name: 'Yongsan Station',

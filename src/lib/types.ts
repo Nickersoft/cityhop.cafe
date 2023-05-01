@@ -1,4 +1,4 @@
-export type Tag = 'snow' | 'rain' | 'night' | 'day' | 'evening';
+export type Tag = 'snow' | 'rain' | 'morning' | 'night' | 'day' | 'evening';
 
 export interface Track {
 	name: string;
@@ -24,6 +24,8 @@ export enum Country {
 	us = 'United States',
 	china = 'China',
 	france = 'France',
+	uk = 'United Kingdom',
+	taiwan = 'Taiwan',
 	japan = 'Japan',
 	india = 'India',
 	italy = 'Italy',
