@@ -1,14 +1,19 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { random } from 'radash';
 
 	import YouTube from './YouTube.svelte';
-	import ControlsOverlay from './ControlsOverlay.svelte';
-	import { onMount } from 'svelte';
+	import Controls from './Controls';
+	import type { YouTubePlayer } from 'youtube-player/dist/types';
+	import { preferences } from '$lib/stores';
 
 	export let playing;
 	export let videoID: string;
 	export let audioID: string;
 	export let videoOffset: number = 0;
+
+	let backgroundPlayer: YouTubePlayer;
+	let audioPlayer: YouTubePlayer;
 
 	function onPlay() {
 		playing = true;
@@ -16,6 +21,7 @@
 
 	function onBackgroundReady(event: CustomEvent) {
 		event.detail.target.setVolume(15);
+		backgroundPlayer = event.detail.target;
 	}
 
 	function onBackgroundEnded(event: CustomEvent) {
@@ -25,6 +31,7 @@
 	function onAudioReady(event: CustomEvent) {
 		event.detail.target.setVolume(100);
 		event.detail.target.playVideo();
+		audioPlayer = event.detail.target;
 	}
 
 	let inactiveTimeout: NodeJS.Timeout;
@@ -48,9 +55,14 @@
 			document.removeEventListener('mousemove', handleMouseMove);
 		};
 	});
+
+	$: backgroundPlayer &&
+		backgroundPlayer.setVolume($preferences.muteScene ? 0 : $preferences.sceneVolume);
+
+	$: audioPlayer && audioPlayer.setVolume($preferences.muteMusic ? 0 : $preferences.musicVolume);
 </script>
 
-<ControlsOverlay />
+<Controls />
 
 <div class="video-background">
 	<div class="video-foreground">

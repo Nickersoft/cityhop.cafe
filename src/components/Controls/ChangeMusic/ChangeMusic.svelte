@@ -4,7 +4,7 @@
 	import { alphabetical, group } from 'radash';
 	import { createEventDispatcher } from 'svelte';
 
-	import SearchScreen, { Section, ListItem } from '$components/SearchScreen';
+	import SearchScreen, { Section, ListItem } from '../SearchScreen';
 
 	import tracks from '$lib/tracks';
 	import { genres as genreEmojis } from '$lib/emojis';

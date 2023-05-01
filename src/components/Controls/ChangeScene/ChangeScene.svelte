@@ -9,7 +9,8 @@
 
 	import CountrySection from './CountrySection.svelte';
 	import CategorySelection from './CategorySelection.svelte';
-	import SearchScreen from '$components/SearchScreen';
+	import SearchScreen from '../SearchScreen';
+	import { preferences } from '$lib/stores';
 
 	export let open: boolean;
 
@@ -39,4 +40,9 @@
 	{#each countries as country}
 		<CountrySection on:select {country} backgrounds={groupedBackgrounds[country]?.sort() ?? []} />
 	{/each}
+
+	<div slot="bottom" class="flex mt-4 flex-row gap-2 text-sm text-opacity-75 text-white">
+		<input bind:checked={$preferences.preserveAudio} type="checkbox" class="toggle toggle-sm" />
+		Keep my music selection
+	</div>
 </SearchScreen>

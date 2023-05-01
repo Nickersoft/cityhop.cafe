@@ -2,9 +2,9 @@
 	import { alphabetical } from 'radash';
 
 	import { flags } from '$lib/emojis';
-
 	import type { BackgroundWithCountry, Country } from '$lib/types';
-	import { Section } from '$components/SearchScreen';
+
+	import { Section } from '../SearchScreen';
 
 	import BackgroundItem from './BackgroundItem.svelte';
 

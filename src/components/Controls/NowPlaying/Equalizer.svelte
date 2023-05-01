@@ -1,4 +1,8 @@
-<div class="equalizer">
+<script lang="ts">
+	export let muted: boolean;
+</script>
+
+<div class="equalizer" class:muted>
 	<span class="bar" />
 	<span class="bar" />
 	<span class="bar" />
@@ -8,6 +12,11 @@
 <style lang="postcss">
 	.equalizer {
 		@apply flex flex-row gap-[1px] justify-end items-end w-4 h-2;
+
+		&.muted .bar {
+			animation: none !important;
+			height: 25% !important;
+		}
 	}
 
 	.bar {

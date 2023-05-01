@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { currentTrack } from '$lib/stores';
 	import { createEventDispatcher } from 'svelte';
+
+	import { currentTrack, preferences } from '$lib/stores';
 
 	import Equalizer from './Equalizer.svelte';
 
@@ -14,9 +15,15 @@
 <div class="flex flex-wrap flex-1 w-full pl-4 flex-row gap-2 justify-between items-center">
 	<div class="flex w-full md:w-auto flex-col gap-0.5 justify-start items-start">
 		<div class="flex opacity-80 flex-row items-center justify-end gap-2">
-			<Equalizer />
+			<Equalizer muted={$preferences.muteMusic} />
 
-			<span>Now playing</span>
+			<span>
+				{#if $preferences.muteMusic}
+					Music muted
+				{:else}
+					Now playing
+				{/if}
+			</span>
 		</div>
 
 		{#if $currentTrack.name.length < 60}

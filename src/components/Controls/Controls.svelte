@@ -4,10 +4,14 @@
 	import tracks from '$lib/tracks';
 	import type { BackgroundWithCountry, Track } from '$lib/types';
 
-	import AudioPlayer from './AudioPlayer.svelte';
+	import AudioPlayer from './NowPlaying/NowPlaying.svelte';
 	import ChangeMusic from './ChangeMusic';
 	import ChangeScene from './ChangeScene';
+	import Settings from './Settings';
+	import CurrentScene from './CurrentScene.svelte';
+	import TopButtons from './TopButtons.svelte';
 
+	let isSettingsOpen = false;
 	let isChangeSceneShowing = false;
 	let isChangeMusicShowing = false;
 
@@ -33,50 +37,34 @@
 		$currentTrack = event.detail;
 		isChangeMusicShowing = false;
 	}
+
+	function showSettings() {
+		isSettingsOpen = true;
+	}
 </script>
+
+<Settings bind:open={isSettingsOpen} />
 
 <ChangeMusic on:select={handleMusicChange} bind:open={isChangeMusicShowing} />
 
 <ChangeScene on:select={handleSceneChange} bind:open={isChangeSceneShowing} />
 
 <div class="overlay">
+	<TopButtons on:openSettings={showSettings} />
 	<div class="controls-container">
 		<div class="controls">
-			<div
-				class="flex flex-wrap border-r border-white border-opacity-20 pr-4 flex-row justify-between items-center"
-			>
-				<div class="flex flex-col gap-0.5">
-					{#if $currentScene.type === 'walk'}
-						You are currently walking in
-					{:else}
-						You are currently driving in
-					{/if}
-
-					<div
-						class="text-2xl flex flex-row justify-start items-baseline gap-2 font-medium cursor-pointer"
-					>
-						{$currentScene.name}, {$currentScene.country}
-					</div>
-				</div>
-
-				<button
-					title="Click to change scene"
-					on:click={showChangeScene}
-					on:keyup={showChangeScene}
-					class="label"
-				>
-					Change Scene
-				</button>
-			</div>
-
+			<CurrentScene on:changeScene={showChangeScene} />
 			<AudioPlayer on:changeMusic={showChangeMusic} />
 		</div>
 	</div>
 </div>
 
 <style lang="postcss">
-	:global(body:not(.inactive)) .controls-container {
-		@apply opacity-100 translate-y-0;
+	:global(body:not(.inactive)) {
+		.controls-container,
+		:global(.top-icons) {
+			@apply opacity-100 translate-y-0;
+		}
 	}
 
 	.overlay {

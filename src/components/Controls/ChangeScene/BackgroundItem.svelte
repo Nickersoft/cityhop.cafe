@@ -3,7 +3,7 @@
 
 	import type { BackgroundWithCountry } from '$lib/types';
 
-	import { ListItem } from '$components/SearchScreen';
+	import { ListItem } from '../SearchScreen';
 
 	export let background: BackgroundWithCountry;
 
