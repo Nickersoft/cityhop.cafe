@@ -108,6 +108,12 @@ const drives: Omit<Scene, 'type'>[] = [
 		country: Country.france
 	},
 	{
+		name: 'Chongqing',
+		videoID: 'Boh66Pjjiq0',
+		tags: ['day'],
+		country: Country.china
+	},
+	{
 		name: 'Hangzhou',
 		videoID: 'jAe290vn-gk',
 		offset: 200,
