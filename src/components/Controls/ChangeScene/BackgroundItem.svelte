@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 
-	import type { BackgroundWithCountry } from '$lib/types';
+	import type { Scene } from '$lib/types';
 
 	import { ListItem } from '../SearchScreen';
 
-	export let background: BackgroundWithCountry;
+	export let background: Scene;
 
 	const dispatch = createEventDispatcher();
 

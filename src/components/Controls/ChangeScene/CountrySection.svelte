@@ -2,14 +2,14 @@
 	import { alphabetical } from 'radash';
 
 	import { flags } from '$lib/emojis';
-	import type { BackgroundWithCountry, Country } from '$lib/types';
+	import type { Scene, Country } from '$lib/types';
 
 	import { Section } from '../SearchScreen';
 
 	import BackgroundItem from './BackgroundItem.svelte';
 
 	export let country: Country;
-	export let backgrounds: BackgroundWithCountry[];
+	export let backgrounds: Scene[];
 </script>
 
 <Section>

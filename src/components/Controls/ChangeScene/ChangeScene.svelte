@@ -5,7 +5,7 @@
 
 	import type { Country } from '$lib/types';
 
-	import backgrounds from '$lib/backgrounds';
+	import scenes from '$data/scenes';
 
 	import CountrySection from './CountrySection.svelte';
 	import CategorySelection from './CategorySelection.svelte';
@@ -16,7 +16,7 @@
 
 	let selectedCategory: 'walk' | 'drive' = 'walk';
 
-	const fuse = new Fuse(backgrounds, {
+	const fuse = new Fuse(scenes, {
 		keys: ['name', 'country'],
 		shouldSort: true,
 		isCaseSensitive: false
@@ -25,7 +25,7 @@
 	let searchQuery: string = '';
 
 	$: results =
-		searchQuery.length === 0 ? backgrounds : fuse.search(searchQuery).map((result) => result.item);
+		searchQuery.length === 0 ? scenes : fuse.search(searchQuery).map((result) => result.item);
 
 	$: filteredResults = results.filter((r) => r.type === selectedCategory);
 

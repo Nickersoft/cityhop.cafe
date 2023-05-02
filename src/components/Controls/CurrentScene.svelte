@@ -11,7 +11,7 @@
 </script>
 
 <div
-	class="flex flex-wrap border-r border-white border-opacity-20 pr-4 flex-row justify-between items-center"
+	class="flex flex-wrap border-r border-white border-opacity-20 pr-8 flex-row justify-between items-center"
 >
 	<div class="flex flex-col gap-0.5">
 		{#if $currentScene.type === 'walk'}

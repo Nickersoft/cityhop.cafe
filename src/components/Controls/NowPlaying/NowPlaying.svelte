@@ -10,10 +10,16 @@
 	function changeMusic() {
 		dispatch('changeMusic');
 	}
+
+	$: shouldMarquee = $currentTrack.name.length > 45;
 </script>
 
-<div class="flex flex-wrap flex-1 w-full pl-4 flex-row gap-2 justify-between items-center">
-	<div class="flex w-full md:w-auto flex-col gap-0.5 justify-start items-start">
+<div class="flex flex-wrap flex-1 w-full pl-8 flex-row gap-2 justify-between items-center">
+	<div
+		class:w-full={!shouldMarquee}
+		class:md:w-auto={!shouldMarquee}
+		class="flex flex-grow flex-col gap-0.5 justify-start items-start"
+	>
 		<div class="flex opacity-80 flex-row items-center justify-end gap-2">
 			<Equalizer muted={$preferences.muteMusic} />
 
@@ -26,14 +32,16 @@
 			</span>
 		</div>
 
-		{#if $currentTrack.name.length < 60}
+		{#if shouldMarquee}
+			<div class="marquee">
+				<span>
+					{$currentTrack.name}&nbsp;&nbsp;{$currentTrack.name}&nbsp;&nbsp;{$currentTrack.name}
+				</span>
+			</div>
+		{:else}
 			<span class="text-lg whitespace-nowrap text-ellipsis overflow-hidden w-full md:w-auto">
 				{$currentTrack.name}
 			</span>
-		{:else}
-			<div class="marquee">
-				<span>{$currentTrack.name}&nbsp;&nbsp;{$currentTrack.name}</span>
-			</div>
 		{/if}
 	</div>
 

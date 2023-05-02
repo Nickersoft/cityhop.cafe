@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { currentScene, currentTrack, preferences } from '$lib/stores';
 
-	import tracks from '$lib/tracks';
-	import type { BackgroundWithCountry, Track } from '$lib/types';
+	import type { Scene, Track } from '$lib/types';
+
+	import { getRandomLofi } from '$data/stations';
 
 	import AudioPlayer from './NowPlaying/NowPlaying.svelte';
 	import ChangeMusic from './ChangeMusic';
@@ -23,11 +24,11 @@
 		isChangeSceneShowing = true;
 	}
 
-	function handleSceneChange(event: CustomEvent & { detail: BackgroundWithCountry }) {
+	function handleSceneChange(event: CustomEvent & { detail: Scene }) {
 		$currentScene = event.detail;
 
 		if (!$preferences.preserveAudio) {
-			$currentTrack = $currentScene.suggestedTrack ?? tracks.default;
+			$currentTrack = $currentScene.suggestedTrack ?? getRandomLofi();
 		}
 
 		isChangeSceneShowing = false;

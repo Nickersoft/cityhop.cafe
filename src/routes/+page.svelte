@@ -5,8 +5,9 @@
 
 	import UI from '$components/UI.svelte';
 
-	import backgrounds from '$lib/backgrounds';
-	import tracks from '$lib/tracks';
+	import { getRandomLofi } from '$data/stations';
+
+	import scenes from '$data/scenes';
 
 	import { currentScene, currentTrack } from '$lib/stores';
 
@@ -28,8 +29,8 @@
 	});
 
 	onMount(() => {
-		$currentScene = draw(backgrounds.filter((b) => !b.suggestedTrack))!;
-		$currentTrack = $currentScene?.suggestedTrack ?? tracks.default;
+		$currentScene = draw(scenes.filter((b) => !b.suggestedTrack))!;
+		$currentTrack = $currentScene?.suggestedTrack ?? getRandomLofi();
 	});
 </script>
 

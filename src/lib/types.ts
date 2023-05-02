@@ -6,16 +6,13 @@ export interface Track {
 	genre: Genre;
 }
 
-export interface Background {
+export interface Scene {
 	name: string;
 	type: 'walk' | 'drive';
 	videoID: string;
 	tags?: Tag[];
 	suggestedTrack?: Track;
 	offset?: number;
-}
-
-export interface BackgroundWithCountry extends Background {
 	country: Country;
 }
 
