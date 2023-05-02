@@ -15,11 +15,7 @@
 </script>
 
 <div class="flex flex-wrap flex-1 w-full pl-8 flex-row gap-2 justify-between items-center">
-	<div
-		class:w-full={!shouldMarquee}
-		class:md:w-auto={!shouldMarquee}
-		class="flex flex-grow flex-col gap-0.5 justify-start items-start"
-	>
+	<div class="flex w-full md:w-auto md:flex-grow flex-col gap-0.5 mr-4 justify-start items-start">
 		<div class="flex opacity-80 flex-row items-center justify-end gap-2">
 			<Equalizer muted={$preferences.muteMusic} />
 
@@ -35,7 +31,7 @@
 		{#if shouldMarquee}
 			<div class="marquee">
 				<span>
-					{$currentTrack.name}&nbsp;&nbsp;{$currentTrack.name}&nbsp;&nbsp;{$currentTrack.name}
+					{$currentTrack.name}&nbsp;&nbsp;{$currentTrack.name}
 				</span>
 			</div>
 		{:else}
@@ -56,7 +52,7 @@
 
 		span {
 			@apply absolute block will-change-transform whitespace-nowrap;
-			animation: marquee 30s linear infinite;
+			animation: marquee 60s linear infinite;
 			animation-delay: 4s;
 		}
 

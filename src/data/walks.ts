@@ -27,12 +27,27 @@ const walks: Omit<Scene, 'type'>[] = [
 		suggestedTrack: stations['Relaxing Jazz Radio']
 	},
 	{
+		name: 'Boston',
+		videoID: 'JB0A8Me8EKk',
+		offset: 10,
+		tags: ['rain', 'day'],
+		country: Country.us,
+		suggestedTrack: stations['The Bootleg Boy: Sad & Sleepy Beats']
+	},
+	{
 		name: 'Miami',
 		videoID: 'Cod_ggrs69U',
 		offset: 48,
 		tags: ['night'],
 		country: Country.us,
 		suggestedTrack: stations['Synthwave Radio']
+	},
+	{
+		name: 'Montreal',
+		videoID: 'NagLUEIvwbg',
+		offset: 200,
+		tags: ['snow', 'day'],
+		country: Country.canada
 	},
 	{
 		name: 'Kochi',

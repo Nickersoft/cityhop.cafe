@@ -19,6 +19,7 @@ export interface Scene {
 export enum Country {
 	korea = 'South Korea',
 	us = 'United States',
+	canada = 'Canada',
 	china = 'China',
 	france = 'France',
 	uk = 'United Kingdom',

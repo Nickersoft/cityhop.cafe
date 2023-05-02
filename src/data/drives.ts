@@ -11,6 +11,27 @@ const drives: Omit<Scene, 'type'>[] = [
 		country: Country.us
 	},
 	{
+		name: 'Montreal',
+		videoID: 'tpPPjtRzX2Q',
+		offset: 30,
+		suggestedTrack: stations['Coffee Jazz Music Radio'],
+		country: Country.canada
+	},
+	{
+		name: 'Boston',
+		videoID: 'aVaQkKBEvzE',
+		offset: 30,
+		suggestedTrack: stations['Work & Jazz Piano Radio'],
+		country: Country.us
+	},
+	{
+		name: 'San Francisco',
+		videoID: 'PGMu_Z89Ao8',
+		offset: 30,
+		suggestedTrack: stations['Relaxing Jazz Radio'],
+		country: Country.us
+	},
+	{
 		name: 'Los Angeles',
 		videoID: '_gJe9JPgwLM',
 		offset: 30,

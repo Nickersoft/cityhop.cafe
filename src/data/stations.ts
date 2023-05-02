@@ -60,7 +60,17 @@ const stations = {
 	'The Bootleg Boy: Sad & Sleepy Beats': {
 		name: 'lofi hip hop radio 😴 sad & sleepy beats',
 		trackID: 'bLlloaA4b4g',
-		genre: Genre.pop
+		genre: Genre.lofi
+	},
+	'Coffee Jazz Music Radio': {
+		name: 'Coffee Jazz Music - Chill Out Lounge Jazz Music Radio - 24/7 Live Stream - Slow Jazz',
+		trackID: 'fEvM-OUbaKs',
+		genre: Genre.jazz
+	},
+	'Work & Jazz Piano Radio': {
+		name: 'Relaxing Jazz Piano Radio - Slow Jazz Music - 24/7 Live Stream - Music For Work & Study',
+		trackID: 'Dx5qFachd3A',
+		genre: Genre.jazz
 	},
 	'VaporFunk Station: Vaporwave Radio': {
 		name: 'VaporFunk Station 📼 | 24/7 Vaporwave Radio',
