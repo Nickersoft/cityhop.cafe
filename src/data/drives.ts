@@ -94,7 +94,13 @@ const drives: Omit<Scene, 'type'>[] = [
 	},
 	{
 		name: 'Tokyo',
-		videoID: 'GPbBZCrQbzI',
+		videoID: 'lSgTVt60M6U',
+		tags: ['night'],
+		country: Country.japan
+	},
+	{
+		name: 'Okutama Lake',
+		videoID: '7a-GBnXz3i8',
 		tags: ['day'],
 		suggestedTrack: stations['Japanese City Pop Radio レコード 昭和ポップス'],
 		country: Country.japan
