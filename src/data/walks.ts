@@ -184,6 +184,7 @@ const walks: Omit<Scene, 'type'>[] = [
 	{
 		name: 'Euljiro',
 		videoID: 'g010nClpG2U',
+		offset: 60,
 		tags: ['morning', 'rain'],
 		country: Country.korea
 	},
