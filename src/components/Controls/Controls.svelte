@@ -11,13 +11,19 @@
 	import Settings from './Settings';
 	import CurrentScene from './CurrentScene.svelte';
 	import TopButtons from './TopButtons.svelte';
+	import About from './About';
 
 	let isSettingsOpen = false;
 	let isChangeSceneShowing = false;
+	let isAboutShowing = false;
 	let isChangeMusicShowing = false;
 
 	function showChangeMusic() {
 		isChangeMusicShowing = true;
+	}
+
+	function showAbout() {
+		isAboutShowing = true;
 	}
 
 	function showChangeScene() {
@@ -44,6 +50,8 @@
 	}
 </script>
 
+<About bind:open={isAboutShowing} />
+
 <Settings bind:open={isSettingsOpen} />
 
 <ChangeMusic on:select={handleMusicChange} bind:open={isChangeMusicShowing} />
@@ -51,7 +59,7 @@
 <ChangeScene on:select={handleSceneChange} bind:open={isChangeSceneShowing} />
 
 <div class="overlay">
-	<TopButtons on:openSettings={showSettings} />
+	<TopButtons on:openAbout={showAbout} on:openSettings={showSettings} />
 	<div class="controls-container">
 		<div class="controls">
 			<CurrentScene on:changeScene={showChangeScene} />

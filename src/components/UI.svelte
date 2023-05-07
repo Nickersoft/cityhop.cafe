@@ -69,6 +69,7 @@
 		<YouTube
 			on:end={onBackgroundEnded}
 			on:play={onPlay}
+			on:stateChange
 			on:ready={onBackgroundReady}
 			videoId={videoID}
 			options={{

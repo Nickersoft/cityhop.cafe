@@ -102,6 +102,7 @@ const drives: Omit<Scene, 'type'>[] = [
 		name: 'Okutama Lake',
 		videoID: '7a-GBnXz3i8',
 		tags: ['day'],
+		offset: 60,
 		suggestedTrack: stations['Japanese City Pop Radio レコード 昭和ポップス'],
 		country: Country.japan
 	},

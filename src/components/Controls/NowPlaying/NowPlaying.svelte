@@ -4,6 +4,7 @@
 	import { currentTrack, preferences } from '$lib/stores';
 
 	import Equalizer from './Equalizer.svelte';
+	import MuteButton from '../MuteButton.svelte';
 
 	const dispatch = createEventDispatcher();
 
@@ -26,6 +27,8 @@
 					Now playing
 				{/if}
 			</span>
+
+			<MuteButton class="text-base" bind:muted={$preferences.muteMusic} />
 		</div>
 
 		{#if shouldMarquee}

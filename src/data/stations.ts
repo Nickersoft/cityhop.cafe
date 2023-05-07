@@ -52,11 +52,6 @@ const stations = {
 		trackID: '5yx6BWlEVcY',
 		genre: Genre.lofi
 	},
-	'Medieval Lofi Radio': {
-		name: 'Medieval Lofi Music',
-		trackID: 'egx5PYBGZAk',
-		genre: Genre.lofi
-	},
 	'The Bootleg Boy: Sad & Sleepy Beats': {
 		name: 'lofi hip hop radio 😴 sad & sleepy beats',
 		trackID: 'bLlloaA4b4g',

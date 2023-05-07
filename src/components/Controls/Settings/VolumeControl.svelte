@@ -1,28 +1,16 @@
 <script lang="ts">
+	import MuteButton from '../MuteButton.svelte';
+
 	export let label: string;
 	export let muted: boolean;
 	export let value: number;
-
-	function handleMute(event: Event) {
-		const el = event.target as HTMLInputElement;
-
-		if (el.checked) {
-			muted = true;
-		} else {
-			muted = false;
-		}
-	}
 
 	$: if (value === 0) {
 		muted = true;
 	}
 </script>
 
-<label class="swap text-xl">
-	<input type="checkbox" on:change={handleMute} checked={muted} />
-	<iconify-icon class="swap-on" icon="mdi:mute" />
-	<iconify-icon class="swap-off" icon="mdi:volume" />
-</label>
+<MuteButton class="text-xl" bind:muted />
 
 {label}
 
