@@ -10,7 +10,7 @@
 	<div class="about">
 		<img src={logo} alt="Logo" class="w-72" />
 
-		<hr class="divider opacity-20" />
+		<div class="divider" />
 
 		<div class="flex flex-col items-center gap-8">
 			<p>
