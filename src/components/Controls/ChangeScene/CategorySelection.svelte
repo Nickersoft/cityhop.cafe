@@ -15,7 +15,7 @@
 </script>
 
 <ul
-	class="flex text-lg gap-8 border-r border-white border-opacity-10 pr-8 py-8 flex-grow-0 flex-col text-right"
+	class="flex text-lg lg:gap-8 lg:border-r border-white border-opacity-10 w-full lg:w-auto lg:pr-8 py-8 flex-grow-0 flex-row lg:flex-col lg:text-right text-center"
 >
 	<CategorySelectionItem on:click={selectWalk} active={selectedCategory === 'walk'}>
 		🚶🏻 Walks

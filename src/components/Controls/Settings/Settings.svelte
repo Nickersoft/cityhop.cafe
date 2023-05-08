@@ -13,7 +13,7 @@
 </script>
 
 <FullScreenOverlay bind:open>
-	<div class="flex w-full h-full flex-col">
+	<div class="flex w-full h-full flex-col p-8">
 		<div
 			use:clickOutside={handleClose}
 			class="m-auto w-full max-w-4xl justify-center items-center flex flex-col gap-4"

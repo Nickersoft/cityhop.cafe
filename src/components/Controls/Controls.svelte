@@ -72,7 +72,7 @@
 	:global(body:not(.inactive)) {
 		.controls-container,
 		:global(.top-icons) {
-			@apply opacity-100 translate-y-0;
+			@apply opacity-100 translate-y-0 !important;
 		}
 	}
 
@@ -81,7 +81,7 @@
 	}
 
 	.controls {
-		@apply grid grid-cols-2 container mx-auto;
+		@apply grid lg:grid-cols-2 container mx-auto grid-cols-1;
 
 		&-container {
 			@apply opacity-0 transition-all duration-300 translate-y-2;

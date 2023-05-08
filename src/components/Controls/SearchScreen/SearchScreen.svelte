@@ -15,18 +15,20 @@
 <FullScreenOverlay bind:open>
 	<div
 		use:clickOutside={handleBGClick}
-		class="mx-auto p-8 container gap-8 h-full flex flex-row justify-center items-center"
+		class="mx-auto p-8 container w-full lg:gap-8 h-full flex flex-col lg:flex-row justify-start lg:justify-center items-center"
 	>
 		<slot name="aside" />
 
-		<div class="flex flex-col flex-1 justify-center h-full items-center">
+		<div class="flex w-full flex-col flex-1 justify-center h-full items-center">
 			<div class="searchbox">
 				<iconify-icon class="icon" icon="mdi:search" />
 				<input bind:value={searchQuery} type="text" {placeholder} />
 			</div>
 
-			<div class="flex overflow-y-scroll flex-col gap-4 p-8 w-full flex-grow">
-				<slot />
+			<div class="w-full flex-grow relative">
+				<div class="flex absolute inset-0 overflow-y-scroll flex-col gap-4 p-8 w-full flex-grow">
+					<slot />
+				</div>
 			</div>
 
 			<slot name="bottom" />

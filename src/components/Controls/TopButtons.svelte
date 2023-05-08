@@ -13,20 +13,24 @@
 </script>
 
 <div class="top-icons">
-	<button
-		class="btn btn-square btn-ghost"
-		on:click={handleOpenSettings}
-		on:keyup={handleOpenSettings}
-	>
-		<iconify-icon icon="mdi:settings" class="text-white text-2xl" />
+	<button on:click={handleOpenSettings} on:keyup={handleOpenSettings}>
+		<iconify-icon icon="mdi:settings" />
 	</button>
-	<button class="btn btn-square btn-ghost" on:click={handleOpenAbout} on:keyup={handleOpenAbout}>
-		<iconify-icon icon="mdi:about" class="text-white text-2xl" />
+	<button on:click={handleOpenAbout} on:keyup={handleOpenAbout}>
+		<iconify-icon icon="mdi:about" />
 	</button>
 </div>
 
 <style lang="postcss">
 	.top-icons {
-		@apply flex flex-row absolute top-4 right-4 gap-4 opacity-0 transition-all duration-300;
+		@apply flex flex-row absolute top-4 right-4 gap-4 opacity-0 transition-all duration-300 z-50;
+
+		button {
+			@apply btn btn-square btn-link opacity-50 hover:opacity-100;
+
+			iconify-icon {
+				@apply text-white text-2xl;
+			}
+		}
 	}
 </style>

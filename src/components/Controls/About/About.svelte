@@ -50,7 +50,7 @@
 
 <style lang="postcss">
 	.about {
-		@apply max-w-lg text-center mx-auto h-full flex flex-col justify-center items-center;
+		@apply max-w-lg text-center mx-auto h-full flex flex-col justify-center items-center p-8;
 
 		kbd {
 			@apply kbd-sm kbd;

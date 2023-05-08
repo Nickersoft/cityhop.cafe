@@ -15,7 +15,9 @@
 	$: shouldMarquee = $currentTrack.name.length > 45;
 </script>
 
-<div class="flex flex-wrap flex-1 w-full pl-8 flex-row gap-2 justify-between items-center">
+<div
+	class="flex flex-wrap flex-1 w-full lg:pl-8 pt-4 lg:pt-0 flex-row gap-2 justify-between items-center"
+>
 	<div class="flex w-full md:w-auto md:flex-grow flex-col gap-0.5 mr-4 justify-start items-start">
 		<div class="flex opacity-80 flex-row items-center justify-end gap-2">
 			<Equalizer muted={$preferences.muteMusic} />

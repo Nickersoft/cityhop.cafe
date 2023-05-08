@@ -13,7 +13,7 @@
 		<button
 			on:click={handleClose}
 			on:keyup={handleClose}
-			class="text-3xl btn btn-square btn-ghost absolute top-4 right-4"
+			class="text-3xl btn btn-square btn-link opacity-50 hover:opacity-100 absolute top-4 right-4"
 		>
 			<iconify-icon icon="mdi:close" />
 		</button>
