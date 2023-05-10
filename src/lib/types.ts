@@ -25,6 +25,7 @@ export enum Country {
 	uk = 'United Kingdom',
 	taiwan = 'Taiwan',
 	japan = 'Japan',
+	peru = 'Peru',
 	india = 'India',
 	italy = 'Italy',
 	mexico = 'Mexico'

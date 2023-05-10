@@ -91,12 +91,11 @@ const walks: Omit<Scene, 'type'>[] = [
 		tags: ['night', 'rain'],
 		country: Country.japan
 	},
-
 	{
 		name: 'London',
-		videoID: 'eevoNMKpNDw',
-		tags: ['evening'],
-		offset: 120,
+		videoID: 'H43glfbQEh4',
+		tags: ['day', 'rain'],
+		offset: 60,
 		country: Country.uk
 	},
 	{
@@ -113,6 +112,13 @@ const walks: Omit<Scene, 'type'>[] = [
 		videoID: 'FmNNrCJUhac',
 		offset: 10,
 		tags: ['rain', 'evening'],
+		country: Country.italy
+	},
+	{
+		name: 'Naples',
+		videoID: 'Ypq4N3EldBM',
+		offset: 5,
+		tags: ['day', 'rain'],
 		country: Country.italy
 	},
 	{
@@ -192,6 +198,7 @@ const walks: Omit<Scene, 'type'>[] = [
 	{
 		name: 'Yeosu City',
 		videoID: 'NV-7yREq7DA',
+		offset: 60,
 		tags: ['evening'],
 		country: Country.korea
 	},
@@ -212,6 +219,7 @@ const walks: Omit<Scene, 'type'>[] = [
 	{
 		name: 'Gangnam',
 		videoID: 'EJJ8rmIWUcQ',
+		offset: 60,
 		tags: ['day', 'rain'],
 		country: Country.korea
 	},

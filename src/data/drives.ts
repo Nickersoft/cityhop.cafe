@@ -107,6 +107,13 @@ const drives: Omit<Scene, 'type'>[] = [
 		country: Country.japan
 	},
 	{
+		name: 'Lima',
+		videoID: 'trKeUE41KVY',
+		offset: 120,
+		tags: ['day'],
+		country: Country.peru
+	},
+	{
 		name: 'Paris',
 		videoID: 'lN43inpI2lk',
 		offset: 30,
