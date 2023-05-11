@@ -10,6 +10,7 @@
 	export let playing;
 	export let videoID: string;
 	export let audioID: string;
+	export let liveAudio: boolean = true;
 	export let videoOffset: number = 0;
 
 	let backgroundPlayer: YouTubePlayer;
@@ -92,6 +93,7 @@
 		on:ready={onAudioReady}
 		options={{
 			playerVars: {
+				...(!liveAudio && { start: random(0, 1800) }),
 				autoplay: 1,
 				playsinline: 1,
 				rel: 0,

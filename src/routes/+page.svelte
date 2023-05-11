@@ -89,6 +89,7 @@
 		bind:playing
 		videoID={$currentScene.videoID}
 		videoOffset={$currentScene.offset}
+		liveAudio={$currentTrack.live}
 		audioID={$currentTrack.trackID}
 	/>
 {/if}

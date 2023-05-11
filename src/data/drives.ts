@@ -103,7 +103,7 @@ const drives: Omit<Scene, 'type'>[] = [
 		videoID: '7a-GBnXz3i8',
 		tags: ['day'],
 		offset: 60,
-		suggestedTrack: stations['Japanese City Pop Radio レコード 昭和ポップス'],
+		suggestedTrack: stations['Japanese City Pop Mix'],
 		country: Country.japan
 	},
 	{

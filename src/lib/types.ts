@@ -4,6 +4,7 @@ export interface Track {
 	name: string;
 	trackID: string;
 	genre: Genre;
+	live: boolean;
 }
 
 export interface Scene {
