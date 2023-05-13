@@ -1,8 +1,10 @@
+import { objectify } from 'radash';
+
 import { Country, type Scene } from '$lib/types';
 
 import { stations } from './stations';
 
-const walks: Omit<Scene, 'type'>[] = [
+const walks = [
 	{
 		name: 'Chicago',
 		videoID: 'KXkkKm4AwBg',
@@ -229,6 +231,8 @@ const walks: Omit<Scene, 'type'>[] = [
 		tags: ['night', 'snow'],
 		country: Country.korea
 	}
-];
+].map((scene) => ({ ...scene, type: 'walk' })) as Scene[];
 
-export default walks.map((scene) => ({ ...scene, type: 'walk' })) as Scene[];
+export default walks;
+
+export const walkMap = objectify(walks, (walk) => walk.videoID);

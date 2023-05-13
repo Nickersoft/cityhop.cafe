@@ -1,5 +1,5 @@
 import { Genre, type Track } from '$lib/types';
-import { draw, listify } from 'radash';
+import { draw, listify, objectify } from 'radash';
 
 const stations = {
 	'Bollywood Lofi Radio': {
@@ -143,4 +143,6 @@ function getRandomLofi() {
 	return draw(lofiStations) as Track;
 }
 
-export { stations, stationList, getRandomLofi };
+const stationMap = objectify(stationList, (station) => station.trackID);
+
+export { stations, stationList, stationMap, getRandomLofi };

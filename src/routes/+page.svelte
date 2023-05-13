@@ -11,6 +11,8 @@
 	import scenes from '$data/scenes';
 
 	import { currentScene, currentTrack } from '$lib/stores';
+	import { page } from '$app/stores';
+	import { decodeSharableURL } from '$lib/utils';
 
 	let started = false;
 	let playing = false;
@@ -56,8 +58,15 @@
 	});
 
 	onMount(() => {
-		$currentScene = draw(scenes.filter((b) => !b.suggestedTrack))!;
-		$currentTrack = $currentScene?.suggestedTrack ?? getRandomLofi();
+		const decodedURL = decodeSharableURL($page.url);
+
+		if (decodedURL) {
+			$currentScene = decodedURL.scene;
+			$currentTrack = decodedURL.track;
+		} else {
+			$currentScene = draw(scenes.filter((b) => !b.suggestedTrack))!;
+			$currentTrack = $currentScene?.suggestedTrack ?? getRandomLofi();
+		}
 	});
 </script>
 
