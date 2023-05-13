@@ -1,7 +1,10 @@
+import { objectify } from 'radash';
+
 import { Country, type Scene } from '$lib/types';
+
 import { stations } from './stations';
 
-const drives: Omit<Scene, 'type'>[] = [
+const drives = [
 	{
 		name: 'Chicago',
 		videoID: '9Prtp_eNUiI',
@@ -155,6 +158,8 @@ const drives: Omit<Scene, 'type'>[] = [
 		suggestedTrack: stations['Korean Indie/R&B/Hip-Hop Radio'],
 		country: Country.korea
 	}
-];
+].map((scene) => ({ ...scene, type: 'drive' })) as Scene[];
 
-export default drives.map((scene) => ({ ...scene, type: 'drive' })) as Scene[];
+export default drives;
+
+export const driveMap = objectify(drives, (drive) => drive.videoID);
