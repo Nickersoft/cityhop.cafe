@@ -19,7 +19,7 @@
 	class="flex flex-wrap flex-1 w-full lg:pl-8 pt-4 lg:pt-0 flex-row gap-2 justify-between items-center"
 >
 	<div class="flex w-full md:w-auto md:flex-grow flex-col gap-0.5 mr-4 justify-start items-start">
-		<div class="flex opacity-80 flex-row items-center justify-end gap-2">
+		<div class="flex glow text-white opacity-80 flex-row items-center justify-end gap-2">
 			<Equalizer muted={$preferences.muteMusic} />
 
 			<span>
@@ -34,13 +34,13 @@
 		</div>
 
 		{#if shouldMarquee}
-			<div class="marquee">
+			<div class="marquee glow">
 				<span>
 					{$currentTrack.name}&nbsp;&nbsp;{$currentTrack.name}
 				</span>
 			</div>
 		{:else}
-			<span class="text-lg whitespace-nowrap text-ellipsis overflow-hidden w-full md:w-auto">
+			<span class="text-lg glow whitespace-nowrap text-ellipsis overflow-hidden w-full md:w-auto">
 				{$currentTrack.name}
 			</span>
 		{/if}
@@ -53,7 +53,7 @@
 
 <style lang="postcss">
 	.marquee {
-		@apply text-lg overflow-hidden w-full relative h-6;
+		@apply text-lg overflow-hidden w-full relative h-8;
 
 		span {
 			@apply absolute block will-change-transform whitespace-nowrap;

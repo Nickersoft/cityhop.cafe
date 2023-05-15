@@ -13,7 +13,7 @@
 <div
 	class="flex flex-wrap lg:border-r lg:border-b-0 border-b border-white border-opacity-20 flex-row lg:pr-8 pb-4 lg:pb-0 justify-between items-center"
 >
-	<div class="flex flex-col gap-0.5">
+	<div class="flex flex-col glow gap-0.5">
 		{#if $currentScene.type === 'walk'}
 			You are currently walking in
 		{:else}
@@ -21,7 +21,7 @@
 		{/if}
 
 		<div
-			class="text-2xl flex flex-row justify-start items-baseline gap-2 font-medium cursor-pointer"
+			class="text-2xl glow flex flex-row justify-start items-baseline gap-2 font-medium cursor-pointer"
 		>
 			{$currentScene.name}, {$currentScene.country}
 		</div>

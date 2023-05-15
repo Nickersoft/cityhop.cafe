@@ -39,6 +39,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"dayjs": "^1.11.7",
 		"fuse.js": "^6.6.2",
 		"iconify-icon": "^1.0.7",
 		"radash": "^10.8.1",

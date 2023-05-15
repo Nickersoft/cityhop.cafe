@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { currentScene, currentTrack } from '$lib/stores';
 	import { getSharableURL } from '$lib/utils';
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
+
+	let visitorCount: number;
 
 	const dispatch = createEventDispatcher();
 
@@ -11,6 +14,11 @@
 
 	function handleOpenAbout() {
 		dispatch('openAbout');
+	}
+
+	async function updateVisitorCount() {
+		const result = await fetch('/api/visitors').then((r) => r.text());
+		visitorCount = parseInt(result, 10);
 	}
 
 	function shareTweet() {
@@ -28,9 +36,30 @@ ${url}`.trim();
 
 		window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`, '_blank');
 	}
+
+	onMount(() => {
+		updateVisitorCount();
+
+		document.addEventListener('focus', updateVisitorCount);
+
+		return () => {
+			document.removeEventListener('focus', updateVisitorCount);
+		};
+	});
 </script>
 
 <div class="top-icons">
+	{#if visitorCount && visitorCount > 0}
+		<span
+			in:fade={{ duration: 500 }}
+			class="text-white border-r border-white border-opacity-10 glow pr-4"
+		>
+			You're chilling with <span class="text-yellow-400">{visitorCount}</span> other {visitorCount ===
+			1
+				? 'person'
+				: 'people'}
+		</span>
+	{/if}
 	<button
 		class="tooltip tooltip-bottom"
 		data-tip="Share on Twitter"
@@ -60,7 +89,7 @@ ${url}`.trim();
 <style lang="postcss">
 	.top-icons {
 		@apply flex flex-row absolute top-0 right-0 left-0 justify-end items-center gap-4 opacity-0 transition-all duration-300 z-50;
-		@apply bg-gradient-to-b from-[rgba(0,0,0,0.5)] to-transparent;
+		@apply bg-gradient-to-b from-[rgba(0,0,0,0.5)] to-transparent pb-16;
 
 		button {
 			@apply btn btn-square btn-link opacity-75 hover:opacity-100;

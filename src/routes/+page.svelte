@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { draw } from 'radash';
-	import { tweened } from 'svelte/motion';
 	import { onMount } from 'svelte';
 	import { fade, fly, scale } from 'svelte/transition';
 
