@@ -34,7 +34,7 @@ export const GET: RequestHandler = async () => {
 
 	const groupedUsers = group(result.results, (r) => r.distinct_id);
 
-	const count = Object.keys(groupedUsers).length;
+	const count = Object.keys(groupedUsers).length - 1; // Subtract 1 to account for current user
 
 	return new Response(String(count));
 };
