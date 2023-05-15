@@ -30,7 +30,7 @@
 		const url = getSharableURL();
 
 		const tweet =
-			`Come ${$currentScene.type} with me in #${$currentScene.name} and chill! 🎧 #cityhop #${hashtag} 
+			`Come ${$currentScene.type} in #${$currentScene.name} with me and chill! 🎧 #cityhop #${hashtag} 
 
 ${url}`.trim();
 
