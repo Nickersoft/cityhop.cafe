@@ -37,14 +37,6 @@ const walks = [
 		suggestedTrack: stations['The Bootleg Boy: Sad & Sleepy Beats']
 	},
 	{
-		name: 'Miami',
-		videoID: 'Cod_ggrs69U',
-		offset: 48,
-		tags: ['night'],
-		country: Country.us,
-		suggestedTrack: stations['Synthwave Radio']
-	},
-	{
 		name: 'Montreal',
 		videoID: 'NagLUEIvwbg',
 		offset: 200,
