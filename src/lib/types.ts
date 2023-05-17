@@ -21,6 +21,7 @@ export enum Country {
 	korea = 'South Korea',
 	us = 'United States',
 	canada = 'Canada',
+	vietnam = 'Vietnam',
 	china = 'China',
 	france = 'France',
 	uk = 'United Kingdom',
@@ -29,7 +30,8 @@ export enum Country {
 	peru = 'Peru',
 	india = 'India',
 	italy = 'Italy',
-	mexico = 'Mexico'
+	mexico = 'Mexico',
+	thailand = 'Thailand'
 }
 
 export enum Genre {

@@ -209,13 +209,54 @@ const walks = [
 		tags: ['night', 'snow'],
 		country: Country.korea
 	},
-
 	{
 		name: 'Gangnam',
 		videoID: 'EJJ8rmIWUcQ',
 		offset: 60,
 		tags: ['day', 'rain'],
 		country: Country.korea
+	},
+	{
+		name: 'Portland',
+		videoID: 'Ht747Q-PLDY',
+		tags: ['rain', 'day'],
+		offset: 60,
+		country: Country.us
+	},
+	{
+		name: 'Bangkok',
+		videoID: 'ol-IOOBs4oY',
+		tags: ['night'],
+		offset: 80,
+		country: Country.thailand
+	},
+	{
+		name: 'Honolulu',
+		videoID: 'T3nzPsDfazA',
+		tags: ['evening'],
+		offset: 30,
+		country: Country.us
+	},
+	{
+		name: 'Koh Kut Island',
+		videoID: 'RfVZMCCeAzI',
+		offset: 300,
+		country: Country.thailand,
+		tags: ['day']
+	},
+	{
+		name: 'Ho Chi Minh City',
+		videoID: 'SmmquqDceus',
+		tags: ['night'],
+		offset: 120,
+		country: Country.vietnam
+	},
+	{
+		name: 'Vancouver',
+		videoID: 'jmok5F9RQ_w',
+		offset: 120,
+		tags: ['day'],
+		country: Country.canada
 	},
 	{
 		name: 'Gwangju',

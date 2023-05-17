@@ -21,6 +21,29 @@ const drives = [
 		country: Country.canada
 	},
 	{
+		name: 'Milan',
+		videoID: '9IoroeGhXtg',
+		offset: 60,
+		tags: ['day'],
+		suggestedTrack: stations['Work & Jazz Piano Radio'],
+		country: Country.italy
+	},
+	{
+		name: 'Bangkok',
+		videoID: 'GuyazY5xtuI',
+		offset: 60,
+		tags: ['day'],
+		country: Country.thailand
+	},
+	{
+		name: 'Las Vegas',
+		videoID: 'HZaLvgP-R8E',
+		offset: 30,
+		tags: ['night'],
+		suggestedTrack: stations['Synthwave Radio'],
+		country: Country.us
+	},
+	{
 		name: 'Boston',
 		videoID: 'aVaQkKBEvzE',
 		offset: 30,
