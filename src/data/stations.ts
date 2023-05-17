@@ -62,12 +62,6 @@ const stations = {
 		genre: Genre.lofi,
 		live: true
 	},
-	'The Bootleg Boy: Sad & Sleepy Beats': {
-		name: 'lofi hip hop radio 😴 sad & sleepy beats',
-		trackID: 'bLlloaA4b4g',
-		genre: Genre.lofi,
-		live: true
-	},
 	'Coffee Jazz Music Radio': {
 		name: 'Coffee Jazz Music - Chill Out Lounge Jazz Music Radio - 24/7 Live Stream - Slow Jazz',
 		trackID: 'fEvM-OUbaKs',
