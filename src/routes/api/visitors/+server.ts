@@ -22,7 +22,7 @@ interface EventResponse {
 }
 
 export const GET: RequestHandler = async () => {
-	const threshold = dayjs().subtract(15, 'minute').toISOString();
+	const threshold = dayjs().subtract(5, 'minute').toISOString();
 
 	const url = new URL(`https://app.posthog.com/api/projects/${PH_PROJECT_ID}/events/`);
 
