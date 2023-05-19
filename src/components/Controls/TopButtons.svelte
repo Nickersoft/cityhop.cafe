@@ -40,10 +40,10 @@ ${url}`.trim();
 	onMount(() => {
 		updateVisitorCount();
 
-		document.addEventListener('focus', updateVisitorCount);
+		window.addEventListener('focus', updateVisitorCount);
 
 		return () => {
-			document.removeEventListener('focus', updateVisitorCount);
+			window.removeEventListener('focus', updateVisitorCount);
 		};
 	});
 </script>
