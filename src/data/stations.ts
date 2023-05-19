@@ -106,7 +106,7 @@ const stations = {
 	},
 	'Chinese Pop Radio': {
 		name: '網路流行音樂電台 | Chinese POP Music 24/7',
-		trackID: 'wrYF0HX7Kzc',
+		trackID: 'IfNMuFqKBWs',
 		genre: Genre.pop,
 		live: true
 	},
