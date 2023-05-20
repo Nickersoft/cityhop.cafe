@@ -36,6 +36,13 @@ const drives = [
 		country: Country.thailand
 	},
 	{
+		name: 'New Orleans',
+		videoID: 'GZUEaZHd_uI',
+		offset: 30,
+		tags: ['evening'],
+		country: Country.us
+	},
+	{
 		name: 'Las Vegas',
 		videoID: 'HZaLvgP-R8E',
 		offset: 30,

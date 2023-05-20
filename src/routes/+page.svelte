@@ -120,7 +120,8 @@
 		&:before {
 			@apply h-full bg-white absolute left-0 top-0;
 
-			animation: load 10s ease-in-out;
+			animation: load 5s ease-out;
+			animation-delay: 100ms;
 			animation-fill-mode: both;
 			content: '';
 		}

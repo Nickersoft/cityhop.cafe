@@ -11,7 +11,11 @@ interface Event {
 	properties: Record<string, unknown>;
 	event: string;
 	timestamp: string;
-	person: Record<string, unknown>;
+	person: {
+		is_identified: false;
+		distinct_ids: string[];
+		properties: Record<string, unknown>;
+	};
 	elements: [];
 	elements_chain: string;
 }

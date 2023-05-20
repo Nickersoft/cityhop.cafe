@@ -33,8 +33,7 @@ const walks = [
 		videoID: 'JB0A8Me8EKk',
 		offset: 10,
 		tags: ['rain', 'day'],
-		country: Country.us,
-		suggestedTrack: stations['The Bootleg Boy: Sad & Sleepy Beats']
+		country: Country.us
 	},
 	{
 		name: 'Montreal',
@@ -77,7 +76,6 @@ const walks = [
 		tags: ['night'],
 		country: Country.japan
 	},
-
 	{
 		name: 'Tokyo',
 		videoID: 'VqS9_CIm64E',
@@ -100,7 +98,6 @@ const walks = [
 		tags: ['night', 'evening'],
 		country: Country.france
 	},
-
 	{
 		name: 'Cinque Terre',
 		videoID: 'FmNNrCJUhac',
@@ -243,6 +240,14 @@ const walks = [
 		offset: 300,
 		country: Country.thailand,
 		tags: ['day']
+	},
+	{
+		name: 'New Orleans',
+		videoID: '3BAahFrNRaI',
+		offset: 30,
+		country: Country.us,
+		tags: ['day'],
+		suggestedTrack: stations['Work & Jazz Piano Radio']
 	},
 	{
 		name: 'Ho Chi Minh City',
