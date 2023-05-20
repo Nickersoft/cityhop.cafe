@@ -21,16 +21,16 @@
 		visitorCount = parseInt(result, 10);
 	}
 
-	function shareTweet() {
-		const hashtag = $currentTrack.genre
-			.toString()
-			.toLowerCase()
-			.replace(/[\W\s]+/g, '');
+	function createHashtag(str: string) {
+		return str.replace(/[\W\s]+/g, '');
+	}
 
+	function shareTweet() {
 		const url = getSharableURL();
 
-		const tweet =
-			`Come ${$currentScene.type} in #${$currentScene.name} with me and chill! 🎧 #cityhop #${hashtag} 
+		const tweet = `Come ${$currentScene.type} in #${createHashtag(
+			$currentScene.name
+		)} with me and chill! 🎧 #cityhop #${createHashtag($currentTrack.genre.toLowerCase())} 
 
 ${url}`.trim();
 
