@@ -8,6 +8,9 @@
 
 	const dispatch = createEventDispatcher();
 
+	const requestTemplate =
+		'https://github.com/Nickersoft/cityhop.cafe/issues/new?assignees=Nickersoft&labels=location+request&projects=&template=location-request.md&title=%5BLocation+Request%5D+Place+Name,+Country';
+
 	function handleOpenSettings() {
 		dispatch('openSettings');
 	}
@@ -57,13 +60,7 @@ ${url}`.trim();
 				: 'people'}
 		</span>
 	{/if}
-	<a
-		target="_blank"
-		rel="noreferrer"
-		href="https://github.com/Nickersoft/cityhop.cafe/issues/new?assignees=Nickersoft&labels=location+request&projects=&template=location-request.md&title=%5BPlace+Name%5D,+%5BCountry%5D"
-	>
-		Request A City
-	</a>
+	<a target="_blank" rel="noreferrer" href={requestTemplate}>Request A City</a>
 	<button
 		class="tooltip tooltip-bottom"
 		data-tip="Share on Twitter"
