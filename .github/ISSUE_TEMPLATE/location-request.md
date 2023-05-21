@@ -1,7 +1,7 @@
 ---
 name: Location Request
 about: Request to have a city or location added to City Hop!
-title: '[Place Name], [Country]'
+title: '[Location Request] Place Name, Country'
 labels: location request
 assignees: Nickersoft
 ---
