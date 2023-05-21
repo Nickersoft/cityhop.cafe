@@ -50,16 +50,20 @@ ${url}`.trim();
 
 <div class="top-icons">
 	{#if visitorCount && visitorCount > 0}
-		<span
-			in:fade={{ duration: 500 }}
-			class="text-white border-r border-white border-opacity-10 glow pr-4"
-		>
+		<span in:fade={{ duration: 500 }} class="text-white flex-1 glow pr-4">
 			You're chilling with <span class="text-yellow-400">{visitorCount}</span> other {visitorCount ===
 			1
 				? 'person'
 				: 'people'}
 		</span>
 	{/if}
+	<a
+		target="_blank"
+		rel="noreferrer"
+		href="https://github.com/Nickersoft/cityhop.cafe/issues/new?assignees=Nickersoft&labels=location+request&projects=&template=location-request.md&title=%5BPlace+Name%5D,+%5BCountry%5D"
+	>
+		Request A City
+	</a>
 	<button
 		class="tooltip tooltip-bottom"
 		data-tip="Share on Twitter"
@@ -93,15 +97,27 @@ ${url}`.trim();
 
 		button,
 		a {
-			@apply btn btn-square btn-link opacity-75 hover:opacity-100;
+			@apply opacity-75 hover:opacity-100 normal-case no-underline;
 
 			&:before {
 				@apply normal-case duration-150 !important;
 			}
+		}
+	}
 
-			iconify-icon {
-				@apply text-white text-2xl;
-			}
+	a {
+		@apply hover:!no-underline whitespace-nowrap block border-r border-white border-opacity-10 pr-4;
+	}
+
+	button {
+		@apply btn btn-square btn-link;
+
+		&:before {
+			@apply normal-case duration-150 !important;
+		}
+
+		iconify-icon {
+			@apply text-white text-2xl;
 		}
 	}
 </style>
