@@ -242,6 +242,13 @@ const walks = [
 		tags: ['day']
 	},
 	{
+		name: 'Edinburgh',
+		videoID: 'o9aH4xk25yg',
+		offset: 30,
+		country: Country.scotland,
+		tags: ['day', 'night', 'rain']
+	},
+	{
 		name: 'New Orleans',
 		videoID: '3BAahFrNRaI',
 		offset: 30,
