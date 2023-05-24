@@ -126,6 +126,33 @@ const walks = [
 		country: Country.uk
 	},
 	{
+		name: 'Accra',
+		videoID: 'x0rM132jMR8',
+		tags: ['day'],
+		country: Country.ghana
+	},
+	{
+		name: 'Barcelona',
+		videoID: '__civ2E9A4g',
+		tags: ['day', 'night'],
+		offset: 30,
+		country: Country.spain
+	},
+	{
+		name: 'Mexico City',
+		videoID: 'UDFaRy9UH4Q',
+		tags: ['day'],
+		offset: 30,
+		country: Country.mexico
+	},
+	{
+		name: 'Madrid',
+		videoID: 'TXH5eGF2COk',
+		tags: ['day'],
+		offset: 30,
+		country: Country.spain
+	},
+	{
 		name: 'Paris',
 		videoID: '3j-AVL3Pr3w',
 		offset: 30,
