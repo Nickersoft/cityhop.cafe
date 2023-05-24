@@ -32,7 +32,8 @@ export enum Country {
 	italy = 'Italy',
 	mexico = 'Mexico',
 	thailand = 'Thailand',
-	scotland = 'Scotland'
+	scotland = 'Scotland',
+	switzerland = 'Switzerland'
 }
 
 export enum Genre {

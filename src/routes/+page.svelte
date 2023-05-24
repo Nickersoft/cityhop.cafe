@@ -18,6 +18,7 @@
 	import { page } from '$app/stores';
 
 	import { PUBLIC_PH_TOKEN } from '$env/static/public';
+	import { Genre } from '$lib/types';
 
 	let started = false;
 	let playing = false;
@@ -108,8 +109,11 @@
 			$currentScene = decodedURL.scene;
 			$currentTrack = decodedURL.track;
 		} else {
-			$currentScene = draw(scenes.filter((b) => !b.suggestedTrack))!;
-			$currentTrack = $currentScene?.suggestedTrack ?? getRandomLofi();
+			const calmScenes = scenes.filter((b) => {
+				return !b.suggestedTrack || [Genre.jazz, Genre.lofi].includes(b.suggestedTrack.genre);
+			});
+			$currentScene = draw(calmScenes)!;
+			$currentTrack = $currentScene.suggestedTrack ?? getRandomLofi();
 		}
 	});
 </script>

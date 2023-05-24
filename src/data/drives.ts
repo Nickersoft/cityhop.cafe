@@ -43,6 +43,34 @@ const drives = [
 		country: Country.us
 	},
 	{
+		name: 'Tirano',
+		videoID: 'Mw9qiV7XlFs',
+		offset: 30,
+		tags: ['day'],
+		country: Country.italy
+	},
+	{
+		name: 'St. Moritz',
+		videoID: 'nKOe2PuERD0',
+		offset: 30,
+		tags: ['day'],
+		country: Country.switzerland
+	},
+	{
+		name: 'Lauterbrunnen',
+		videoID: 'b-WViLMs_4c',
+		offset: 30,
+		tags: ['day'],
+		country: Country.switzerland
+	},
+	{
+		name: 'Shanghai',
+		videoID: '8T044v8EG5E',
+		offset: 30,
+		tags: ['night'],
+		country: Country.china
+	},
+	{
 		name: 'Las Vegas',
 		videoID: 'HZaLvgP-R8E',
 		offset: 30,
@@ -106,6 +134,28 @@ const drives = [
 	{
 		name: 'Mumbai',
 		videoID: '0o8PlX0JUn0',
+		offset: 28,
+		tags: ['night'],
+		suggestedTrack: stations['Bollywood Lofi Radio'],
+		country: Country.india
+	},
+	{
+		name: 'Arches National Park',
+		videoID: 'l-xaEoKGIxY',
+		offset: 30,
+		tags: ['day'],
+		country: Country.us
+	},
+	{
+		name: 'Great Smoky Mountains',
+		videoID: 'Of5pGj6Obzo',
+		offset: 30,
+		tags: ['day'],
+		country: Country.us
+	},
+	{
+		name: 'Delhi',
+		videoID: 'g-c3K8plBxo',
 		offset: 28,
 		tags: ['night'],
 		suggestedTrack: stations['Bollywood Lofi Radio'],

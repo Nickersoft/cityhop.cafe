@@ -77,10 +77,45 @@ const walks = [
 		country: Country.japan
 	},
 	{
+		name: 'Bern',
+		videoID: 'HG-IIit3ubs',
+		offset: 30,
+		tags: ['snow', 'day'],
+		country: Country.switzerland
+	},
+	{
+		name: 'Zermatt',
+		videoID: 'LFOx-vmYrts',
+		offset: 30,
+		tags: ['day', 'rain'],
+		country: Country.switzerland
+	},
+	{
+		name: 'Lauterbrunnen',
+		videoID: 'Bq4rmeIvJbs',
+		offset: 30,
+		tags: ['day'],
+		country: Country.switzerland
+	},
+	{
+		name: 'Zürich',
+		videoID: 'mEuj3Ye9QDw',
+		offset: 60,
+		tags: ['day'],
+		country: Country.switzerland
+	},
+	{
 		name: 'Tokyo',
 		videoID: 'VqS9_CIm64E',
 		offset: 100,
 		tags: ['night', 'rain'],
+		country: Country.japan
+	},
+	{
+		name: 'Oimachi',
+		videoID: 'mzVmieBKwKk',
+		offset: 30,
+		tags: ['night'],
 		country: Country.japan
 	},
 	{
