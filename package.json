@@ -14,13 +14,13 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
-		"@playwright/test": "^1.34.0",
+		"@playwright/test": "^1.34.2",
 		"@sveltejs/adapter-auto": "^2.1.0",
 		"@sveltejs/kit": "^1.18.0",
 		"@types/uuid": "^9.0.1",
 		"@types/youtube-player": "^5.5.7",
-		"@typescript-eslint/eslint-plugin": "^5.59.6",
-		"@typescript-eslint/parser": "^5.59.6",
+		"@typescript-eslint/eslint-plugin": "^5.59.7",
+		"@typescript-eslint/parser": "^5.59.7",
 		"autoprefixer": "^10.4.14",
 		"daisyui": "^2.51.6",
 		"eslint": "^8.41.0",
