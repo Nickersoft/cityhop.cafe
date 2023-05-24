@@ -132,6 +132,20 @@ const walks = [
 		country: Country.ghana
 	},
 	{
+		name: 'Los Angeles',
+		videoID: 'VINOSu5y4ic',
+		offset: 60,
+		tags: ['day'],
+		country: Country.us
+	},
+	{
+		name: 'Venice Beach',
+		videoID: '8TuFDJDm_18',
+		offset: 30,
+		tags: ['day'],
+		country: Country.us
+	},
+	{
 		name: 'Barcelona',
 		videoID: '__civ2E9A4g',
 		tags: ['day', 'night'],
@@ -247,7 +261,13 @@ const walks = [
 		tags: ['morning', 'rain'],
 		country: Country.korea
 	},
-
+	{
+		name: 'Hongdae',
+		videoID: 's50yml_9LPA',
+		offset: 30,
+		tags: ['evening', 'night'],
+		country: Country.korea
+	},
 	{
 		name: 'Yeosu City',
 		videoID: 'NV-7yREq7DA',
@@ -266,6 +286,13 @@ const walks = [
 		name: 'Bukchon',
 		videoID: 'nLx03XgG8AY',
 		tags: ['night', 'snow'],
+		country: Country.korea
+	},
+	{
+		name: 'Dream Forest',
+		videoID: 'zCamdbpzJEs',
+		offset: 30,
+		tags: ['day'],
 		country: Country.korea
 	},
 	{
