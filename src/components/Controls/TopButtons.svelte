@@ -8,9 +8,6 @@
 
 	const dispatch = createEventDispatcher();
 
-	const requestTemplate =
-		'https://github.com/Nickersoft/cityhop.cafe/issues/new?assignees=Nickersoft&labels=location+request&projects=&template=location-request.md&title=%5BLocation+Request%5D+Place+Name,+Country';
-
 	function handleOpenSettings() {
 		dispatch('openSettings');
 	}
@@ -54,13 +51,18 @@ ${url}`.trim();
 <div class="top-icons">
 	{#if visitorCount && visitorCount > 0}
 		<span transition:fade={{ duration: 500 }} class="text-white pl-2 flex-1 glow pr-4">
-			You're chilling with <span class="text-yellow-400">{visitorCount}</span> other {visitorCount ===
-			1
-				? 'person'
-				: 'people'}
+			You're chilling with
+			<span class="text-yellow-400">{visitorCount}</span> other
+			{visitorCount === 1 ? 'person' : 'people'}
 		</span>
 	{/if}
-	<a target="_blank" rel="noreferrer" href={requestTemplate}>Request A City</a>
+	<a
+		target="_blank"
+		rel="noreferrer"
+		href="https://github.com/Nickersoft/cityhop.cafe/issues/new/choose"
+	>
+		Request A City
+	</a>
 	<button
 		class="tooltip tooltip-bottom"
 		data-tip="Share on Twitter"
