@@ -364,6 +364,27 @@ const walks = [
 		videoID: 'pg9cq7QlEYI',
 		tags: ['night', 'snow'],
 		country: Country.korea
+	},
+	{
+		name: 'Lima',
+		videoID: 'e4RsX2h2QIc',
+		tags: ['day'],
+		offset: 60,
+		country: Country.peru
+	},
+	{
+		name: 'Nagasaki',
+		videoID: 'Wey4zHA4nPg',
+		tags: ['night', 'rain'],
+		offset: 30,
+		country: Country.japan
+	},
+	{
+		name: 'Cusco',
+		videoID: 'BqBPCNyK5ZM',
+		tags: ['day'],
+		offset: 60,
+		country: Country.peru
 	}
 ].map((scene) => ({ ...scene, type: 'walk' })) as Scene[];
 

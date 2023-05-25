@@ -154,6 +154,13 @@ const drives = [
 		country: Country.us
 	},
 	{
+		name: 'Akita',
+		videoID: 'CIRlmM8wI1g',
+		offset: 200,
+		tags: ['day'],
+		country: Country.japan
+	},
+	{
 		name: 'Delhi',
 		videoID: 'g-c3K8plBxo',
 		offset: 28,
