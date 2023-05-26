@@ -145,7 +145,7 @@
 	<UI
 		bind:playing
 		videoID={$currentScene.videoID}
-		videoOffset={$currentScene.offset}
+		videoOffset={$currentScene.offset ?? 0}
 		liveAudio={$currentTrack.live}
 		audioID={$currentTrack.trackID}
 	/>

@@ -11,7 +11,7 @@
 	export let videoID: string;
 	export let audioID: string;
 	export let liveAudio: boolean = true;
-	export let videoOffset: number = 0;
+	export let videoOffset: number;
 
 	let backgroundPlayer: YouTubePlayer;
 	let audioPlayer: YouTubePlayer;
@@ -76,7 +76,7 @@
 			options={{
 				playerVars: {
 					controls: 0,
-					start: random(videoOffset, videoOffset + 1800),
+					start: random(videoOffset ?? 0, videoOffset + 1800),
 					autoplay: 1,
 					disablekb: 1,
 					modestbranding: 1,
