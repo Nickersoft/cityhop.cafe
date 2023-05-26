@@ -369,6 +369,7 @@ const walks = [
 		name: 'Tsawwassen',
 		videoID: 'kg2kefbrFn4',
 		tags: ['evening'],
+		offset: 10,
 		country: Country.canada
 	},
 	{
