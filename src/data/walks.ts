@@ -366,6 +366,12 @@ const walks = [
 		country: Country.korea
 	},
 	{
+		name: 'Tsawwassen',
+		videoID: 'kg2kefbrFn4',
+		tags: ['evening'],
+		country: Country.canada
+	},
+	{
 		name: 'Lima',
 		videoID: 'e4RsX2h2QIc',
 		tags: ['day'],
