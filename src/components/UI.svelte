@@ -15,9 +15,11 @@
 
 	let backgroundPlayer: YouTubePlayer;
 	let audioPlayer: YouTubePlayer;
+	let videoDuration: number;
 
-	function onPlay() {
+	async function onPlay(event: CustomEvent) {
 		playing = true;
+		videoDuration = await event.detail.target.getDuration();
 	}
 
 	function onBackgroundReady(event: CustomEvent) {
@@ -33,6 +35,13 @@
 		event.detail.target.setVolume(100);
 		event.detail.target.playVideo();
 		audioPlayer = event.detail.target;
+	}
+
+	function onVideoTimeChange(event: CustomEvent) {
+		// Restart the video 10s before it ends to not show related videos
+		if (videoDuration && event.detail.time > videoDuration - 10) {
+			onBackgroundEnded(event);
+		}
 	}
 
 	let inactiveTimeout: NodeJS.Timeout;
@@ -68,9 +77,11 @@
 <div class="video-background">
 	<div class="video-foreground">
 		<YouTube
+			id="video"
 			on:end={onBackgroundEnded}
 			on:play={onPlay}
 			on:stateChange
+			on:timechange={onVideoTimeChange}
 			on:ready={onBackgroundReady}
 			videoId={videoID}
 			options={{
@@ -89,6 +100,7 @@
 
 <div class="appearance-none hidden">
 	<YouTube
+		id="audio"
 		videoId={audioID}
 		on:ready={onAudioReady}
 		options={{
