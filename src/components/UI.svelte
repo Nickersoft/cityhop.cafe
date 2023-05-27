@@ -66,6 +66,8 @@
 		};
 	});
 
+	$: randomOffset = random(videoOffset ?? 0, videoOffset + 1800);
+
 	$: backgroundPlayer &&
 		backgroundPlayer.setVolume($preferences.muteScene ? 0 : $preferences.sceneVolume);
 
@@ -87,7 +89,7 @@
 			options={{
 				playerVars: {
 					controls: 0,
-					start: random(videoOffset ?? 0, videoOffset + 1800),
+					start: randomOffset,
 					autoplay: 1,
 					disablekb: 1,
 					modestbranding: 1,

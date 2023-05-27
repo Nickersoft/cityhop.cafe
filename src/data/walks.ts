@@ -360,6 +360,14 @@ const walks = [
 		country: Country.canada
 	},
 	{
+		name: 'Mumbai',
+		videoID: '8W4ZTX1z02E',
+		offset: 120,
+		tags: ['day', 'night'],
+		suggestedTrack: stations['Bollywood Lofi Radio'],
+		country: Country.india
+	},
+	{
 		name: 'Gwangju',
 		videoID: 'pg9cq7QlEYI',
 		tags: ['night', 'snow'],
