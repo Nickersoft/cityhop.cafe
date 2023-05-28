@@ -1,5 +1,6 @@
 <script lang="ts">
 	import logo from '$images/logo.png';
+	import { clickOutside } from '$lib/actions';
 
 	import FullScreenOverlay from '../FullScreenOverlay.svelte';
 
@@ -7,7 +8,7 @@
 </script>
 
 <FullScreenOverlay bind:open>
-	<div class="about">
+	<div class="about" use:clickOutside={() => (open = false)}>
 		<img src={logo} alt="Logo" class="w-72" />
 
 		<div class="divider" />
@@ -35,22 +36,42 @@
 				>
 					Tyler Nickerson
 				</a>
+				on
+				<a
+					class="text-yellow-500"
+					href="https://github.com/Nickersoft/cityhop.cafe"
+					rel="noreferrer"
+					target="_blank"
+				>
+					GitHub
+				</a>
 			</p>
+
 			<a
+				href="https://www.buymeacoffee.com/tnick"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="btn btn-outline btn-primary hover:!bg-white px-8 transform-gpu mt-4 normal-case"
+			>
+				<iconify-icon icon="bx:coffee-togo" class="mr-2" />
+				Buy me a coffee
+			</a>
+
+			<!-- <a
 				class="text-4xl"
 				href="https://github.com/Nickersoft/cityhop.cafe"
 				rel="noreferrer"
 				target="_blank"
 			>
 				<iconify-icon icon="mdi:github" />
-			</a>
+			</a> -->
 		</div>
 	</div>
 </FullScreenOverlay>
 
 <style lang="postcss">
 	.about {
-		@apply max-w-lg text-center mx-auto h-full flex flex-col justify-center items-center p-8;
+		@apply max-w-xl text-center mx-auto h-full flex flex-col justify-center items-center p-8;
 
 		kbd {
 			@apply kbd-sm kbd;

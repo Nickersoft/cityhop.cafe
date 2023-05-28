@@ -1,3 +1,5 @@
+import { objectify } from 'radash';
+
 import { Country, type Scene } from '$lib/types';
 
 import { stations } from './stations';
@@ -9,6 +11,13 @@ const walks: Omit<Scene, 'type'>[] = [
 		offset: 10,
 		country: Country.us,
 		suggestedTrack: stations['Coffee Shop Radio']
+	},
+	{
+		name: 'Singapore',
+		videoID: 'aUJl46bEWYo',
+		offset: 10,
+		country: Country.singapore,
+		tags: ['day']
 	},
 	{
 		name: 'Seattle',
@@ -31,16 +40,7 @@ const walks: Omit<Scene, 'type'>[] = [
 		videoID: 'JB0A8Me8EKk',
 		offset: 10,
 		tags: ['rain', 'day'],
-		country: Country.us,
-		suggestedTrack: stations['The Bootleg Boy: Sad & Sleepy Beats']
-	},
-	{
-		name: 'Miami',
-		videoID: 'Cod_ggrs69U',
-		offset: 48,
-		tags: ['night'],
-		country: Country.us,
-		suggestedTrack: stations['Synthwave Radio']
+		country: Country.us
 	},
 	{
 		name: 'Montreal',
@@ -55,6 +55,12 @@ const walks: Omit<Scene, 'type'>[] = [
 		tags: ['day', 'rain'],
 		country: Country.india,
 		suggestedTrack: stations['Bollywood Lofi Radio']
+	},
+	{
+		name: 'Dubai',
+		videoID: '8uvs5qEBQoE',
+		tags: ['night'],
+		country: Country.uae
 	},
 	{
 		name: 'Yokohama',
@@ -83,7 +89,34 @@ const walks: Omit<Scene, 'type'>[] = [
 		tags: ['night'],
 		country: Country.japan
 	},
-
+	{
+		name: 'Bern',
+		videoID: 'HG-IIit3ubs',
+		offset: 30,
+		tags: ['snow', 'day'],
+		country: Country.switzerland
+	},
+	{
+		name: 'Zermatt',
+		videoID: 'LFOx-vmYrts',
+		offset: 30,
+		tags: ['day', 'rain'],
+		country: Country.switzerland
+	},
+	{
+		name: 'Lauterbrunnen',
+		videoID: 'Bq4rmeIvJbs',
+		offset: 30,
+		tags: ['day'],
+		country: Country.switzerland
+	},
+	{
+		name: 'Zürich',
+		videoID: 'mEuj3Ye9QDw',
+		offset: 60,
+		tags: ['day'],
+		country: Country.switzerland
+	},
 	{
 		name: 'Tokyo',
 		videoID: 'VqS9_CIm64E',
@@ -91,13 +124,60 @@ const walks: Omit<Scene, 'type'>[] = [
 		tags: ['night', 'rain'],
 		country: Country.japan
 	},
-
+	{
+		name: 'Oimachi',
+		videoID: 'mzVmieBKwKk',
+		offset: 30,
+		tags: ['night'],
+		country: Country.japan
+	},
 	{
 		name: 'London',
-		videoID: 'eevoNMKpNDw',
-		tags: ['evening'],
-		offset: 120,
+		videoID: 'H43glfbQEh4',
+		tags: ['day', 'rain'],
+		offset: 60,
 		country: Country.uk
+	},
+	{
+		name: 'Accra',
+		videoID: 'x0rM132jMR8',
+		tags: ['day'],
+		country: Country.ghana
+	},
+	{
+		name: 'Los Angeles',
+		videoID: 'VINOSu5y4ic',
+		offset: 60,
+		tags: ['day'],
+		country: Country.us
+	},
+	{
+		name: 'Venice Beach',
+		videoID: '8TuFDJDm_18',
+		offset: 30,
+		tags: ['day'],
+		country: Country.us
+	},
+	{
+		name: 'Barcelona',
+		videoID: '__civ2E9A4g',
+		tags: ['day', 'night'],
+		offset: 30,
+		country: Country.spain
+	},
+	{
+		name: 'Mexico City',
+		videoID: 'UDFaRy9UH4Q',
+		tags: ['day'],
+		offset: 30,
+		country: Country.mexico
+	},
+	{
+		name: 'Madrid',
+		videoID: 'TXH5eGF2COk',
+		tags: ['day'],
+		offset: 30,
+		country: Country.spain
 	},
 	{
 		name: 'Paris',
@@ -107,12 +187,18 @@ const walks: Omit<Scene, 'type'>[] = [
 		tags: ['night', 'evening'],
 		country: Country.france
 	},
-
 	{
 		name: 'Cinque Terre',
 		videoID: 'FmNNrCJUhac',
 		offset: 10,
 		tags: ['rain', 'evening'],
+		country: Country.italy
+	},
+	{
+		name: 'Naples',
+		videoID: 'Ypq4N3EldBM',
+		offset: 5,
+		tags: ['day', 'rain'],
 		country: Country.italy
 	},
 	{
@@ -188,10 +274,17 @@ const walks: Omit<Scene, 'type'>[] = [
 		tags: ['morning', 'rain'],
 		country: Country.korea
 	},
-
+	{
+		name: 'Hongdae',
+		videoID: 's50yml_9LPA',
+		offset: 30,
+		tags: ['evening', 'night'],
+		country: Country.korea
+	},
 	{
 		name: 'Yeosu City',
 		videoID: 'NV-7yREq7DA',
+		offset: 60,
 		tags: ['evening'],
 		country: Country.korea
 	},
@@ -208,19 +301,130 @@ const walks: Omit<Scene, 'type'>[] = [
 		tags: ['night', 'snow'],
 		country: Country.korea
 	},
-
+	{
+		name: 'Dream Forest',
+		videoID: 'zCamdbpzJEs',
+		offset: 30,
+		tags: ['day'],
+		country: Country.korea
+	},
 	{
 		name: 'Gangnam',
 		videoID: 'EJJ8rmIWUcQ',
+		offset: 60,
 		tags: ['day', 'rain'],
 		country: Country.korea
+	},
+	{
+		name: 'Portland',
+		videoID: 'Ht747Q-PLDY',
+		tags: ['rain', 'day'],
+		offset: 60,
+		country: Country.us
+	},
+	{
+		name: 'Bangkok',
+		videoID: 'ol-IOOBs4oY',
+		tags: ['night'],
+		offset: 80,
+		country: Country.thailand
+	},
+	{
+		name: 'Honolulu',
+		videoID: 'T3nzPsDfazA',
+		tags: ['evening'],
+		offset: 30,
+		country: Country.us
+	},
+	{
+		name: 'Koh Kut Island',
+		videoID: 'RfVZMCCeAzI',
+		offset: 300,
+		country: Country.thailand,
+		tags: ['day']
+	},
+	{
+		name: 'Edinburgh',
+		videoID: 'o9aH4xk25yg',
+		offset: 30,
+		country: Country.scotland,
+		tags: ['day', 'night', 'rain']
+	},
+	{
+		name: 'New Orleans',
+		videoID: '3BAahFrNRaI',
+		offset: 30,
+		country: Country.us,
+		tags: ['day'],
+		suggestedTrack: stations['Work & Jazz Piano Radio']
+	},
+	{
+		name: 'Ho Chi Minh City',
+		videoID: 'SmmquqDceus',
+		tags: ['night'],
+		offset: 120,
+		country: Country.vietnam
+	},
+	{
+		name: 'Vancouver',
+		videoID: 'jmok5F9RQ_w',
+		offset: 120,
+		tags: ['day'],
+		country: Country.canada
+	},
+	{
+		name: 'Mumbai',
+		videoID: '8W4ZTX1z02E',
+		offset: 120,
+		tags: ['day', 'night'],
+		suggestedTrack: stations['Bollywood Lofi Radio'],
+		country: Country.india
 	},
 	{
 		name: 'Gwangju',
 		videoID: 'pg9cq7QlEYI',
 		tags: ['night', 'snow'],
 		country: Country.korea
+	},
+	{
+		name: 'Tsawwassen',
+		videoID: 'kg2kefbrFn4',
+		tags: ['evening'],
+		offset: 10,
+		country: Country.canada
+	},
+	{
+		name: 'Beirut',
+		videoID: 'KMDWEwQDoc0',
+		tags: ['evening'],
+		offset: 10,
+		country: Country.lebanon
+	},
+	{
+		name: 'Lima',
+		videoID: 'e4RsX2h2QIc',
+		tags: ['day'],
+		offset: 60,
+		country: Country.peru
+	},
+	{
+		name: 'Nagasaki',
+		videoID: 'Wey4zHA4nPg',
+		tags: ['night', 'rain'],
+		offset: 30,
+		country: Country.japan
+	},
+	{
+		name: 'Cusco',
+		videoID: 'BqBPCNyK5ZM',
+		tags: ['day'],
+		offset: 60,
+		country: Country.peru
 	}
 ];
 
-export default walks.map((scene) => ({ ...scene, type: 'walk' })) as Scene[];
+const mappedWalks = walks.map((scene) => ({ ...scene, type: 'walk' })) as Scene[];
+
+export default mappedWalks;
+
+export const walkMap = objectify(mappedWalks, (walk) => walk.videoID);

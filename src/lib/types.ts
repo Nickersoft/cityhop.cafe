@@ -4,6 +4,7 @@ export interface Track {
 	name: string;
 	trackID: string;
 	genre: Genre;
+	live: boolean;
 }
 
 export interface Scene {
@@ -20,14 +21,24 @@ export enum Country {
 	korea = 'South Korea',
 	us = 'United States',
 	canada = 'Canada',
+	vietnam = 'Vietnam',
 	china = 'China',
 	france = 'France',
 	uk = 'United Kingdom',
+	ghana = 'Ghana',
+	spain = 'Spain',
 	taiwan = 'Taiwan',
+	lebanon = 'Lebanon',
 	japan = 'Japan',
+	singapore = 'Singapore',
+	peru = 'Peru',
 	india = 'India',
+	uae = 'United Arab Emirates',
 	italy = 'Italy',
-	mexico = 'Mexico'
+	mexico = 'Mexico',
+	thailand = 'Thailand',
+	scotland = 'Scotland',
+	switzerland = 'Switzerland'
 }
 
 export enum Genre {

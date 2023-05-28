@@ -1,38 +1,15 @@
-# create-svelte
+<div align="center">
+  <img src="logo.png" width="250px" />
+</div>
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+---
 
-## Creating a project
+[CityHop Cafe](https://cityhop.cafe) is a magical corner of the internet where you can take relaxing strolls and drives through different corners of the world, all from the comfort from your desk!
 
-If you're seeing this, you've probably already done this step. Congrats!
+Tune into lofi, synthwave, and even pop music as you explore some of the world's greatest cities.
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+Just sit back and relax 🎶
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+<div align="center">
+  <img src="screenshot.png" />
+</div>

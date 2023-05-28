@@ -11,7 +11,17 @@ export const flags: Record<Country, string> = {
 	[Country.mexico]: '🇲🇽',
 	[Country.uk]: '🇬🇧',
 	[Country.taiwan]: '🇹🇼',
-	[Country.canada]: '🇨🇦'
+	[Country.canada]: '🇨🇦',
+	[Country.peru]: '🇵🇪',
+	[Country.vietnam]: '🇻🇳',
+	[Country.thailand]: '🇹🇭',
+	[Country.scotland]: '🏴󠁧󠁢󠁳󠁣󠁴󠁿',
+	[Country.switzerland]: '🇨🇭',
+	[Country.spain]: '🇪🇸',
+	[Country.ghana]: '🇬🇭',
+	[Country.uae]: '🇦🇪',
+	[Country.lebanon]: '🇱🇧',
+	[Country.singapore]: '🇸🇬'
 };
 
 export const genres: Record<Genre, string> = {

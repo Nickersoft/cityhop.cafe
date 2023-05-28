@@ -1,19 +1,66 @@
 <script lang="ts">
+	import posthog from 'posthog-js';
+
 	import { draw } from 'radash';
-	import { tweened } from 'svelte/motion';
+	import { v4 as uuid } from 'uuid';
 	import { onMount } from 'svelte';
+	import { persisted } from 'svelte-local-storage-store';
 	import { fade, fly, scale } from 'svelte/transition';
+
+	import { currentScene, currentTrack } from '$lib/stores';
+	import { decodeSharableURL } from '$lib/utils';
 
 	import UI from '$components/UI.svelte';
 
 	import { getRandomLofi } from '$data/stations';
-
 	import scenes from '$data/scenes';
 
-	import { currentScene, currentTrack } from '$lib/stores';
+	import { page } from '$app/stores';
+
+	import { PUBLIC_PH_TOKEN } from '$env/static/public';
+	import { Genre } from '$lib/types';
 
 	let started = false;
 	let playing = false;
+
+	function getDistinctID() {
+		const distinctIDKey = 'distinct-id';
+
+		if (!localStorage.getItem(distinctIDKey)) {
+			localStorage.setItem(distinctIDKey, uuid());
+		}
+
+		return localStorage.getItem(distinctIDKey)!;
+	}
+
+	onMount(() => {
+		const distinctID = getDistinctID();
+
+		posthog.init(PUBLIC_PH_TOKEN, {
+			api_host: 'https://app.posthog.com',
+			loaded(ph) {
+				ph.identify(distinctID);
+			}
+		});
+
+		function triggerHeartbeat() {
+			return fetch('/api/heartbeat', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ distinctID: distinctID })
+			});
+		}
+
+		const timer = setInterval(triggerHeartbeat, 1000 * 60 * 5 /* 5 minutes */);
+
+		return () => {
+			if (timer) {
+				clearTimeout(timer);
+			}
+		};
+	});
 
 	onMount(() => {
 		function goToRandomScene() {
@@ -56,8 +103,18 @@
 	});
 
 	onMount(() => {
-		$currentScene = draw(scenes.filter((b) => !b.suggestedTrack))!;
-		$currentTrack = $currentScene?.suggestedTrack ?? getRandomLofi();
+		const decodedURL = decodeSharableURL($page.url);
+
+		if (decodedURL) {
+			$currentScene = decodedURL.scene;
+			$currentTrack = decodedURL.track;
+		} else {
+			const calmScenes = scenes.filter((b) => {
+				return !b.suggestedTrack || [Genre.jazz, Genre.lofi].includes(b.suggestedTrack.genre);
+			});
+			$currentScene = draw(calmScenes)!;
+			$currentTrack = $currentScene.suggestedTrack ?? getRandomLofi();
+		}
 	});
 </script>
 
@@ -88,7 +145,8 @@
 	<UI
 		bind:playing
 		videoID={$currentScene.videoID}
-		videoOffset={$currentScene.offset}
+		videoOffset={$currentScene.offset ?? 0}
+		liveAudio={$currentTrack.live}
 		audioID={$currentTrack.trackID}
 	/>
 {/if}
@@ -111,7 +169,8 @@
 		&:before {
 			@apply h-full bg-white absolute left-0 top-0;
 
-			animation: load 10s ease-in-out;
+			animation: load 5s ease-out;
+			animation-delay: 100ms;
 			animation-fill-mode: both;
 			content: '';
 		}

@@ -33,7 +33,7 @@
 	// Update videoId and load new video if URL changes
 	$: play(videoId);
 
-	function createPlayer() {
+	async function createPlayer() {
 		player = createYTPlayer(playerElem, options);
 
 		// Register event handlers
@@ -43,8 +43,41 @@
 		player.on('playbackRateChange', onPlayerPlaybackRateChange);
 		player.on('playbackQualityChange', onPlayerPlaybackQualityChange);
 
-		// Tear down player when done
-		return () => player.destroy();
+		const iframeWindow = (await player.getIframe()).contentWindow;
+
+		let lastTimeUpdate = 0;
+
+		// Approach taken from https://gist.github.com/zavan/75ed641de5afb1296dbc02185ebf1ea0
+		// Let's hope it always works
+		function observeWindowMessages(event: MessageEvent<any>) {
+			// Check that the event was sent from the YouTube IFrame.
+			if (event.source === iframeWindow) {
+				var data = JSON.parse(event.data);
+
+				// The "infoDelivery" event is used by YT to transmit any
+				// kind of information change in the player,
+				// such as the current time or a playback quality change.
+				if (data.event === 'infoDelivery' && data.info && data.info.currentTime) {
+					// currentTime is emitted very frequently,
+					// but we only care about whole second changes.
+					var time = Math.floor(data.info.currentTime);
+
+					if (time !== lastTimeUpdate) {
+						lastTimeUpdate = time;
+						dispatch('timechange', { time, target: player });
+					}
+				}
+			}
+		}
+
+		window.addEventListener('message', observeWindowMessages);
+
+		return () => {
+			// Tear down player when done
+			player.destroy();
+			// Remove event listeners
+			window.removeEventListener('message', observeWindowMessages);
+		};
 	}
 
 	function play(videoId: string) {
