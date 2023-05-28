@@ -49,7 +49,11 @@
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify({ distinctID: distinctID })
+				body: JSON.stringify({
+					distinctID: distinctID,
+					currentScene: $currentScene,
+					currentTrack: $currentTrack
+				})
 			});
 		}
 

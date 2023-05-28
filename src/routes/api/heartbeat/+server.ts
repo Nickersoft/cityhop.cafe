@@ -3,6 +3,13 @@ import { PostHog } from 'posthog-node';
 import type { RequestHandler } from './$types';
 
 import { PUBLIC_PH_TOKEN } from '$env/static/public';
+import type { Scene, Track } from '$lib/types';
+
+interface HeartbeatBody {
+	distinctID: string;
+	currentScene: Scene;
+	currentTrack: Track;
+}
 
 export const POST: RequestHandler = async ({ request }) => {
 	const ph = new PostHog(PUBLIC_PH_TOKEN, {
@@ -11,9 +18,16 @@ export const POST: RequestHandler = async ({ request }) => {
 		flushInterval: 0
 	});
 
-	const body = await request.json();
+	const body: HeartbeatBody = await request.json();
 
-	ph.capture({ distinctId: body.distinctID, event: 'heartbeat' });
+	ph.capture({
+		distinctId: body.distinctID,
+		event: 'heartbeat',
+		properties: {
+			currentScene: body.currentScene,
+			currentTrack: body.currentTrack
+		}
+	});
 
 	await ph.shutdownAsync();
 
