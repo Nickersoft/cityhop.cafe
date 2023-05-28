@@ -19,9 +19,9 @@
 		"@sveltejs/kit": "^1.19.0",
 		"@types/uuid": "^9.0.1",
 		"@types/youtube-player": "^5.5.7",
-		"@vite-pwa/sveltekit": "^0.2.2",
 		"@typescript-eslint/eslint-plugin": "^5.59.7",
 		"@typescript-eslint/parser": "^5.59.7",
+		"@vite-pwa/sveltekit": "^0.2.2",
 		"autoprefixer": "^10.4.14",
 		"daisyui": "^2.51.6",
 		"eslint": "^8.41.0",
@@ -37,8 +37,8 @@
 		"tailwindcss": "^3.3.2",
 		"tslib": "^2.5.2",
 		"typescript": "^5.0.4",
-		"vite-plugin-pwa": "^0.14.7",
 		"vite": "^4.3.9",
+		"vite-plugin-pwa": "^0.14.7",
 		"vitest": "^0.31.1"
 	},
 	"type": "module",
@@ -51,6 +51,7 @@
 		"radash": "^10.8.1",
 		"svelte-local-storage-store": "^0.4.0",
 		"uuid": "^9.0.0",
+		"workbox-window": "^6.6.0",
 		"youtube-player": "^5.6.0"
 	}
 }
