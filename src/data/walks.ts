@@ -4,13 +4,20 @@ import { Country, type Scene } from '$lib/types';
 
 import { stations } from './stations';
 
-const walks = [
+const walks: Omit<Scene, 'type'>[] = [
 	{
 		name: 'Chicago',
 		videoID: 'KXkkKm4AwBg',
 		offset: 10,
 		country: Country.us,
 		suggestedTrack: stations['Coffee Shop Radio']
+	},
+	{
+		name: 'Singapore',
+		videoID: 'aUJl46bEWYo',
+		offset: 10,
+		country: Country.singapore,
+		tags: ['day']
 	},
 	{
 		name: 'Seattle',
@@ -48,6 +55,12 @@ const walks = [
 		tags: ['day', 'rain'],
 		country: Country.india,
 		suggestedTrack: stations['Bollywood Lofi Radio']
+	},
+	{
+		name: 'Dubai',
+		videoID: '8uvs5qEBQoE',
+		tags: ['night'],
+		country: Country.uae
 	},
 	{
 		name: 'Yokohama',
@@ -381,6 +394,13 @@ const walks = [
 		country: Country.canada
 	},
 	{
+		name: 'Beirut',
+		videoID: 'KMDWEwQDoc0',
+		tags: ['evening'],
+		offset: 10,
+		country: Country.lebanon
+	},
+	{
 		name: 'Lima',
 		videoID: 'e4RsX2h2QIc',
 		tags: ['day'],
@@ -401,8 +421,10 @@ const walks = [
 		offset: 60,
 		country: Country.peru
 	}
-].map((scene) => ({ ...scene, type: 'walk' })) as Scene[];
+];
 
-export default walks;
+const mappedWalks = walks.map((scene) => ({ ...scene, type: 'walk' })) as Scene[];
 
-export const walkMap = objectify(walks, (walk) => walk.videoID);
+export default mappedWalks;
+
+export const walkMap = objectify(mappedWalks, (walk) => walk.videoID);

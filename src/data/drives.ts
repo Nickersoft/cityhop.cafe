@@ -154,6 +154,21 @@ const drives = [
 		country: Country.us
 	},
 	{
+		name: 'Singapore',
+		videoID: 'AEgrx3Uxfts',
+		tags: ['evening'],
+		offset: 30,
+		country: Country.singapore
+	},
+	{
+		name: 'Dubai',
+		videoID: 'TE2tfavIo3E',
+		offset: 30,
+		tags: ['evening', 'night'],
+		suggestedTrack: stations['Synthwave Radio'],
+		country: Country.uae
+	},
+	{
 		name: 'Akita',
 		videoID: 'CIRlmM8wI1g',
 		offset: 200,

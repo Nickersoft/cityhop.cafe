@@ -23,7 +23,11 @@
 		<div
 			class="text-2xl glow flex flex-row justify-start items-baseline gap-2 font-medium cursor-pointer"
 		>
-			{$currentScene.name}, {$currentScene.country}
+			{#if $currentScene.name === $currentScene.country}
+				{$currentScene.name}
+			{:else}
+				{$currentScene.name}, {$currentScene.country}
+			{/if}
 		</div>
 	</div>
 
