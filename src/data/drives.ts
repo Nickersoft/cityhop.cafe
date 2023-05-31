@@ -251,6 +251,7 @@ const drives = [
 		name: 'Seoul',
 		videoID: 'KGAIumGxQeY',
 		tags: ['evening'],
+    offset: 30,
 		country: Country.korea
 	},
 	{

@@ -39,7 +39,7 @@
 
 	function onVideoTimeChange(event: CustomEvent) {
 		// Restart the video 10s before it ends to not show related videos
-		if (videoDuration && event.detail.time > videoDuration - 10) {
+		if (videoDuration && event.detail.time > videoDuration - 30) {
 			onBackgroundEnded(event);
 		}
 	}
