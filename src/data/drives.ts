@@ -247,6 +247,13 @@ const drives = [
 		suggestedTrack: stations['Chinese Pop Radio'],
 		country: Country.taiwan
 	},
+  {
+    name: 'Kolkata',
+    videoID: '6iG9PpV20_U',
+    tags: ['day'],
+    country: Country.india,
+    suggestedTrack: stations['Bollywood Lofi Radio']
+  },
 	{
 		name: 'Seoul',
 		videoID: 'KGAIumGxQeY',

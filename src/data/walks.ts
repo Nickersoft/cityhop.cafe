@@ -13,6 +13,14 @@ const walks: Omit<Scene, 'type'>[] = [
 		suggestedTrack: stations['Coffee Shop Radio']
 	},
 	{
+		name: 'Kolkata',
+		videoID: '7Kzfz86esI0',
+		offset: 10,
+		tags: ['day'],
+		country: Country.india,
+		suggestedTrack: stations['Bollywood Lofi Radio']
+	},
+	{
 		name: 'Singapore',
 		videoID: 'aUJl46bEWYo',
 		offset: 10,
@@ -28,12 +36,47 @@ const walks: Omit<Scene, 'type'>[] = [
 		suggestedTrack: stations['Coffee Shop Radio']
 	},
 	{
-		name: 'New York',
+		name: 'Amsterdam',
+		videoID: 'U40bMk7G2zY',
+		offset: 120,
+		tags: ['night'],
+		country: Country.netherlands
+	},
+	{
+		name: 'Brno',
+		videoID: 'BGRhCDKz6lQ',
+		tags: ['day'],
+		offset: 60,
+		country: Country.czechRepublic
+	},
+	{
+		name: 'Vienna',
+		videoID: 'P5oYtWDb8FM',
+		tags: ['evening'],
+		offset: 60,
+		country: Country.austria
+	},
+	{
+		name: 'Prague',
+		videoID: 'oCV8bbM9hk0',
+		tags: ['day', 'night'],
+		offset: 60,
+		country: Country.czechRepublic
+	},
+	{
+		name: 'Manhattan',
 		videoID: 'F8MN0o6RS9o',
 		offset: 10,
 		tags: ['snow', 'day'],
 		country: Country.us,
 		suggestedTrack: stations['Relaxing Jazz Radio']
+	},
+	{
+		name: 'Brooklyn',
+		videoID: 'yjR-0TzqGgQ',
+		offset: 30,
+		tags: ['day'],
+		country: Country.us
 	},
 	{
 		name: 'Boston',
@@ -136,6 +179,13 @@ const walks: Omit<Scene, 'type'>[] = [
 		videoID: 'H43glfbQEh4',
 		tags: ['day', 'rain'],
 		offset: 60,
+		country: Country.uk
+	},
+	{
+		name: 'Oxford',
+		videoID: 'D1KsEOUqCEU',
+		tags: ['day', 'fog'],
+		offset: 30,
 		country: Country.uk
 	},
 	{
@@ -282,6 +332,20 @@ const walks: Omit<Scene, 'type'>[] = [
 		country: Country.korea
 	},
 	{
+		name: 'Daegu',
+		videoID: 'S5xSOjAjCX0',
+		offset: 260,
+		tags: ['night', 'evening'],
+		country: Country.korea
+	},
+	{
+		name: 'Incheon',
+		videoID: '9eLtj6KqqaM',
+		offset: 30,
+		tags: ['night', 'evening'],
+		country: Country.korea
+	},
+	{
 		name: 'Yeosu City',
 		videoID: 'NV-7yREq7DA',
 		offset: 60,
@@ -306,6 +370,20 @@ const walks: Omit<Scene, 'type'>[] = [
 		videoID: 'zCamdbpzJEs',
 		offset: 30,
 		tags: ['day'],
+		country: Country.korea
+	},
+	{
+		name: 'Majang Lake Trail',
+		videoID: 'd12qNTbfvfo',
+		offset: 30,
+		tags: ['snow', 'day'],
+		country: Country.korea
+	},
+	{
+		name: 'Yanghwa Bridge',
+		videoID: 'wdCWLtJ339U',
+		offset: 30,
+		tags: ['night', 'rain'],
 		country: Country.korea
 	},
 	{
