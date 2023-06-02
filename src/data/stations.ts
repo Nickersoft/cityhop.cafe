@@ -34,7 +34,7 @@ const stations = {
 	},
 	'Chill Radio': {
 		name: 'ＣＨＩＬＬ　ＲＡＤＩＯ ２４／７',
-		trackID: 'Su00mfi5QUY',
+		trackID: 'Vo-2noOnBcY',
 		genre: Genre.lofi,
 		live: true
 	},
@@ -46,7 +46,7 @@ const stations = {
 	},
 	'Coffee Shop Radio': {
 		name: 'Coffee Shop Radio ☕ - 24/7 lofi & jazzy hip-hop beats',
-		trackID: 'e3L1PIY1pN8',
+		trackID: 'lP26UCnoH9s',
 		genre: Genre.lofi,
 		live: true
 	},
