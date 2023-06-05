@@ -108,7 +108,7 @@ const walks: Omit<Scene, 'type'>[] = [
 		name: 'Berlin',
 		videoID: 'zca688Ecwpk',
 		tags: ['day'],
-		offset: 60,
+		offset: 300,
 		country: Country.germany
 	},
 	{
