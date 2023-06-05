@@ -76,6 +76,27 @@
 
 <Controls />
 
+<div
+	class="z-50 relative bg-white shadow-lg overflow-hidden pointer-events-none rounded-md appearance-none hidden"
+>
+	<YouTube
+		id="audio"
+		videoId={audioID}
+		on:ready={onAudioReady}
+		options={{
+			width: 400,
+			height: 300,
+			playerVars: {
+				...(!liveAudio && { start: random(0, 1800) }),
+				autoplay: 1,
+				playsinline: 1,
+				rel: 0,
+				disablekb: 1
+			}
+		}}
+	/>
+</div>
+
 <div class="video-background">
 	<div class="video-foreground">
 		<YouTube
@@ -98,23 +119,6 @@
 			}}
 		/>
 	</div>
-</div>
-
-<div class="appearance-none hidden">
-	<YouTube
-		id="audio"
-		videoId={audioID}
-		on:ready={onAudioReady}
-		options={{
-			playerVars: {
-				...(!liveAudio && { start: random(0, 1800) }),
-				autoplay: 1,
-				playsinline: 1,
-				rel: 0,
-				disablekb: 1
-			}
-		}}
-	/>
 </div>
 
 <style lang="postcss">

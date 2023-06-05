@@ -19,10 +19,10 @@
 	class="flex flex-wrap flex-1 w-full lg:pl-8 pt-4 lg:pt-0 flex-row gap-2 justify-between items-center"
 >
 	<div class="flex w-full md:w-auto md:flex-grow flex-col gap-0.5 mr-4 justify-start items-start">
-		<div class="flex glow text-white opacity-80 flex-row items-center justify-end gap-2">
+		<div class="flex text-white opacity-80 flex-row items-center justify-end gap-2">
 			<Equalizer muted={$preferences.muteMusic} />
 
-			<span>
+			<span class="glow">
 				{#if $preferences.muteMusic}
 					Music muted
 				{:else}
@@ -31,6 +31,16 @@
 			</span>
 
 			<MuteButton class="text-base" bind:muted={$preferences.muteMusic} />
+
+			<a
+				href="https://youtube.com/watch?v={$currentTrack.trackID}"
+				target="_blank"
+				rel="noreferrer"
+				class="tooltip block translate-y-[3px] text-xl tooltip-top"
+				data-tip="Listen on YouTube"
+			>
+				<iconify-icon icon="mdi:youtube" />
+			</a>
 		</div>
 
 		{#if shouldMarquee}

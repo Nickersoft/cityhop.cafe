@@ -16,8 +16,10 @@
 	}
 </script>
 
-<label class="swap {className}">
-	<input type="checkbox" on:change={handleMute} checked={muted} />
-	<iconify-icon class="swap-on" icon="mdi:mute" />
-	<iconify-icon class="swap-off" icon="mdi:volume" />
-</label>
+<div class="tooltip translate-y-[3px] tooltip-top" data-tip="Mute music">
+	<label class="swap {className}">
+		<input type="checkbox" on:change={handleMute} checked={muted} />
+		<iconify-icon class="swap-on" icon="mdi:mute" />
+		<iconify-icon class="swap-off" icon="mdi:volume" />
+	</label>
+</div>

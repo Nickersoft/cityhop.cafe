@@ -6,6 +6,19 @@ import { stations } from './stations';
 
 const walks: Omit<Scene, 'type'>[] = [
 	{
+		name: 'Rome',
+		videoID: 'EsFheWkimsU',
+		offset: 60,
+		country: Country.italy,
+		suggestedTrack: stations['Baroque Classical Radio']
+	},
+	{
+		name: 'Cairo',
+		videoID: 'Q9cAWThpbbk',
+		offset: 60,
+		country: Country.egypt
+	},
+	{
 		name: 'Chicago',
 		videoID: 'KXkkKm4AwBg',
 		offset: 10,
@@ -43,11 +56,60 @@ const walks: Omit<Scene, 'type'>[] = [
 		country: Country.netherlands
 	},
 	{
+		name: 'Saint Petersburg',
+		videoID: 'KBeCMiUPuic',
+		offset: 45,
+		tags: ['day'],
+		country: Country.russia
+	},
+	{
+		name: 'Kryvyi Rih',
+		videoID: '8LKjoo6FRkg',
+		offset: 30,
+		tags: ['day'],
+		country: Country.ukraine
+	},
+	{
+		name: 'Lviv',
+		videoID: 'DDWAobR8U0c',
+		offset: 30,
+		tags: ['day'],
+		country: Country.ukraine
+	},
+	{
+		name: 'Moscow',
+		videoID: 'e5HZevxkQbs',
+		offset: 30,
+		tags: ['day', 'snow'],
+		country: Country.russia
+	},
+	{
 		name: 'Brno',
 		videoID: 'BGRhCDKz6lQ',
 		tags: ['day'],
 		offset: 60,
 		country: Country.czechRepublic
+	},
+	{
+		name: 'Cologne',
+		videoID: 'mQ2JB1p-DHc',
+		tags: ['day'],
+		offset: 30,
+		country: Country.germany
+	},
+	{
+		name: 'Frankfurt',
+		videoID: '5COC4WMheH0',
+		tags: ['day'],
+		offset: 30,
+		country: Country.germany
+	},
+	{
+		name: 'Berlin',
+		videoID: 'zca688Ecwpk',
+		tags: ['day'],
+		offset: 60,
+		country: Country.germany
 	},
 	{
 		name: 'Vienna',
