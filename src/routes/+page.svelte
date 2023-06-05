@@ -3,22 +3,27 @@
 
 	import { draw } from 'radash';
 	import { v4 as uuid } from 'uuid';
-	import { onMount } from 'svelte';
-	import { persisted } from 'svelte-local-storage-store';
+	import { onMount, setContext } from 'svelte';
 	import { fade, fly, scale } from 'svelte/transition';
+	import { queryParam } from 'sveltekit-search-params';
 
-	import { currentScene, currentTrack } from '$lib/stores';
-	import { decodeSharableURL } from '$lib/utils';
+	import { PUBLIC_PH_TOKEN } from '$env/static/public';
+
+	import type { Scene } from '$lib/types';
+	import { decodeV, encodeV } from '$lib/utils';
 
 	import UI from '$components/UI.svelte';
 
 	import { getRandomLofi } from '$data/stations';
-	import scenes from '$data/scenes';
+	import scenes, { calmScenes } from '$data/scenes';
+	import { CH_CONTEXT } from '$lib/constants';
 
-	import { page } from '$app/stores';
+	export const currentData = queryParam('v', {
+		encode: encodeV,
+		decode: decodeV
+	});
 
-	import { PUBLIC_PH_TOKEN } from '$env/static/public';
-	import { Genre } from '$lib/types';
+	setContext(CH_CONTEXT, { currentData });
 
 	let started = false;
 	let playing = false;
@@ -43,18 +48,22 @@
 			}
 		});
 
-		function triggerHeartbeat() {
-			return fetch('/api/heartbeat', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					distinctID: distinctID,
-					currentScene: $currentScene,
-					currentTrack: $currentTrack
-				})
-			});
+		async function triggerHeartbeat() {
+			if ($currentData) {
+				const { scene, track } = $currentData;
+
+				await fetch('/api/heartbeat', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						distinctID: distinctID,
+						currentScene: scene,
+						currentTrack: track
+					})
+				});
+			}
 		}
 
 		const timer = setInterval(triggerHeartbeat, 1000 * 60 * 5 /* 5 minutes */);
@@ -66,24 +75,41 @@
 		};
 	});
 
+	function goToRandomScene() {
+		playing = false;
+
+		currentData.set({
+			scene: draw(scenes)!,
+			track: $currentData?.track ?? getRandomLofi()
+		});
+	}
+
+	function goToRandomStation() {
+		currentData.set({
+			scene: $currentData?.scene ?? draw(scenes)!,
+			track: getRandomLofi()
+		});
+	}
+
+	function goToRandomSceneWithMusic(options: Scene[] = scenes) {
+		playing = false;
+
+		const randomScene = draw(options)!;
+
+		currentData.set({
+			scene: randomScene,
+			track: randomScene?.suggestedTrack ?? getRandomLofi()
+		});
+	}
+
 	onMount(() => {
-		function goToRandomScene() {
-			playing = false;
-			$currentScene = draw(scenes)!;
-		}
-
-		function goToRandomSceneWithMusic() {
-			goToRandomScene();
-			$currentTrack = $currentScene?.suggestedTrack ?? getRandomLofi();
-		}
-
 		function handleKeyUp(e: KeyboardEvent) {
 			if (e.key === 'g') {
 				goToRandomSceneWithMusic();
 			} else if (e.key === 'k') {
 				goToRandomScene();
 			} else if (e.key === 'm') {
-				$currentTrack = getRandomLofi();
+				goToRandomStation();
 			}
 		}
 
@@ -106,20 +132,11 @@
 		};
 	});
 
-	onMount(() => {
-		const decodedURL = decodeSharableURL($page.url);
-
-		if (decodedURL) {
-			$currentScene = decodedURL.scene;
-			$currentTrack = decodedURL.track;
-		} else {
-			const calmScenes = scenes.filter((b) => {
-				return !b.suggestedTrack || [Genre.jazz, Genre.lofi].includes(b.suggestedTrack.genre);
-			});
-			$currentScene = draw(calmScenes)!;
-			$currentTrack = $currentScene.suggestedTrack ?? getRandomLofi();
+	$: {
+		if (!$currentData) {
+			goToRandomSceneWithMusic(calmScenes);
 		}
-	});
+	}
 </script>
 
 {#if !playing}
@@ -145,13 +162,16 @@
 	</div>
 {/if}
 
-{#if started && $currentScene && $currentTrack}
+{#if started && $currentData}
+	{@const currentScene = $currentData.scene}
+	{@const currentTrack = $currentData.track}
+
 	<UI
 		bind:playing
-		videoID={$currentScene.videoID}
-		videoOffset={$currentScene.offset ?? 0}
-		liveAudio={$currentTrack.live}
-		audioID={$currentTrack.trackID}
+		videoID={currentScene.videoID}
+		videoOffset={currentScene.offset ?? 0}
+		liveAudio={currentTrack.live}
+		audioID={currentTrack.trackID}
 	/>
 {/if}
 

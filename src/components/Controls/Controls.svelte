@@ -1,7 +1,9 @@
 <script lang="ts">
-	import { currentScene, currentTrack, preferences } from '$lib/stores';
+	import { preferences } from '$lib/stores';
+	import { getContext } from 'svelte';
 
-	import type { Scene, Track } from '$lib/types';
+	import { CH_CONTEXT } from '$lib/constants';
+	import { ICHContext, type Scene, type Track } from '$lib/types';
 
 	import { getRandomLofi } from '$data/stations';
 
@@ -18,6 +20,8 @@
 	let isAboutShowing = false;
 	let isChangeMusicShowing = false;
 
+	const { currentData } = getContext<ICHContext>(CH_CONTEXT);
+
 	function showChangeMusic() {
 		isChangeMusicShowing = true;
 	}
@@ -31,13 +35,22 @@
 	}
 
 	function handleSceneChange(event: CustomEvent & { detail: Scene }) {
-		$currentScene = event.detail;
+		if ($currentData) {
+			const scene = event.detail;
 
-		if (!$preferences.preserveAudio) {
-			$currentTrack = $currentScene.suggestedTrack ?? getRandomLofi();
+			let track = $currentData.track;
+
+			if (!$preferences.preserveAudio) {
+				track = scene.suggestedTrack ?? getRandomLofi();
+			}
+
+			isChangeSceneShowing = false;
+
+			currentData.set({
+				scene,
+				track
+			});
 		}
-
-		isChangeSceneShowing = false;
 	}
 
 	function handleMusicChange(event: CustomEvent & { detail: Track }) {

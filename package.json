@@ -22,8 +22,8 @@
 		"@typescript-eslint/eslint-plugin": "^5.59.8",
 		"@typescript-eslint/parser": "^5.59.8",
 		"autoprefixer": "^10.4.14",
-		"daisyui": "^3.0.1",
-		"eslint": "^8.41.0",
+		"daisyui": "^3.0.3",
+		"eslint": "^8.42.0",
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-svelte3": "^4.0.0",
 		"postcss": "^8.4.24",
@@ -48,6 +48,7 @@
 		"posthog-node": "^3.1.1",
 		"radash": "^10.8.1",
 		"svelte-local-storage-store": "^0.4.0",
+		"sveltekit-search-params": "^1.0.12",
 		"uuid": "^9.0.0",
 		"youtube-player": "^5.6.0"
 	}

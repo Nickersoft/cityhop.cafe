@@ -1,3 +1,5 @@
+import type { Writable } from 'svelte/store';
+
 export type Tag = 'snow' | 'fog' | 'rain' | 'morning' | 'night' | 'day' | 'evening';
 
 export interface Track {
@@ -24,11 +26,14 @@ export enum Country {
 	vietnam = 'Vietnam',
 	china = 'China',
 	france = 'France',
-  czechRepublic = 'Czech Republic',
+	czechRepublic = 'Czech Republic',
 	uk = 'England',
-  austria = 'Austria',
+	germany = 'Germany',
+	austria = 'Austria',
 	ghana = 'Ghana',
-  netherlands = 'Netherlands',
+	russia = 'Russia',
+	ukraine = 'Ukraine',
+	netherlands = 'Netherlands',
 	spain = 'Spain',
 	taiwan = 'Taiwan',
 	lebanon = 'Lebanon',
@@ -40,6 +45,7 @@ export enum Country {
 	italy = 'Italy',
 	mexico = 'Mexico',
 	thailand = 'Thailand',
+	egypt = 'Egypt',
 	scotland = 'Scotland',
 	switzerland = 'Switzerland'
 }
@@ -51,4 +57,8 @@ export enum Genre {
 	rnb = 'R&B',
 	classical = 'Classical',
 	electronic = 'Electronic'
+}
+
+export interface ICHContext {
+	currentData: Writable<{ scene: Scene; track: Track } | null>;
 }
