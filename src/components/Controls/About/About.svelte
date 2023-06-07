@@ -26,45 +26,38 @@
 				<li>Press <kbd>m</kbd> to switch to a random lofi station.</li>
 			</ul>
 
-			<p>
-				Made with <span class="text-red-500">❤</span> by
+			<p>Have a city or station you'd like to see on the site?</p>
+
+			<a
+				href="https://github.com/Nickersoft/cityhop.cafe/issues/new/choose"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="btn bg-gradient-to-b from-white to-gray-300 text-gray-950 btn-md btn-primary px-8 transform-gpu normal-case"
+			>
+				<iconify-icon icon="mdi:hand-back-left" class="mr-2 text-lg" />
+				Open a Request
+			</a>
+
+			<p class="text-sm italic">
+				Psst... feel free to
 				<a
 					href="https://twitter.com/tylernickerson"
 					rel="noreferrer"
 					target="_blank"
 					class="text-yellow-500"
 				>
-					Tyler Nickerson
+					follow me on Twitter
 				</a>
-				on
+				or
 				<a
 					class="text-yellow-500"
 					href="https://github.com/Nickersoft/cityhop.cafe"
 					rel="noreferrer"
 					target="_blank"
 				>
-					GitHub
+					contribute on GitHub!
 				</a>
 			</p>
-
-			<a
-				href="https://www.buymeacoffee.com/tnick"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="btn btn-outline btn-primary hover:!bg-white px-8 transform-gpu mt-4 normal-case"
-			>
-				<iconify-icon icon="bx:coffee-togo" class="mr-2" />
-				Buy me a coffee
-			</a>
-
-			<!-- <a
-				class="text-4xl"
-				href="https://github.com/Nickersoft/cityhop.cafe"
-				rel="noreferrer"
-				target="_blank"
-			>
-				<iconify-icon icon="mdi:github" />
-			</a> -->
 		</div>
 	</div>
 </FullScreenOverlay>

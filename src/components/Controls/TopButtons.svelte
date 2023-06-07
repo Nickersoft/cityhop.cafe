@@ -75,13 +75,12 @@ ${url}`.trim();
 			{visitorCount === 1 ? 'person' : 'people'}
 		</span>
 	{/if}
-	<a
-		target="_blank"
-		rel="noreferrer"
-		href="https://github.com/Nickersoft/cityhop.cafe/issues/new/choose"
-	>
-		Request A City
+	<a class="request" target="_blank" rel="noreferrer" href="https://www.buymeacoffee.com/tnick">
+		Support CityHop
 	</a>
+	<button class="tooltip tooltip-bottom" data-tip="Copy link" on:click={copyURL} on:keyup={copyURL}>
+		<iconify-icon icon="mdi:link-variant" />
+	</button>
 	<button
 		class="tooltip tooltip-bottom"
 		data-tip="Share on Twitter"
@@ -89,9 +88,6 @@ ${url}`.trim();
 		on:keyup={shareTweet}
 	>
 		<iconify-icon icon="mdi:twitter" />
-	</button>
-	<button class="tooltip tooltip-bottom" data-tip="Copy link" on:click={copyURL} on:keyup={copyURL}>
-		<iconify-icon icon="mdi:link-variant" />
 	</button>
 	<button
 		class="tooltip tooltip-bottom"
@@ -113,32 +109,25 @@ ${url}`.trim();
 
 <style lang="postcss">
 	.top-icons {
-		@apply flex flex-row absolute top-0 p-2 right-0 left-0 justify-end items-center gap-1 opacity-0 transition-all duration-300 z-50;
+		@apply flex flex-row absolute top-0 p-2 right-0 left-0 justify-end items-center opacity-0 transition-all duration-300 z-50;
 		@apply bg-gradient-to-b from-[rgba(0,0,0,0.5)] to-transparent pb-16;
 
 		button,
 		a {
-			@apply opacity-75 hover:opacity-100 normal-case no-underline;
+			@apply opacity-75 hover:opacity-100 normal-case no-underline block;
 
 			&:before {
-				@apply normal-case duration-150 !important;
+				@apply normal-case !important;
 			}
 		}
-	}
 
-	a {
-		@apply hover:!no-underline whitespace-nowrap block border-r border-white border-opacity-10 pr-4;
-	}
-
-	button {
-		@apply btn btn-square btn-link;
-
-		&:before {
-			@apply normal-case duration-150 !important;
+		a {
+			@apply hover:!no-underline whitespace-nowrap block border-r border-white border-opacity-20 px-4;
 		}
 
-		iconify-icon {
-			@apply text-white text-2xl;
+		button,
+		a:not(.request) {
+			@apply btn btn-square btn-link text-white text-2xl;
 		}
 	}
 </style>
