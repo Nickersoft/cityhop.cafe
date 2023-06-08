@@ -1,17 +1,19 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { random } from 'radash';
+	import type { YouTubePlayer } from 'youtube-player/dist/types';
+
+	import { preferences } from '$lib/stores';
+	import type { Offset } from '$lib/types';
 
 	import YouTube from './YouTube.svelte';
 	import Controls from './Controls';
-	import type { YouTubePlayer } from 'youtube-player/dist/types';
-	import { preferences } from '$lib/stores';
 
 	export let playing;
 	export let videoID: string;
 	export let audioID: string;
 	export let liveAudio: boolean = true;
-	export let videoOffset: number;
+	export let videoOffset: Required<Offset>;
 
 	let backgroundPlayer: YouTubePlayer;
 	let audioPlayer: YouTubePlayer;
@@ -39,7 +41,7 @@
 
 	function onVideoTimeChange(event: CustomEvent) {
 		// Restart the video 10s before it ends to not show related videos
-		if (videoDuration && event.detail.time > videoDuration - 30) {
+		if (videoDuration && event.detail.time > videoDuration + videoOffset.end) {
 			onBackgroundEnded(event);
 		}
 	}
@@ -66,7 +68,7 @@
 		};
 	});
 
-	$: randomOffset = random(videoOffset ?? 0, videoOffset + 1800);
+	$: randomOffset = random(videoOffset.start ?? 0, videoOffset.start + 1800);
 
 	$: backgroundPlayer &&
 		backgroundPlayer.setVolume($preferences.muteScene ? 0 : $preferences.sceneVolume);

@@ -1,0 +1,2 @@
+export const DEFAULT_VIDEO_START_OFFSET = 0;
+export const DEFAULT_VIDEO_END_OFFSET = -30;

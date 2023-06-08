@@ -9,13 +9,18 @@ export interface Track {
 	live: boolean;
 }
 
+export interface Offset {
+  start?: number;
+  end?: number;
+}
+
 export interface Scene {
 	name: string;
 	type: 'walk' | 'drive';
 	videoID: string;
 	tags?: Tag[];
 	suggestedTrack?: Track;
-	offset?: number;
+	offset?: Offset;
 	country: Country;
 }
 
@@ -43,6 +48,7 @@ export enum Country {
 	india = 'India',
 	uae = 'United Arab Emirates',
 	italy = 'Italy',
+  serbia = 'Serbia',
 	mexico = 'Mexico',
 	thailand = 'Thailand',
 	egypt = 'Egypt',

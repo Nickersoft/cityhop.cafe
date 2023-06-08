@@ -19,6 +19,7 @@
 
 	import { PUBLIC_PH_TOKEN } from '$env/static/public';
 	import { Genre } from '$lib/types';
+	import { DEFAULT_VIDEO_END_OFFSET, DEFAULT_VIDEO_START_OFFSET } from '$lib/constants';
 
 	let started = false;
 	let playing = false;
@@ -149,9 +150,12 @@
 	<UI
 		bind:playing
 		videoID={$currentScene.videoID}
-		videoOffset={$currentScene.offset ?? 0}
 		liveAudio={$currentTrack.live}
 		audioID={$currentTrack.trackID}
+		videoOffset={{
+			start: $currentScene.offset?.start ?? DEFAULT_VIDEO_START_OFFSET,
+			end: $currentScene.offset?.end ?? DEFAULT_VIDEO_END_OFFSET
+		}}
 	/>
 {/if}
 

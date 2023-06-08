@@ -8,27 +8,33 @@ const walks: Omit<Scene, 'type'>[] = [
 	{
 		name: 'Rome',
 		videoID: 'EsFheWkimsU',
-		offset: 60,
+		offset: { start: 60 },
 		country: Country.italy,
 		suggestedTrack: stations['Baroque Classical Radio']
 	},
 	{
+		name: 'Belgrade',
+		videoID: 'NGvDS55KeCQ',
+		offset: { start: 360, end: -100 },
+		country: Country.serbia
+	},
+	{
 		name: 'Cairo',
 		videoID: 'Q9cAWThpbbk',
-		offset: 60,
+		offset: { start: 60 },
 		country: Country.egypt
 	},
 	{
 		name: 'Chicago',
 		videoID: 'KXkkKm4AwBg',
-		offset: 10,
+		offset: { start: 10 },
 		country: Country.us,
 		suggestedTrack: stations['Coffee Shop Radio']
 	},
 	{
 		name: 'Kolkata',
 		videoID: '7Kzfz86esI0',
-		offset: 10,
+		offset: { start: 10 },
 		tags: ['day'],
 		country: Country.india,
 		suggestedTrack: stations['Bollywood Lofi Radio']
@@ -36,14 +42,14 @@ const walks: Omit<Scene, 'type'>[] = [
 	{
 		name: 'Singapore',
 		videoID: 'aUJl46bEWYo',
-		offset: 10,
+		offset: { start: 10 },
 		country: Country.singapore,
 		tags: ['day']
 	},
 	{
 		name: 'Seattle',
 		videoID: 'NaWYnMJA5NE',
-		offset: 10,
+		offset: { start: 10 },
 		tags: ['day', 'rain'],
 		country: Country.us,
 		suggestedTrack: stations['Coffee Shop Radio']
@@ -51,35 +57,35 @@ const walks: Omit<Scene, 'type'>[] = [
 	{
 		name: 'Amsterdam',
 		videoID: 'U40bMk7G2zY',
-		offset: 120,
+		offset: { start: 120 },
 		tags: ['night'],
 		country: Country.netherlands
 	},
 	{
 		name: 'Saint Petersburg',
 		videoID: 'KBeCMiUPuic',
-		offset: 45,
+		offset: { start: 45 },
 		tags: ['day'],
 		country: Country.russia
 	},
 	{
 		name: 'Kryvyi Rih',
 		videoID: '8LKjoo6FRkg',
-		offset: 30,
+		offset: { start: 30 },
 		tags: ['day'],
 		country: Country.ukraine
 	},
 	{
 		name: 'Lviv',
 		videoID: 'DDWAobR8U0c',
-		offset: 30,
+		offset: { start: 30 },
 		tags: ['day'],
 		country: Country.ukraine
 	},
 	{
 		name: 'Moscow',
 		videoID: 'e5HZevxkQbs',
-		offset: 30,
+		offset: { start: 30 },
 		tags: ['day', 'snow'],
 		country: Country.russia
 	},
@@ -87,48 +93,48 @@ const walks: Omit<Scene, 'type'>[] = [
 		name: 'Brno',
 		videoID: 'BGRhCDKz6lQ',
 		tags: ['day'],
-		offset: 60,
+		offset: { start: 60 },
 		country: Country.czechRepublic
 	},
 	{
 		name: 'Cologne',
 		videoID: 'mQ2JB1p-DHc',
 		tags: ['day'],
-		offset: 30,
+		offset: { start: 30 },
 		country: Country.germany
 	},
 	{
 		name: 'Frankfurt',
 		videoID: '5COC4WMheH0',
 		tags: ['day'],
-		offset: 30,
+		offset: { start: 30 },
 		country: Country.germany
 	},
 	{
 		name: 'Berlin',
 		videoID: 'zca688Ecwpk',
 		tags: ['day'],
-		offset: 300,
+		offset: { start: 300 },
 		country: Country.germany
 	},
 	{
 		name: 'Vienna',
 		videoID: 'P5oYtWDb8FM',
 		tags: ['evening'],
-		offset: 60,
+		offset: { start: 60 },
 		country: Country.austria
 	},
 	{
 		name: 'Prague',
 		videoID: 'oCV8bbM9hk0',
 		tags: ['day', 'night'],
-		offset: 60,
+		offset: { start: 60 },
 		country: Country.czechRepublic
 	},
 	{
 		name: 'Manhattan',
 		videoID: 'F8MN0o6RS9o',
-		offset: 10,
+		offset: { start: 10 },
 		tags: ['snow', 'day'],
 		country: Country.us,
 		suggestedTrack: stations['Relaxing Jazz Radio']
@@ -136,21 +142,21 @@ const walks: Omit<Scene, 'type'>[] = [
 	{
 		name: 'Brooklyn',
 		videoID: 'yjR-0TzqGgQ',
-		offset: 30,
+		offset: { start: 30 },
 		tags: ['day'],
 		country: Country.us
 	},
 	{
 		name: 'Boston',
 		videoID: 'JB0A8Me8EKk',
-		offset: 10,
+		offset: { start: 10 },
 		tags: ['rain', 'day'],
 		country: Country.us
 	},
 	{
 		name: 'Montreal',
 		videoID: 'NagLUEIvwbg',
-		offset: 200,
+		offset: { start: 200 },
 		tags: ['snow', 'day'],
 		country: Country.canada
 	},
@@ -176,63 +182,63 @@ const walks: Omit<Scene, 'type'>[] = [
 	{
 		name: 'Kyoto',
 		videoID: 'qgfd-uWTVwg',
-		offset: 50,
+		offset: { start: 50 },
 		tags: ['rain', 'night'],
 		country: Country.japan
 	},
 	{
 		name: 'Shibuya',
 		videoID: 'b3yQXprMj3s',
-		offset: 45,
+		offset: { start: 45 },
 		tags: ['day'],
 		country: Country.japan
 	},
 	{
 		name: 'Osaka',
 		videoID: 'm65NkIAIMSw',
-		offset: 10,
+		offset: { start: 10 },
 		tags: ['night'],
 		country: Country.japan
 	},
 	{
 		name: 'Bern',
 		videoID: 'HG-IIit3ubs',
-		offset: 30,
+		offset: { start: 30 },
 		tags: ['snow', 'day'],
 		country: Country.switzerland
 	},
 	{
 		name: 'Zermatt',
 		videoID: 'LFOx-vmYrts',
-		offset: 30,
+		offset: { start: 30 },
 		tags: ['day', 'rain'],
 		country: Country.switzerland
 	},
 	{
 		name: 'Lauterbrunnen',
 		videoID: 'Bq4rmeIvJbs',
-		offset: 30,
+		offset: { start: 30 },
 		tags: ['day'],
 		country: Country.switzerland
 	},
 	{
 		name: 'Zürich',
 		videoID: 'mEuj3Ye9QDw',
-		offset: 60,
+		offset: { start: 60 },
 		tags: ['day'],
 		country: Country.switzerland
 	},
 	{
 		name: 'Tokyo',
 		videoID: 'VqS9_CIm64E',
-		offset: 100,
+		offset: { start: 100 },
 		tags: ['night', 'rain'],
 		country: Country.japan
 	},
 	{
 		name: 'Oimachi',
 		videoID: 'mzVmieBKwKk',
-		offset: 30,
+		offset: { start: 30 },
 		tags: ['night'],
 		country: Country.japan
 	},
@@ -240,14 +246,14 @@ const walks: Omit<Scene, 'type'>[] = [
 		name: 'London',
 		videoID: 'H43glfbQEh4',
 		tags: ['day', 'rain'],
-		offset: 60,
+		offset: { start: 60 },
 		country: Country.uk
 	},
 	{
 		name: 'Oxford',
 		videoID: 'D1KsEOUqCEU',
 		tags: ['day', 'fog'],
-		offset: 30,
+		offset: { start: 30 },
 		country: Country.uk
 	},
 	{
@@ -259,14 +265,14 @@ const walks: Omit<Scene, 'type'>[] = [
 	{
 		name: 'Los Angeles',
 		videoID: 'VINOSu5y4ic',
-		offset: 60,
+		offset: { start: 60 },
 		tags: ['day'],
 		country: Country.us
 	},
 	{
 		name: 'Venice Beach',
 		videoID: '8TuFDJDm_18',
-		offset: 30,
+		offset: { start: 30 },
 		tags: ['day'],
 		country: Country.us
 	},
@@ -274,27 +280,27 @@ const walks: Omit<Scene, 'type'>[] = [
 		name: 'Barcelona',
 		videoID: '__civ2E9A4g',
 		tags: ['day', 'night'],
-		offset: 30,
+		offset: { start: 30 },
 		country: Country.spain
 	},
 	{
 		name: 'Mexico City',
 		videoID: 'UDFaRy9UH4Q',
 		tags: ['day'],
-		offset: 30,
+		offset: { start: 30 },
 		country: Country.mexico
 	},
 	{
 		name: 'Madrid',
 		videoID: 'TXH5eGF2COk',
 		tags: ['day'],
-		offset: 30,
+		offset: { start: 30 },
 		country: Country.spain
 	},
 	{
 		name: 'Paris',
 		videoID: '3j-AVL3Pr3w',
-		offset: 30,
+		offset: { start: 30 },
 		suggestedTrack: stations['Paris Cafe Radio: Positive Bossa Nova Jazz Music'],
 		tags: ['night', 'evening'],
 		country: Country.france
@@ -302,21 +308,21 @@ const walks: Omit<Scene, 'type'>[] = [
 	{
 		name: 'Cinque Terre',
 		videoID: 'FmNNrCJUhac',
-		offset: 10,
+		offset: { start: 10 },
 		tags: ['rain', 'evening'],
 		country: Country.italy
 	},
 	{
 		name: 'Naples',
 		videoID: 'Ypq4N3EldBM',
-		offset: 5,
+		offset: { start: 5 },
 		tags: ['day', 'rain'],
 		country: Country.italy
 	},
 	{
 		name: 'Venice',
 		videoID: 'kccv6YJZ0P4',
-		offset: 50,
+		offset: { start: 50 },
 		tags: ['evening'],
 		suggestedTrack: stations['Baroque Classical Radio'],
 		country: Country.italy
@@ -324,21 +330,21 @@ const walks: Omit<Scene, 'type'>[] = [
 	{
 		name: 'Beijing',
 		videoID: '7keLrzMcZRc',
-		offset: 2058,
+		offset: { start: 2058 },
 		tags: ['night', 'evening'],
 		country: Country.china
 	},
 	{
 		name: 'Ningbo',
 		videoID: 'JcxscDzP4Oc',
-		offset: 120,
+		offset: { start: 120 },
 		tags: ['night', 'day'],
 		country: Country.china
 	},
 	{
 		name: 'Wuhan',
 		videoID: 'wVHgby6hBDA',
-		offset: 2058,
+		offset: { start: 2058 },
 		suggestedTrack: stations['Classical Chinese Radio'],
 		tags: ['night', 'day'],
 		country: Country.china
@@ -347,7 +353,7 @@ const walks: Omit<Scene, 'type'>[] = [
 	{
 		name: 'Chongqing',
 		videoID: 'tMzCwwvHwN0',
-		offset: 86,
+		offset: { start: 86 },
 		tags: ['night'],
 		suggestedTrack: stations['Classical Chinese Radio'],
 		country: Country.china
@@ -361,63 +367,63 @@ const walks: Omit<Scene, 'type'>[] = [
 	{
 		name: 'Shanghai',
 		videoID: 'oBu3Mtr6nGs',
-		offset: 86,
+		offset: { start: 86 },
 		tags: ['night', 'rain'],
 		country: Country.china
 	},
 	{
 		name: 'Xiangtan',
 		videoID: 'MudeUxLjqEY',
-		offset: 86,
+		offset: { start: 86 },
 		tags: ['rain', 'night'],
 		country: Country.china
 	},
 	{
 		name: 'Myeongdong',
 		videoID: 'nR9dvyAf-DY',
-		offset: 30,
+		offset: { start: 30 },
 		tags: ['evening'],
 		country: Country.korea
 	},
 	{
 		name: 'Euljiro',
 		videoID: 'g010nClpG2U',
-		offset: 60,
+		offset: { start: 60 },
 		tags: ['morning', 'rain'],
 		country: Country.korea
 	},
 	{
 		name: 'Hongdae',
 		videoID: 's50yml_9LPA',
-		offset: 30,
+		offset: { start: 30 },
 		tags: ['evening', 'night'],
 		country: Country.korea
 	},
 	{
 		name: 'Daegu',
 		videoID: 'S5xSOjAjCX0',
-		offset: 260,
+		offset: { start: 260 },
 		tags: ['night', 'evening'],
 		country: Country.korea
 	},
 	{
 		name: 'Incheon',
 		videoID: '9eLtj6KqqaM',
-		offset: 30,
+		offset: { start: 30 },
 		tags: ['night', 'evening'],
 		country: Country.korea
 	},
 	{
 		name: 'Yeosu City',
 		videoID: 'NV-7yREq7DA',
-		offset: 60,
+		offset: { start: 60 },
 		tags: ['evening'],
 		country: Country.korea
 	},
 	{
 		name: 'Yongsan Station',
 		videoID: 'jxQX5XI766c',
-		offset: 235,
+		offset: { start: 235 },
 		tags: ['night', 'rain'],
 		country: Country.korea
 	},
@@ -430,28 +436,28 @@ const walks: Omit<Scene, 'type'>[] = [
 	{
 		name: 'Dream Forest',
 		videoID: 'zCamdbpzJEs',
-		offset: 30,
+		offset: { start: 30 },
 		tags: ['day'],
 		country: Country.korea
 	},
 	{
 		name: 'Majang Lake Trail',
 		videoID: 'd12qNTbfvfo',
-		offset: 30,
+		offset: { start: 30 },
 		tags: ['snow', 'day'],
 		country: Country.korea
 	},
 	{
 		name: 'Yanghwa Bridge',
 		videoID: 'wdCWLtJ339U',
-		offset: 30,
+		offset: { start: 30 },
 		tags: ['night', 'rain'],
 		country: Country.korea
 	},
 	{
 		name: 'Gangnam',
 		videoID: 'EJJ8rmIWUcQ',
-		offset: 60,
+		offset: { start: 60 },
 		tags: ['day', 'rain'],
 		country: Country.korea
 	},
@@ -459,41 +465,41 @@ const walks: Omit<Scene, 'type'>[] = [
 		name: 'Portland',
 		videoID: 'Ht747Q-PLDY',
 		tags: ['rain', 'day'],
-		offset: 60,
+		offset: { start: 60 },
 		country: Country.us
 	},
 	{
 		name: 'Bangkok',
 		videoID: 'ol-IOOBs4oY',
 		tags: ['night'],
-		offset: 80,
+		offset: { start: 80 },
 		country: Country.thailand
 	},
 	{
 		name: 'Honolulu',
 		videoID: 'T3nzPsDfazA',
 		tags: ['evening'],
-		offset: 30,
+		offset: { start: 30 },
 		country: Country.us
 	},
 	{
 		name: 'Koh Kut Island',
 		videoID: 'RfVZMCCeAzI',
-		offset: 300,
+		offset: { start: 300 },
 		country: Country.thailand,
 		tags: ['day']
 	},
 	{
 		name: 'Edinburgh',
 		videoID: 'o9aH4xk25yg',
-		offset: 30,
+		offset: { start: 30 },
 		country: Country.scotland,
 		tags: ['day', 'night', 'rain']
 	},
 	{
 		name: 'New Orleans',
 		videoID: '3BAahFrNRaI',
-		offset: 30,
+		offset: { start: 30 },
 		country: Country.us,
 		tags: ['day'],
 		suggestedTrack: stations['Work & Jazz Piano Radio']
@@ -502,20 +508,20 @@ const walks: Omit<Scene, 'type'>[] = [
 		name: 'Ho Chi Minh City',
 		videoID: 'SmmquqDceus',
 		tags: ['night'],
-		offset: 120,
+		offset: { start: 120 },
 		country: Country.vietnam
 	},
 	{
 		name: 'Vancouver',
 		videoID: 'jmok5F9RQ_w',
-		offset: 120,
+		offset: { start: 120 },
 		tags: ['day'],
 		country: Country.canada
 	},
 	{
 		name: 'Mumbai',
 		videoID: '8W4ZTX1z02E',
-		offset: 120,
+		offset: { start: 120 },
 		tags: ['day', 'night'],
 		suggestedTrack: stations['Bollywood Lofi Radio'],
 		country: Country.india
@@ -530,35 +536,35 @@ const walks: Omit<Scene, 'type'>[] = [
 		name: 'Tsawwassen',
 		videoID: 'kg2kefbrFn4',
 		tags: ['evening'],
-		offset: 10,
+		offset: { start: 10 },
 		country: Country.canada
 	},
 	{
 		name: 'Beirut',
 		videoID: 'KMDWEwQDoc0',
 		tags: ['evening'],
-		offset: 10,
+		offset: { start: 10 },
 		country: Country.lebanon
 	},
 	{
 		name: 'Lima',
 		videoID: 'e4RsX2h2QIc',
 		tags: ['day'],
-		offset: 60,
+		offset: { start: 60 },
 		country: Country.peru
 	},
 	{
 		name: 'Nagasaki',
 		videoID: 'Wey4zHA4nPg',
 		tags: ['night', 'rain'],
-		offset: 30,
+		offset: { start: 30 },
 		country: Country.japan
 	},
 	{
 		name: 'Cusco',
 		videoID: 'BqBPCNyK5ZM',
 		tags: ['day'],
-		offset: 60,
+		offset: { start: 60 },
 		country: Country.peru
 	}
 ];
