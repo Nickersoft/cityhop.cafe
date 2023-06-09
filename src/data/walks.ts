@@ -31,6 +31,12 @@ const walks: Omit<Scene, 'type'>[] = [
 		country: Country.us,
 		suggestedTrack: stations['Coffee Shop Radio']
 	},
+  {
+    name:'Istanbul',
+    videoID:'jcnu9Q5Dm2A',
+    offset: { start: 30 },
+    country: Country.turkey
+  },
 	{
 		name: 'Kolkata',
 		videoID: '7Kzfz86esI0',
