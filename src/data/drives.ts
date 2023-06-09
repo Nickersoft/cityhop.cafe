@@ -248,6 +248,13 @@ const drives = [
 		country: Country.taiwan
 	},
   {
+    name: 'Cape Town',
+    videoID: 'Fvt6rD9tt1c',
+    tags: ['day'],
+    offset: { start: 60 },
+    country: Country.southAfrica
+  },
+  {
     name: 'Kolkata',
     videoID: '6iG9PpV20_U',
     tags: ['day'],

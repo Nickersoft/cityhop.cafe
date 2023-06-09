@@ -8,6 +8,7 @@ export const flags: Record<Country, string> = {
 	[Country.india]: '🇮🇳',
 	[Country.italy]: '🇮🇹',
   [Country.turkey]: '🇹🇷',
+  [Country.southAfrica]: '🇿🇦',
 	[Country.france]: '🇫🇷',
 	[Country.mexico]: '🇲🇽',
 	[Country.germany]: '🇩🇪',
