@@ -30,7 +30,7 @@
 	}
 
 	function onBackgroundEnded(event: CustomEvent) {
-		event.detail.target.seekTo(videoOffset, true);
+		event.detail.target.seekTo(videoOffset.start, true);
 	}
 
 	function onAudioReady(event: CustomEvent) {
