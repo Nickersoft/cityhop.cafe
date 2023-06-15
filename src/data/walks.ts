@@ -407,9 +407,9 @@ const walks: Omit<Scene, 'type'>[] = [
 	},
 	{
 		name: 'Daegu',
-		videoID: 'S5xSOjAjCX0',
-		offset: { start: 260 },
-		tags: ['night', 'evening'],
+		videoID: 'PS34VjhVEV0',
+		offset: { start: 30 },
+		tags: ['day'],
 		country: Country.korea
 	},
 	{
