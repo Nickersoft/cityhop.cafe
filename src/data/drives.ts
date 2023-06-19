@@ -139,6 +139,13 @@ const drives = [
 		suggestedTrack: stations['Bollywood Lofi Radio'],
 		country: Country.india
 	},
+  {
+    name: 'Chengdu',
+    videoID: 'VP6OCMG6eEw',
+    offset: { start: 120 },
+    tags: ['day', 'rain'],
+    country: Country.china
+  },
 	{
 		name: 'Arches National Park',
 		videoID: 'l-xaEoKGIxY',

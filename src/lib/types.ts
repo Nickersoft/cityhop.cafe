@@ -38,6 +38,7 @@ export enum Country {
 	austria = 'Austria',
 	ghana = 'Ghana',
 	russia = 'Russia',
+  romania = 'Romania',
 	ukraine = 'Ukraine',
 	netherlands = 'Netherlands',
 	spain = 'Spain',

@@ -31,12 +31,12 @@ const walks: Omit<Scene, 'type'>[] = [
 		country: Country.us,
 		suggestedTrack: stations['Coffee Shop Radio']
 	},
-  {
-    name:'Istanbul',
-    videoID:'jcnu9Q5Dm2A',
-    offset: { start: 30 },
-    country: Country.turkey
-  },
+	{
+		name: 'Istanbul',
+		videoID: 'jcnu9Q5Dm2A',
+		offset: { start: 30 },
+		country: Country.turkey
+	},
 	{
 		name: 'Kolkata',
 		videoID: '7Kzfz86esI0',
@@ -87,6 +87,20 @@ const walks: Omit<Scene, 'type'>[] = [
 		offset: { start: 30 },
 		tags: ['day'],
 		country: Country.ukraine
+	},
+	{
+		name: 'Cluj-Napoca',
+		videoID: 'oHBR5eRkIbY',
+		offset: { start: 30, end: 300 },
+		tags: ['day'],
+		country: Country.romania
+	},
+	{
+		name: 'Chengdu',
+		videoID: 'hwh4NO5hDc4',
+		offset: { start: 120 },
+		tags: ['day'],
+		country: Country.china
 	},
 	{
 		name: 'Moscow',
