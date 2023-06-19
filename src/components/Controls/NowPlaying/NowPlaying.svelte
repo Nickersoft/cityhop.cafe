@@ -56,9 +56,7 @@
 		{/if}
 	</div>
 
-	<button on:click={changeMusic} on:keyup={changeMusic} class="flex-shrink-0 label">
-		Change Music
-	</button>
+	<button on:click={changeMusic} class="flex-shrink-0 label"> Change Music </button>
 </div>
 
 <style lang="postcss">

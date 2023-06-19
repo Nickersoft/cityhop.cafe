@@ -22,7 +22,8 @@
 		<div class="flex w-full flex-col flex-1 justify-center h-full items-center">
 			<div class="searchbox">
 				<iconify-icon class="icon" icon="mdi:search" />
-				<input bind:value={searchQuery} type="text" {placeholder} />
+				<!-- svelte-ignore a11y-autofocus -->
+				<input bind:value={searchQuery} type="text" {placeholder} autofocus />
 			</div>
 
 			<div class="w-full flex-grow relative">

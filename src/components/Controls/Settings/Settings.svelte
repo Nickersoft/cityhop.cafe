@@ -33,7 +33,6 @@
 			</div>
 			<button
 				on:click={handleClose}
-				on:keyup={handleClose}
 				class="btn btn-outline btn-primary hover:!bg-white transform-gpu px-16 mt-8 normal-case"
 			>
 				Close

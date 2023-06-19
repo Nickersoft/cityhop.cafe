@@ -11,7 +11,7 @@
 </script>
 
 <li class="flex-1 pr-4">
-	<button class="item" class:active on:click={handleClick} on:keyup={handleClick}>
+	<button class="item" class:active on:click={handleClick}>
 		<slot />
 	</button>
 </li>

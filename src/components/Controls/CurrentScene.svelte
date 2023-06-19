@@ -43,12 +43,7 @@
 		</div>
 	</div>
 
-	<button
-		title="Click to change scene"
-		on:click={handleChangeScene}
-		on:keyup={handleChangeScene}
-		class="label"
-	>
+	<button title="Click to change scene" on:click={handleChangeScene} class="label">
 		Change Scene
 	</button>
 </div>

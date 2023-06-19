@@ -62,9 +62,11 @@
 		}
 
 		document.addEventListener('mousemove', handleMouseMove);
+		document.addEventListener('keydown', handleMouseMove);
 
 		return () => {
 			document.removeEventListener('mousemove', handleMouseMove);
+			document.removeEventListener('keydown', handleMouseMove);
 		};
 	});
 
