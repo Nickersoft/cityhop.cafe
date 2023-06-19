@@ -23,7 +23,13 @@
 			<div class="searchbox">
 				<iconify-icon class="icon" icon="mdi:search" />
 				<!-- svelte-ignore a11y-autofocus -->
-				<input bind:value={searchQuery} type="text" {placeholder} autofocus />
+				<input
+					on:keyup|stopPropagation
+					bind:value={searchQuery}
+					type="text"
+					{placeholder}
+					autofocus
+				/>
 			</div>
 
 			<div class="w-full flex-grow relative">
