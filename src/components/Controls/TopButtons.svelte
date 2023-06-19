@@ -78,31 +78,16 @@ ${url}`.trim();
 	<a class="request" target="_blank" rel="noreferrer" href="https://www.buymeacoffee.com/tnick">
 		Support CityHop
 	</a>
-	<button class="tooltip tooltip-bottom" data-tip="Copy link" on:click={copyURL} on:keyup={copyURL}>
+	<button class="tooltip tooltip-bottom" data-tip="Copy link" on:click={copyURL}>
 		<iconify-icon icon="mdi:link-variant" />
 	</button>
-	<button
-		class="tooltip tooltip-bottom"
-		data-tip="Share on Twitter"
-		on:click={shareTweet}
-		on:keyup={shareTweet}
-	>
+	<button class="tooltip tooltip-bottom" data-tip="Share on Twitter" on:click={shareTweet}>
 		<iconify-icon icon="mdi:twitter" />
 	</button>
-	<button
-		class="tooltip tooltip-bottom"
-		data-tip="About"
-		on:click={handleOpenAbout}
-		on:keyup={handleOpenAbout}
-	>
+	<button class="tooltip tooltip-bottom" data-tip="About" on:click={handleOpenAbout}>
 		<iconify-icon icon="mdi:heart" />
 	</button>
-	<button
-		class="tooltip tooltip-bottom"
-		data-tip="Settings"
-		on:click={handleOpenSettings}
-		on:keyup={handleOpenSettings}
-	>
+	<button class="tooltip tooltip-bottom" data-tip="Settings" on:click={handleOpenSettings}>
 		<iconify-icon icon="mdi:settings" />
 	</button>
 </div>

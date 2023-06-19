@@ -8,7 +8,7 @@
 	}
 </script>
 
-<li on:click={handleClick} on:keyup={handleClick} class="list-item">
+<li on:click={handleClick} on:keydown={handleClick} class="list-item">
 	<slot />
 </li>
 
