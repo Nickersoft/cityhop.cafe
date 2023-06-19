@@ -139,13 +139,20 @@ const drives = [
 		suggestedTrack: stations['Bollywood Lofi Radio'],
 		country: Country.india
 	},
-  {
-    name: 'Chengdu',
-    videoID: 'VP6OCMG6eEw',
-    offset: { start: 120 },
-    tags: ['day', 'rain'],
-    country: Country.china
-  },
+	{
+		name: 'Tibet',
+		videoID: 'aKPSjOHZXVs',
+		offset: { start: 30 },
+		tags: ['day'],
+		country: Country.china
+	},
+	{
+		name: 'Chengdu',
+		videoID: 'VP6OCMG6eEw',
+		offset: { start: 120 },
+		tags: ['day', 'rain'],
+		country: Country.china
+	},
 	{
 		name: 'Arches National Park',
 		videoID: 'l-xaEoKGIxY',
@@ -254,25 +261,25 @@ const drives = [
 		suggestedTrack: stations['Chinese Pop Radio'],
 		country: Country.taiwan
 	},
-  {
-    name: 'Cape Town',
-    videoID: 'Fvt6rD9tt1c',
-    tags: ['day'],
-    offset: { start: 60 },
-    country: Country.southAfrica
-  },
-  {
-    name: 'Kolkata',
-    videoID: '6iG9PpV20_U',
-    tags: ['day'],
-    country: Country.india,
-    suggestedTrack: stations['Bollywood Lofi Radio']
-  },
+	{
+		name: 'Cape Town',
+		videoID: 'Fvt6rD9tt1c',
+		tags: ['day'],
+		offset: { start: 60 },
+		country: Country.southAfrica
+	},
+	{
+		name: 'Kolkata',
+		videoID: '6iG9PpV20_U',
+		tags: ['day'],
+		country: Country.india,
+		suggestedTrack: stations['Bollywood Lofi Radio']
+	},
 	{
 		name: 'Seoul',
 		videoID: 'KGAIumGxQeY',
 		tags: ['evening'],
-    offset: { start: 30 },
+		offset: { start: 30 },
 		country: Country.korea
 	},
 	{

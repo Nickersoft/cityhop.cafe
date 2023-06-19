@@ -10,8 +10,8 @@ export interface Track {
 }
 
 export interface Offset {
-  start?: number;
-  end?: number;
+	start?: number;
+	end?: number;
 }
 
 export interface Scene {
@@ -28,7 +28,7 @@ export enum Country {
 	korea = 'South Korea',
 	us = 'United States',
 	canada = 'Canada',
-  turkey = 'Turkey',
+	turkey = 'Turkey',
 	vietnam = 'Vietnam',
 	china = 'China',
 	france = 'France',
@@ -36,9 +36,10 @@ export enum Country {
 	uk = 'England',
 	germany = 'Germany',
 	austria = 'Austria',
+	australia = 'Australia',
 	ghana = 'Ghana',
 	russia = 'Russia',
-  romania = 'Romania',
+	romania = 'Romania',
 	ukraine = 'Ukraine',
 	netherlands = 'Netherlands',
 	spain = 'Spain',
@@ -47,11 +48,11 @@ export enum Country {
 	japan = 'Japan',
 	singapore = 'Singapore',
 	peru = 'Peru',
-  southAfrica = 'South Africa',
+	southAfrica = 'South Africa',
 	india = 'India',
 	uae = 'United Arab Emirates',
 	italy = 'Italy',
-  serbia = 'Serbia',
+	serbia = 'Serbia',
 	mexico = 'Mexico',
 	thailand = 'Thailand',
 	egypt = 'Egypt',

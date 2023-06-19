@@ -89,6 +89,41 @@ const walks: Omit<Scene, 'type'>[] = [
 		country: Country.ukraine
 	},
 	{
+		name: 'Nice',
+		videoID: 'ON1YueLJ7OA',
+		offset: { start: 180 },
+		tags: ['day'],
+		country: Country.france
+	},
+	{
+		name: 'Cancun',
+		videoID: 'zSLXfX0Q3CU',
+		offset: { start: 60, end: 30 },
+		tags: ['day'],
+		country: Country.mexico
+	},
+	{
+		name: 'Forbidden City',
+		videoID: 'Df-I81T1RVQ',
+		offset: { start: 60 },
+		tags: ['day', 'snow'],
+		country: Country.china
+	},
+	{
+		name: 'Strasbourg',
+		videoID: 'M7OjlTNIpS0',
+		offset: { start: 30 },
+		tags: ['day'],
+		country: Country.france
+	},
+	{
+		name: 'Brisbane',
+		videoID: 'G1zBrv87rBw',
+		offset: { start: 30 },
+		tags: ['day'],
+		country: Country.australia
+	},
+	{
 		name: 'Cluj-Napoca',
 		videoID: 'oHBR5eRkIbY',
 		offset: { start: 30, end: 300 },
