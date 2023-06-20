@@ -10,6 +10,10 @@
 	function handleBGClick() {
 		open = false;
 	}
+
+	$: if (!open) {
+		searchQuery = '';
+	}
 </script>
 
 <FullScreenOverlay bind:open>
@@ -32,8 +36,8 @@
 				/>
 			</div>
 
-			<div class="w-full flex-grow relative">
-				<div class="flex absolute inset-0 overflow-y-scroll flex-col gap-4 p-8 w-full flex-grow">
+			<div class="w-full flex-grow relative" on:click={handleBGClick} on:keydown={handleBGClick}>
+				<div class="flex absolute inset-0 overflow-y-scroll flex-col gap-4 p-8 w-fit flex-grow">
 					<slot />
 				</div>
 			</div>
