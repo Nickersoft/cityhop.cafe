@@ -352,6 +352,13 @@ const walks: Omit<Scene, 'type'>[] = [
 		offset: { start: 30 },
 		country: Country.spain
 	},
+  {
+    name: 'Valencia',
+    videoID: 'msUFfnDHVA0',
+    tags: ['day'],
+    offset: { start: 30 },
+    country: Country.spain
+  },
 	{
 		name: 'Paris',
 		videoID: '3j-AVL3Pr3w',

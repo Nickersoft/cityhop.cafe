@@ -13,5 +13,5 @@ export const sceneMap = {
 };
 
 export const calmScenes = scenes.filter((b) => {
-	return !b.suggestedTrack || [Genre.jazz, Genre.lofi].includes(b.suggestedTrack.genre);
+	return !b.suggestedTrack || [Genre.jazz, Genre.classical, Genre.lofi].includes(b.suggestedTrack.genre);
 });
