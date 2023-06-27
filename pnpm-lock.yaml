@@ -23,7 +23,7 @@ specifiers:
   posthog-node: ^3.1.1
   prettier: ^2.8.8
   prettier-plugin-svelte: ^2.10.1
-  radash: ^10.9.0
+  radash: ^11.0.0
   svelte: ^4.0.0
   svelte-check: ^3.4.3
   svelte-local-storage-store: ^0.5.0
@@ -44,7 +44,7 @@ dependencies:
   iconify-icon: 1.0.7
   posthog-js: 1.68.1
   posthog-node: 3.1.1
-  radash: 10.9.0
+  radash: 11.0.0
   svelte-local-storage-store: 0.5.0_svelte@4.0.0
   sveltekit-search-params: 1.0.12_o6qvlcxroxpcmhnupdft2yeteq
   uuid: 9.0.0
@@ -2012,8 +2012,8 @@ packages:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
 
-  /radash/10.9.0:
-    resolution: {integrity: sha512-0pijGuxnF5CgEdRwrCEHjx4onaXWpmVligyKzfn7hIjpOl11n+9x8le6R3gFjAs2e6d7WT39vcZw1AWHt3w9Jw==}
+  /radash/11.0.0:
+    resolution: {integrity: sha512-CRWxTFTDff0IELGJ/zz58yY4BDgyI14qSM5OLNKbCItJrff7m7dXbVF0kWYVCXQtPb3SXIVhXvAImH6eT7VLSg==}
     engines: {node: '>=14.18.0'}
     dev: false
 

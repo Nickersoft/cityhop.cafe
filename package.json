@@ -47,7 +47,7 @@
 		"iconify-icon": "^1.0.7",
 		"posthog-js": "^1.68.1",
 		"posthog-node": "^3.1.1",
-		"radash": "^10.9.0",
+		"radash": "^11.0.0",
 		"svelte-local-storage-store": "^0.5.0",
 		"sveltekit-search-params": "^1.0.12",
 		"uuid": "^9.0.0",
