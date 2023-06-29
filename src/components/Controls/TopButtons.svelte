@@ -41,7 +41,7 @@
 			$currentScene.name
 		)} with me and chill! 🎧 #cityhop #${createHashtag($currentTrack.genre.toLowerCase())} 
 
-${url}`.trim();
+		${url}`.trim();
 
 		window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`, '_blank');
 	}
@@ -86,9 +86,6 @@ ${url}`.trim();
 	<a class="request" target="_blank" rel="noreferrer" href="https://www.buymeacoffee.com/tnick">
 		Support CityHop
 	</a>
-	<button class="tooltip tooltip-bottom" data-tip="Toggle Fullscreen" on:click={toggleFullscreen}>
-		<iconify-icon icon="mdi:fullscreen" />
-	</button>
 	<button class="tooltip tooltip-bottom" data-tip="Copy link" on:click={copyURL}>
 		<iconify-icon icon="mdi:link-variant" />
 	</button>
@@ -100,6 +97,9 @@ ${url}`.trim();
 	</button>
 	<button class="tooltip tooltip-bottom" data-tip="Settings" on:click={handleOpenSettings}>
 		<iconify-icon icon="mdi:settings" />
+	</button>
+	<button class="tooltip tooltip-bottom" data-tip="Toggle fullscreen" on:click={toggleFullscreen}>
+		<iconify-icon icon="mdi:fullscreen" />
 	</button>
 </div>
 
