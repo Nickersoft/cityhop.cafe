@@ -46,6 +46,14 @@ ${url}`.trim();
 		window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`, '_blank');
 	}
 
+	function toggleFullscreen() {
+		if (document.fullscreenElement) {
+			document.exitFullscreen();
+		} else {
+			document.documentElement.requestFullscreen();
+		}
+	}
+
 	onMount(() => {
 		updateVisitorCount();
 
@@ -78,6 +86,9 @@ ${url}`.trim();
 	<a class="request" target="_blank" rel="noreferrer" href="https://www.buymeacoffee.com/tnick">
 		Support CityHop
 	</a>
+	<button class="tooltip tooltip-bottom" data-tip="Toggle Fullscreen" on:click={toggleFullscreen}>
+		<iconify-icon icon="mdi:fullscreen" />
+	</button>
 	<button class="tooltip tooltip-bottom" data-tip="Copy link" on:click={copyURL}>
 		<iconify-icon icon="mdi:link-variant" />
 	</button>
