@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { page } from '$app/stores';
+
 	import { currentScene, currentTrack } from '$lib/stores';
 	import { getSharableURL } from '$lib/utils';
 	import { createEventDispatcher, onMount } from 'svelte';
@@ -30,12 +32,12 @@
 	}
 
 	function copyURL() {
-		copy(getSharableURL());
+		copy(getSharableURL($page.url));
 		showCopyConfirmation = true;
 	}
 
 	function shareTweet() {
-		const url = getSharableURL();
+		const url = getSharableURL($page.url);
 
 		const tweet = `Come ${$currentScene.type} in #${createHashtag(
 			$currentScene.name
@@ -98,14 +100,14 @@
 	<button class="tooltip tooltip-bottom" data-tip="Settings" on:click={handleOpenSettings}>
 		<iconify-icon icon="mdi:settings" />
 	</button>
-	<button class="tooltip tooltip-bottom" data-tip="Toggle fullscreen" on:click={toggleFullscreen}>
+	<button class="tooltip tooltip-bottom" data-tip="Fullscreen" on:click={toggleFullscreen}>
 		<iconify-icon icon="mdi:fullscreen" />
 	</button>
 </div>
 
 <style lang="postcss">
 	.top-icons {
-		@apply flex flex-row absolute top-0 p-2 right-0 left-0 justify-end items-center opacity-0 transition-all duration-300 z-50;
+		@apply flex flex-row absolute top-0 px-4 py-2 right-0 left-0 justify-end items-center opacity-0 transition-all duration-300 z-50;
 		@apply bg-gradient-to-b from-[rgba(0,0,0,0.5)] to-transparent pb-16;
 
 		button,

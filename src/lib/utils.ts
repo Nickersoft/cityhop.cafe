@@ -1,33 +1,33 @@
-import { get } from 'svelte/store';
+import { get } from "svelte/store";
 
-import { currentScene, currentTrack } from './stores';
-import { page } from '$app/stores';
-import { sceneMap } from '$data/scenes';
-import { stationMap } from '$data/stations';
+import { currentScene, currentTrack } from "./stores";
 
-export function getSharableURL() {
-	const $currentScene = get(currentScene);
-	const $currentTrack = get(currentTrack);
-	const key = btoa(`${$currentScene.videoID}:${$currentTrack.trackID}`);
+import { sceneMap } from "$data/scenes";
+import { stationMap } from "$data/stations";
 
-	return `${get(page).url.origin}/?v=${key}`;
+export function getSharableURL(url: URL) {
+  const $currentScene = get(currentScene);
+  const $currentTrack = get(currentTrack);
+  const key = btoa(`${$currentScene.videoID}:${$currentTrack.trackID}`);
+
+  return `${url.origin}/?v=${key}`;
 }
 
 export function decodeSharableURL(url: URL) {
-	const v = url.searchParams.get('v');
+  const v = url.searchParams.get("v");
 
-	if (v && v.trim().length > 0) {
-		const [videoID, audioID] = atob(v).split(':');
+  if (v && v.trim().length > 0) {
+    const [videoID, audioID] = atob(v).split(":");
 
-		if (videoID && audioID) {
-			const scene = sceneMap[videoID];
-			const track = stationMap[audioID];
+    if (videoID && audioID) {
+      const scene = sceneMap[videoID];
+      const track = stationMap[audioID];
 
-			if (scene && track) {
-				return { scene, track };
-			}
-		}
-	}
+      if (scene && track) {
+        return { scene, track };
+      }
+    }
+  }
 
-	return null;
+  return null;
 }
