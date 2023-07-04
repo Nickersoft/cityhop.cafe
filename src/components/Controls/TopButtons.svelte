@@ -41,9 +41,17 @@
 			$currentScene.name
 		)} with me and chill! 🎧 #cityhop #${createHashtag($currentTrack.genre.toLowerCase())} 
 
-${url}`.trim();
+		${url}`.trim();
 
 		window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`, '_blank');
+	}
+
+	function toggleFullscreen() {
+		if (document.fullscreenElement) {
+			document.exitFullscreen();
+		} else {
+			document.documentElement.requestFullscreen();
+		}
 	}
 
 	onMount(() => {
@@ -89,6 +97,9 @@ ${url}`.trim();
 	</button>
 	<button class="tooltip tooltip-bottom" data-tip="Settings" on:click={handleOpenSettings}>
 		<iconify-icon icon="mdi:settings" />
+	</button>
+	<button class="tooltip tooltip-bottom" data-tip="Toggle fullscreen" on:click={toggleFullscreen}>
+		<iconify-icon icon="mdi:fullscreen" />
 	</button>
 </div>
 
