@@ -36,8 +36,13 @@
 				/>
 			</div>
 
-			<div class="w-full flex-grow relative" on:click={handleBGClick} on:keydown={handleBGClick}>
-				<div class="flex absolute inset-0 overflow-y-scroll flex-col gap-4 p-8 w-fit flex-grow">
+			<div
+				role="presentation"
+				class="w-full flex-grow relative"
+				on:click={handleBGClick}
+				on:keydown={handleBGClick}
+			>
+				<div class="flex absolute inset-0 overflow-y-scroll flex-col gap-4 p-8 w-full flex-grow">
 					<slot />
 				</div>
 			</div>

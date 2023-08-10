@@ -15,7 +15,7 @@
 <style lang="postcss">
 	.list-item {
 		@apply hover:text-yellow-500 transform-gpu transition-all duration-150 text-2xl;
-		@apply cursor-pointer relative;
+		@apply cursor-pointer relative w-full;
 		@apply p-4 w-fit select-none text-left active:opacity-50;
 		@apply flex flex-row gap-2 justify-between items-start;
 
