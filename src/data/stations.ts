@@ -86,7 +86,7 @@ const stations = {
   },
   "Synthwave Radio": {
     name: "synthwave radio 🌌 - beats to chill/game to",
-    trackID: "MVPTGNGiI-4",
+    trackID: "4xDzrJKXOOY",
     genre: Genre.electronic,
     live: true,
   },
