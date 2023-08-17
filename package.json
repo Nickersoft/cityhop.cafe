@@ -48,7 +48,7 @@
 		"posthog-js": "^1.68.5",
 		"posthog-node": "^3.1.1",
 		"radash": "^11.0.0",
-		"svelte-local-storage-store": "^0.5.0",
+		"svelte-local-storage-store": "^0.6.0",
 		"sveltekit-search-params": "^1.0.13",
 		"uuid": "^9.0.0",
 		"youtube-player": "^5.6.0"
