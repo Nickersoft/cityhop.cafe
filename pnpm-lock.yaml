@@ -27,7 +27,7 @@ specifiers:
   svelte: ^4.0.3
   svelte-check: ^3.4.4
   svelte-local-storage-store: ^0.6.0
-  svelte-meta-tags: ^2.8.0
+  svelte-meta-tags: ^3.0.0
   sveltekit-search-params: ^1.0.13
   tailwindcss: ^3.3.2
   tslib: ^2.6.0
@@ -69,7 +69,7 @@ devDependencies:
   prettier-plugin-svelte: 3.0.0_hidi4px23ncu3cl3wtqvnwxb5u
   svelte: 4.0.3
   svelte-check: 3.4.4_fwklmdyvf7r5gmdjvr57xcz37q
-  svelte-meta-tags: 2.8.0_lqhgjdnpwggygznbjdccp3q2wm
+  svelte-meta-tags: 3.0.0_lqhgjdnpwggygznbjdccp3q2wm
   tailwindcss: 3.3.2
   tslib: 2.6.0
   typescript: 5.1.6
@@ -2253,8 +2253,8 @@ packages:
       svelte: 4.0.3
     dev: false
 
-  /svelte-meta-tags/2.8.0_lqhgjdnpwggygznbjdccp3q2wm:
-    resolution: {integrity: sha512-CgnNNk8iJv4Ks0iAqerfvtC+qjOq6WKDvUnV30ss8k80nVC4pD6I6fGnAg/ieOuRNL1uir49zosZzwPjAsjdAQ==}
+  /svelte-meta-tags/3.0.0_lqhgjdnpwggygznbjdccp3q2wm:
+    resolution: {integrity: sha512-B9yxcbsTxFDgTquB5RbbTbsL/p9NsXjqEalJAT6hIBBQGMyDCRmYz32MfXEVjuB7+FP8Cjj9dV5aQwIPshep3w==}
     peerDependencies:
       svelte: ^3.55.0 || ^4.0.0
     dependencies:
