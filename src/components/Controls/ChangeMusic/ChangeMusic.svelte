@@ -1,5 +1,6 @@
 <script lang="ts">
-	import Fuse from 'fuse.js';
+
+	import fuzzysort from 'fuzzysort';
 
 	import { alphabetical, group } from 'radash';
 	import { createEventDispatcher } from 'svelte';
@@ -15,16 +16,10 @@
 
 	let searchQuery: string = '';
 
-	const fuse = new Fuse(stationList, {
-		keys: ['name'],
-		shouldSort: true,
-		isCaseSensitive: false
-	});
-
 	const dispatch = createEventDispatcher();
 
 	$: results =
-		searchQuery.length === 0 ? stationList : fuse.search(searchQuery).map((result) => result.item);
+		searchQuery.length === 0 ? stationList : fuzzysort.go(searchQuery, stationList, { key: 'name'}).map((result) => result.obj);
 
 	$: groupedByGenre = group(results, (r) => r.genre);
 
