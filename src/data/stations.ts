@@ -34,7 +34,7 @@ const stations = {
   },
   "Chill Radio": {
     name: "ＣＨＩＬＬ　ＲＡＤＩＯ ２４／７",
-    trackID: "Vo-2noOnBcY",
+    trackID: "tyVQk-BAWms",
     genre: Genre.lofi,
     live: true,
   },
