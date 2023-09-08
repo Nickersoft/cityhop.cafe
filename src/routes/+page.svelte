@@ -4,7 +4,6 @@
 	import { draw } from 'radash';
 	import { v4 as uuid } from 'uuid';
 	import { onMount } from 'svelte';
-	import { persisted } from 'svelte-local-storage-store';
 	import { fade, fly, scale } from 'svelte/transition';
 
 	import { currentScene, currentTrack } from '$lib/stores';

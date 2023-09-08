@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { group } from 'radash';
 
-	import Fuse from 'fuse.js';
+	import fuzzysort from 'fuzzysort';
 
 	import type { Country } from '$lib/types';
 
@@ -16,16 +16,10 @@
 
 	let selectedCategory: 'walk' | 'drive' = 'walk';
 
-	const fuse = new Fuse(scenes, {
-		keys: ['name', 'country'],
-		shouldSort: true,
-		isCaseSensitive: false
-	});
-
 	let searchQuery: string = '';
 
 	$: results =
-		searchQuery.length === 0 ? scenes : fuse.search(searchQuery).map((result) => result.item);
+		searchQuery.length === 0 ? scenes : fuzzysort.go(searchQuery, scenes, { keys: ['name', 'category']}).map((result) => result.obj);
 
 	$: filteredResults = results.filter((r) => r.type === selectedCategory);
 
