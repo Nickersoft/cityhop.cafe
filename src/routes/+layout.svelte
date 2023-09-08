@@ -1,5 +1,9 @@
 <script>
+	import '@fontsource-variable/figtree';
 	import 'iconify-icon';
+
+	import figtreeVariable from '@fontsource-variable/figtree/files/figtree-latin-wght-normal.woff2';
+	import figtreeVariableItalic from '@fontsource-variable/figtree/files/figtree-latin-wght-italic.woff2';
 
 	import { MetaTags } from 'svelte-meta-tags';
 
@@ -42,6 +46,12 @@
 	const twtImage = `${$page.url.origin}/twitter.jpg`;
 </script>
 
+<svelte:head>
+	{#each [figtreeVariable, figtreeVariableItalic] as ft}
+		<link rel="preload" as="font" crossorigin="anonymous" href={ft} type="font/woff2" />
+	{/each}
+</svelte:head>
+
 <MetaTags
 	title="CityHop | Aesthetic walks and drives from around the world"
 	description={siteDescription}
@@ -51,7 +61,7 @@
 		title: siteTitle,
 		description: siteDescription,
 		images: [{ url: ogImage }],
-		site_name: 'CityHop'
+		siteName: 'CityHop'
 	}}
 	twitter={{
 		cardType: 'summary_large_image',
