@@ -143,7 +143,6 @@ const drives = [
     suggestedTrack: stations["Relaxing Jazz Radio"],
     country: Country.us,
   },
-
   {
     name: "Miami",
     videoID: "Cod_ggrs69U",
@@ -151,6 +150,13 @@ const drives = [
     tags: ["night"],
     suggestedTrack: stations["Synthwave Radio"],
     country: Country.us,
+  },
+  {
+    name: "Mount Fuji",
+    videoID: "naz_RVh48vg",
+    offset: { start: 30 },
+    tags: ["day"],
+    country: Country.japan,
   },
   {
     name: "Mumbai",

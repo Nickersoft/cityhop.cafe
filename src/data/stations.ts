@@ -32,12 +32,6 @@ const stations = {
     genre: Genre.pop,
     live: false,
   },
-  "Chill Radio": {
-    name: "ＣＨＩＬＬ　ＲＡＤＩＯ ２４／７",
-    trackID: "tyVQk-BAWms",
-    genre: Genre.lofi,
-    live: true,
-  },
   "Relaxing Jazz Radio": {
     name:
       "Warm Jazz Relaxing Music ☕ Cozy Cabin with Coffee Shop Ambience | Relax Jazz Music for Study, Work",
@@ -82,6 +76,18 @@ const stations = {
     name: "VaporFunk Station 📼 | 24/7 Vaporwave Radio",
     trackID: "cVibfBy77Yg",
     genre: Genre.electronic,
+    live: true,
+  },
+  "ChillSynth FM": {
+    name: "ChillSynth FM - lofi synthwave radio for retro dreaming",
+    trackID: "UedTcufyrHc",
+    genre: Genre.electronic,
+    live: true,
+  },
+  "Abao in Tokyo: Jazz/Lo-fi Hip Hop Radio": {
+    name: "jazz/lofi hip hop radio🌱chill beats to relax/study to",
+    trackID: "HAZoLuME-PU",
+    genre: Genre.lofi,
     live: true,
   },
   "Synthwave Radio": {
