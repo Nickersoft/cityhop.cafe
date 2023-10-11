@@ -331,6 +331,13 @@ const walks: Omit<Scene, "type">[] = [
     country: Country.china,
   },
   {
+    name: "Kyiv",
+    videoID: "TiMgfb9v-Yg",
+    tags: ["day"],
+    offset: { start: 30 },
+    country: Country.ukraine,
+  },
+  {
     name: "Pripyat",
     videoID: "941dAGlpgbA",
     tags: ["day"],
