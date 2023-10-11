@@ -152,6 +152,20 @@ const drives = [
     country: Country.us,
   },
   {
+    name: "Xichang",
+    videoID: "nwvQ6ox6H2g",
+    offset: { start: 120 },
+    tags: ["day", "night"],
+    country: Country.china,
+  },
+  {
+    name: "Nanning",
+    videoID: "rSqSgrCGwRA",
+    offset: { start: 200 },
+    tags: ["day"],
+    country: Country.china,
+  },
+  {
     name: "Mount Fuji",
     videoID: "naz_RVh48vg",
     offset: { start: 30 },

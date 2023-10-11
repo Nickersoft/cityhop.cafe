@@ -22,6 +22,7 @@ export const flags: Record<Country, string> = {
   [Country.czechRepublic]: "🇨🇿",
   [Country.peru]: "🇵🇪",
   [Country.vietnam]: "🇻🇳",
+  [Country.jordan]: "🇯🇴",
   [Country.thailand]: "🇹🇭",
   [Country.scotland]: "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
   [Country.egypt]: "🇪🇬",

@@ -1,5 +1,3 @@
-import type { Writable } from "svelte/store";
-
 export type Tag =
   | "snow"
   | "fog"
@@ -39,6 +37,7 @@ export enum Country {
   vietnam = "Vietnam",
   china = "China",
   monaco = "Monaco",
+  jordan = "Jordan",
   france = "France",
   czechRepublic = "Czech Republic",
   uk = "England",
