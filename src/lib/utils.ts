@@ -1,4 +1,5 @@
 import { get } from "svelte/store";
+import { v4 as uuid } from "uuid";
 
 import { currentScene, currentTrack } from "./stores";
 
@@ -30,4 +31,14 @@ export function decodeSharableURL(url: URL) {
   }
 
   return null;
+}
+
+export function getDistinctID() {
+  const distinctIDKey = "distinct-id";
+
+  if (!localStorage.getItem(distinctIDKey)) {
+    localStorage.setItem(distinctIDKey, uuid());
+  }
+
+  return localStorage.getItem(distinctIDKey)!;
 }

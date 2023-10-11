@@ -7,7 +7,7 @@
 	import { fade, fly, scale } from 'svelte/transition';
 
 	import { currentScene, currentTrack } from '$lib/stores';
-	import { decodeSharableURL } from '$lib/utils';
+	import { decodeSharableURL, getDistinctID } from '$lib/utils';
 
 	import UI from '$components/UI.svelte';
 
@@ -22,16 +22,6 @@
 
 	let started = false;
 	let playing = false;
-
-	function getDistinctID() {
-		const distinctIDKey = 'distinct-id';
-
-		if (!localStorage.getItem(distinctIDKey)) {
-			localStorage.setItem(distinctIDKey, uuid());
-		}
-
-		return localStorage.getItem(distinctIDKey)!;
-	}
 
 	onMount(() => {
 		const distinctID = getDistinctID();

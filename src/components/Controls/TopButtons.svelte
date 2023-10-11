@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 
 	import { currentScene, currentTrack } from '$lib/stores';
-	import { getSharableURL } from '$lib/utils';
+	import { getDistinctID, getSharableURL } from '$lib/utils';
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 	import copy from 'copy-to-clipboard';
@@ -23,7 +23,15 @@
 	}
 
 	async function updateVisitorCount() {
-		const result = await fetch('/api/visitors').then((r) => r.text());
+		const result = await fetch('/api/visitors', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				distinctID: getDistinctID()
+			})
+		}).then((r) => r.text());
 		visitorCount = parseInt(result, 10);
 	}
 
