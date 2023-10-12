@@ -192,6 +192,27 @@ const walks: Omit<Scene, "type">[] = [
     country: Country.austria,
   },
   {
+    name: "Pangyo",
+    videoID: "9Qti5sAFtHQ",
+    tags: ["day"],
+    offset: { start: 120 },
+    country: Country.korea,
+  },
+  {
+    name: "Magokdong",
+    videoID: "FH7czEXhnA8",
+    tags: ["night"],
+    offset: { start: 30 },
+    country: Country.korea,
+  },
+  {
+    name: "Changzhou",
+    videoID: "bg-DVKtHTVs",
+    tags: ["day"],
+    offset: { start: 120 },
+    country: Country.china,
+  },
+  {
     name: "Prague",
     videoID: "oCV8bbM9hk0",
     tags: ["day", "night"],

@@ -173,6 +173,20 @@ const drives = [
     country: Country.china,
   },
   {
+    name: "Jeju Island",
+    videoID: "57-34iNmzww",
+    offset: { start: 30 },
+    tags: ["day"],
+    country: Country.korea,
+  },
+  {
+    name: "Yeongdong Expressway",
+    videoID: "4l6VpHmEgoo",
+    offset: { start: 30 },
+    tags: ["day"],
+    country: Country.korea,
+  },
+  {
     name: "Huanggualiang",
     videoID: "zj8AjUrIJUs",
     offset: { start: 120 },
