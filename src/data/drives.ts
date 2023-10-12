@@ -92,6 +92,13 @@ const drives = [
     country: Country.china,
   },
   {
+    name: "Chengdu ➡️ Shangxi",
+    videoID: "Jf6DJZ63JDU",
+    offset: { start: 30 },
+    tags: ["day", "rain"],
+    country: Country.china,
+  },
+  {
     name: "Las Vegas",
     videoID: "HZaLvgP-R8E",
     offset: { start: 30 },
@@ -152,10 +159,24 @@ const drives = [
     country: Country.us,
   },
   {
-    name: "Xichang",
+    name: "Qinghai Lake",
+    videoID: "WIj6sElG0kw",
+    offset: { start: 60 },
+    tags: ["day"],
+    country: Country.china,
+  },
+  {
+    name: "Ya'an ➡️ Xichang",
     videoID: "nwvQ6ox6H2g",
     offset: { start: 120 },
     tags: ["day", "night"],
+    country: Country.china,
+  },
+  {
+    name: "Huanggualiang",
+    videoID: "zj8AjUrIJUs",
+    offset: { start: 120 },
+    tags: ["day"],
     country: Country.china,
   },
   {
@@ -186,6 +207,13 @@ const drives = [
     offset: { start: 80 },
     tags: ["evening"],
     country: Country.italy,
+  },
+  {
+    name: "Yuzixi",
+    videoID: "X3-jML2EMIc",
+    offset: { start: 120 },
+    tags: ["day"],
+    country: Country.china,
   },
   {
     name: "Tibet",
