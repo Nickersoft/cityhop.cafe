@@ -22,7 +22,7 @@
 		const cleanupHotkeys = setupHotkeys();
 
 		const decodedURL = decodeSharableURL($page.url);
-		console.log(decodedURL);
+
 		if (decodedURL) {
 			$currentScene = decodedURL.scene;
 			$currentTrack = decodedURL.track;
