@@ -1,35 +1,37 @@
-import { PostHog } from 'posthog-node';
+import { PostHog } from "posthog-node";
 
-import type { RequestHandler } from './$types';
+import type { RequestHandler } from "./$types";
 
-import { PUBLIC_PH_TOKEN } from '$env/static/public';
-import type { Scene, Track } from '$lib/types';
+import { PUBLIC_PH_TOKEN } from "$env/static/public";
+import type { Scene, Track } from "$lib/types";
 
 interface HeartbeatBody {
-	distinctID: string;
-	currentScene: Scene;
-	currentTrack: Track;
+  distinctID: string;
+  currentScene: Scene;
+  currentTrack: Track;
 }
 
-export const POST: RequestHandler = async ({ request }) => {
-	const ph = new PostHog(PUBLIC_PH_TOKEN, {
-		host: 'https://app.posthog.com',
-		flushAt: 1,
-		flushInterval: 0
-	});
+export const POST: RequestHandler = async ({ getClientAddress, request }) => {
+  const ph = new PostHog(PUBLIC_PH_TOKEN, {
+    host: "https://app.posthog.com",
+    flushAt: 1,
+    flushInterval: 0,
+  });
 
-	const body: HeartbeatBody = await request.json();
+  const body: HeartbeatBody = await request.json();
 
-	ph.capture({
-		distinctId: body.distinctID,
-		event: 'heartbeat',
-		properties: {
-			currentScene: body.currentScene,
-			currentTrack: body.currentTrack
-		}
-	});
+  ph.capture({
+    distinctId: body.distinctID,
+    event: "heartbeat",
+    properties: {
+      "$ip": getClientAddress(),
+      "$geoip_disable": false,
+      currentScene: body.currentScene,
+      currentTrack: body.currentTrack,
+    },
+  });
 
-	await ph.shutdownAsync();
+  await ph.shutdownAsync();
 
-	return new Response(JSON.stringify({ success: true }));
+  return new Response(JSON.stringify({ success: true }));
 };
