@@ -1,16 +1,22 @@
 <script lang="ts">
+	import copy from 'copy-to-clipboard';
+
+	import { createEventDispatcher, onMount } from 'svelte';
+	import { fade, fly } from 'svelte/transition';
+
 	import { page } from '$app/stores';
 
 	import { currentScene, currentTrack } from '$lib/stores';
-	import { getSharableURL } from '$lib/utils';
-	import { createEventDispatcher, onMount } from 'svelte';
-	import { fade, fly } from 'svelte/transition';
-	import copy from 'copy-to-clipboard';
+	import { getSharableURL, getSpooky } from '$lib/utils';
+	import { IS_OCTOBER } from '$lib/constants';
+
 	import Alert from '$components/Alert.svelte';
 
 	let visitorCount: number;
 
 	const dispatch = createEventDispatcher();
+
+	const bacLink = 'https://www.buymeacoffee.com/tnick';
 
 	let showCopyConfirmation = false;
 
@@ -85,21 +91,47 @@
 			{visitorCount === 1 ? 'person' : 'people'}
 		</span>
 	{/if}
-	<a class="request" target="_blank" rel="noreferrer" href="https://www.buymeacoffee.com/tnick">
-		Support CityHop
-	</a>
+
+	{#if IS_OCTOBER}
+		<button class="request text-orange-200 !opacity-100" on:click={getSpooky}>
+			<iconify-icon icon="mdi:ghost" />
+			Get Spooky
+		</button>
+	{:else}
+		<a class="request" rel="noreferrer noopener" href={bacLink}> Support CityHop </a>
+	{/if}
+
 	<button class="tooltip tooltip-bottom" data-tip="Copy link" on:click={copyURL}>
 		<iconify-icon icon="mdi:link-variant" />
 	</button>
-	<button class="tooltip tooltip-bottom" data-tip="Share on Twitter" on:click={shareTweet}>
-		<iconify-icon icon="mdi:twitter" />
+
+	{#if IS_OCTOBER}
+		<a
+			rel="noreferrer noopener"
+			href={bacLink}
+			class="tooltip tooltip-bottom"
+			data-tip="Support CityHop"
+		>
+			<iconify-icon icon="mdi:dollar" />
+		</a>
+	{/if}
+
+	<!-- Share on Twitter -->
+	<button class="tooltip tooltip-bottom" data-tip="Share on X" on:click={shareTweet}>
+		<iconify-icon width={18} icon="simple-icons:x" />
 	</button>
+
+	<!-- About -->
 	<button class="tooltip tooltip-bottom" data-tip="About" on:click={handleOpenAbout}>
 		<iconify-icon icon="mdi:heart" />
 	</button>
+
+	<!-- Settings -->
 	<button class="tooltip tooltip-bottom" data-tip="Settings" on:click={handleOpenSettings}>
 		<iconify-icon icon="mdi:settings" />
 	</button>
+
+	<!-- Fullscreen -->
 	<button class="tooltip tooltip-bottom" data-tip="Fullscreen" on:click={toggleFullscreen}>
 		<iconify-icon icon="mdi:fullscreen" />
 	</button>
@@ -119,11 +151,12 @@
 			}
 		}
 
-		a {
+		.request {
 			@apply hover:!no-underline whitespace-nowrap block border-r border-white border-opacity-20 px-4;
+			@apply flex flex-row justify-start items-center gap-2 mr-2;
 		}
 
-		button,
+		button:not(.request),
 		a:not(.request) {
 			@apply btn btn-square btn-link text-white text-2xl;
 		}
