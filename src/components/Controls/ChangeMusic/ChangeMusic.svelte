@@ -1,5 +1,4 @@
 <script lang="ts">
-
 	import fuzzysort from 'fuzzysort';
 
 	import { alphabetical, group } from 'radash';
@@ -19,7 +18,11 @@
 	const dispatch = createEventDispatcher();
 
 	$: results =
-		searchQuery.length === 0 ? stationList : fuzzysort.go(searchQuery, stationList, { key: 'name'}).map((result) => result.obj);
+		searchQuery.length === 0
+			? stationList
+			: fuzzysort
+					.go(searchQuery, stationList, { keys: ['name', 'genre'] })
+					.map((result) => result.obj);
 
 	$: groupedByGenre = group(results, (r) => r.genre);
 
