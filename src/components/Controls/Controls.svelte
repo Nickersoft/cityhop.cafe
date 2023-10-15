@@ -2,8 +2,7 @@
 	import { currentScene, currentTrack, preferences } from '$lib/stores';
 
 	import type { Scene, Track } from '$lib/types';
-
-	import { getRandomLofi } from '$data/stations';
+	import { getRandomLofi } from '$lib/utils';
 
 	import AudioPlayer from './NowPlaying/NowPlaying.svelte';
 	import ChangeMusic from './ChangeMusic';

@@ -1,5 +1,7 @@
-import { Genre, type Track } from "$lib/types";
-import { draw, listify, objectify } from "radash";
+import { listify, objectify } from "radash";
+
+import { Genre } from "$lib/types";
+import { spookyTrackMap } from "./spooky";
 
 const stations = {
   "Bollywood Lofi Radio": {
@@ -145,10 +147,9 @@ const lofiStations = stationList.filter(
   (s) => s.genre === Genre.lofi && s.displayName !== "Bollywood Lofi Radio",
 );
 
-function getRandomLofi() {
-  return draw(lofiStations) as Track;
-}
+const stationMap = {
+  ...objectify(stationList, (station) => station.trackID),
+  ...spookyTrackMap,
+};
 
-const stationMap = objectify(stationList, (station) => station.trackID);
-
-export { getRandomLofi, stationList, stationMap, stations };
+export { lofiStations, stationList, stationMap, stations };

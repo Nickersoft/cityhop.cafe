@@ -4,7 +4,7 @@
 	import { alphabetical, group } from 'radash';
 	import { createEventDispatcher } from 'svelte';
 
-	import { genres as genreEmojis } from '$lib/emojis';
+	import { genres as genreEmojis } from '$data/emojis';
 	import type { Genre } from '$lib/types';
 
 	import { stationList } from '$data/stations';

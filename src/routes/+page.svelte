@@ -1,23 +1,11 @@
 <script lang="ts">
-	import posthog from 'posthog-js';
-
-	import { draw } from 'radash';
-	import { v4 as uuid } from 'uuid';
 	import { onMount } from 'svelte';
 	import { fade, fly, scale } from 'svelte/transition';
 
-	import { currentScene, currentTrack } from '$lib/stores';
-	import { decodeSharableURL, getSpooky, goToRandom } from '$lib/utils';
-
-	import UI from '$components/UI.svelte';
-
-	import { getRandomLofi } from '$data/stations';
-
-	import scenes from '$data/scenes';
-
-	import { page } from '$app/stores';
-
-	import { PUBLIC_PH_TOKEN } from '$env/static/public';
+	import { currentScene, currentTrack, hasStarted, isPlaying } from '$lib/stores';
+	import { decodeSharableURL, getSpooky, goToRandomSceneWithMusic } from '$lib/utils';
+	import { setupHeartbeat } from '$lib/heartbeat';
+	import { setupHotkeys } from '$lib/hotkeys';
 
 	import {
 		DEFAULT_VIDEO_END_OFFSET,
@@ -25,118 +13,44 @@
 		IS_HALLOWEEN
 	} from '$lib/constants';
 
-	let started = false;
-	let playing = false;
+	import UI from '$components/UI.svelte';
 
-	function getDistinctID() {
-		const distinctIDKey = 'distinct-id';
-
-		if (!localStorage.getItem(distinctIDKey)) {
-			localStorage.setItem(distinctIDKey, uuid());
-		}
-
-		return localStorage.getItem(distinctIDKey)!;
-	}
+	import { page } from '$app/stores';
 
 	onMount(() => {
-		const distinctID = getDistinctID();
+		const cleanupHeartbeat = setupHeartbeat();
+		const cleanupHotkeys = setupHotkeys();
 
-		posthog.init(PUBLIC_PH_TOKEN, {
-			api_host: 'https://app.posthog.com',
-			loaded(ph) {
-				ph.identify(distinctID);
-			}
-		});
-
-		function triggerHeartbeat() {
-			return fetch('/api/heartbeat', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					distinctID: distinctID,
-					currentScene: $currentScene,
-					currentTrack: $currentTrack
-				})
-			});
-		}
-
-		const timer = setInterval(triggerHeartbeat, 1000 * 60 * 5 /* 5 minutes */);
-
-		return () => {
-			if (timer) {
-				clearTimeout(timer);
-			}
-		};
-	});
-
-	onMount(() => {
-		function goToRandomScene() {
-			playing = false;
-			$currentScene = draw(scenes)!;
-		}
-
-		function goToRandomSceneWithMusic() {
-			goToRandomScene();
-			$currentTrack = $currentScene?.suggestedTrack ?? getRandomLofi();
-		}
-
-		function handleKeyUp(e: KeyboardEvent) {
-			if (e.key === 'g') {
-				goToRandomSceneWithMusic();
-			} else if (e.key === 'k') {
-				goToRandomScene();
-			} else if (e.key === 'm') {
-				$currentTrack = getRandomLofi();
-			}
-		}
-
-		function start(event: Event) {
-			event.stopPropagation();
-			event.preventDefault();
-			started = true;
-			document.removeEventListener('keyup', start);
-			document.removeEventListener('mouseup', start);
-		}
-
-		document.addEventListener('mouseup', start);
-		document.addEventListener('keyup', start);
-		document.addEventListener('keyup', handleKeyUp);
-
-		return () => {
-			document.removeEventListener('keyup', start);
-			document.removeEventListener('mouseup', start);
-			document.removeEventListener('keyup', handleKeyUp);
-		};
-	});
-
-	onMount(() => {
 		const decodedURL = decodeSharableURL($page.url);
-
+		console.log(decodedURL);
 		if (decodedURL) {
 			$currentScene = decodedURL.scene;
 			$currentTrack = decodedURL.track;
 		} else if (IS_HALLOWEEN) {
 			getSpooky();
 		} else {
-			goToRandom();
+			goToRandomSceneWithMusic(true);
 		}
+
+		return () => {
+			cleanupHeartbeat();
+			cleanupHotkeys();
+		};
 	});
 </script>
 
-{#if !playing}
+{#if !$isPlaying}
 	<div
 		out:fade={{ duration: 2000 }}
 		class="flex justify-center items-center w-full h-full text-white fixed inset-0 z-50 bg-black"
 	>
-		{#key started}
+		{#key $hasStarted}
 			<div
 				out:scale|local={{ start: 0.95, duration: 800 }}
 				in:fly|local={{ y: 10, duration: 800, delay: 100 }}
 				class="absolute text-center -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2"
 			>
-				{#if started}
+				{#if $hasStarted}
 					{#if IS_HALLOWEEN}
 						Happy Halloween...
 					{:else}
@@ -152,9 +66,9 @@
 	</div>
 {/if}
 
-{#if started && $currentScene && $currentTrack}
+{#if $hasStarted && $currentScene && $currentTrack}
 	<UI
-		bind:playing
+		bind:playing={$isPlaying}
 		videoID={$currentScene.videoID}
 		liveAudio={$currentTrack.live}
 		audioID={$currentTrack.trackID}

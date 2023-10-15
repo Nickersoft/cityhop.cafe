@@ -1,4 +1,5 @@
-import { Country, Genre, type Scene, type Track } from "./types";
+import { objectify } from "radash";
+import { Country, Genre, type Scene, type Track } from "../lib/types";
 
 export const spookyScenes: Scene[] = [
   {
@@ -51,3 +52,7 @@ export const spookyTracks: Track[] = [
     live: false,
   },
 ];
+
+export const spookySceneMap = objectify(spookyScenes, (scene) => scene.videoID);
+
+export const spookyTrackMap = objectify(spookyTracks, (track) => track.trackID);

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { alphabetical } from 'radash';
 
-	import { flags } from '$lib/emojis';
+	import { flags } from '$data/emojis';
 	import type { Scene, Country } from '$lib/types';
 
 	import { Section } from '../SearchScreen';

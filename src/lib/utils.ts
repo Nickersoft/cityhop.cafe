@@ -1,13 +1,13 @@
 import { get } from "svelte/store";
 import { draw } from "radash";
 
-import { currentScene, currentTrack } from "./stores";
+import { currentScene, currentTrack, isPlaying } from "./stores";
 
 import scenes, { sceneMap } from "$data/scenes";
-import { getRandomLofi, stationMap } from "$data/stations";
+import { lofiStations, stationMap } from "$data/stations";
 
-import { spookyScenes, spookyTracks } from "./spooky";
-import { Genre } from "./types";
+import { spookyScenes, spookyTracks } from "../data/spooky";
+import { Genre, type Track } from "./types";
 
 export function getSpooky() {
   const scene = draw(spookyScenes)!;
@@ -17,17 +17,29 @@ export function getSpooky() {
   currentTrack.set(track);
 }
 
-export function goToRandom() {
-  const calmScenes = scenes.filter(
-    (b) =>
-      !b.suggestedTrack ||
-      [Genre.jazz, Genre.lofi].includes(b.suggestedTrack.genre),
-  );
+export function getRandomLofi() {
+  return draw(lofiStations) as Track;
+}
 
-  const randomScene = draw(calmScenes)!;
+export function goToRandomScene(calmOnly = false) {
+  let candidates = scenes;
 
-  currentScene.set(randomScene);
-  currentTrack.set(randomScene.suggestedTrack ?? getRandomLofi());
+  isPlaying.set(false);
+
+  if (calmOnly) {
+    candidates = candidates.filter(
+      (b) =>
+        !b.suggestedTrack ||
+        [Genre.jazz, Genre.lofi].includes(b.suggestedTrack.genre),
+    );
+  }
+
+  currentScene.set(draw(candidates)!);
+}
+
+export function goToRandomSceneWithMusic(calmOnly: boolean = false) {
+  goToRandomScene(calmOnly);
+  currentTrack.set(get(currentScene)?.suggestedTrack ?? getRandomLofi());
 }
 
 export function getSharableURL(url: URL) {

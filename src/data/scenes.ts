@@ -1,17 +1,20 @@
-import { Genre } from '$lib/types';
+import { Genre } from "$lib/types";
 
-import drives, { driveMap } from './drives';
-import walks, { walkMap } from './walks';
+import drives, { driveMap } from "./drives";
+import { spookySceneMap } from "./spooky";
+import walks, { walkMap } from "./walks";
 
 const scenes = [...walks, ...drives];
 
 export default scenes;
 
 export const sceneMap = {
-	...walkMap,
-	...driveMap
+  ...walkMap,
+  ...driveMap,
+  ...spookySceneMap,
 };
 
 export const calmScenes = scenes.filter((b) => {
-	return !b.suggestedTrack || [Genre.jazz, Genre.classical, Genre.lofi].includes(b.suggestedTrack.genre);
+  return !b.suggestedTrack ||
+    [Genre.jazz, Genre.classical, Genre.lofi].includes(b.suggestedTrack.genre);
 });

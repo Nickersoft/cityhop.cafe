@@ -1,6 +1,7 @@
-import { Country, Genre } from "./types";
+import { Country, Genre } from "../lib/types";
 
 export const flags: Record<Country, string> = {
+  [Country.redacted]: "",
   [Country.korea]: "🇰🇷",
   [Country.us]: "🇺🇸",
   [Country.china]: "🇨🇳",
