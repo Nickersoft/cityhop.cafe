@@ -19,7 +19,11 @@
 	let searchQuery: string = '';
 
 	$: results =
-		searchQuery.length === 0 ? scenes : fuzzysort.go(searchQuery, scenes, { keys: ['name', 'category']}).map((result) => result.obj);
+		searchQuery.length === 0
+			? scenes
+			: fuzzysort
+					.go(searchQuery, scenes, { keys: ['name', 'country', 'category'] })
+					.map((result) => result.obj);
 
 	$: filteredResults = results.filter((r) => r.type === selectedCategory);
 
