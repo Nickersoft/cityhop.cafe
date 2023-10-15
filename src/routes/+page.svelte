@@ -7,18 +7,23 @@
 	import { fade, fly, scale } from 'svelte/transition';
 
 	import { currentScene, currentTrack } from '$lib/stores';
-	import { decodeSharableURL } from '$lib/utils';
+	import { decodeSharableURL, getSpooky, goToRandom } from '$lib/utils';
 
 	import UI from '$components/UI.svelte';
 
 	import { getRandomLofi } from '$data/stations';
+
 	import scenes from '$data/scenes';
 
 	import { page } from '$app/stores';
 
 	import { PUBLIC_PH_TOKEN } from '$env/static/public';
-	import { Genre } from '$lib/types';
-	import { DEFAULT_VIDEO_END_OFFSET, DEFAULT_VIDEO_START_OFFSET } from '$lib/constants';
+
+	import {
+		DEFAULT_VIDEO_END_OFFSET,
+		DEFAULT_VIDEO_START_OFFSET,
+		IS_HALLOWEEN
+	} from '$lib/constants';
 
 	let started = false;
 	let playing = false;
@@ -112,12 +117,10 @@
 		if (decodedURL) {
 			$currentScene = decodedURL.scene;
 			$currentTrack = decodedURL.track;
+		} else if (IS_HALLOWEEN) {
+			getSpooky();
 		} else {
-			const calmScenes = scenes.filter((b) => {
-				return !b.suggestedTrack || [Genre.jazz, Genre.lofi].includes(b.suggestedTrack.genre);
-			});
-			$currentScene = draw(calmScenes)!;
-			$currentTrack = $currentScene.suggestedTrack ?? getRandomLofi();
+			goToRandom();
 		}
 	});
 </script>
@@ -134,7 +137,11 @@
 				class="absolute text-center -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2"
 			>
 				{#if started}
-					Let's go...
+					{#if IS_HALLOWEEN}
+						Happy Halloween...
+					{:else}
+						Let's go...
+					{/if}
 
 					<div class="loader" />
 				{:else}
