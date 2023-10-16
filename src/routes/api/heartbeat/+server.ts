@@ -23,9 +23,9 @@ export const POST: RequestHandler = async ({ getClientAddress, request }) => {
   ph.capture({
     distinctId: body.distinctID,
     event: "heartbeat",
+    disableGeoip: false,
     properties: {
       "$ip": getClientAddress(),
-      "$geoip_disable": false,
       currentScene: body.currentScene,
       currentTrack: body.currentTrack,
     },
