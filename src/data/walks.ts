@@ -192,6 +192,13 @@ const walks: Omit<Scene, "type">[] = [
     country: Country.austria,
   },
   {
+    name: "Bengaluru",
+    videoID: "2YJYJMtVTLc",
+    tags: ["day"],
+    country: Country.india,
+    suggestedTrack: stations["Bollywood Lofi Radio"],
+  },
+  {
     name: "Pangyo",
     videoID: "9Qti5sAFtHQ",
     tags: ["day"],

@@ -382,6 +382,13 @@ const drives = [
     country: Country.korea,
   },
   {
+    name: "Bengaluru",
+    videoID: "Guu6shSEbp8",
+    tags: ["day"],
+    country: Country.india,
+    suggestedTrack: stations["Bollywood Lofi Radio"],
+  },
+  {
     name: "Busan",
     videoID: "XPRqAkL7Kfk",
     tags: ["night"],
