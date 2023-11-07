@@ -6,12 +6,22 @@ import { currentScene, currentTrack, isPlaying } from "./stores";
 import scenes, { sceneMap } from "$data/scenes";
 import { lofiStations, stationMap } from "$data/stations";
 
-import { spookyScenes, spookyTracks } from "../data/spooky";
+import { spookyScenes, spookyTracks } from "$data/spooky";
+import { xmasScenes, xmasTracks } from "$data/christmas";
+
 import { Genre, type Track } from "./types";
 
 export function getSpooky() {
   const scene = draw(spookyScenes)!;
   const track = draw(spookyTracks)!;
+
+  currentScene.set(scene);
+  currentTrack.set(track);
+}
+
+export function getXmas() {
+  const scene = draw(xmasScenes)!;
+  const track = draw(xmasTracks)!;
 
   currentScene.set(scene);
   currentTrack.set(track);

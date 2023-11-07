@@ -747,6 +747,13 @@ const walks: Omit<Scene, "type">[] = [
     offset: { start: 60 },
     country: Country.peru,
   },
+  {
+    name: "Central Park",
+    videoID: "kGJr1Nh-1CY",
+    tags: ["snow", "day"],
+    offset: { start: 120 },
+    country: Country.us,
+  },
 ];
 
 const mappedWalks = walks.map((scene) => ({

@@ -7,8 +7,8 @@
 	import { page } from '$app/stores';
 
 	import { currentScene, currentTrack } from '$lib/stores';
-	import { getSharableURL, getSpooky } from '$lib/utils';
-	import { IS_OCTOBER } from '$lib/constants';
+	import { getSharableURL, getSpooky, getXmas } from '$lib/utils';
+	import { IS_DECEMBER, IS_OCTOBER } from '$lib/constants';
 
 	import Alert from '$components/Alert.svelte';
 
@@ -51,7 +51,7 @@
 
 		${url}`.trim();
 
-		window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`, '_blank');
+		window.open(`https://x.com/intent/tweet?text=${encodeURIComponent(tweet)}`, '_blank');
 	}
 
 	function toggleFullscreen() {
@@ -96,6 +96,11 @@
 		<button class="request text-orange-200 !opacity-100" on:click={getSpooky}>
 			<iconify-icon icon="mdi:ghost" />
 			Get Spooky
+		</button>
+	{:else if IS_DECEMBER}
+		<button class="request text-green-200 !opacity-100" on:click={getXmas}>
+			<iconify-icon icon="mdi:snowflake" />
+			Get Festive
 		</button>
 	{:else}
 		<a class="request" rel="noreferrer noopener" href={bacLink}> Support CityHop </a>

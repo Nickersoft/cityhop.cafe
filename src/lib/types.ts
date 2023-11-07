@@ -65,6 +65,7 @@ export enum Country {
   egypt = "Egypt",
   scotland = "Scotland",
   switzerland = "Switzerland",
+  hungary = "Hungary",
   redacted = "█████",
 }
 

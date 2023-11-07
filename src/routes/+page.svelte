@@ -3,13 +3,14 @@
 	import { fade, fly, scale } from 'svelte/transition';
 
 	import { currentScene, currentTrack, hasStarted, isPlaying } from '$lib/stores';
-	import { decodeSharableURL, getSpooky, goToRandomSceneWithMusic } from '$lib/utils';
+	import { decodeSharableURL, getSpooky, getXmas, goToRandomSceneWithMusic } from '$lib/utils';
 	import { setupHeartbeat } from '$lib/heartbeat';
 	import { setupHotkeys } from '$lib/hotkeys';
 
 	import {
 		DEFAULT_VIDEO_END_OFFSET,
 		DEFAULT_VIDEO_START_OFFSET,
+		IS_CHRISTMAS,
 		IS_HALLOWEEN
 	} from '$lib/constants';
 
@@ -28,6 +29,8 @@
 			$currentTrack = decodedURL.track;
 		} else if (IS_HALLOWEEN) {
 			getSpooky();
+		} else if (IS_CHRISTMAS) {
+			getXmas();
 		} else {
 			goToRandomSceneWithMusic(true);
 		}
@@ -53,6 +56,8 @@
 				{#if $hasStarted}
 					{#if IS_HALLOWEEN}
 						Happy Halloween...
+					{:else if IS_CHRISTMAS}
+						Merry Christmas!
 					{:else}
 						Let's go...
 					{/if}
