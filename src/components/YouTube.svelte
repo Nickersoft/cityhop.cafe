@@ -28,7 +28,9 @@
 	let player: YouTubePlayer; // player API instance
 
 	// Create and tear down player as component mounts or unmounts
-	onMount(() => createPlayer());
+	onMount(async () => {
+		await createPlayer();
+	});
 
 	// Update videoId and load new video if URL changes
 	$: play(videoId);

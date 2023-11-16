@@ -27,6 +27,9 @@ export interface Scene {
   suggestedTrack?: Track;
   offset?: Offset;
   country: Country;
+  // Used to better determine a good starting point
+  // Not required
+  length?: number;
 }
 
 export enum Country {
@@ -39,6 +42,7 @@ export enum Country {
   monaco = "Monaco",
   jordan = "Jordan",
   france = "France",
+  mauritius = "Mauritius",
   czechRepublic = "Czech Republic",
   uk = "England",
   germany = "Germany",

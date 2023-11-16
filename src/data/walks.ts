@@ -748,6 +748,13 @@ const walks: Omit<Scene, "type">[] = [
     country: Country.peru,
   },
   {
+    name: "Port Louis",
+    videoID: "PcP5XiZX1CY",
+    tags: ["day"],
+    country: Country.mauritius,
+    length: 1800,
+  },
+  {
     name: "Central Park",
     videoID: "kGJr1Nh-1CY",
     tags: ["snow", "day"],

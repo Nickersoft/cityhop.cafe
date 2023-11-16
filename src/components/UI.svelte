@@ -14,6 +14,7 @@
 	export let audioID: string;
 	export let liveAudio: boolean = true;
 	export let videoOffset: Required<Offset>;
+	export let videoLength: number | undefined;
 
 	let backgroundPlayer: YouTubePlayer;
 	let audioPlayer: YouTubePlayer;
@@ -70,7 +71,10 @@
 		};
 	});
 
-	$: randomOffset = random(videoOffset.start ?? 0, videoOffset.start + 1800);
+	// Default to 30 min
+	$: offsetLength = videoLength ? videoLength - videoOffset.end - videoOffset.start : 1800;
+
+	$: randomOffset = random(videoOffset.start ?? 0, videoOffset.start + offsetLength);
 
 	$: backgroundPlayer &&
 		backgroundPlayer.setVolume($preferences.muteScene ? 0 : $preferences.sceneVolume);
