@@ -2,5 +2,11 @@
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
 	"extends": ["config:base"],
 	"updateLockFiles": true,
-	"automerge": true
+	"automerge": true,
+  "packageRules": [
+    {
+      "matchPackageNames": ["vite"],
+      "enabled": false
+    }
+  ]
 }
