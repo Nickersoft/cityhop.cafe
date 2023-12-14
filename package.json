@@ -16,7 +16,7 @@
   "devDependencies": {
     "@playwright/test": "^1.40.0",
     "@sveltejs/adapter-auto": "^2.1.1",
-    "@sveltejs/kit": "^1.27.6",
+    "@sveltejs/kit": "^2.0.0",
     "@types/uuid": "^9.0.7",
     "@types/youtube-player": "^5.5.11",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
