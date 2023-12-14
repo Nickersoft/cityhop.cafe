@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.40.0",
-    "@sveltejs/adapter-auto": "^2.1.1",
+    "@sveltejs/adapter-auto": "^3.0.0",
     "@sveltejs/kit": "^1.27.6",
     "@types/uuid": "^9.0.7",
     "@types/youtube-player": "^5.5.11",
