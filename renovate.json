@@ -6,7 +6,7 @@
   "packageRules": [
     {
       "matchPackageNames": ["vite"],
-      "enabled": false
+      "updateTypes": ["minor", "patch"]
     }
   ]
 }
