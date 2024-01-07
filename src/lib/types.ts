@@ -1,4 +1,7 @@
-export type Tag = 'snow' | 'fog' | 'rain' | 'morning' | 'night' | 'day' | 'evening';
+import type { Provinces } from '$data/provinces';
+import type { States } from '$data/states';
+import type { Tags } from '$data/tags';
+import type { SceneTypes } from '$data/types';
 
 export interface Track {
 	name: string;
@@ -12,59 +15,30 @@ export interface Offset {
 	end?: number;
 }
 
+export interface Continent {
+	name: string;
+	countries: Country[];
+}
+
+export type Country = SceneGroup & {
+	emoji: string;
+};
+
+export interface SceneGroup {
+	name: string;
+	scenes: (Scene | SceneGroup)[];
+}
+
 export interface Scene {
 	name: string;
-	type: 'walk' | 'drive';
+	type: SceneTypes;
 	videoID: string;
-	tags?: Tag[];
+	tags?: Tags[];
 	suggestedTrack?: Track;
 	offset?: Offset;
-	country: Country;
 	// Used to better determine a good starting point
 	// Not required
 	length?: number;
-}
-
-export enum Country {
-	korea = 'South Korea',
-	brazil = 'Brazil',
-	us = 'United States',
-	canada = 'Canada',
-	turkey = 'Turkey',
-	vietnam = 'Vietnam',
-	china = 'China',
-	monaco = 'Monaco',
-	jordan = 'Jordan',
-	france = 'France',
-	mauritius = 'Mauritius',
-	czechRepublic = 'Czech Republic',
-	uk = 'England',
-	germany = 'Germany',
-	austria = 'Austria',
-	australia = 'Australia',
-	ghana = 'Ghana',
-	russia = 'Russia',
-	romania = 'Romania',
-	ukraine = 'Ukraine',
-	netherlands = 'Netherlands',
-	spain = 'Spain',
-	taiwan = 'Taiwan',
-	lebanon = 'Lebanon',
-	japan = 'Japan',
-	singapore = 'Singapore',
-	peru = 'Peru',
-	southAfrica = 'South Africa',
-	india = 'India',
-	uae = 'United Arab Emirates',
-	italy = 'Italy',
-	serbia = 'Serbia',
-	mexico = 'Mexico',
-	thailand = 'Thailand',
-	egypt = 'Egypt',
-	scotland = 'Scotland',
-	switzerland = 'Switzerland',
-	hungary = 'Hungary',
-	redacted = '█████'
 }
 
 export enum Genre {
