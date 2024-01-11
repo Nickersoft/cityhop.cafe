@@ -1,15 +1,12 @@
 <script lang="ts">
+	import { stationList } from '$data/stations';
+	// import { genres as genreEmojis } from '$data/emojis';
+	import type { Genre } from '$lib/types';
 	import fuzzysort from 'fuzzysort';
-
 	import { alphabetical, group } from 'radash';
 	import { createEventDispatcher } from 'svelte';
 
-	import { genres as genreEmojis } from '$data/emojis';
-	import type { Genre } from '$lib/types';
-
-	import { stationList } from '$data/stations';
-
-	import SearchScreen, { Section, ListItem } from '../SearchScreen';
+	import SearchScreen, { ListItem, Section } from '../SearchScreen';
 
 	export let open: boolean = false;
 
@@ -33,7 +30,7 @@
 	{#each genres as genre}
 		<Section>
 			<svelte:fragment slot="header">
-				{genreEmojis[genre]}
+				<!-- {genreEmojis[genre]} -->
 				<span class="opacity-50">
 					{genre}
 				</span>

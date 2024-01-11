@@ -5,5 +5,7 @@ export enum Tags {
 	morning,
 	night,
 	day,
-	evening
+	evening,
+	halloween,
+	christmas
 }

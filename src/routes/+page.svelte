@@ -1,22 +1,18 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { fade, fly, scale } from 'svelte/transition';
-
-	import { currentScene, currentTrack, hasStarted, isPlaying } from '$lib/stores';
-	import { decodeSharableURL, getSpooky, getXmas, goToRandomSceneWithMusic } from '$lib/utils';
-	import { setupHeartbeat } from '$lib/heartbeat';
-	import { setupHotkeys } from '$lib/hotkeys';
-
+	import { page } from '$app/stores';
+	import UI from '$components/UI.svelte';
 	import {
 		DEFAULT_VIDEO_END_OFFSET,
 		DEFAULT_VIDEO_START_OFFSET,
 		IS_CHRISTMAS,
 		IS_HALLOWEEN
 	} from '$lib/constants';
-
-	import UI from '$components/UI.svelte';
-
-	import { page } from '$app/stores';
+	import { setupHeartbeat } from '$lib/heartbeat';
+	import { setupHotkeys } from '$lib/hotkeys';
+	import { currentScene, currentStation, hasStarted, isPlaying } from '$lib/stores';
+	import { decodeSharableURL, getSpooky, getXmas, goToRandomSceneWithMusic } from '$lib/utils';
+	import { onMount } from 'svelte';
+	import { fade, fly, scale } from 'svelte/transition';
 
 	onMount(() => {
 		const cleanupHeartbeat = setupHeartbeat();
@@ -26,7 +22,7 @@
 
 		if (decodedURL) {
 			$currentScene = decodedURL.scene;
-			$currentTrack = decodedURL.track;
+			$currentStation = decodedURL.track;
 		} else if (IS_HALLOWEEN) {
 			getSpooky();
 		} else if (IS_CHRISTMAS) {
@@ -71,12 +67,13 @@
 	</div>
 {/if}
 
-{#if $hasStarted && $currentScene && $currentTrack}
+{#if $hasStarted && $currentScene && $currentStation}
 	<UI
 		bind:playing={$isPlaying}
 		videoID={$currentScene.videoID}
-		liveAudio={$currentTrack.live}
-		audioID={$currentTrack.trackID}
+		videoLength={$currentScene.length}
+		liveAudio={$currentStation.live}
+		audioID={$currentStation.trackID}
 		videoOffset={{
 			start: $currentScene.offset?.start ?? DEFAULT_VIDEO_START_OFFSET,
 			end: $currentScene.offset?.end ?? DEFAULT_VIDEO_END_OFFSET

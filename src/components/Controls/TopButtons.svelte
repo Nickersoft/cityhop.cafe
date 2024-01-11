@@ -1,16 +1,12 @@
 <script lang="ts">
+	import { page } from '$app/stores';
+	import Alert from '$components/Alert.svelte';
+	import { IS_DECEMBER, IS_OCTOBER } from '$lib/constants';
+	import { currentScene, currentStation } from '$lib/stores';
+	import { getSharableURL, getSpooky, getXmas } from '$lib/utils';
 	import copy from 'copy-to-clipboard';
-
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
-
-	import { page } from '$app/stores';
-
-	import { currentScene, currentTrack } from '$lib/stores';
-	import { getSharableURL, getSpooky, getXmas } from '$lib/utils';
-	import { IS_DECEMBER, IS_OCTOBER } from '$lib/constants';
-
-	import Alert from '$components/Alert.svelte';
 
 	let visitorCount: number;
 
@@ -47,7 +43,7 @@
 
 		const tweet = `Come ${$currentScene.type} in #${createHashtag(
 			$currentScene.name
-		)} with me and chill! 🎧 #cityhop #${createHashtag($currentTrack.genre.toLowerCase())} 
+		)} with me and chill! 🎧 #cityhop #${createHashtag($currentStation.genre.toLowerCase())} 
 
 		${url}`.trim();
 

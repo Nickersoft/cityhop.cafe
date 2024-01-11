@@ -1,43 +1,84 @@
 <script lang="ts">
-	import { group } from 'radash';
-
+	// import scenes from '$data/scenes';
+	import { continents, scenes } from '$data/scenes';
+	import { currentScene, preferences } from '$lib/stores';
+	import type { Continent, Country, Scene, SceneGroup } from '$lib/types';
+	import { getVideoThumbnail } from '$lib/utils';
 	import fuzzysort from 'fuzzysort';
+	import { get, group } from 'radash';
+	import { createEventDispatcher } from 'svelte';
+	import { scale } from 'svelte/transition';
 
-	import type { Country } from '$lib/types';
-
-	import scenes from '$data/scenes';
-
-	import CountrySection from './CountrySection.svelte';
-	import CategorySelection from './CategorySelection.svelte';
 	import SearchScreen from '../SearchScreen';
-	import { preferences } from '$lib/stores';
+	import type { Item } from './SearchResults.svelte';
+	import SearchResults from './SearchResults.svelte';
 
 	export let open: boolean;
+
+	const dispatch = createEventDispatcher();
 
 	let selectedCategory: 'walk' | 'drive' = 'walk';
 
 	let searchQuery: string = '';
 
+	let path: string[] = [];
+
+	$: {
+		if (!open) {
+			path = [];
+		}
+	}
+
+	$: disableTransitions = searchQuery.length > 0;
+
 	$: results =
 		searchQuery.length === 0
-			? scenes
+			? (get(continents, path.join('')) as Item[])
 			: fuzzysort
 					.go(searchQuery, scenes, { keys: ['name', 'country', 'category'] })
 					.map((result) => result.obj);
 
-	$: filteredResults = results.filter((r) => r.type === selectedCategory);
+	// $: filteredResults = results.filter((r) => r.type === selectedCategory);
 
-	$: groupedBackgrounds = group(filteredResults, (r) => r.country);
+	// $: groupedBackgrounds = group(filteredResults, (r) => r.country);
 
-	$: countries = Object.keys(groupedBackgrounds).sort() as Country[];
+	let transitionDirection: 'forward' | 'backward' = 'forward';
+
+	// $: countries = Object.keys(groupedBackgrounds).sort() as Country[];
+	function handleClick(e: CustomEvent<{ index: number; item: Item }>) {
+		const { item, index } = e.detail;
+
+		transitionDirection = 'forward';
+
+		if ('scenes' in item) {
+			path = [...path, `[${index}].scenes`];
+		} else if ('countries' in item) {
+			path = [...path, `[${index}].countries`];
+		} else {
+			dispatch('select', item);
+		}
+	}
+
+	const numberFormatter = Intl.NumberFormat();
 </script>
 
-<SearchScreen placeholder="Search places" bind:searchQuery bind:open>
-	<CategorySelection slot="aside" bind:selectedCategory />
+<SearchScreen
+	on:back={() => {
+		transitionDirection = 'backward';
+		path = path.slice(0, -1);
+	}}
+	showBack={path.length > 0}
+	placeholder={`Search ${numberFormatter.format(scenes.length)} locations around the globe`}
+	bind:searchQuery
+	bind:open
+>
+	<!-- <CategorySelection slot="aside" bind:selectedCategory /> -->
 
-	{#each countries as country}
+	<SearchResults {disableTransitions} {results} {transitionDirection} on:click={handleClick} />
+
+	<!-- {#each countries as country}
 		<CountrySection on:select {country} backgrounds={groupedBackgrounds[country]?.sort() ?? []} />
-	{/each}
+	{/each} -->
 
 	<div slot="bottom" class="flex mt-4 flex-row gap-2 text-sm text-opacity-75 text-white">
 		<input bind:checked={$preferences.preserveAudio} type="checkbox" class="toggle toggle-sm" />

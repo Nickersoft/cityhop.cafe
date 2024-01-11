@@ -1,16 +1,15 @@
 <script lang="ts">
-	import { currentScene, currentTrack, preferences } from '$lib/stores';
-
-	import type { Scene, Track } from '$lib/types';
+	import { currentScene, currentStation, preferences } from '$lib/stores';
+	import type { Scene, Station } from '$lib/types';
 	import { getRandomLofi } from '$lib/utils';
 
-	import AudioPlayer from './NowPlaying/NowPlaying.svelte';
+	import About from './About';
 	import ChangeMusic from './ChangeMusic';
 	import ChangeScene from './ChangeScene';
-	import Settings from './Settings';
 	import CurrentScene from './CurrentScene.svelte';
+	import AudioPlayer from './NowPlaying/NowPlaying.svelte';
+	import Settings from './Settings';
 	import TopButtons from './TopButtons.svelte';
-	import About from './About';
 
 	let isSettingsOpen = false;
 	let isChangeSceneShowing = false;
@@ -33,14 +32,14 @@
 		$currentScene = event.detail;
 
 		if (!$preferences.preserveAudio) {
-			$currentTrack = $currentScene.suggestedTrack ?? getRandomLofi();
+			$currentStation = $currentScene.suggestedTrack ?? getRandomLofi();
 		}
 
 		isChangeSceneShowing = false;
 	}
 
-	function handleMusicChange(event: CustomEvent & { detail: Track }) {
-		$currentTrack = event.detail;
+	function handleMusicChange(event: CustomEvent & { detail: Station }) {
+		$currentStation = event.detail;
 		isChangeMusicShowing = false;
 	}
 

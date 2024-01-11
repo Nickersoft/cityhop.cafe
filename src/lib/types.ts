@@ -1,12 +1,12 @@
-import type { Provinces } from '$data/provinces';
-import type { States } from '$data/states';
+import type { Genres } from '$data/genres';
+import type { SceneTypes } from '$data/scene-types';
 import type { Tags } from '$data/tags';
-import type { SceneTypes } from '$data/types';
 
-export interface Track {
+export interface Station {
 	name: string;
+	displayName?: string;
 	trackID: string;
-	genre: Genre;
+	genre: Genres;
 	live: boolean;
 }
 
@@ -17,6 +17,7 @@ export interface Offset {
 
 export interface Continent {
 	name: string;
+	hidden?: boolean;
 	countries: Country[];
 }
 
@@ -26,6 +27,7 @@ export type Country = SceneGroup & {
 
 export interface SceneGroup {
 	name: string;
+	previewID?: string;
 	scenes: (Scene | SceneGroup)[];
 }
 
@@ -34,18 +36,10 @@ export interface Scene {
 	type: SceneTypes;
 	videoID: string;
 	tags?: Tags[];
-	suggestedTrack?: Track;
+	hidden?: boolean;
+	suggestedTrack?: Station;
 	offset?: Offset;
 	// Used to better determine a good starting point
 	// Not required
 	length?: number;
-}
-
-export enum Genre {
-	pop = 'Pop',
-	jazz = 'Jazz',
-	lofi = 'Lofi',
-	rnb = 'R&B',
-	classical = 'Classical',
-	electronic = 'Electronic'
 }
