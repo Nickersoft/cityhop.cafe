@@ -4,5 +4,6 @@ import australia from './australia';
 
 export default {
 	name: 'Oceania',
+	emoji: 'globe-showing-asia-australia',
 	countries: [australia]
 } satisfies Continent;

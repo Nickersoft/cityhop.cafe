@@ -17,6 +17,7 @@ import ukraine from './ukraine';
 
 export default {
 	name: 'Europe',
+	emoji: 'globe-showing-europe-africa',
 	countries: [
 		austria,
 		czechia,

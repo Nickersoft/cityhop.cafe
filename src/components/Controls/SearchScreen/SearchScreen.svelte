@@ -43,14 +43,13 @@
 						class="opacity-50 text-3xl transition-opacity duration-150"
 						icon="mdi:search"
 					/>
-					<!-- svelte-ignore a11y-autofocus -->
+
 					<input
 						on:keyup|stopPropagation
 						bind:value={searchQuery}
 						type="text"
 						class="w-full outline-none bg-transparent"
 						{placeholder}
-						autofocus
 					/>
 				</div>
 

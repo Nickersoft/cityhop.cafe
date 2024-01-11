@@ -5,7 +5,7 @@ import type { Country } from '$lib/types';
 
 export default {
 	name: 'Taiwan',
-	emoji: '🇹🇼',
+	emoji: 'flag',
 	scenes: [
 		{
 			name: 'Taipei',

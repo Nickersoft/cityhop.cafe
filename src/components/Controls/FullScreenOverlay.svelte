@@ -40,7 +40,7 @@
 
 <style lang="postcss">
 	.bg {
-		@apply fixed z-[1000] inset-0 backdrop-blur-sm;
+		@apply fixed z-[9999] inset-0 backdrop-blur-sm;
 		background-image: radial-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.95) 100%);
 	}
 </style>

@@ -4,8 +4,8 @@ import { Tags } from '$data/tags';
 import type { Country } from '$lib/types';
 
 export default {
-	name: 'Korea',
-	emoji: '🇰🇷',
+	name: 'South Korea',
+	emoji: 'flag',
 	scenes: [
 		{
 			name: 'Seoul',

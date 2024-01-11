@@ -12,6 +12,7 @@
 	import SearchScreen from '../SearchScreen';
 	import type { Item } from './SearchResults.svelte';
 	import SearchResults from './SearchResults.svelte';
+	import { getFlagEmoji } from './utils';
 
 	export let open: boolean;
 
@@ -44,11 +45,17 @@
 
 	let transitionDirection: 'forward' | 'backward' = 'forward';
 
+	let emoji: string | undefined = undefined;
+
 	// $: countries = Object.keys(groupedBackgrounds).sort() as Country[];
 	function handleClick(e: CustomEvent<{ index: number; item: Item }>) {
 		const { item, index } = e.detail;
 
 		transitionDirection = 'forward';
+
+		if ('emoji' in item) {
+			emoji = item.emoji === 'flag' ? getFlagEmoji(item.name) : emoji;
+		}
 
 		if ('scenes' in item) {
 			path = [...path, `[${index}].scenes`];
@@ -74,7 +81,13 @@
 >
 	<!-- <CategorySelection slot="aside" bind:selectedCategory /> -->
 
-	<SearchResults {disableTransitions} {results} {transitionDirection} on:click={handleClick} />
+	<SearchResults
+		{emoji}
+		{disableTransitions}
+		{results}
+		{transitionDirection}
+		on:click={handleClick}
+	/>
 
 	<!-- {#each countries as country}
 		<CountrySection on:select {country} backgrounds={groupedBackgrounds[country]?.sort() ?? []} />

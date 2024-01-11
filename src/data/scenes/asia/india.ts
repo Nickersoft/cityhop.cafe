@@ -5,48 +5,38 @@ import type { Country } from '$lib/types';
 
 export default {
 	name: 'India',
-	emoji: '🇮🇳',
+	emoji: 'flag',
 	scenes: [
 		{
-			name: 'Mumbai',
-			scenes: [
-				{
-					name: 'Mumbai',
-					type: SceneTypes.drive,
-					videoID: '0o8PlX0JUn0',
-					offset: { start: 28 },
-					tags: [Tags.night],
-					suggestedTrack: stations['Bollywood Lofi Radio']
-				},
-				{
-					name: 'Mumbai',
-					type: SceneTypes.walk,
-					videoID: '8W4ZTX1z02E',
-					offset: { start: 120 },
-					tags: [Tags.day, Tags.night],
-					suggestedTrack: stations['Bollywood Lofi Radio']
-				}
-			]
+			name: 'Kolkata',
+			type: SceneTypes.walk,
+			videoID: '7Kzfz86esI0',
+			offset: { start: 10 },
+			tags: [Tags.day],
+			suggestedTrack: stations['Bollywood Lofi Radio']
 		},
 		{
 			name: 'Kolkata',
-			scenes: [
-				{
-					name: 'Kolkata',
-					type: SceneTypes.walk,
-					videoID: '7Kzfz86esI0',
-					offset: { start: 10 },
-					tags: [Tags.day],
-					suggestedTrack: stations['Bollywood Lofi Radio']
-				},
-				{
-					name: 'Kolkata',
-					type: SceneTypes.drive,
-					videoID: '6iG9PpV20_U',
-					tags: [Tags.day],
-					suggestedTrack: stations['Bollywood Lofi Radio']
-				}
-			]
+			type: SceneTypes.drive,
+			videoID: '6iG9PpV20_U',
+			tags: [Tags.day],
+			suggestedTrack: stations['Bollywood Lofi Radio']
+		},
+		{
+			name: 'Mumbai',
+			type: SceneTypes.drive,
+			videoID: '0o8PlX0JUn0',
+			offset: { start: 28 },
+			tags: [Tags.night],
+			suggestedTrack: stations['Bollywood Lofi Radio']
+		},
+		{
+			name: 'Mumbai',
+			type: SceneTypes.walk,
+			videoID: '8W4ZTX1z02E',
+			offset: { start: 120 },
+			tags: [Tags.day, Tags.night],
+			suggestedTrack: stations['Bollywood Lofi Radio']
 		},
 		{
 			name: 'Delhi',

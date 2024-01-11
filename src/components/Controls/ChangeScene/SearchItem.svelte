@@ -7,9 +7,10 @@
 
 <script lang="ts">
 	import { getVideoThumbnail } from '$lib/utils';
-	import { draw } from 'radash';
+	import { dash, draw } from 'radash';
 
 	export let item: Item;
+	export let emoji: string | undefined = undefined;
 
 	function getThumbnail(_item: Item) {
 		if ('videoID' in _item) {
@@ -24,21 +25,43 @@
 			return getThumbnail(draw(_item.scenes)!);
 		}
 	}
+
+	let icon: string | undefined = undefined;
+
+	$: {
+		if ('emoji' in item) {
+			if (item.emoji === 'flag') {
+				icon = `twemoji:flag-${dash(item.name)}`;
+			} else {
+				icon = `twemoji:${item.emoji}`;
+			}
+		} else if (emoji) {
+			icon = `twemoji:${emoji}`;
+		}
+	}
 </script>
 
 <button
 	on:click|stopPropagation
 	class="flex cursor-pointer rounded-2xl p-4 hover:bg-white/10 transition-colors duration-300 ease-in-out items-start gap-4 justify-start flex-col"
 >
-	<img
-		loading="lazy"
-		decoding="async"
-		src={getThumbnail(item)}
-		class="w-full h-48 rounded-xl object-cover"
-		alt={item.name}
-	/>
+	<div class="w-full h-48">
+		<img
+			loading="lazy"
+			decoding="async"
+			src={getThumbnail(item)}
+			width="480"
+			height="360"
+			class="rounded-xl w-full h-full object-center object-cover"
+			alt={item.name}
+		/>
+	</div>
 
 	<div class="flex flex-row gap-2 px-1 items-center">
+		{#if icon}
+			<iconify-icon {icon} />
+		{/if}
+
 		<p>{item.name}</p>
 
 		{#if 'tags' in item}

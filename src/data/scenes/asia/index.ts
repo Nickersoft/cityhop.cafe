@@ -16,6 +16,7 @@ import vietnam from './vietnam';
 
 export default {
 	name: 'Asia',
+	emoji: 'globe-showing-asia-australia',
 	countries: [
 		china,
 		india,

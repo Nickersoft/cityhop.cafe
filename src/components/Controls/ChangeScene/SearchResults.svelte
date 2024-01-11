@@ -7,7 +7,7 @@
 <script lang="ts">
 	import { SceneTypes } from '$data/scene-types';
 	import { createEventDispatcher } from 'svelte';
-	import { fly, type TransitionConfig } from 'svelte/transition';
+	import { fade, fly, type TransitionConfig } from 'svelte/transition';
 
 	import SearchItem from './SearchItem.svelte';
 	import SearchSection from './SearchSection.svelte';
@@ -15,6 +15,7 @@
 	const dispatch = createEventDispatcher();
 
 	export let results: Item[];
+	export let emoji: string | undefined = undefined;
 	export let disableTransitions: boolean = false;
 	export let transitionDirection: 'forward' | 'backward' = 'forward';
 
@@ -27,13 +28,15 @@
 	};
 
 	function enter(node: HTMLElement) {
-		if (disableTransitions) return {};
-		return fly(node, { x: transitionDirection === 'forward' ? 50 : -50 });
+		return disableTransitions
+			? fade(node, { duration: 0 })
+			: fly(node, { x: transitionDirection === 'forward' ? 50 : -50 });
 	}
 
 	function exit(node: HTMLElement) {
-		if (disableTransitions) return {};
-		return fly(node, { x: transitionDirection === 'forward' ? -50 : 50 });
+		return disableTransitions
+			? fade(node, { duration: 0 })
+			: fly(node, { x: transitionDirection === 'forward' ? -50 : 50 });
 	}
 </script>
 
@@ -45,13 +48,13 @@
 			class="grid absolute inset-0 auto-rows-min grid-cols-[repeat(auto-fill,minmax(300px,1fr))] pb-12 overflow-auto gap-4"
 		>
 			{#each other as item}
-				<SearchItem {item} on:click={handleClick(item)} />
+				<SearchItem {emoji} {item} on:click={handleClick(item)} />
 			{/each}
 
 			{#if drives.length > 0}
 				<SearchSection title="🚗 Drives">
 					{#each drives as item}
-						<SearchItem {item} on:click={handleClick(item)} />
+						<SearchItem {emoji} {item} on:click={handleClick(item)} />
 					{/each}
 				</SearchSection>
 			{/if}
@@ -59,7 +62,7 @@
 			{#if walks.length > 0}
 				<SearchSection title="👣 Walks">
 					{#each walks as item}
-						<SearchItem {item} on:click={handleClick(item)} />
+						<SearchItem {emoji} {item} on:click={handleClick(item)} />
 					{/each}
 				</SearchSection>
 			{/if}

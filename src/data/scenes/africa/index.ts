@@ -7,5 +7,6 @@ import southAfrica from './south-africa';
 
 export default {
 	name: 'Africa',
+	emoji: 'globe-showing-europe-africa',
 	countries: [egypt, ghana, mauritius, southAfrica]
 } satisfies Continent;

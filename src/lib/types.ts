@@ -18,11 +18,12 @@ export interface Offset {
 export interface Continent {
 	name: string;
 	hidden?: boolean;
+	emoji: string;
 	countries: Country[];
 }
 
 export type Country = SceneGroup & {
-	emoji: string;
+	emoji: 'flag';
 };
 
 export interface SceneGroup {

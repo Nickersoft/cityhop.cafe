@@ -3,7 +3,7 @@ import type { Country } from '$lib/types';
 
 export default {
 	name: 'Egypt',
-	emoji: '🇪🇬',
+	emoji: 'flag',
 	scenes: [
 		{
 			name: 'Cairo',
