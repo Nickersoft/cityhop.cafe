@@ -26,9 +26,10 @@ export function getXmas() {
 }
 
 export function getRandomLofi() {
-	return draw(
-		stationList.filter(({ genre, name }) => genre === 'lofi' && !name.includes('bollywood'))
-	) as Station;
+	const stations = stationList.filter(({ genre, name }) => {
+		return genre === 'lofi' && !name.toLowerCase().includes('bollywood');
+	});
+	return draw(stations) as Station;
 }
 
 export function goToRandomScene(calmOnly = false) {
