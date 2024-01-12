@@ -1,5 +1,5 @@
 import { SceneTypes } from '$data/scene-types';
-import { stations } from '$data/stations';
+import { genres } from '$data/stations';
 import { Tags } from '$data/tags';
 import type { Country } from '$lib/types';
 
@@ -22,7 +22,7 @@ export default {
 					type: SceneTypes.drive,
 					videoID: '_gJe9JPgwLM',
 					offset: { start: 30 },
-					suggestedTrack: stations['Top Hits Radio']
+					suggestedTrack: genres.pop.stations.hits
 				},
 				{
 					name: 'Malibu',
@@ -30,7 +30,7 @@ export default {
 					videoID: 'p_dYvmis0uo',
 					offset: { start: 30 },
 					tags: [Tags.day],
-					suggestedTrack: stations['Tropical House Radio']
+					suggestedTrack: genres.electronic.stations.tropicalHouse
 				},
 				{
 					name: 'Palo Alto',
@@ -44,7 +44,7 @@ export default {
 					type: SceneTypes.drive,
 					videoID: 'PGMu_Z89Ao8',
 					offset: { start: 30 },
-					suggestedTrack: stations['Relaxing Jazz Radio']
+					suggestedTrack: genres.jazz.stations.relaxing
 				},
 				{
 					name: 'Venice Beach',
@@ -64,7 +64,7 @@ export default {
 					videoID: 'Cod_ggrs69U',
 					offset: { start: 48 },
 					tags: [Tags.night],
-					suggestedTrack: stations['Synthwave Radio']
+					suggestedTrack: genres.electronic.stations.synthwave
 				}
 			]
 		},
@@ -83,7 +83,7 @@ export default {
 					type: SceneTypes.drive,
 					videoID: '-GSHhsSPcdo',
 					offset: { start: 40 },
-					suggestedTrack: stations['Tropical House Radio']
+					suggestedTrack: genres.electronic.stations.tropicalHouse
 				}
 			]
 		},
@@ -95,7 +95,7 @@ export default {
 					type: SceneTypes.walk,
 					videoID: 'KXkkKm4AwBg',
 					offset: { start: 10 },
-					suggestedTrack: stations['Coffee Shop Radio']
+					suggestedTrack: genres.lofi.stations.coffeeShop
 				},
 				{
 					name: 'Chicago',
@@ -103,7 +103,7 @@ export default {
 					videoID: '9Prtp_eNUiI',
 					offset: { start: 10 },
 					tags: [Tags.night],
-					suggestedTrack: stations['R&B/Hip-Hop Radio']
+					suggestedTrack: genres.rnb.stations.rnb
 				}
 			]
 		},
@@ -116,7 +116,7 @@ export default {
 					videoID: '3BAahFrNRaI',
 					offset: { start: 30 },
 					tags: [Tags.day],
-					suggestedTrack: stations['Work & Jazz Piano Radio']
+					suggestedTrack: genres.jazz.stations.work
 				},
 				{
 					name: 'New Orleans',
@@ -142,7 +142,7 @@ export default {
 					type: SceneTypes.drive,
 					videoID: 'aVaQkKBEvzE',
 					offset: { start: 30 },
-					suggestedTrack: stations['Work & Jazz Piano Radio']
+					suggestedTrack: genres.jazz.stations.work
 				},
 				{
 					name: 'Forest Walk',
@@ -169,7 +169,7 @@ export default {
 					videoID: 'HZaLvgP-R8E',
 					offset: { start: 30 },
 					tags: [Tags.night],
-					suggestedTrack: stations['Synthwave Radio']
+					suggestedTrack: genres.electronic.stations.synthwave
 				}
 			]
 		},
@@ -192,7 +192,7 @@ export default {
 							videoID: 'F8MN0o6RS9o',
 							offset: { start: 10 },
 							tags: [Tags.snow, Tags.day],
-							suggestedTrack: stations['Relaxing Jazz Radio']
+							suggestedTrack: genres.jazz.stations.relaxing
 						},
 						{
 							name: 'Manhattan',
@@ -200,7 +200,7 @@ export default {
 							videoID: 'UPrPATfWJ2g',
 							offset: { start: 50 },
 							tags: [Tags.night],
-							suggestedTrack: stations['VaporFunk Station: Vaporwave Radio']
+							suggestedTrack: genres.electronic.stations.vaporfunk
 						}
 					]
 				},
@@ -265,7 +265,7 @@ export default {
 					videoID: 'fkps18H3SXY',
 					offset: { start: 50 },
 					tags: [Tags.day],
-					suggestedTrack: stations['Relaxing Jazz Radio']
+					suggestedTrack: genres.jazz.stations.relaxing
 				},
 				{
 					name: 'Seattle',
@@ -273,7 +273,7 @@ export default {
 					videoID: 'NaWYnMJA5NE',
 					offset: { start: 10 },
 					tags: [Tags.day, Tags.rain],
-					suggestedTrack: stations['Coffee Shop Radio']
+					suggestedTrack: genres.lofi.stations.coffeeShop
 				}
 			]
 		}

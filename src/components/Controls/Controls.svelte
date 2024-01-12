@@ -9,7 +9,7 @@
 	import CurrentScene from './CurrentScene.svelte';
 	import AudioPlayer from './NowPlaying/NowPlaying.svelte';
 	import Settings from './Settings';
-	import TopButtons from './TopButtons.svelte';
+	import Toolbar from './Toolbar';
 
 	let isSettingsOpen = false;
 	let isChangeSceneShowing = false;
@@ -56,8 +56,8 @@
 
 <ChangeScene on:select={handleSceneChange} bind:open={isChangeSceneShowing} />
 
-<div class="overlay">
-	<TopButtons on:openAbout={showAbout} on:openSettings={showSettings} />
+<div class="overlay" id="controls">
+	<Toolbar on:openAbout={showAbout} on:openSettings={showSettings} />
 	<div class="controls-container">
 		<div class="controls">
 			<CurrentScene on:changeScene={showChangeScene} />
@@ -68,21 +68,20 @@
 
 <style lang="postcss">
 	:global(body:not(.inactive)) {
-		.controls-container,
-		:global(.top-icons) {
-			@apply opacity-100 translate-y-0 !important;
+		#controls {
+			@apply !opacity-100 !translate-y-0;
 		}
 	}
 
 	.overlay {
-		@apply fixed z-30 inset-0 flex justify-end flex-col;
+		@apply fixed z-30 inset-0 flex justify-end flex-col opacity-0 transition-all duration-300 ease-in-out;
 	}
 
 	.controls {
 		@apply grid lg:grid-cols-2 container mx-auto grid-cols-1;
 
 		&-container {
-			@apply opacity-0 transition-all duration-300 translate-y-2;
+			@apply translate-y-2;
 			@apply bg-gradient-to-t from-[rgba(0,0,0,0.75)] to-transparent p-4 pt-64;
 		}
 	}

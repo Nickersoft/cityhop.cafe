@@ -1,5 +1,5 @@
 import { SceneTypes } from '$data/scene-types';
-import { stations } from '$data/stations';
+import { genres } from '$data/stations';
 import { Tags } from '$data/tags';
 import type { Country } from '$lib/types';
 
@@ -25,7 +25,7 @@ export default {
 			name: 'Mexico City',
 			type: SceneTypes.drive,
 			videoID: 'JCXH_WyC8A4',
-			suggestedTrack: stations['Spanish Hits Radio'],
+			suggestedTrack: genres.pop.stations.spanish,
 			tags: [Tags.evening, Tags.night]
 		}
 	]

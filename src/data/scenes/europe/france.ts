@@ -1,5 +1,5 @@
 import { SceneTypes } from '$data/scene-types';
-import { stations } from '$data/stations';
+import { genres } from '$data/stations';
 import { Tags } from '$data/tags';
 import type { Country } from '$lib/types';
 
@@ -19,7 +19,7 @@ export default {
 			type: SceneTypes.drive,
 			videoID: 'lN43inpI2lk',
 			offset: { start: 30 },
-			suggestedTrack: stations['Paris Cafe Radio: Positive Bossa Nova Jazz Music'],
+			suggestedTrack: genres.jazz.stations.paris,
 			tags: [Tags.day]
 		},
 		{
@@ -27,7 +27,7 @@ export default {
 			type: SceneTypes.walk,
 			videoID: '3j-AVL3Pr3w',
 			offset: { start: 30 },
-			suggestedTrack: stations['Paris Cafe Radio: Positive Bossa Nova Jazz Music'],
+			suggestedTrack: genres.jazz.stations.paris,
 			tags: [Tags.night, Tags.evening]
 		},
 		{

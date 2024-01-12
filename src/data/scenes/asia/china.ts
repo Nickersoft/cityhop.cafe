@@ -1,5 +1,5 @@
 import { SceneTypes } from '$data/scene-types';
-import { stations } from '$data/stations';
+import { genres } from '$data/stations';
 import { Tags } from '$data/tags';
 import type { Country } from '$lib/types';
 
@@ -22,7 +22,7 @@ export default {
 					videoID: 'tMzCwwvHwN0',
 					offset: { start: 86 },
 					tags: [Tags.night],
-					suggestedTrack: stations['Classical Chinese Radio']
+					suggestedTrack: genres.classical.stations.chinese
 				}
 			]
 		},
@@ -77,7 +77,7 @@ export default {
 			type: SceneTypes.walk,
 			videoID: 'wVHgby6hBDA',
 			offset: { start: 2058 },
-			suggestedTrack: stations['Classical Chinese Radio'],
+			suggestedTrack: genres.classical.stations.chinese,
 			tags: [Tags.night, Tags.day]
 		},
 		{

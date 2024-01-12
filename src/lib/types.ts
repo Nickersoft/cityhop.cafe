@@ -1,13 +1,18 @@
-import type { Genres } from '$data/genres';
 import type { SceneTypes } from '$data/scene-types';
 import type { Tags } from '$data/tags';
+
+export interface Genre {
+	name: string;
+	emoji: string;
+	stations: Record<string, Station>;
+}
 
 export interface Station {
 	name: string;
 	displayName?: string;
 	trackID: string;
-	genre: Genres;
 	live: boolean;
+	hidden?: boolean;
 }
 
 export interface Offset {

@@ -1,4 +1,4 @@
 export enum SceneTypes {
-  walk,
-  drive
+	walk = 'walk',
+	drive = 'drive'
 }

@@ -1,5 +1,5 @@
 import { SceneTypes } from '$data/scene-types';
-import { stations } from '$data/stations';
+import { genres } from '$data/stations';
 import { Tags } from '$data/tags';
 import type { Country } from '$lib/types';
 
@@ -19,7 +19,7 @@ export default {
 			type: SceneTypes.drive,
 			videoID: 'tpPPjtRzX2Q',
 			offset: { start: 30 },
-			suggestedTrack: stations['Coffee Jazz Music Radio']
+			suggestedTrack: genres.jazz.stations.coffee
 		},
 		{
 			name: 'Tsawwassen',

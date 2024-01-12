@@ -1,5 +1,5 @@
 import { SceneTypes } from '$data/scene-types';
-import { stations } from '$data/stations';
+import { genres } from '$data/stations';
 import { Tags } from '$data/tags';
 import type { Country } from '$lib/types';
 
@@ -20,7 +20,7 @@ export default {
 			videoID: '9IoroeGhXtg',
 			offset: { start: 60 },
 			tags: [Tags.day],
-			suggestedTrack: stations['Work & Jazz Piano Radio']
+			suggestedTrack: genres.jazz.stations.work
 		},
 		{
 			name: 'Naples',
@@ -34,15 +34,14 @@ export default {
 			type: SceneTypes.walk,
 			videoID: 'EsFheWkimsU',
 			offset: { start: 60 },
-
-			suggestedTrack: stations['Baroque Classical Radio']
+			suggestedTrack: genres.classical.stations.baroque
 		},
 		{
 			name: 'Rome',
 			type: SceneTypes.drive,
 			videoID: 'ytiM1nMv_xU',
 			offset: { start: 30 },
-			suggestedTrack: stations['Work & Jazz Piano Radio']
+			suggestedTrack: genres.jazz.stations.work
 		},
 
 		{
@@ -65,7 +64,7 @@ export default {
 			videoID: 'kccv6YJZ0P4',
 			offset: { start: 50 },
 			tags: [Tags.evening],
-			suggestedTrack: stations['Baroque Classical Radio']
+			suggestedTrack: genres.classical.stations.baroque
 		}
 	]
 } satisfies Country;

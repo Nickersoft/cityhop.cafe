@@ -1,5 +1,5 @@
 import { SceneTypes } from '$data/scene-types';
-import { stations } from '$data/stations';
+import { genres } from '$data/stations';
 import { Tags } from '$data/tags';
 import type { Country } from '$lib/types';
 
@@ -16,7 +16,7 @@ export default {
 					videoID: 'P8Uh9f0EaU8',
 					offset: { start: 60 },
 					tags: [Tags.day],
-					suggestedTrack: stations['Chinese Pop Radio']
+					suggestedTrack: genres.pop.stations.chinese
 				},
 				{
 					name: 'Taipei',

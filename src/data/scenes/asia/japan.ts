@@ -1,5 +1,5 @@
 import { SceneTypes } from '$data/scene-types';
-import { stations } from '$data/stations';
+import { genres } from '$data/stations';
 import { Tags } from '$data/tags';
 import type { Country } from '$lib/types';
 
@@ -33,7 +33,7 @@ export default {
 			videoID: '7a-GBnXz3i8',
 			tags: [Tags.day],
 			offset: { start: 60 },
-			suggestedTrack: stations['Japanese City Pop Mix']
+			suggestedTrack: genres.pop.stations.cityPop
 		},
 		{
 			name: 'Tokyo',

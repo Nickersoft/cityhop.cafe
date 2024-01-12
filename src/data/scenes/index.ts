@@ -1,4 +1,3 @@
-import { Genres } from '$data/genres';
 import { Tags } from '$data/tags';
 import type { Continent, Country, Scene, SceneGroup } from '$lib/types';
 
@@ -62,17 +61,10 @@ const visibleScenes = scenes.filter((scene) => !scene.hidden);
 
 const visibleContinents = continents.filter((scene) => !scene.hidden);
 
-const calmGenres = [Genres.jazz, Genres.classical, Genres.lofi];
-
-const calmScenes = scenes.filter(
-	(b) => !b.suggestedTrack || calmGenres.includes(b.suggestedTrack.genre)
-);
-
 export {
 	visibleScenes as scenes,
 	visibleContinents as continents,
 	sceneMap,
 	halloweenScenes,
-	christmasScenes,
-	calmScenes
+	christmasScenes
 };

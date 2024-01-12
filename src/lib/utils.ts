@@ -1,11 +1,13 @@
-import { Genres } from '$data/genres';
 import { christmasScenes, halloweenScenes, sceneMap, scenes } from '$data/scenes';
-import { christmasStations, halloweenStations, lofiStations, stationMap } from '$data/stations';
-import { draw } from 'radash';
+import { christmasStations, genres, halloweenStations, stationMap } from '$data/stations';
+import { draw, omit } from 'radash';
 import { get } from 'svelte/store';
 
 import { currentScene, currentStation, isPlaying } from './stores';
 import { type Station } from './types';
+
+const jazzStations = Object.values(genres.jazz.stations) as Station[];
+const lofiStations = Object.values(genres.lofi.stations) as Station[];
 
 export function getSpooky() {
 	const scene = draw(halloweenScenes)!;
@@ -24,7 +26,7 @@ export function getXmas() {
 }
 
 export function getRandomLofi() {
-	return draw(lofiStations) as Station;
+	return draw(Object.values(omit(genres.lofi.stations, ['bollywood']))) as Station;
 }
 
 export function goToRandomScene(calmOnly = false) {
@@ -33,8 +35,10 @@ export function goToRandomScene(calmOnly = false) {
 	isPlaying.set(false);
 
 	if (calmOnly) {
-		candidates = candidates.filter(
-			(b) => !b.suggestedTrack || [Genres.jazz, Genres.lofi].includes(b.suggestedTrack.genre)
+		candidates = candidates.filter((b) =>
+			b.suggestedTrack
+				? jazzStations.includes(b.suggestedTrack) || lofiStations.includes(b.suggestedTrack)
+				: true
 		);
 	}
 

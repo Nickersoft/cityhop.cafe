@@ -1,5 +1,5 @@
 import { SceneTypes } from '$data/scene-types';
-import { stations } from '$data/stations';
+import { genres } from '$data/stations';
 import { Tags } from '$data/tags';
 import type { Country } from '$lib/types';
 
@@ -133,7 +133,7 @@ export default {
 			type: SceneTypes.drive,
 			videoID: 'XPRqAkL7Kfk',
 			tags: [Tags.night],
-			suggestedTrack: stations['Korean Indie/R&B/Hip-Hop Radio']
+			suggestedTrack: genres.rnb.stations.korean
 		},
 		{
 			name: 'Jeju Island',
