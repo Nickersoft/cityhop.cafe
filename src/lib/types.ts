@@ -1,10 +1,18 @@
-export type Tag = 'snow' | 'fog' | 'rain' | 'morning' | 'night' | 'day' | 'evening';
+import type { SceneTypes } from '$data/scene-types';
+import type { Tags } from '$data/tags';
 
-export interface Track {
+export interface Genre {
 	name: string;
+	emoji: string;
+	stations: Record<string, Station>;
+}
+
+export interface Station {
+	name: string;
+	displayName?: string;
 	trackID: string;
-	genre: Genre;
 	live: boolean;
+	hidden?: boolean;
 }
 
 export interface Offset {
@@ -12,66 +20,32 @@ export interface Offset {
 	end?: number;
 }
 
+export interface Continent {
+	name: string;
+	hidden?: boolean;
+	emoji: string;
+	countries: Country[];
+}
+
+export type Country = SceneGroup & {
+	emoji: 'flag';
+};
+
+export interface SceneGroup {
+	name: string;
+	previewID?: string;
+	scenes: (Scene | SceneGroup)[];
+}
+
 export interface Scene {
 	name: string;
-	type: 'walk' | 'drive';
+	type: SceneTypes;
 	videoID: string;
-	tags?: Tag[];
-	suggestedTrack?: Track;
+	tags?: Tags[];
+	hidden?: boolean;
+	suggestedTrack?: Station;
 	offset?: Offset;
-	country: Country;
 	// Used to better determine a good starting point
 	// Not required
 	length?: number;
-}
-
-export enum Country {
-	korea = 'South Korea',
-	brazil = 'Brazil',
-	us = 'United States',
-	canada = 'Canada',
-	turkey = 'Turkey',
-	vietnam = 'Vietnam',
-	china = 'China',
-	monaco = 'Monaco',
-	jordan = 'Jordan',
-	france = 'France',
-	mauritius = 'Mauritius',
-	czechRepublic = 'Czech Republic',
-	uk = 'England',
-	germany = 'Germany',
-	austria = 'Austria',
-	australia = 'Australia',
-	ghana = 'Ghana',
-	russia = 'Russia',
-	romania = 'Romania',
-	ukraine = 'Ukraine',
-	netherlands = 'Netherlands',
-	spain = 'Spain',
-	taiwan = 'Taiwan',
-	lebanon = 'Lebanon',
-	japan = 'Japan',
-	singapore = 'Singapore',
-	peru = 'Peru',
-	southAfrica = 'South Africa',
-	india = 'India',
-	uae = 'United Arab Emirates',
-	italy = 'Italy',
-	serbia = 'Serbia',
-	mexico = 'Mexico',
-	thailand = 'Thailand',
-	egypt = 'Egypt',
-	scotland = 'Scotland',
-	switzerland = 'Switzerland',
-	hungary = 'Hungary',
-	redacted = '█████'
-}
-
-export enum Genre {
-	pop = 'Pop',
-	jazz = 'Jazz',
-	lofi = 'Lofi',
-	rnb = 'R&B',
-	classical = 'Classical',
-	electronic = 'Electronic'
 }

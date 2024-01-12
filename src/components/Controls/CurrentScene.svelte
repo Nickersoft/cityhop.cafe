@@ -1,7 +1,8 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
-
+	import { SceneTypes } from '$data/scene-types';
+	import { Tags } from '$data/tags';
 	import { currentScene } from '$lib/stores';
+	import { createEventDispatcher } from 'svelte';
 
 	const dispatch = createEventDispatcher();
 
@@ -11,11 +12,11 @@
 </script>
 
 <div
-    class="flex flex-wrap lg:border-r lg:border-b-0 border-b border-white border-opacity-20 flex-row lg:pr-8 pb-4 lg:pb-0 justify-between items-center"
+	class="flex flex-wrap lg:border-r lg:border-b-0 border-b border-white border-opacity-20 flex-row lg:pr-8 pb-4 lg:pb-0 justify-between items-center"
 >
 	<div class="flex flex-col gap-0.5">
 		<span class="glow">
-			{#if $currentScene.type === 'walk'}
+			{#if $currentScene.type === SceneTypes.walk}
 				You are currently walking in
 			{:else}
 				You are currently driving in
@@ -24,11 +25,7 @@
 
 		<div class="flex flex-row justify-start items-baseline gap-3 font-medium cursor-pointer">
 			<span class="text-2xl glow">
-				{#if $currentScene.name === $currentScene.country}
-					{$currentScene.name}
-				{:else}
-					{$currentScene.name}, {$currentScene.country}
-				{/if}
+				{$currentScene.name}
 			</span>
 
 			<a

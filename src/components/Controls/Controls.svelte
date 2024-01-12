@@ -1,16 +1,15 @@
 <script lang="ts">
-	import { currentScene, currentTrack, preferences } from '$lib/stores';
-
-	import type { Scene, Track } from '$lib/types';
+	import { currentScene, currentStation, preferences } from '$lib/stores';
+	import type { Scene, Station } from '$lib/types';
 	import { getRandomLofi } from '$lib/utils';
 
-	import AudioPlayer from './NowPlaying/NowPlaying.svelte';
+	import About from './About';
 	import ChangeMusic from './ChangeMusic';
 	import ChangeScene from './ChangeScene';
-	import Settings from './Settings';
 	import CurrentScene from './CurrentScene.svelte';
-	import TopButtons from './TopButtons.svelte';
-	import About from './About';
+	import AudioPlayer from './NowPlaying/NowPlaying.svelte';
+	import Settings from './Settings';
+	import Toolbar from './Toolbar';
 
 	let isSettingsOpen = false;
 	let isChangeSceneShowing = false;
@@ -33,14 +32,14 @@
 		$currentScene = event.detail;
 
 		if (!$preferences.preserveAudio) {
-			$currentTrack = $currentScene.suggestedTrack ?? getRandomLofi();
+			$currentStation = $currentScene.suggestedTrack ?? getRandomLofi();
 		}
 
 		isChangeSceneShowing = false;
 	}
 
-	function handleMusicChange(event: CustomEvent & { detail: Track }) {
-		$currentTrack = event.detail;
+	function handleMusicChange(event: CustomEvent & { detail: Station }) {
+		$currentStation = event.detail;
 		isChangeMusicShowing = false;
 	}
 
@@ -57,8 +56,8 @@
 
 <ChangeScene on:select={handleSceneChange} bind:open={isChangeSceneShowing} />
 
-<div class="overlay">
-	<TopButtons on:openAbout={showAbout} on:openSettings={showSettings} />
+<div class="overlay" id="controls">
+	<Toolbar on:openAbout={showAbout} on:openSettings={showSettings} />
 	<div class="controls-container">
 		<div class="controls">
 			<CurrentScene on:changeScene={showChangeScene} />
@@ -69,21 +68,20 @@
 
 <style lang="postcss">
 	:global(body:not(.inactive)) {
-		.controls-container,
-		:global(.top-icons) {
-			@apply opacity-100 translate-y-0 !important;
+		#controls {
+			@apply !opacity-100 !translate-y-0;
 		}
 	}
 
 	.overlay {
-		@apply fixed z-30 inset-0 flex justify-end flex-col;
+		@apply fixed z-30 inset-0 flex justify-end flex-col opacity-0 transition-all duration-300 ease-in-out;
 	}
 
 	.controls {
 		@apply grid lg:grid-cols-2 container mx-auto grid-cols-1;
 
 		&-container {
-			@apply opacity-0 transition-all duration-300 translate-y-2;
+			@apply translate-y-2;
 			@apply bg-gradient-to-t from-[rgba(0,0,0,0.75)] to-transparent p-4 pt-64;
 		}
 	}

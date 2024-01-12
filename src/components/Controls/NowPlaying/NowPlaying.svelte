@@ -1,10 +1,9 @@
 <script lang="ts">
+	import { currentStation, preferences } from '$lib/stores';
 	import { createEventDispatcher } from 'svelte';
 
-	import { currentTrack, preferences } from '$lib/stores';
-
-	import Equalizer from './Equalizer.svelte';
 	import MuteButton from '../MuteButton.svelte';
+	import Equalizer from './Equalizer.svelte';
 
 	const dispatch = createEventDispatcher();
 
@@ -12,7 +11,7 @@
 		dispatch('changeMusic');
 	}
 
-	$: shouldMarquee = $currentTrack.name.length > 45;
+	$: shouldMarquee = $currentStation.name.length > 45;
 </script>
 
 <div
@@ -33,7 +32,7 @@
 			<MuteButton class="text-base" bind:muted={$preferences.muteMusic} />
 
 			<a
-				href="https://youtube.com/watch?v={$currentTrack.trackID}"
+				href="https://youtube.com/watch?v={$currentStation.trackID}"
 				target="_blank"
 				rel="noreferrer"
 				class="tooltip block translate-y-[3px] text-xl tooltip-top"
@@ -46,12 +45,12 @@
 		{#if shouldMarquee}
 			<div class="marquee glow">
 				<span>
-					{$currentTrack.name}&nbsp;&nbsp;{$currentTrack.name}
+					{$currentStation.name}&nbsp;&nbsp;{$currentStation.name}
 				</span>
 			</div>
 		{:else}
 			<span class="text-lg glow whitespace-nowrap text-ellipsis overflow-hidden w-full md:w-auto">
-				{$currentTrack.name}
+				{$currentStation.name}
 			</span>
 		{/if}
 	</div>
