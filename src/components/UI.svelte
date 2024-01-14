@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { random } from 'radash';
-	import type { YouTubePlayer } from 'youtube-player/dist/types';
-
 	import { preferences } from '$lib/stores';
 	import type { Offset } from '$lib/types';
+	import { random } from 'radash';
+	import { onMount } from 'svelte';
+	import type { YouTubePlayer } from 'youtube-player/dist/types';
 
-	import YouTube from './YouTube.svelte';
 	import Controls from './Controls';
+	import LaunchModal from './LaunchModal.svelte';
+	import YouTube from './YouTube.svelte';
 
-	export let playing;
+	export let playing: boolean;
 	export let videoID: string;
 	export let audioID: string;
 	export let liveAudio: boolean = true;
@@ -81,6 +81,10 @@
 
 	$: audioPlayer && audioPlayer.setVolume($preferences.muteMusic ? 0 : $preferences.musicVolume);
 </script>
+
+{#if playing}
+	<LaunchModal />
+{/if}
 
 <Controls />
 

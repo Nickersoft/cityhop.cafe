@@ -2,6 +2,7 @@
 	import logo from '$images/logo.png';
 	import { clickOutside } from '$lib/actions';
 
+	import Button from '../../Button.svelte';
 	import FullScreenOverlay from '../FullScreenOverlay.svelte';
 
 	export let open: boolean;
@@ -28,15 +29,12 @@
 
 			<p>Have a city or station you'd like to see on the site?</p>
 
-			<a
-				href="https://github.com/Nickersoft/cityhop.cafe/issues/new/choose"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="btn bg-gradient-to-b from-white to-gray-300 text-gray-950 btn-md btn-primary px-8 transform-gpu normal-case"
+			<Button
+				action="https://github.com/Nickersoft/cityhop.cafe/issues/new/choose"
+				icon="mdi:hand-back-left"
 			>
-				<iconify-icon icon="mdi:hand-back-left" class="mr-2 text-lg" />
-				Open a Request
-			</a>
+				Open a Request</Button
+			>
 
 			<p class="text-sm italic">
 				Psst... feel free to
@@ -44,13 +42,13 @@
 					href="https://twitter.com/tylernickerson"
 					rel="noreferrer"
 					target="_blank"
-					class="text-yellow-500"
+					class="text-accent"
 				>
 					follow me on Twitter
 				</a>
 				or
 				<a
-					class="text-yellow-500"
+					class="text-accent"
 					href="https://github.com/Nickersoft/cityhop.cafe"
 					rel="noreferrer"
 					target="_blank"
