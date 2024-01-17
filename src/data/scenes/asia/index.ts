@@ -5,6 +5,7 @@ import india from './india';
 import japan from './japan';
 import jordan from './jordan';
 import korea from './korea';
+import laos from './laos';
 import lebanon from './lebanon';
 import russia from './russia';
 import singapore from './singapore';
@@ -23,6 +24,7 @@ export default {
 		japan,
 		jordan,
 		korea,
+		laos,
 		lebanon,
 		russia,
 		singapore,

@@ -1,4 +1,5 @@
 import { SceneTypes } from '$data/scene-types';
+import { genres } from '$data/stations';
 import { Tags } from '$data/tags';
 import type { Country } from '$lib/types';
 
@@ -24,6 +25,13 @@ export default {
 					offset: { start: 120 }
 				}
 			]
+		},
+		{
+			name: 'North Yorkshire ➡️ Cumbria',
+			videoID: 'yd_P3j67-SQ',
+			type: SceneTypes.drive,
+			tags: [Tags.night],
+			suggestedTrack: genres.lofi.stations.sleep
 		},
 		{
 			name: 'Oxford',

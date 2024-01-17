@@ -7,7 +7,7 @@
 
 <script lang="ts">
 	import { getVideoThumbnail } from '$lib/utils';
-	import { dash, draw } from 'radash';
+	import { dash } from 'radash';
 
 	export let item: Item;
 	export let emoji: string | undefined = undefined;
@@ -18,11 +18,11 @@
 		}
 
 		if ('countries' in _item) {
-			return getThumbnail(draw(_item.countries)!);
+			return getThumbnail(_item.countries[0]);
 		}
 
 		if ('scenes' in _item) {
-			return getThumbnail(draw(_item.scenes)!);
+			return getThumbnail(_item.scenes[0]);
 		}
 	}
 

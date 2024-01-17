@@ -1,16 +1,21 @@
 import { SceneTypes } from '$data/scene-types';
-import { Tags } from '$data/tags';
 import type { Country } from '$lib/types';
 
 export default {
-	name: 'Ghana',
+	name: 'Egypt',
 	emoji: 'flag',
 	scenes: [
 		{
-			name: 'Accra',
+			name: 'Cairo',
 			type: SceneTypes.walk,
-			videoID: 'x0rM132jMR8',
-			tags: [Tags.day]
+			videoID: 'Q9cAWThpbbk',
+			offset: { start: 60 }
+		},
+		{
+			name: 'Pyramids of Giza',
+			type: SceneTypes.walk,
+			videoID: 'EaQr917lRgI',
+			offset: { start: 120, end: 60 }
 		}
 	]
 } satisfies Country;

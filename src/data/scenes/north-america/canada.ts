@@ -22,6 +22,13 @@ export default {
 			suggestedTrack: genres.jazz.stations.coffee
 		},
 		{
+			name: 'Toronto',
+			type: SceneTypes.drive,
+			videoID: 'mtz_eM73GS0',
+			offset: { start: 60 },
+			tags: [Tags.night]
+		},
+		{
 			name: 'Tsawwassen',
 			type: SceneTypes.walk,
 			videoID: 'kg2kefbrFn4',

@@ -18,11 +18,25 @@ export default {
 					tags: [Tags.day]
 				},
 				{
+					name: 'Lake Tahoe',
+					type: SceneTypes.drive,
+					videoID: '1BgLRbOTkZg',
+					offset: { start: 30 },
+					tags: [Tags.day, Tags.snow]
+				},
+				{
 					name: 'Los Angeles',
 					type: SceneTypes.drive,
 					videoID: '_gJe9JPgwLM',
 					offset: { start: 30 },
 					suggestedTrack: genres.pop.stations.hits
+				},
+				{
+					name: 'Hollywood',
+					type: SceneTypes.drive,
+					videoID: 'QToxL3jcn7U',
+					offset: { start: 60 },
+					tags: [Tags.day]
 				},
 				{
 					name: 'Malibu',
@@ -65,6 +79,14 @@ export default {
 					offset: { start: 48 },
 					tags: [Tags.night],
 					suggestedTrack: genres.electronic.stations.synthwave
+				},
+				{
+					name: 'Palm Beach',
+					type: SceneTypes.drive,
+					videoID: 'znNVVV2uezc',
+					offset: { start: 30 },
+					tags: [Tags.day],
+					suggestedTrack: genres.pop.stations.oldies
 				}
 			]
 		},
@@ -145,9 +167,23 @@ export default {
 					suggestedTrack: genres.jazz.stations.work
 				},
 				{
+					name: 'Salem',
+					type: SceneTypes.walk,
+					videoID: 'WUtB57qawoo',
+					offset: { start: 30 },
+					tags: [Tags.night, Tags.halloween]
+				},
+				{
 					name: 'Forest Walk',
 					type: SceneTypes.walk,
 					videoID: 'RwIXHBZaNw0',
+					tags: [Tags.day],
+					offset: { start: 30 }
+				},
+				{
+					name: 'Worcester',
+					type: SceneTypes.drive,
+					videoID: 'A42NTlRKa1g',
 					tags: [Tags.day],
 					offset: { start: 30 }
 				},
@@ -157,6 +193,25 @@ export default {
 					videoID: 'zPoFD_2q44c',
 					tags: [Tags.morning],
 					offset: { start: 30 }
+				}
+			]
+		},
+		{
+			name: 'Michigan',
+			scenes: [
+				{
+					name: 'Detroit',
+					type: SceneTypes.drive,
+					videoID: 'GLZcBdEgfUk',
+					offset: { start: 30 },
+					tags: [Tags.day]
+				},
+				{
+					name: 'Detroit',
+					type: SceneTypes.walk,
+					videoID: 'XQY6AYM1YGU',
+					offset: { start: 30 },
+					tags: [Tags.evening, Tags.night]
 				}
 			]
 		},
@@ -226,6 +281,18 @@ export default {
 			]
 		},
 		{
+			name: 'Philadelphia',
+			scenes: [
+				{
+					name: 'Pittsburgh',
+					videoID: 'U3Zxe80ysd4',
+					type: SceneTypes.drive,
+					offset: { start: 30 },
+					tags: [Tags.night]
+				}
+			]
+		},
+		{
 			name: 'Oregon',
 			scenes: [
 				{
@@ -233,6 +300,18 @@ export default {
 					type: SceneTypes.walk,
 					videoID: 'Ht747Q-PLDY',
 					tags: [Tags.rain, Tags.day],
+					offset: { start: 60 }
+				}
+			]
+		},
+		{
+			name: 'Texas',
+			scenes: [
+				{
+					name: 'Austin',
+					type: SceneTypes.drive,
+					videoID: 'Aw51cEQ7Mr0',
+					tags: [Tags.morning],
 					offset: { start: 60 }
 				}
 			]
@@ -251,14 +330,26 @@ export default {
 		},
 		{
 			name: 'Vermont',
-			type: SceneTypes.walk,
-			videoID: 'sUY5RmqwOP0',
-			tags: [Tags.day, Tags.snow],
-			offset: { start: 30 }
+			scenes: [
+				{
+					name: 'Vermont',
+					type: SceneTypes.walk,
+					videoID: 'sUY5RmqwOP0',
+					tags: [Tags.day, Tags.snow],
+					offset: { start: 30 }
+				}
+			]
 		},
 		{
 			name: 'Washington',
 			scenes: [
+				{
+					name: 'Leavenworth',
+					type: SceneTypes.walk,
+					videoID: 'E05yigqLu4Q',
+					tags: [Tags.christmas, Tags.night],
+					offset: { start: 30 }
+				},
 				{
 					name: 'Seattle',
 					type: SceneTypes.drive,

@@ -1,6 +1,7 @@
 import type { Continent } from '$lib/types';
 
 import austria from './austria';
+import bosnia from './bosnia';
 import czechia from './czechia';
 import france from './france';
 import germany from './germany';
@@ -20,6 +21,7 @@ export default {
 	emoji: 'globe-showing-europe-africa',
 	countries: [
 		austria,
+		bosnia,
 		czechia,
 		france,
 		germany,

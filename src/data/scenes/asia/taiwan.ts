@@ -9,22 +9,17 @@ export default {
 	scenes: [
 		{
 			name: 'Taipei',
-			scenes: [
-				{
-					name: 'Taipei',
-					type: SceneTypes.drive,
-					videoID: 'P8Uh9f0EaU8',
-					offset: { start: 60 },
-					tags: [Tags.day],
-					suggestedTrack: genres.pop.stations.chinese
-				},
-				{
-					name: 'Taipei',
-					type: SceneTypes.walk,
-					videoID: '3j-5Uut60WM',
-					offset: { start: 150 }
-				}
-			]
+			type: SceneTypes.drive,
+			videoID: 'P8Uh9f0EaU8',
+			offset: { start: 60 },
+			tags: [Tags.day],
+			suggestedTrack: genres.pop.stations.chinese
+		},
+		{
+			name: 'Taipei',
+			type: SceneTypes.walk,
+			videoID: '3j-5Uut60WM',
+			offset: { start: 150 }
 		},
 		{
 			name: 'Kaohsiung',

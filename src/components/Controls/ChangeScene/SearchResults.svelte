@@ -6,6 +6,7 @@
 
 <script lang="ts">
 	import { SceneTypes } from '$data/scene-types';
+	import { alphabetical } from 'radash';
 	import { createEventDispatcher } from 'svelte';
 	import { fade, fly, type TransitionConfig } from 'svelte/transition';
 
@@ -19,9 +20,20 @@
 	export let disableTransitions: boolean = false;
 	export let transitionDirection: 'forward' | 'backward' = 'forward';
 
-	$: drives = results.filter((scene) => 'type' in scene && scene.type === SceneTypes.drive);
-	$: walks = results.filter((scene) => 'type' in scene && scene.type === SceneTypes.walk);
-	$: other = results.filter((scene) => !walks.includes(scene) && !drives.includes(scene));
+	$: drives = alphabetical(
+		results.filter((scene) => 'type' in scene && scene.type === SceneTypes.drive),
+		({ name }) => name
+	);
+
+	$: walks = alphabetical(
+		results.filter((scene) => 'type' in scene && scene.type === SceneTypes.walk),
+		({ name }) => name
+	);
+
+	$: other = alphabetical(
+		results.filter((scene) => !walks.includes(scene) && !drives.includes(scene)),
+		({ name }) => name
+	);
 
 	const handleClick = (item: Item) => () => {
 		dispatch('click', { item, index: results.indexOf(item) });

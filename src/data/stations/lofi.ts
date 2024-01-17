@@ -10,6 +10,12 @@ export const lofi = {
 			trackID: 'RRb5XV993W0',
 			live: true
 		},
+		sleep: {
+			displayName: 'Lofi Sleep & Rain Radio',
+			name: '24/7 - lofi sleep, lofi rain💤 beats to relax at night - music for insomnia, anxiety, peaceful dreams',
+			trackID: 'Z9D16KYgUJE',
+			live: true
+		},
 		coffeeShop: {
 			displayName: 'Coffee Shop Radio',
 			name: 'Coffee Shop Radio ☕ - 24/7 lofi & jazzy hip-hop beats',

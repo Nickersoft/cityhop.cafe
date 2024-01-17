@@ -1,5 +1,6 @@
 import { Tags } from '$data/tags';
 import type { Continent, Country, Scene, SceneGroup } from '$lib/types';
+import { alphabetical } from 'radash';
 
 import africa from './africa';
 import asia from './asia';
@@ -39,15 +40,28 @@ function getSceneMap(continents: Continent[]): Record<string, Scene> {
 	);
 }
 
-const continents: Continent[] = [
-	redacted,
-	africa,
-	asia,
-	australia,
-	europe,
-	northAmerica,
-	southAmerica
-];
+function deepSort<T extends Continent | Scene | SceneGroup>(list: T): T {
+	if ('scenes' in list) {
+		return {
+			...list,
+			scenes: alphabetical(list.scenes.map(deepSort), ({ name }) => name)
+		};
+	}
+
+	if ('countries' in list) {
+		return {
+			...list,
+			countries: alphabetical(list.countries.map(deepSort), ({ name }) => name)
+		};
+	}
+
+	return list;
+}
+
+const continents: Continent[] = alphabetical(
+	[redacted, africa, asia, australia, europe, northAmerica, southAmerica],
+	({ name }) => name
+).map(deepSort);
 
 const sceneMap = getSceneMap(continents);
 

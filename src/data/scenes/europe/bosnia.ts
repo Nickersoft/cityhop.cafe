@@ -3,22 +3,22 @@ import { Tags } from '$data/tags';
 import type { Country } from '$lib/types';
 
 export default {
-	name: 'Australia',
+	name: 'Bosnia and Herzegovina',
 	emoji: 'flag',
 	scenes: [
 		{
-			name: 'Brisbane',
+			name: 'Sarajevo',
 			type: SceneTypes.walk,
-			videoID: 'G1zBrv87rBw',
+			videoID: 'ZjSecFsLUaM',
 			offset: { start: 30 },
 			tags: [Tags.day]
 		},
 		{
-			name: 'Sydney',
+			name: 'Sarajevo',
 			type: SceneTypes.drive,
-			videoID: 'q21Kj-pxJW4',
+			videoID: 'XLuV3_a-ro0',
 			offset: { start: 30 },
-			tags: [Tags.day]
+			tags: [Tags.evening, Tags.night]
 		}
 	]
 } satisfies Country;

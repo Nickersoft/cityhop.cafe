@@ -12,8 +12,14 @@ export const pop = {
 		},
 		spanish: {
 			displayName: 'Spanish Hits Radio',
-			name: 'Lo Mas Nuevo 2023',
-			trackID: 'D5bt0BRYrfQ',
+			name: 'MIX CANCIONES DE MODA 2023 PARA ENTRENAR LO MAS NUEVO 2023 🌞 LAS MEJORES CANCIONES ACTUALES 2023',
+			trackID: 'nESeL2fFQAI',
+			live: true
+		},
+		oldies: {
+			displayName: '70s & 80s Hits Radio',
+			name: 'Radio 70s 80s Mix [ 24 /7 Live ] Listen 70s Hits with Best of 80s Songs ● Oldies Songs',
+			trackID: 'gpsqz2kseiY',
 			live: true
 		},
 		cityPop: {

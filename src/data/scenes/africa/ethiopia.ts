@@ -3,20 +3,13 @@ import { Tags } from '$data/tags';
 import type { Country } from '$lib/types';
 
 export default {
-	name: 'Australia',
+	name: 'Ethiopia',
 	emoji: 'flag',
 	scenes: [
 		{
-			name: 'Brisbane',
+			name: 'Addis Ababa',
 			type: SceneTypes.walk,
-			videoID: 'G1zBrv87rBw',
-			offset: { start: 30 },
-			tags: [Tags.day]
-		},
-		{
-			name: 'Sydney',
-			type: SceneTypes.drive,
-			videoID: 'q21Kj-pxJW4',
+			videoID: '9Avdd0hanUs',
 			offset: { start: 30 },
 			tags: [Tags.day]
 		}
