@@ -11,6 +11,8 @@ export const isPlaying = writable<boolean>(false);
 
 export const hasStarted = writable<boolean>(false);
 
+export const isFullscreen = writable<boolean>(false);
+
 export const preferences = persisted('preferences', {
 	preserveAudio: false,
 	musicVolume: 100,

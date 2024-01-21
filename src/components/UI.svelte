@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { preferences } from '$lib/stores';
+	import { isFullscreen, preferences } from '$lib/stores';
 	import type { Offset } from '$lib/types';
 	import { random } from 'radash';
 	import { onMount } from 'svelte';
@@ -110,7 +110,7 @@
 </div>
 
 <div class="video-background">
-	<div class="video-foreground">
+	<div class="video-foreground" class:fullscreen={$isFullscreen}>
 		<YouTube
 			id="video"
 			on:end={onBackgroundEnded}
@@ -158,14 +158,14 @@
 	}
 
 	@media (min-aspect-ratio: 16/9) {
-		.video-foreground {
+		.video-foreground:not(.fullscreen) {
 			height: 300%;
 			top: -100%;
 		}
 	}
 
 	@media (max-aspect-ratio: 16/9) {
-		.video-foreground {
+		.video-foreground:not(.fullscreen) {
 			width: 300%;
 			left: -100%;
 		}
