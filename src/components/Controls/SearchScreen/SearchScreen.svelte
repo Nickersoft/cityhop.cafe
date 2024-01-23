@@ -78,11 +78,3 @@
 		</div>
 	</div>
 </FullScreenOverlay>
-
-<style lang="postcss">
-	.searchbox {
-		&:focus-within > .icon {
-			@apply opacity-100;
-		}
-	}
-</style>
