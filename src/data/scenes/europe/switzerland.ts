@@ -21,6 +21,13 @@ export default {
 			tags: [Tags.christmas, Tags.snow]
 		},
 		{
+			name: 'Zurich Airport',
+			videoID: 'vl_BfAZf4LY',
+			type: SceneTypes.walk,
+			tags: [Tags.day],
+			offset: { start: 60 }
+		},
+		{
 			name: 'Lauterbrunnen',
 			type: SceneTypes.drive,
 			videoID: 'b-WViLMs_4c',

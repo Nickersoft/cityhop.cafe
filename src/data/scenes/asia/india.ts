@@ -39,12 +39,35 @@ export default {
 			suggestedTrack: genres.lofi.stations.bollywood
 		},
 		{
-			name: 'Delhi',
-			type: SceneTypes.drive,
-			videoID: 'g-c3K8plBxo',
-			offset: { start: 28 },
-			tags: [Tags.night],
-			suggestedTrack: genres.lofi.stations.bollywood
+			name: 'New Delhi',
+			scenes: [
+				{
+					name: 'Meena Bazaar',
+					videoID: 'InPGfxTjiFI',
+					type: SceneTypes.walk,
+					suggestedTrack: genres.lofi.stations.bollywood
+				},
+				{
+					name: 'Connaught Place',
+					videoID: '6F0lXW6i-Sc',
+					type: SceneTypes.walk,
+					suggestedTrack: genres.lofi.stations.bollywood
+				},
+				{
+					name: 'Tilak Nagar Market',
+					videoID: 'FTfpaW_Rr2M',
+					type: SceneTypes.walk,
+					suggestedTrack: genres.lofi.stations.bollywood
+				},
+				{
+					name: 'Central Delhi',
+					type: SceneTypes.drive,
+					videoID: 'g-c3K8plBxo',
+					offset: { start: 28 },
+					tags: [Tags.night],
+					suggestedTrack: genres.lofi.stations.bollywood
+				}
+			]
 		},
 		{
 			name: 'Kochi',

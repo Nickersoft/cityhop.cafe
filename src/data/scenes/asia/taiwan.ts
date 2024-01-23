@@ -26,6 +26,12 @@ export default {
 			type: SceneTypes.walk,
 			videoID: 'iG_pnxkGrVQ',
 			offset: { start: 30 }
+		},
+		{
+			name: 'Taoyuan International Airport',
+			type: SceneTypes.walk,
+			videoID: 'qiDXhPx-Xck',
+			offset: { start: 70, end: 60 }
 		}
 	]
 } satisfies Country;

@@ -53,7 +53,7 @@ export default {
 		},
 		{
 			name: 'Venice',
-			type: SceneTypes.drive,
+			type: SceneTypes.boat,
 			videoID: 'TJLjnp39GBg',
 			offset: { start: 80 },
 			tags: [Tags.evening]

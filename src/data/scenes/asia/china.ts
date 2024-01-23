@@ -51,6 +51,57 @@ export default {
 			scenes: [
 				{
 					name: 'Beijing',
+					type: SceneTypes.drive,
+					videoID: 'zOYkI9GPfOo',
+					tags: [Tags.day],
+					offset: { start: 300 }
+				},
+				{
+					name: 'Chaoyang Park',
+					type: SceneTypes.bike,
+					videoID: 'XoZLA7Rruj8',
+					tags: [Tags.day, Tags.rain],
+					offset: { start: 60 }
+				},
+				{
+					name: 'Wenyu River',
+					type: SceneTypes.bike,
+					videoID: '5CaR_J81TCU',
+					tags: [Tags.day],
+					offset: { start: 60 }
+				},
+				{
+					name: 'Chaoyang',
+					type: SceneTypes.walk,
+					videoID: 'DR1luTSSDHs',
+					tags: [Tags.day, Tags.rain]
+				},
+				{
+					name: 'Lake Sanlitun',
+					type: SceneTypes.walk,
+					videoID: 'GFoy-ym_EYE',
+					tags: [Tags.day, Tags.snow]
+				},
+				{
+					name: 'The Imperial College',
+					type: SceneTypes.bike,
+					videoID: 'iITIfcbzFjI',
+					offset: { start: 60 }
+				},
+				{
+					name: 'Guomao',
+					type: SceneTypes.bike,
+					videoID: 'TBRhmFKsVxU',
+					offset: { start: 60 }
+				},
+				{
+					name: 'Daxing International Airport',
+					type: SceneTypes.walk,
+					videoID: 'f-8rY7ysf0c',
+					offset: { start: 60 }
+				},
+				{
+					name: 'CBD ➡️ Olympic Park',
 					type: SceneTypes.walk,
 					videoID: '7keLrzMcZRc',
 					offset: { start: 2058 },

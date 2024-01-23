@@ -6,10 +6,11 @@
 
 <script lang="ts">
 	import { SceneTypes } from '$data/scene-types';
-	import { alphabetical } from 'radash';
+	import { alphabetical, fork, group, mapValues } from 'radash';
 	import { createEventDispatcher } from 'svelte';
-	import { fade, fly, type TransitionConfig } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 
+	import About from '../About/About.svelte';
 	import SearchItem from './SearchItem.svelte';
 	import SearchSection from './SearchSection.svelte';
 
@@ -20,20 +21,14 @@
 	export let disableTransitions: boolean = false;
 	export let transitionDirection: 'forward' | 'backward' = 'forward';
 
-	$: drives = alphabetical(
-		results.filter((scene) => 'type' in scene && scene.type === SceneTypes.drive),
-		({ name }) => name
+	$: partition = fork(results, (scene) => 'type' in scene);
+
+	$: scenes = mapValues(
+		group(partition[0] as Scene[], (scene) => scene.type) as Record<SceneTypes, Scene[]>,
+		(s) => alphabetical(s ?? [], ({ name }) => name)
 	);
 
-	$: walks = alphabetical(
-		results.filter((scene) => 'type' in scene && scene.type === SceneTypes.walk),
-		({ name }) => name
-	);
-
-	$: other = alphabetical(
-		results.filter((scene) => !walks.includes(scene) && !drives.includes(scene)),
-		({ name }) => name
-	);
+	$: groups = alphabetical(partition[1], ({ name }) => name);
 
 	const handleClick = (item: Item) => () => {
 		dispatch('click', { item, index: results.indexOf(item) });
@@ -59,21 +54,37 @@
 			out:exit
 			class="grid absolute inset-0 auto-rows-min grid-cols-[repeat(auto-fill,minmax(300px,1fr))] pb-12 overflow-auto gap-4"
 		>
-			{#each other as item}
+			{#each groups as item}
 				<SearchItem {emoji} {item} on:click={handleClick(item)} />
 			{/each}
 
-			{#if drives.length > 0}
+			{#if scenes.drive && scenes.drive.length > 0}
 				<SearchSection title="🚗 Drives">
-					{#each drives as item}
+					{#each scenes.drive as item}
 						<SearchItem {emoji} {item} on:click={handleClick(item)} />
 					{/each}
 				</SearchSection>
 			{/if}
 
-			{#if walks.length > 0}
+			{#if scenes.walk && scenes.walk.length > 0}
 				<SearchSection title="👣 Walks">
-					{#each walks as item}
+					{#each scenes.walk as item}
+						<SearchItem {emoji} {item} on:click={handleClick(item)} />
+					{/each}
+				</SearchSection>
+			{/if}
+
+			{#if scenes.bike && scenes.bike.length > 0}
+				<SearchSection title="🚲 Bike Rides">
+					{#each scenes.bike as item}
+						<SearchItem {emoji} {item} on:click={handleClick(item)} />
+					{/each}
+				</SearchSection>
+			{/if}
+
+			{#if scenes.boat && scenes.boat.length > 0}
+				<SearchSection title="🚢 Boat Rides">
+					{#each scenes.boat as item}
 						<SearchItem {emoji} {item} on:click={handleClick(item)} />
 					{/each}
 				</SearchSection>
