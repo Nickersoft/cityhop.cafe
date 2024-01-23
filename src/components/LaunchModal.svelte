@@ -27,7 +27,7 @@
 		/>
 
 		<div class="flex flex-col">
-			<h3 class="font-bold text-lg text-left">Want your own site to look as nice as this one?</h3>
+			<h3 class="font-bold text-lg text-left">Loving this site?</h3>
 			<p class="py-4">
 				Hi there! I'm
 				<a
@@ -38,14 +38,13 @@
 				>, the creator CityHop. I just launched a brand-new service called
 				<a href="https://kojo.design" target="_blank" class="text-accent" rel="noopenner noreferrer"
 					>Kojo</a
-				> that gives you unlimited design engineering for a flat monthly fee. The best part? You get
-				to work directly with me!
+				> that gives you unlimited design engineering for a flat monthly fee.
 			</p>
 			<p>
-				It would mean so much if you checked it out. Let's make your product look amazing together
-				🎉
+				It's launching on ProductHunt today, and if you're a fan of my work, it'd mean the world to
+				me if you went and showed your support. It's quick and it's free! 🙏
 			</p>
-			<div class="flex flex-col-reverse lg:flex-row lg:pl-16 justify-end pt-8 gap-4">
+			<div class="flex flex-col-reverse lg:flex-row lg:pl-16 justify-end flex-shrink-0 pt-8 gap-4">
 				<Button
 					variant="ghost"
 					grow
@@ -55,8 +54,13 @@
 				>
 					Nah, I'm good
 				</Button>
-				<Button iconPlacement="after" grow action="https://kojo.design" icon="mdi:arrow-right">
-					Let's do it
+				<Button
+					iconPlacement="after"
+					grow
+					action="https://www.producthunt.com/posts/kojo-design"
+					icon="mdi:arrow-right"
+				>
+					Take me there
 				</Button>
 			</div>
 		</div>
