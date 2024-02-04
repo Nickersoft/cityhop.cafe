@@ -21,8 +21,8 @@ dependencies:
     specifier: ^2.0.4
     version: 2.0.4
   iconify-icon:
-    specifier: ^1.0.8
-    version: 1.0.8
+    specifier: ^2.0.0
+    version: 2.0.0
   posthog-js:
     specifier: ^1.101.0
     version: 1.101.0
@@ -1928,8 +1928,8 @@ packages:
     engines: {node: '>=16.17.0'}
     dev: true
 
-  /iconify-icon@1.0.8:
-    resolution: {integrity: sha512-jvbUKHXf8EnGGArmhlP2IG8VqQLFFyTvTqb9LVL2TKTh7/eCCD1o2HHE9thpbJJb6B8hzhcFb6rOKhvo7reNKA==}
+  /iconify-icon@2.0.0:
+    resolution: {integrity: sha512-38ArOkxmyD9oDbJBkxaFpE6eZ0K3F9Sk+3x4mWGfjMJaxi3EKrix9Du4iWhgBFT3imKC4FJJE34ur2Rc7Xm+Uw==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: false
