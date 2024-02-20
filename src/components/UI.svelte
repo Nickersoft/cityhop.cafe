@@ -6,7 +6,6 @@
 	import type { YouTubePlayer } from 'youtube-player/dist/types';
 
 	import Controls from './Controls';
-	import LaunchModal from './LaunchModal.svelte';
 	import YouTube from './YouTube.svelte';
 
 	export let playing: boolean;
@@ -81,10 +80,6 @@
 
 	$: audioPlayer && audioPlayer.setVolume($preferences.muteMusic ? 0 : $preferences.musicVolume);
 </script>
-
-{#if playing}
-	<LaunchModal />
-{/if}
 
 <Controls />
 
