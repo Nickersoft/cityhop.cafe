@@ -31,11 +31,13 @@ export const jazz = {
 		christmas1: {
 			name: 'Relaxing Christmas Jazz',
 			trackID: 'lJlEQim-yMo',
+			hidden: true,
 			live: false
 		},
 		christmas2: {
 			name: 'Instrumental Christmas Jazz',
 			trackID: '4KYZO6eEugY',
+			hidden: true,
 			live: false
 		}
 	}
