@@ -37,6 +37,8 @@
 
 	<CopyToClipboard />
 
+	<ToolbarButton icon="mdi:cat" action="https://kittycat.cafe" title="Visit KittyCat Cafe" />
+
 	{#if IS_OCTOBER || IS_DECEMBER}
 		<ToolbarButton icon="mdi:dollar" action={BAC_LINK} title="Support CityHop" />
 	{/if}

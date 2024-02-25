@@ -20,7 +20,7 @@
 		href: action
 	}}
 	class={`
-      flex flex-row justify-start items-center gap-2
+      flex flex-row justify-center items-center gap-2
       opacity-75 hover:opacity-100
       normal-case no-underline
       before:normal-case
