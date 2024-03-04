@@ -7,7 +7,7 @@ settings:
 dependencies:
   '@fontsource-variable/figtree':
     specifier: ^5.0.19
-    version: 5.0.19
+    version: 5.0.20
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -556,8 +556,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@fontsource-variable/figtree@5.0.19:
-    resolution: {integrity: sha512-4R7dcsjNJxAhamtOXDlsZgXIPYShzP2sloFFaQXOO9bUHk1thkQWElXzvlinzzI17H59iexUf987m7XTOv/zyQ==}
+  /@fontsource-variable/figtree@5.0.20:
+    resolution: {integrity: sha512-FVRPeUfhtIPElJ41kdXXDdVpRglH+ek/U7efU5Hnfi7u17sYuUJiujtTkltCThtl5ALrvvj2yYziHWW5HCQvzw==}
     dev: false
 
   /@humanwhocodes/config-array@0.11.14:
