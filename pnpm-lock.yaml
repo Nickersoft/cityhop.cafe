@@ -37,7 +37,7 @@ dependencies:
     version: 0.6.4(svelte@4.2.12)
   sveltekit-search-params:
     specifier: ^2.1.0
-    version: 2.1.1(@sveltejs/kit@2.5.3)(svelte@4.2.12)
+    version: 2.1.2(@sveltejs/kit@2.5.3)(svelte@4.2.12)(vite@5.1.5)
   uuid:
     specifier: ^9.0.1
     version: 9.0.1
@@ -3037,14 +3037,18 @@ packages:
       magic-string: 0.30.7
       periscopic: 3.1.0
 
-  /sveltekit-search-params@2.1.1(@sveltejs/kit@2.5.3)(svelte@4.2.12):
-    resolution: {integrity: sha512-tmsvdTV0DwXAXbVv7Iz+eULd/QPYbNWKNUnRiascK0Qiu9afAMMQdIZejVg1TQEpy441h2ZHbqyUnpcFg3eUHQ==}
+  /sveltekit-search-params@2.1.2(@sveltejs/kit@2.5.3)(svelte@4.2.12)(vite@5.1.5):
+    resolution: {integrity: sha512-wh5WSo46wz48MdWvpchVGrOjoDmbmsNJ7dUToSZ4L1SQ2LOasmTjAAlFhfG/EFvEhR34phRzLF7BjE0ZHzx1Uw==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0 || ^2.0.0
       svelte: ^3.55.0 || ^4.0.0 || ^5.0.0
     dependencies:
       '@sveltejs/kit': 2.5.3(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.1.5)
+      '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.12)(vite@5.1.5)
       svelte: 4.2.12
+    transitivePeerDependencies:
+      - supports-color
+      - vite
     dev: false
 
   /tailwindcss@3.4.1:
