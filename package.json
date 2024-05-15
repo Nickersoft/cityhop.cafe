@@ -47,7 +47,7 @@
     "class-variance-authority": "^0.7.0",
     "copy-to-clipboard": "^3.3.3",
     "dayjs": "^1.11.10",
-    "fuzzysort": "^2.0.4",
+    "fuzzysort": "^3.0.0",
     "iconify-icon": "^2.0.0",
     "posthog-js": "^1.101.0",
     "posthog-node": "^4.0.0",
