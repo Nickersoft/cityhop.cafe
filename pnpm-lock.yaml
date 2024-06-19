@@ -22,7 +22,7 @@ importers:
         version: 1.11.11
       fuzzysort:
         specifier: ^3.0.0
-        version: 3.0.1
+        version: 3.0.2
       iconify-icon:
         specifier: ^2.0.0
         version: 2.1.0
@@ -1106,8 +1106,8 @@ packages:
   function-bind@1.1.2:
     resolution: {integrity: sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==}
 
-  fuzzysort@3.0.1:
-    resolution: {integrity: sha512-jpiSrv+j2GwtI13z3vzdBAD5m7iVH23spSZwJrD657dfr6jUV2Jyc5YuSPKirmTp9OqnJbHudPIBGIId1bCWmA==}
+  fuzzysort@3.0.2:
+    resolution: {integrity: sha512-ZyahVgxvckB1Qosn7YGWLDJJp2XlyaQ2WmZeI+d0AzW0AMqVYnz5N89G6KAKa6m/LOtv+kzJn4lhDF/yVg11Cg==}
 
   gensync@1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
@@ -3031,7 +3031,7 @@ snapshots:
 
   function-bind@1.1.2: {}
 
-  fuzzysort@3.0.1: {}
+  fuzzysort@3.0.2: {}
 
   gensync@1.0.0-beta.2: {}
 
