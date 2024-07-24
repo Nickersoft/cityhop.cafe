@@ -13,7 +13,7 @@ export const lofi = {
 		sleep: {
 			displayName: 'Lofi Sleep & Rain Radio',
 			name: '24/7 - lofi sleep, lofi rain💤 beats to relax at night - music for insomnia, anxiety, peaceful dreams',
-			trackID: 'Z9D16KYgUJE',
+			trackID: 'yOKVwLGSBYE',
 			live: true
 		},
 		coffeeShop: {
