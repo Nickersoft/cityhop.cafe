@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@fontsource-variable/figtree':
         specifier: ^5.0.19
-        version: 5.0.23
+        version: 5.1.0
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
@@ -392,8 +392,8 @@ packages:
     resolution: {integrity: sha512-autAXT203ixhqei9xt+qkYOvY8l6LAFIdT2UXc/RPNeUVfqRF1BV94GTJyVPFKT8nFM6MyVJhjLj9E8JWvf5zQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@fontsource-variable/figtree@5.0.23':
-    resolution: {integrity: sha512-SKesKxJsVf/RpLQ+xEE2T0SgdGc3+TdY50QqpMc2njB+13/tFMAuFFHvbp92NnUgeNO07VZxlgVPHG1W0z48aQ==}
+  '@fontsource-variable/figtree@5.1.0':
+    resolution: {integrity: sha512-p0fta2L9CMeTbC7rNYeKF0bcu+tUGb4NH5D/pHC0RUNW1I+rrBDXLoGYKaH4yNfxxMrsZ4k1fchgkCI4F9zIFQ==}
 
   '@humanwhocodes/module-importer@1.0.1':
     resolution: {integrity: sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==}
@@ -2129,7 +2129,7 @@ snapshots:
     dependencies:
       levn: 0.4.1
 
-  '@fontsource-variable/figtree@5.0.23': {}
+  '@fontsource-variable/figtree@5.1.0': {}
 
   '@humanwhocodes/module-importer@1.0.1': {}
 
