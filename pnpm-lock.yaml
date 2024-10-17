@@ -28,7 +28,7 @@ importers:
         version: 2.1.0
       posthog-js:
         specifier: ^1.101.0
-        version: 1.171.0
+        version: 1.172.1
       posthog-node:
         specifier: ^4.0.0
         version: 4.2.1
@@ -862,6 +862,9 @@ packages:
   copy-to-clipboard@3.3.3:
     resolution: {integrity: sha512-2KV8NhB5JqC3ky0r9PMCAZKbUHSwtEo4CwCs0KXgruG43gX5PMqDEBbVU4OUzw2MuAWUfsuFmWvEKG5QRfSnJA==}
 
+  core-js@3.38.1:
+    resolution: {integrity: sha512-OP35aUorbU3Zvlx7pjsFdu1rGNnD4pgw/CWoYzRY3t2EzoVT7shKHY1dlAy3f41cGIO7ZDPQimhGFTlEYkG/Hw==}
+
   cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
     engines: {node: '>= 8'}
@@ -1503,8 +1506,8 @@ packages:
     resolution: {integrity: sha512-56rxCq7G/XfB4EkXq9Egn5GCqugWvDFjafDOThIdMBsI15iqPqR5r15TfSr1YPYeEI19YeaXMCbY6u88Y76GLQ==}
     engines: {node: ^10 || ^12 || >=14}
 
-  posthog-js@1.171.0:
-    resolution: {integrity: sha512-0ElicUivU/bnexbDzy0sa5cmf4CPGVPBRMnXu27lklgbGC5qA8oPyZqMT4q+Lsd2Nu7i9DhGUTak6EioIdIOEA==}
+  posthog-js@1.172.1:
+    resolution: {integrity: sha512-lLn4HB4ssIpl4fuR4TOfxv6HV66O2+Gxhl4AkCuSWnMAqVy7CK+fWXukGdop16aBUv8CymsFYYluGUU0nj1N0A==}
 
   posthog-node@4.2.1:
     resolution: {integrity: sha512-l+fsjYEkTik3m/G0pE7gMr4qBJP84LhK779oQm6MBzhBGpd4By4qieTW+4FUAlNCyzQTynn3Nhsa50c0IELSxQ==}
@@ -2631,6 +2634,8 @@ snapshots:
     dependencies:
       toggle-selection: 1.0.6
 
+  core-js@3.38.1: {}
+
   cross-spawn@7.0.3:
     dependencies:
       path-key: 3.1.1
@@ -3188,8 +3193,9 @@ snapshots:
       picocolors: 1.1.0
       source-map-js: 1.2.1
 
-  posthog-js@1.171.0:
+  posthog-js@1.172.1:
     dependencies:
+      core-js: 3.38.1
       fflate: 0.4.8
       preact: 10.24.3
       web-vitals: 4.2.3
