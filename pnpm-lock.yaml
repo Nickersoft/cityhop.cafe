@@ -28,7 +28,7 @@ importers:
         version: 2.1.0
       posthog-js:
         specifier: ^1.101.0
-        version: 1.172.1
+        version: 1.174.0
       posthog-node:
         specifier: ^4.0.0
         version: 4.2.1
@@ -1506,8 +1506,8 @@ packages:
     resolution: {integrity: sha512-56rxCq7G/XfB4EkXq9Egn5GCqugWvDFjafDOThIdMBsI15iqPqR5r15TfSr1YPYeEI19YeaXMCbY6u88Y76GLQ==}
     engines: {node: ^10 || ^12 || >=14}
 
-  posthog-js@1.172.1:
-    resolution: {integrity: sha512-lLn4HB4ssIpl4fuR4TOfxv6HV66O2+Gxhl4AkCuSWnMAqVy7CK+fWXukGdop16aBUv8CymsFYYluGUU0nj1N0A==}
+  posthog-js@1.174.0:
+    resolution: {integrity: sha512-60qCn8bloCxVc3oBQ/JP77J40J7UD+cRGUfYXJdsqjUH82s2wmCx4MicuNrcn9Hd2dHM25nXmOAMLO5iwSq9gg==}
 
   posthog-node@4.2.1:
     resolution: {integrity: sha512-l+fsjYEkTik3m/G0pE7gMr4qBJP84LhK779oQm6MBzhBGpd4By4qieTW+4FUAlNCyzQTynn3Nhsa50c0IELSxQ==}
@@ -3193,7 +3193,7 @@ snapshots:
       picocolors: 1.1.0
       source-map-js: 1.2.1
 
-  posthog-js@1.172.1:
+  posthog-js@1.174.0:
     dependencies:
       core-js: 3.38.1
       fflate: 0.4.8
