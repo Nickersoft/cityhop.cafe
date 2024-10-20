@@ -18,7 +18,7 @@
     "@playwright/test": "^1.41.1",
     "@sveltejs/adapter-auto": "^3.1.1",
     "@sveltejs/kit": "^2.4.3",
-    "@sveltejs/vite-plugin-svelte": "^3.0.1",
+    "@sveltejs/vite-plugin-svelte": "^4.0.0",
     "@types/uuid": "^10.0.0",
     "@types/youtube-player": "^5.5.11",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
