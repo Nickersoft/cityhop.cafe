@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 
-	let visitorCount: number;
+	let visitorCount = $state<Optional<number>>();
 
 	async function updateVisitorCount() {
 		const result = await fetch('/api/visitors').then((r) => r.text());

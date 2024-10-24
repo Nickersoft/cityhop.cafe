@@ -1,15 +1,25 @@
 <script lang="ts">
-	let className: string | undefined = undefined;
 
-	export let title: string;
-	export let icon: string | undefined = undefined;
-	export let variant: 'icon' | 'full' = 'icon';
-	export let action: (() => void) | string;
+	interface Props {
+		class?: string | undefined;
+		title: string;
+		icon?: string | undefined;
+		variant?: 'icon' | 'full';
+		action: (() => void) | string;
+	}
 
-	export { className as class };
+	let {
+		class: className = undefined,
+		title,
+		icon = undefined,
+		variant = 'icon',
+		action
+	}: Props = $props();
 
-	$: isLink = typeof action === 'string';
-	$: isIcon = variant === 'icon';
+	
+
+	let isLink = $derived(typeof action === 'string');
+	let isIcon = $derived(variant === 'icon');
 </script>
 
 <svelte:element
@@ -26,7 +36,7 @@
       before:normal-case
       ${className}
     `}
-	on:click={typeof action === 'string' ? undefined : action}
+	onclick={typeof action === 'string' ? undefined : action}
 	role="button"
 	tabindex="0"
 	class:tooltip={isIcon}
@@ -41,7 +51,7 @@
 	{...isIcon && { 'data-tip': title }}
 >
 	{#if icon}
-		<iconify-icon {icon} />
+		<iconify-icon {icon}></iconify-icon>
 	{/if}
 
 	{#if !isIcon}

@@ -2,8 +2,13 @@
 	import { onMount } from 'svelte';
 	import { scale } from 'svelte/transition';
 
-	export let open: boolean;
-	export let showClose: boolean = true;
+	interface Props {
+		open: boolean;
+		showClose?: boolean;
+		children?: import('svelte').Snippet;
+	}
+
+	let { open = $bindable(), showClose = true, children }: Props = $props();
 
 	function handleClose() {
 		open = false;
@@ -28,13 +33,13 @@
 	<div class="bg" transition:scale={{ start: 1.1, duration: 350 }}>
 		{#if showClose}
 			<button
-				on:click={handleClose}
+				onclick={handleClose}
 				class="text-3xl btn btn-square btn-link opacity-50 hover:opacity-100 absolute top-4 right-4"
 			>
-				<iconify-icon icon="mdi:close" />
+				<iconify-icon icon="mdi:close"></iconify-icon>
 			</button>
 		{/if}
-		<slot />
+		{@render children?.()}
 	</div>
 {/if}
 

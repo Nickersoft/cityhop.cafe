@@ -1,13 +1,19 @@
 <script lang="ts">
 	import MuteButton from '../MuteButton.svelte';
 
-	export let label: string;
-	export let muted: boolean;
-	export let value: number;
-
-	$: if (value === 0) {
-		muted = true;
+	interface Props {
+		label: string;
+		muted: boolean;
+		value: number;
 	}
+
+	let { label, muted = $bindable(), value = $bindable() }: Props = $props();
+
+	$effect(() => {
+		if (value === 0) {
+			muted = true;
+		}
+	});
 </script>
 
 <MuteButton class="text-xl" bind:muted />

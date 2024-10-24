@@ -6,7 +6,7 @@ import type { RequestHandler } from './$types';
 
 interface HeartbeatBody {
 	distinctID: string;
-	currentScene: Scene;
+	nowPlaying: Scene;
 	currentStation: Station;
 }
 
@@ -25,12 +25,12 @@ export const POST: RequestHandler = async ({ getClientAddress, request }) => {
 		disableGeoip: false,
 		properties: {
 			$ip: getClientAddress(),
-			currentScene: body.currentScene,
+			nowPlaying: body.nowPlaying,
 			currentStation: body.currentStation
 		}
 	});
 
-	await ph.shutdownAsync();
+	await ph.shutdown();
 
 	return new Response(JSON.stringify({ success: true }));
 };

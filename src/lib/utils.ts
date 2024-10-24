@@ -1,9 +1,8 @@
 import { christmasScenes, halloweenScenes, sceneMap, scenes } from '$data/scenes';
 import { christmasStations, halloweenStations, stationList, stationMap } from '$data/stations';
-import { draw } from 'radash';
-import { get } from 'svelte/store';
+import { draw } from 'radashi';
 
-import { currentScene, currentStation, isPlaying } from './stores';
+import { nowPlaying, uiState } from './stores.svelte';
 import { type Station } from './types';
 
 const jazzStations = stationList.filter(({ genre }) => genre === 'jazz') as Station[];
@@ -13,16 +12,16 @@ export function getSpooky() {
 	const scene = draw(halloweenScenes)!;
 	const track = draw(halloweenStations)!;
 
-	currentScene.set(scene);
-	currentStation.set(track);
+	nowPlaying.scene = scene;
+	nowPlaying.station = track;
 }
 
 export function getXmas() {
 	const scene = draw(christmasScenes)!;
 	const track = draw(christmasStations)!;
 
-	currentScene.set(scene);
-	currentStation.set(track);
+	nowPlaying.scene = scene;
+	nowPlaying.station = track;
 }
 
 export function getRandomLofi() {
@@ -35,7 +34,7 @@ export function getRandomLofi() {
 export function goToRandomScene(calmOnly = false) {
 	let candidates = scenes;
 
-	isPlaying.set(false);
+	uiState.isPlaying = false;
 
 	if (calmOnly) {
 		candidates = candidates.filter((b) =>
@@ -45,7 +44,7 @@ export function goToRandomScene(calmOnly = false) {
 		);
 	}
 
-	currentScene.set(draw(candidates)!);
+	nowPlaying.scene = draw(candidates)!;
 }
 
 export function getVideoThumbnail(videoID: string, num: number = 3) {
@@ -54,13 +53,12 @@ export function getVideoThumbnail(videoID: string, num: number = 3) {
 
 export function goToRandomSceneWithMusic(calmOnly: boolean = false) {
 	goToRandomScene(calmOnly);
-	currentStation.set(get(currentScene)?.suggestedTrack ?? getRandomLofi());
+	nowPlaying.station = nowPlaying.scene?.suggestedTrack ?? getRandomLofi();
 }
 
 export function getSharableURL(url: URL) {
-	const $currentScene = get(currentScene);
-	const $currentStation = get(currentStation);
-	const key = btoa(`${$currentScene.videoID}:${$currentStation.trackID}`);
+	const { scene, station } = nowPlaying;
+	const key = btoa(`${scene?.videoID}:${station?.trackID}`);
 
 	return `${url.origin}/?v=${key}`;
 }

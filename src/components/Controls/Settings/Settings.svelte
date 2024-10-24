@@ -1,11 +1,15 @@
 <script lang="ts">
 	import { clickOutside } from '$lib/actions';
-	import { preferences } from '$lib/stores';
+	import { userPreferences } from '$lib/stores.svelte';
 
 	import FullScreenOverlay from '../FullScreenOverlay.svelte';
 	import VolumeControl from './VolumeControl.svelte';
 
-	export let open: boolean;
+	interface Props {
+		open: boolean;
+	}
+
+	let { open = $bindable() }: Props = $props();
 
 	function handleClose() {
 		open = false;
@@ -21,18 +25,18 @@
 			<h1 class="text-4xl w-full mb-8">Settings</h1>
 			<div class="grid w-full gap-8" style="grid-template-columns: repeat(2, max-content) auto;">
 				<VolumeControl
-					bind:muted={$preferences.muteScene}
-					bind:value={$preferences.sceneVolume}
+					bind:muted={userPreferences.muteScene}
+					bind:value={userPreferences.sceneVolume}
 					label="Scene volume"
 				/>
 				<VolumeControl
-					bind:muted={$preferences.muteMusic}
-					bind:value={$preferences.musicVolume}
+					bind:muted={userPreferences.muteMusic}
+					bind:value={userPreferences.musicVolume}
 					label="Music volume"
 				/>
 			</div>
 			<button
-				on:click={handleClose}
+				onclick={handleClose}
 				class="btn btn-outline btn-primary hover:!bg-white transform-gpu px-16 mt-8 normal-case"
 			>
 				Close

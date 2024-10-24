@@ -1,9 +1,8 @@
 import { PUBLIC_PH_TOKEN } from '$env/static/public';
 import posthog from 'posthog-js';
-import { get } from 'svelte/store';
 import { v4 as uuid } from 'uuid';
 
-import { currentScene, currentStation } from './stores';
+import { nowPlaying } from './stores.svelte';
 
 function getDistinctID() {
 	const distinctIDKey = 'distinct-id';
@@ -33,8 +32,8 @@ export function setupHeartbeat() {
 			},
 			body: JSON.stringify({
 				distinctID: distinctID,
-				currentScene: get(currentScene),
-				currentStation: get(currentStation)
+				nowPlaying: nowPlaying.scene,
+				currentStation: nowPlaying.station
 			})
 		});
 	}

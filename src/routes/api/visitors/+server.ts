@@ -1,9 +1,8 @@
-import dayjs from 'dayjs';
-
 import { PH_API_KEY, PH_PROJECT_ID } from '$env/static/private';
+import dayjs from 'dayjs';
+import { group, shake, sort } from 'radashi';
 
 import type { RequestHandler } from './$types';
-import { group, shake, sort } from 'radash';
 
 interface Event {
 	id: string;
