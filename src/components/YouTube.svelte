@@ -1,4 +1,4 @@
-<script context="module">
+<script module>
 	/**
 	 * Expose PlayerState constants for convenience. These constants can also be
 	 * accessed through the global YT object after the YouTube IFrame API is instantiated.
@@ -15,16 +15,22 @@
 </script>
 
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { onMount } from 'svelte';
 	import { createEventDispatcher } from 'svelte';
 	import createYTPlayer from 'youtube-player';
 	import type { Options, YouTubePlayer } from 'youtube-player/dist/types';
 
-	export let id: string | undefined = undefined; // HTML element ID for player (optional)
-	export let videoId: string; // Youtube video ID (required)
-	export let options: Options | undefined = undefined; // YouTube player options (optional)
+	interface Props {
+		id?: string | undefined;
+		videoId: string;
+		options?: Options | undefined;
+	}
 
-	let playerElem: HTMLElement; // player DOM element reference
+	let { id = undefined, videoId, options = undefined }: Props = $props();
+
+	let playerElem = $state<HTMLElement|null>(null); // player DOM element reference
 	let player: YouTubePlayer; // player API instance
 
 	// Create and tear down player as component mounts or unmounts
@@ -32,10 +38,9 @@
 		await createPlayer();
 	});
 
-	// Update videoId and load new video if URL changes
-	$: play(videoId);
-
 	async function createPlayer() {
+    if (!playerElem) return;
+    
 		player = createYTPlayer(playerElem, options);
 
 		// Register event handlers
@@ -171,6 +176,10 @@
 	function onPlayerPlaybackQualityChange(event: CustomEvent) {
 		dispatch('playbackQualityChange', event);
 	}
+	// Update videoId and load new video if URL changes
+	run(() => {
+		play(videoId);
+	});
 </script>
 
-<div {id} bind:this={playerElem} />
+<div {id} bind:this={playerElem}></div>

@@ -1,19 +1,22 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-
 	import FullScreenOverlay from './Controls/FullScreenOverlay.svelte';
 
-	export let open: boolean = true;
+	interface Props {
+		open?: boolean;
+		children?: import('svelte').Snippet;
+	}
 
-	$: {
+	let { open = $bindable(true), children }: Props = $props();
+
+	$effect(() => {
 		if (open) {
 			setTimeout(() => {
 				open = false;
 			}, 2000);
 		}
-	}
+	});
 </script>
 
 <FullScreenOverlay showClose={false} bind:open>
-	<slot />
+	{@render children?.()}
 </FullScreenOverlay>

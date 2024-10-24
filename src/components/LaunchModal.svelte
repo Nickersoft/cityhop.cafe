@@ -5,11 +5,11 @@
 
 	import Button from './Button.svelte';
 
-	let modal: HTMLDialogElement;
+	let modal = $state<Optional<HTMLDialogElement>>();
 
 	onMount(() => {
 		setTimeout(() => {
-			modal.showModal();
+			modal?.showModal();
 		}, 1500);
 	});
 </script>
@@ -49,7 +49,7 @@
 					variant="ghost"
 					grow
 					action={() => {
-						modal.close();
+						modal?.close();
 					}}
 				>
 					Nah, I'm good

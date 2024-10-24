@@ -33,7 +33,7 @@
 	<VisitorCount />
 	<SupportText />
 
-	<div class="h-8 border-white/10 mr-5 border w-px" />
+	<div class="h-8 border-white/10 mr-5 border w-px"></div>
 
 	<CopyToClipboard />
 

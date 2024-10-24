@@ -3,52 +3,60 @@
 	// import { genres as genreEmojis } from '$data/emojis';
 	import type { Genre } from '$lib/types';
 	import fuzzysort from 'fuzzysort';
-	import { alphabetical, group } from 'radash';
+	import { alphabetical, group } from 'radashi';
 	import { createEventDispatcher } from 'svelte';
 
 	import SearchScreen, { ListItem, Section } from '../SearchScreen';
 
-	export let open: boolean = false;
+	interface Props {
+		open?: boolean;
+	}
 
-	let searchQuery: string = '';
+	let { open = $bindable(false) }: Props = $props();
+
+	let searchQuery: string = $state('');
 
 	const dispatch = createEventDispatcher();
 
-	$: results =
-		searchQuery.length === 0
+	let results =
+		$derived(searchQuery.length === 0
 			? stationList
 			: fuzzysort
 					.go(searchQuery, stationList, { keys: ['name', 'genre'] })
-					.map((result) => result.obj);
+					.map((result) => result.obj));
 
-	$: grouped = group(results, (station) => station.genre) as {
+	let grouped = $derived(group(results, (station) => station.genre) as {
 		[key in keyof typeof genres]: typeof stationList;
-	};
+	});
 
-	$: sorted = Object.keys(grouped).sort() as (keyof typeof grouped)[];
+	let sorted = $derived(Object.keys(grouped).sort() as (keyof typeof grouped)[]);
 </script>
 
 <SearchScreen placeholder="Search stations" bind:open bind:searchQuery>
 	{#each sorted as genre}
 		<Section>
-			<svelte:fragment slot="header">
-				<iconify-icon icon={`twemoji:${genres[genre].emoji}`} />
-				<span class="opacity-50">
-					{genres[genre].name}
-				</span>
-			</svelte:fragment>
+			{#snippet header()}
+					
+					<iconify-icon icon={`twemoji:${genres[genre].emoji}`}></iconify-icon>
+					<span class="opacity-50">
+						{genres[genre].name}
+					</span>
+				
+					{/snippet}
 
-			<svelte:fragment slot="list">
-				{@const stations = alphabetical(grouped[genre], ({ name }) => name)}
+			{#snippet list()}
+					
+					{@const stations = alphabetical(grouped[genre], ({ name }) => name)}
 
-				{#each stations as station}
-					<ListItem on:click={() => dispatch('select', station)}>
-						<div class="whitespace-nowrap max-w-4xl overflow-hidden text-ellipsis">
-							{station.displayName}
-						</div>
-					</ListItem>
-				{/each}
-			</svelte:fragment>
+					{#each stations as station}
+						<ListItem on:click={() => dispatch('select', station)}>
+							<div class="whitespace-nowrap max-w-4xl overflow-hidden text-ellipsis">
+								{station.displayName}
+							</div>
+						</ListItem>
+					{/each}
+				
+					{/snippet}
 		</Section>
 	{/each}
 </SearchScreen>

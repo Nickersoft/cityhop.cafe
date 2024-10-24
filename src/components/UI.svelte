@@ -1,22 +1,33 @@
 <script lang="ts">
-	import { isFullscreen, preferences } from '$lib/stores';
+	import { uiState, userPreferences } from '$lib/stores.svelte';
 	import type { Offset } from '$lib/types';
-	import { random } from 'radash';
+	import { random } from 'radashi';
 	import { onMount } from 'svelte';
 	import type { YouTubePlayer } from 'youtube-player/dist/types';
 
 	import Controls from './Controls';
 	import YouTube from './YouTube.svelte';
 
-	export let playing: boolean;
-	export let videoID: string;
-	export let audioID: string;
-	export let liveAudio: boolean = true;
-	export let videoOffset: Required<Offset>;
-	export let videoLength: number | undefined;
+	interface Props {
+		playing: boolean;
+		videoID: string;
+		audioID: string;
+		liveAudio?: boolean;
+		videoOffset: Required<Offset>;
+		videoLength: number | undefined;
+	}
 
-	let backgroundPlayer: YouTubePlayer;
-	let audioPlayer: YouTubePlayer;
+	let {
+		playing = $bindable(),
+		videoID,
+		audioID,
+		liveAudio = true,
+		videoOffset,
+		videoLength
+	}: Props = $props();
+
+	let backgroundPlayer = $state<YouTubePlayer | null>(null);
+	let audioPlayer = $state<YouTubePlayer | null>(null);
 	let videoDuration: number;
 
 	async function onPlay(event: CustomEvent) {
@@ -71,14 +82,19 @@
 	});
 
 	// Default to 30 min
-	$: offsetLength = videoLength ? videoLength - videoOffset.end - videoOffset.start : 1800;
+	let offsetLength = $derived(
+		videoLength ? videoLength - videoOffset.end - videoOffset.start : 1800
+	);
 
-	$: randomOffset = random(videoOffset.start ?? 0, videoOffset.start + offsetLength);
+	let randomOffset = $derived(random(videoOffset.start ?? 0, videoOffset.start + offsetLength));
 
-	$: backgroundPlayer &&
-		backgroundPlayer.setVolume($preferences.muteScene ? 0 : $preferences.sceneVolume);
+	$effect(() => {
+		backgroundPlayer?.setVolume(userPreferences.muteScene ? 0 : userPreferences.sceneVolume);
+	});
 
-	$: audioPlayer && audioPlayer.setVolume($preferences.muteMusic ? 0 : $preferences.musicVolume);
+	$effect(() => {
+		audioPlayer?.setVolume(userPreferences.muteMusic ? 0 : userPreferences.musicVolume);
+	});
 </script>
 
 <Controls />
@@ -105,7 +121,7 @@
 </div>
 
 <div class="video-background">
-	<div class="video-foreground" class:fullscreen={$isFullscreen}>
+	<div class="video-foreground" class:fullscreen={uiState.isFullscreen}>
 		<YouTube
 			id="video"
 			on:end={onBackgroundEnded}

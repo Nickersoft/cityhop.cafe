@@ -1,5 +1,5 @@
 import type { Station } from '$lib/types';
-import { objectify } from 'radash';
+import { objectify } from 'radashi';
 
 import { classical } from './classical';
 import { electronic } from './electronic';

@@ -1,12 +1,16 @@
 <script lang="ts">
-	export let muted: boolean;
+	interface Props {
+		muted: boolean;
+	}
+
+	let { muted }: Props = $props();
 </script>
 
 <div class="equalizer" class:muted>
-	<span class="bar" />
-	<span class="bar" />
-	<span class="bar" />
-	<span class="bar" />
+	<span class="bar"></span>
+	<span class="bar"></span>
+	<span class="bar"></span>
+	<span class="bar"></span>
 </div>
 
 <style lang="postcss">

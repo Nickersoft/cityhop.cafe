@@ -1,5 +1,10 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 
 	const dispatch = createEventDispatcher();
 
@@ -8,8 +13,8 @@
 	}
 </script>
 
-<li on:click={handleClick} on:keydown={handleClick} class="list-item">
-	<slot />
+<li onclick={handleClick} onkeydown={handleClick} class="list-item">
+	{@render children?.()}
 </li>
 
 <style lang="postcss">

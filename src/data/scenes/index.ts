@@ -1,6 +1,6 @@
 import { Tags } from '$data/tags';
 import type { Continent, Country, Scene, SceneGroup } from '$lib/types';
-import { alphabetical } from 'radash';
+import { alphabetical } from 'radashi';
 
 import africa from './africa';
 import asia from './asia';

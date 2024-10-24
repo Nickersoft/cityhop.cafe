@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { stationMap } from '$data/stations';
-	import { currentScene, currentStation } from '$lib/stores';
+	import { nowPlaying } from '$lib/stores.svelte';
 	import { getSharableURL } from '$lib/utils';
 
 	import ToolbarButton from './ToolbarButton.svelte';
@@ -13,10 +13,14 @@
 	function shareTweet() {
 		const url = getSharableURL($page.url);
 
-		const tweet = `Come ${$currentScene.type} in #${createHashtag(
-			$currentScene.name
+		if (!nowPlaying.scene || !nowPlaying.station?.trackID) {
+			return;
+		}
+
+		const tweet = `Come ${nowPlaying.scene.type} in #${createHashtag(
+			nowPlaying.scene.name
 		)} with me and chill! 🎧 #cityhop #${createHashtag(
-			stationMap[$currentStation.trackID].genre.toLowerCase()
+			stationMap[nowPlaying.station.trackID].genre.toLowerCase()
 		)} 
 
 ${url}`.trim();

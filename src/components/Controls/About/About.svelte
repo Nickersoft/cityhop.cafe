@@ -1,18 +1,21 @@
 <script lang="ts">
+	import Button from '$components/Button.svelte';
+	import FullScreenOverlay from '$components/Controls/FullScreenOverlay.svelte';
 	import logo from '$images/logo.png';
 	import { clickOutside } from '$lib/actions';
 
-	import Button from '../../Button.svelte';
-	import FullScreenOverlay from '../FullScreenOverlay.svelte';
+	interface Props {
+		open: boolean;
+	}
 
-	export let open: boolean;
+	let { open = $bindable() }: Props = $props();
 </script>
 
 <FullScreenOverlay bind:open>
 	<div class="about" use:clickOutside={() => (open = false)}>
 		<img src={logo} alt="Logo" class="w-72" />
 
-		<div class="divider" />
+		<div class="divider"></div>
 
 		<div class="flex flex-col items-center gap-8">
 			<p>

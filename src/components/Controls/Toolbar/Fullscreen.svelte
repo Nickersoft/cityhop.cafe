@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { isFullscreen } from '$lib/stores';
+	import { uiState } from '$lib/stores.svelte';
 
 	import ToolbarButton from './ToolbarButton.svelte';
 
 	function toggleFullscreen() {
 		if (document.fullscreenElement) {
 			document.exitFullscreen();
-			$isFullscreen = false;
+			uiState.isFullscreen = false;
 		} else {
 			document.documentElement.requestFullscreen();
-			$isFullscreen = true;
+			uiState.isFullscreen = true;
 		}
 	}
 </script>

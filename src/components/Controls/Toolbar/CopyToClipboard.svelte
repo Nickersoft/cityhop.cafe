@@ -7,7 +7,7 @@
 
 	import ToolbarButton from './ToolbarButton.svelte';
 
-	let showCopyConfirmation = false;
+	let showCopyConfirmation = $state(false);
 
 	function copyURL() {
 		copy(getSharableURL($page.url));
@@ -20,7 +20,7 @@
 		in:fly={{ y: 10, delay: 200 }}
 		class="w-full h-full flex flex-col justify-center text-lg gap-4 items-center"
 	>
-		<iconify-icon icon="mdi:link-variant" width={64} height={64} />
+		<iconify-icon icon="mdi:link-variant" width={64} height={64}></iconify-icon>
 		Copied a sharable link to your clipboard!
 	</div>
 </Alert>

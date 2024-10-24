@@ -1,34 +1,40 @@
-<script lang="ts" context="module">
-	import type { Continent, Country, Scene, SceneGroup } from '$lib/types';
-
-	export type Item = Continent | Country | SceneGroup | Scene;
-</script>
-
 <script lang="ts">
 	import { SceneTypes } from '$data/scene-types';
-	import { alphabetical, fork, group, mapValues } from 'radash';
+	import type { Scene } from '$lib/types';
+	import { alphabetical, fork, group, mapValues } from 'radashi';
 	import { createEventDispatcher } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 
-	import About from '../About/About.svelte';
 	import SearchItem from './SearchItem.svelte';
 	import SearchSection from './SearchSection.svelte';
+	import type { Item } from './types';
 
 	const dispatch = createEventDispatcher();
 
-	export let results: Item[];
-	export let emoji: string | undefined = undefined;
-	export let disableTransitions: boolean = false;
-	export let transitionDirection: 'forward' | 'backward' = 'forward';
+	interface Props {
+		results: Item[];
+		emoji?: string | undefined;
+		disableTransitions?: boolean;
+		transitionDirection?: 'forward' | 'backward';
+	}
 
-	$: partition = fork(results, (scene) => 'type' in scene);
+	let {
+		results,
+		emoji = undefined,
+		disableTransitions = false,
+		transitionDirection = 'forward'
+	}: Props = $props();
 
-	$: scenes = mapValues(
-		group(partition[0] as Scene[], (scene) => scene.type) as Record<SceneTypes, Scene[]>,
-		(s) => alphabetical(s ?? [], ({ name }) => name)
+	let partition = $derived(fork(results, (scene) => 'type' in scene));
+
+	let scenes = $derived(
+		mapValues(
+			group(partition[0] as Scene[], (scene) => scene.type) as Record<SceneTypes, Scene[]>,
+			(s) => alphabetical(s ?? [], ({ name }) => name)
+		)
 	);
 
-	$: groups = alphabetical(partition[1], ({ name }) => name);
+	let groups = $derived(alphabetical(partition[1], ({ name }) => name));
 
 	const handleClick = (item: Item) => () => {
 		dispatch('click', { item, index: results.indexOf(item) });
@@ -55,13 +61,13 @@
 			class="grid absolute inset-0 auto-rows-min grid-cols-[repeat(auto-fill,minmax(300px,1fr))] pb-12 overflow-auto gap-4"
 		>
 			{#each groups as item}
-				<SearchItem {emoji} {item} on:click={handleClick(item)} />
+				<SearchItem {emoji} {item} onclick={handleClick(item)} />
 			{/each}
 
 			{#if scenes.drive && scenes.drive.length > 0}
 				<SearchSection title="🚗 Drives">
 					{#each scenes.drive as item}
-						<SearchItem {emoji} {item} on:click={handleClick(item)} />
+						<SearchItem {emoji} {item} onclick={handleClick(item)} />
 					{/each}
 				</SearchSection>
 			{/if}
@@ -69,7 +75,7 @@
 			{#if scenes.walk && scenes.walk.length > 0}
 				<SearchSection title="👣 Walks">
 					{#each scenes.walk as item}
-						<SearchItem {emoji} {item} on:click={handleClick(item)} />
+						<SearchItem {emoji} {item} onclick={handleClick(item)} />
 					{/each}
 				</SearchSection>
 			{/if}
@@ -77,7 +83,7 @@
 			{#if scenes.bike && scenes.bike.length > 0}
 				<SearchSection title="🚲 Bike Rides">
 					{#each scenes.bike as item}
-						<SearchItem {emoji} {item} on:click={handleClick(item)} />
+						<SearchItem {emoji} {item} onclick={handleClick(item)} />
 					{/each}
 				</SearchSection>
 			{/if}
@@ -85,7 +91,7 @@
 			{#if scenes.boat && scenes.boat.length > 0}
 				<SearchSection title="🚢 Boat Rides">
 					{#each scenes.boat as item}
-						<SearchItem {emoji} {item} on:click={handleClick(item)} />
+						<SearchItem {emoji} {item} onclick={handleClick(item)} />
 					{/each}
 				</SearchSection>
 			{/if}

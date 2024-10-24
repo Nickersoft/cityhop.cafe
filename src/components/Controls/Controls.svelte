@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { currentScene, currentStation, preferences } from '$lib/stores';
+	import { nowPlaying, userPreferences } from '$lib/stores.svelte';
 	import type { Scene, Station } from '$lib/types';
 	import { getRandomLofi } from '$lib/utils';
 
@@ -7,14 +7,14 @@
 	import ChangeMusic from './ChangeMusic';
 	import ChangeScene from './ChangeScene';
 	import CurrentScene from './CurrentScene.svelte';
-	import AudioPlayer from './NowPlaying/NowPlaying.svelte';
+	import AudioPlayer from './NowPlaying';
 	import Settings from './Settings';
 	import Toolbar from './Toolbar';
 
-	let isSettingsOpen = false;
-	let isChangeSceneShowing = false;
-	let isAboutShowing = false;
-	let isChangeMusicShowing = false;
+	let isSettingsOpen = $state(false);
+	let isChangeSceneShowing = $state(false);
+	let isAboutShowing = $state(false);
+	let isChangeMusicShowing = $state(false);
 
 	function showChangeMusic() {
 		isChangeMusicShowing = true;
@@ -29,17 +29,17 @@
 	}
 
 	function handleSceneChange(event: CustomEvent & { detail: Scene }) {
-		$currentScene = event.detail;
+		nowPlaying.scene = event.detail;
 
-		if (!$preferences.preserveAudio) {
-			$currentStation = $currentScene.suggestedTrack ?? getRandomLofi();
+		if (!userPreferences.preserveAudio) {
+			nowPlaying.station = nowPlaying.scene?.suggestedTrack ?? getRandomLofi();
 		}
 
 		isChangeSceneShowing = false;
 	}
 
 	function handleMusicChange(event: CustomEvent & { detail: Station }) {
-		$currentStation = event.detail;
+		nowPlaying.station = event.detail;
 		isChangeMusicShowing = false;
 	}
 
