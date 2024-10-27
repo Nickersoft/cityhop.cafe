@@ -55,7 +55,7 @@
     "radashi": "^12.1.0",
     "svelte-persisted-state": "^0.1.0",
     "sveltekit-search-params": "^3.0.0",
-    "uuid": "^10.0.0",
+    "uuid": "^11.0.0",
     "youtube-player": "^5.6.0"
   },
   "packageManager": "pnpm@9.12.2"
