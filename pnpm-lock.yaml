@@ -34,7 +34,7 @@ importers:
         version: 4.2.1
       radashi:
         specifier: ^12.1.0
-        version: 12.1.0
+        version: 12.2.0
       svelte-persisted-state:
         specifier: ^0.1.0
         version: 0.1.0(svelte@5.1.8)
@@ -1559,9 +1559,9 @@ packages:
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
-  radashi@12.1.0:
-    resolution: {integrity: sha512-EB/t8uDEuCzAhWsVzUvI0fK7K0/nCRl0jh7oFUuQUium6zolLjQlaSJGykDdwcarTbmcDy2EHqxFPylOPcoZxQ==}
-    engines: {node: '>=14.18.0'}
+  radashi@12.2.0:
+    resolution: {integrity: sha512-LeYD1SabvzUss1csIqSx5nVjUn2tg8zZykSiadmAfF0fEdAL18sMdn9oFkzniy5WEdqSq249MnnIqK5eVzluVw==}
+    engines: {node: '>=16.0.0'}
 
   read-cache@1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
@@ -3276,7 +3276,7 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
-  radashi@12.1.0: {}
+  radashi@12.2.0: {}
 
   read-cache@1.0.0:
     dependencies:
