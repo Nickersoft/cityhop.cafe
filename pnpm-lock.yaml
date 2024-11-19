@@ -31,7 +31,7 @@ importers:
         version: 1.186.3
       posthog-node:
         specifier: ^4.2.1
-        version: 4.2.1
+        version: 4.2.2
       radashi:
         specifier: ^12.1.0
         version: 12.2.3
@@ -1465,8 +1465,8 @@ packages:
   posthog-js@1.186.3:
     resolution: {integrity: sha512-imtKUMccPgqw5H5Eo1hf23ezzSO/1rhYycglgfh7jVx7dslsj9QxMgBscH80I96rwTgtZOSQcX+ka4bVPHFBYA==}
 
-  posthog-node@4.2.1:
-    resolution: {integrity: sha512-l+fsjYEkTik3m/G0pE7gMr4qBJP84LhK779oQm6MBzhBGpd4By4qieTW+4FUAlNCyzQTynn3Nhsa50c0IELSxQ==}
+  posthog-node@4.2.2:
+    resolution: {integrity: sha512-LYffOp3ipjmnKrcJVR7Gp3adSL16fR1mqpSBvQmfC+Jw6zxYh1Ivjz4wyuzmNaBaBfHGtJiEdPZ480Sos1PsGQ==}
     engines: {node: '>=15.0.0'}
 
   preact@10.24.3:
@@ -3086,7 +3086,7 @@ snapshots:
       preact: 10.24.3
       web-vitals: 4.2.4
 
-  posthog-node@4.2.1:
+  posthog-node@4.2.2:
     dependencies:
       axios: 1.7.7
       rusha: 0.8.14
