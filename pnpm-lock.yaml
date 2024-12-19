@@ -28,7 +28,7 @@ importers:
         version: 2.2.0
       posthog-js:
         specifier: ^1.190.2
-        version: 1.202.1
+        version: 1.202.5
       posthog-node:
         specifier: ^4.3.1
         version: 4.3.2
@@ -1620,15 +1620,15 @@ packages:
     resolution: {integrity: sha512-OCVPnIObs4N29kxTjzLfUryOkvZEq+pf8jTF0lg8E7uETuWHA+v7j3c/xJmiqpX450191LlmZfUKkXxkTry7nA==}
     engines: {node: ^10 || ^12 || >=14}
 
-  posthog-js@1.202.1:
-    resolution: {integrity: sha512-G5YiHvZjFg6nffpr0RI4mev2EFC6V10eKAjhBmE3i6ZRQjRnqHzRpaOE3GteA1fluCPKQvjAnCykxkYl0x8yVA==}
+  posthog-js@1.202.5:
+    resolution: {integrity: sha512-ZkUPkdO35Di2croJByHvBVp/sACq5KJEIaYRchUrr5lRK/57B/s6d5Y5PV374pbWpKhJdXRkUXd3ZUKJ8bOmfw==}
 
   posthog-node@4.3.2:
     resolution: {integrity: sha512-vy8Mt9IEfniUgqQ1rOCQ31CBO1VNqDGd3ZtHlWR9/YfU6RiuK+9pUXPb4h6HTGzQmjL8NFnjd8K8NMXSX8S6MQ==}
     engines: {node: '>=15.0.0'}
 
-  preact@10.25.2:
-    resolution: {integrity: sha512-GEts1EH3oMnqdOIeXhlbBSddZ9nrINd070WBOiPO2ous1orrKGUM4SMDbwyjSWD1iMS2dBvaDjAa5qUhz3TXqw==}
+  preact@10.25.3:
+    resolution: {integrity: sha512-dzQmIFtM970z+fP9ziQ3yG4e3ULIbwZzJ734vaMVUTaKQ2+Ru1Ou/gjshOYVHCcd1rpAelC6ngjvjDXph98unQ==}
 
   prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
@@ -3387,11 +3387,11 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  posthog-js@1.202.1:
+  posthog-js@1.202.5:
     dependencies:
       core-js: 3.39.0
       fflate: 0.4.8
-      preact: 10.25.2
+      preact: 10.25.3
       web-vitals: 4.2.4
 
   posthog-node@4.3.2:
@@ -3401,7 +3401,7 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  preact@10.25.2: {}
+  preact@10.25.3: {}
 
   prelude-ls@1.2.1: {}
 
