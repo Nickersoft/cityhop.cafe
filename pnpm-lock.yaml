@@ -31,7 +31,7 @@ importers:
         version: 1.206.1
       posthog-node:
         specifier: ^4.3.1
-        version: 4.3.2
+        version: 4.4.0
       radashi:
         specifier: ^12.2.3
         version: 12.3.3
@@ -1632,8 +1632,8 @@ packages:
   posthog-js@1.206.1:
     resolution: {integrity: sha512-Ov/aGKORlukofKB9+cHQs1bRM5BXwALPVr8e4eOO7gLm2kSnQ32ZhYaP3kGGt6ClUyQxAPbFiS7v1R/BW5j8tQ==}
 
-  posthog-node@4.3.2:
-    resolution: {integrity: sha512-vy8Mt9IEfniUgqQ1rOCQ31CBO1VNqDGd3ZtHlWR9/YfU6RiuK+9pUXPb4h6HTGzQmjL8NFnjd8K8NMXSX8S6MQ==}
+  posthog-node@4.4.0:
+    resolution: {integrity: sha512-4FEFBuc4FDFkTEiCSIo7DFV0jpprlqfR/SzjVgg7E2rRvfxTW4J47IvCwSCo5C9lBeV0ujDubY/YArHG37aJIw==}
     engines: {node: '>=15.0.0'}
 
   preact@10.25.4:
@@ -1698,9 +1698,6 @@ packages:
 
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
-
-  rusha@0.8.14:
-    resolution: {integrity: sha512-cLgakCUf6PedEu15t8kbsjnwIFFR2D4RfL+W3iWFJ4iac7z4B0ZI8fxy4R3J956kAI68HclCFGL8MPoUVC3qVA==}
 
   sade@1.8.1:
     resolution: {integrity: sha512-xal3CZX1Xlo/k4ApwCFrHVACi9fBqJ7V+mwhBsuf/1IOKbBy098Fex+Wa/5QMubw09pSZ/u8EY8PWgevJsXp1A==}
@@ -3412,10 +3409,9 @@ snapshots:
       preact: 10.25.4
       web-vitals: 4.2.4
 
-  posthog-node@4.3.2:
+  posthog-node@4.4.0:
     dependencies:
       axios: 1.7.9
-      rusha: 0.8.14
     transitivePeerDependencies:
       - debug
 
@@ -3486,8 +3482,6 @@ snapshots:
   run-parallel@1.2.0:
     dependencies:
       queue-microtask: 1.2.3
-
-  rusha@0.8.14: {}
 
   sade@1.8.1:
     dependencies:
