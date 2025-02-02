@@ -36,8 +36,8 @@ importers:
         specifier: ^12.2.3
         version: 12.3.4
       svelte-persisted-state:
-        specifier: ^0.1.0
-        version: 0.1.0(svelte@5.19.6)
+        specifier: ^1.0.0
+        version: 1.0.0(svelte@5.19.6)
       sveltekit-search-params:
         specifier: ^3.0.0
         version: 3.0.0(@sveltejs/kit@2.16.1(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.19.6)(vite@6.0.11(jiti@1.21.6)(yaml@2.6.1)))(svelte@5.19.6)(vite@6.0.11(jiti@1.21.6)(yaml@2.6.1)))(svelte@5.19.6)(vite@6.0.11(jiti@1.21.6)(yaml@2.6.1))
@@ -1654,8 +1654,8 @@ packages:
     peerDependencies:
       svelte: ^5.0.0
 
-  svelte-persisted-state@0.1.0:
-    resolution: {integrity: sha512-YgqKkEFY8NXBL2kAcSTClV0IIjM99VHNrd/7jHzFczQx+mr07jJslhNVCpNfr3MmlBgmkaXGV+v02wrA3bFvOw==}
+  svelte-persisted-state@1.0.0:
+    resolution: {integrity: sha512-+yVknmQULtlJ1Q0UOmtICPnUpyoIvtON9q+WGMkbXBcFT/2QeMdynsmgZL/T+C40IegmTMZyr+oGZhyaiL+jgQ==}
     peerDependencies:
       svelte: ^5.0.0-next.1
 
@@ -3298,7 +3298,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  svelte-persisted-state@0.1.0(svelte@5.19.6):
+  svelte-persisted-state@1.0.0(svelte@5.19.6):
     dependencies:
       svelte: 5.19.6
 
