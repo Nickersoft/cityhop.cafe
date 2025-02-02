@@ -53,7 +53,7 @@
     "posthog-js": "^1.190.2",
     "posthog-node": "^4.3.1",
     "radashi": "^12.2.3",
-    "svelte-persisted-state": "^0.1.0",
+    "svelte-persisted-state": "^1.0.0",
     "sveltekit-search-params": "^3.0.0",
     "uuid": "^11.0.3",
     "youtube-player": "^5.6.0"
