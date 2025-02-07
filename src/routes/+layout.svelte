@@ -2,16 +2,15 @@
 	import '@fontsource-variable/figtree';
 	import 'iconify-icon';
 
-	import figtreeVariable from '@fontsource-variable/figtree/files/figtree-latin-wght-normal.woff2';
 	import figtreeVariableItalic from '@fontsource-variable/figtree/files/figtree-latin-wght-italic.woff2';
-
+	import figtreeVariable from '@fontsource-variable/figtree/files/figtree-latin-wght-normal.woff2';
+	import { page } from '$app/stores';
 	import { MetaTags } from 'svelte-meta-tags';
 
-	import { page } from '$app/stores';
-
-	import '../app.postcss';
+	import '../app.css';
 
 	import { onMount } from 'svelte';
+
 	/**
 	 * @typedef {Object} Props
 	 * @property {import('svelte').Snippet} [children]

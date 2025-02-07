@@ -1,5 +1,3 @@
-import daisyui from "daisyui";
-
 export default {
   content: ["./src/**/*.{html,js,svelte,ts}"],
 
@@ -27,6 +25,5 @@ export default {
     ],
     base: true,
     utils: true,
-  },
-  plugins: [daisyui],
+  }
 };

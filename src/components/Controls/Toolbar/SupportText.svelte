@@ -7,7 +7,7 @@
 
 {#if IS_OCTOBER}
 	<ToolbarButton
-		class="text-orange-200 !opacity-100"
+		class="text-orange-200 opacity-100!"
 		variant="full"
 		icon="mdi:ghost"
 		action={getSpooky}
@@ -15,7 +15,7 @@
 	/>
 {:else if IS_DECEMBER}
 	<ToolbarButton
-		class="text-green-200 !opacity-100"
+		class="text-green-200 opacity-100!"
 		variant="full"
 		icon="mdi:snowflake"
 		action={getXmas}

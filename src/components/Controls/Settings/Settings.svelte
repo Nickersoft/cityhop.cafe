@@ -37,7 +37,7 @@
 			</div>
 			<button
 				onclick={handleClose}
-				class="btn btn-outline btn-primary hover:!bg-white transform-gpu px-16 mt-8 normal-case"
+				class="btn btn-outline btn-primary hover:bg-white! transform-gpu px-16 mt-8 normal-case"
 			>
 				Close
 			</button>

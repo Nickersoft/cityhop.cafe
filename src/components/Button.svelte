@@ -5,7 +5,7 @@
 	const button = cva('btn transform-gpu normal-case', {
 		variants: {
 			variant: {
-				primary: 'btn-primary bg-gradient-to-b from-white to-gray-300 text-gray-950',
+				primary: 'btn-primary bg-linear-to-b from-white to-gray-300 text-gray-950',
 				ghost: 'btn-ghost'
 			},
 			iconPlacement: {

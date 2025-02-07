@@ -44,7 +44,7 @@
 				It's launching on ProductHunt today, and if you're a fan of my work, it'd mean the world to
 				me if you went and showed your support. It's quick and it's free! 🙏
 			</p>
-			<div class="flex flex-col-reverse lg:flex-row lg:pl-16 justify-end flex-shrink-0 pt-8 gap-4">
+			<div class="flex flex-col-reverse lg:flex-row lg:pl-16 justify-end shrink-0 pt-8 gap-4">
 				<Button
 					variant="ghost"
 					grow

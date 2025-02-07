@@ -27,7 +27,7 @@
     flex flex-row justify-end items-center
     px-4 py-2 pb-16
     z-50
-    bg-gradient-to-b from-[rgba(0,0,0,0.5)] to-transparent
+    bg-linear-to-b from-[rgba(0,0,0,0.5)] to-transparent
   "
 >
 	<VisitorCount />

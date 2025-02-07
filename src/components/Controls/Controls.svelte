@@ -82,7 +82,7 @@
 
 		&-container {
 			@apply translate-y-2;
-			@apply bg-gradient-to-t from-[rgba(0,0,0,0.75)] to-transparent p-4 pt-64;
+			@apply bg-linear-to-t from-[rgba(0,0,0,0.75)] to-transparent p-4 pt-64;
 		}
 	}
 </style>

@@ -57,7 +57,7 @@
 					<iconify-icon icon="mdi:arrow-left"></iconify-icon>
 				</button>
 				<div
-					class="flex flex-grow flex-row gap-4 justify-start items-center p-4 w-full text-xl text-left bg-white/10 rounded-2xl"
+					class="flex grow flex-row gap-4 justify-start items-center p-4 w-full text-xl text-left bg-white/10 rounded-2xl"
 				>
 					<iconify-icon
 						class="opacity-50 text-3xl transition-opacity duration-150"
@@ -68,7 +68,7 @@
 						onkeyup={stopPropagation(bubble('keyup'))}
 						bind:value={searchQuery}
 						type="text"
-						class="w-full outline-none bg-transparent"
+						class="w-full outline-hidden bg-transparent"
 						{placeholder}
 					/>
 				</div>
@@ -83,12 +83,12 @@
 
 			<div
 				role="presentation"
-				class="w-full flex-grow relative"
+				class="w-full grow relative"
 				onclick={handleBGClick}
 				onkeydown={handleBGClick}
 			>
 				<div
-					class="flex absolute inset-0 overflow-y-scroll flex-col gap-4 px-12 py-4 w-full flex-grow"
+					class="flex absolute inset-0 overflow-y-scroll flex-col gap-4 px-12 py-4 w-full grow"
 				>
 					{@render children?.()}
 				</div>
