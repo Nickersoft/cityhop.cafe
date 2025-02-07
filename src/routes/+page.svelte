@@ -81,7 +81,7 @@
 	/>
 {/if}
 
-<style lang="postcss">
+<style>
 	@keyframes load {
 		0% {
 			width: 0%;

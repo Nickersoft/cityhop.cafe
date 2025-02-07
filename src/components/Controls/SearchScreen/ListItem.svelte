@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
+
 	interface Props {
 		children?: import('svelte').Snippet;
 	}
@@ -17,7 +18,7 @@
 	{@render children?.()}
 </li>
 
-<style lang="postcss">
+<style>
 	.list-item {
 		@apply hover:text-yellow-500 transform-gpu transition-all duration-150 text-2xl;
 		@apply cursor-pointer relative w-full;

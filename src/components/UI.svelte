@@ -144,7 +144,7 @@
 	</div>
 </div>
 
-<style lang="postcss">
+<style>
 	:global(body.inactive) {
 		@apply cursor-none;
 	}

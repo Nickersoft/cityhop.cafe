@@ -58,7 +58,7 @@
 	<button onclick={changeMusic} class="shrink-0 label"> Change Music </button>
 </div>
 
-<style lang="postcss">
+<style>
 	.marquee {
 		@apply text-lg overflow-hidden w-full relative h-8;
 

@@ -13,7 +13,7 @@
 	<span class="bar"></span>
 </div>
 
-<style lang="postcss">
+<style>
 	.equalizer {
 		@apply flex flex-row gap-[1px] justify-end items-end w-4 h-2;
 

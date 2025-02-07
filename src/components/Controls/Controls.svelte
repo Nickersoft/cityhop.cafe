@@ -66,7 +66,7 @@
 	</div>
 </div>
 
-<style lang="postcss">
+<style>
 	:global(body:not(.inactive)) {
 		#controls {
 			@apply !opacity-100 !translate-y-0;

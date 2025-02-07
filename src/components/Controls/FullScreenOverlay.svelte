@@ -43,7 +43,7 @@
 	</div>
 {/if}
 
-<style lang="postcss">
+<style>
 	.bg {
 		@apply fixed z-9999 inset-0 backdrop-blur-xs;
 		background-image: radial-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.95) 100%);

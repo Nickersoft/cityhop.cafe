@@ -63,7 +63,7 @@
 	</div>
 </FullScreenOverlay>
 
-<style lang="postcss">
+<style>
 	.about {
 		@apply max-w-xl text-center mx-auto h-full flex flex-col justify-center items-center p-8;
 
