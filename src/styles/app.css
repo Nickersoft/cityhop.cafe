@@ -1,0 +1,89 @@
+@import 'tailwindcss';
+
+@import './mask.css';
+@import './animate.css';
+
+@custom-variant min-video {
+	@media (min-aspect-ratio: 16/9) {
+		@slot;
+	}
+}
+
+@custom-variant max-video {
+	@media (max-aspect-ratio: 16/9) {
+		@slot;
+	}
+}
+
+@theme {
+	/* -------------------------------------------------------------------------- */
+	/*                                    Fonts                                   */
+	/* -------------------------------------------------------------------------- */
+	--font-sans: Figtree Variable, Helvetica, Arial, sans-serif;
+
+	/* -------------------------------------------------------------------------- */
+	/*                                 Animations                                 */
+	/* -------------------------------------------------------------------------- */
+	@keyframes load {
+		0% {
+			width: 0%;
+			left: 0;
+		}
+
+		100% {
+			width: 100%;
+		}
+	}
+
+	@keyframes marquee {
+		0% {
+			transform: translateX(0);
+		}
+		90% {
+			transform: translateX(-50%);
+		}
+		100% {
+			transform: translateX(-50%);
+		}
+	}
+
+	--animate-load: load 5s ease-out 100ms both;
+	--animate-marquee: marquee 60s linear infinite;
+
+	/* -------------------------------------------------------------------------- */
+	/*                                   Colors                                   */
+	/* -------------------------------------------------------------------------- */
+	--color-background: var(--color-zinc-900);
+	--color-foreground: var(--color-white);
+	--color-muted: var(--color-zinc-50);
+	--color-muted-foreground: var(--color-zinc-600);
+	--color-popover: var(--color-white);
+	--color-popover-foreground: var(--color-zinc-900);
+	--color-border: var(--color-zinc-200);
+	--color-input: var(--color-zinc-200);
+	--color-card: var(--color-white);
+	--color-card-foreground: var(--color-zinc-900);
+	--color-primary: var(--color-foreground);
+	--color-primary-foreground: var(--color-background);
+	--color-secondary: var(--color-zinc-100);
+	--color-secondary-foreground: var(--color-zinc-900);
+	--color-accent: var(--color-emerald-500);
+	--color-accent-foreground: var(--color-white);
+	--color-destructive: var(--color-red-600);
+	--color-destructive-foreground: var(--color-white);
+	--color-ring: var(--color-blue-300);
+	--color-radius: 0.5rem;
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground font-sans antialiased;
+	}
+}
+
+@utility glow {
+	text-shadow: 0 0 6px --alpha(var(--color-foreground) / 50%);
+}

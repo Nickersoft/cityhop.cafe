@@ -1,34 +1,37 @@
-import { nowPlaying, uiState } from './stores.svelte';
-import { getRandomLofi, goToRandomScene, goToRandomSceneWithMusic } from './utils';
+import { on } from 'svelte/events';
+import { randomize, randomizeScene, randomizeStation } from './now-playing';
+import { ui } from './state.svelte';
 
-export function setupHotkeys() {
-	function handleKeyUp(e: KeyboardEvent) {
-		if (e.key === 'g') {
-			goToRandomSceneWithMusic();
-		} else if (e.key === 'k') {
-			goToRandomScene();
-		} else if (e.key === 'm') {
-			nowPlaying.station = getRandomLofi();
-		}
+function handleKeyUp(e: KeyboardEvent) {
+	if (e.key === 'g') {
+		randomize();
+	} else if (e.key === 'k') {
+		randomizeScene();
+	} else if (e.key === 'm') {
+		randomizeStation();
+	}
+}
+
+export default function setupHotkeys() {
+	const keyUpHandler = on(document, 'keyup', handleKeyUp);
+
+	const startHandlers = [on(document, 'mouseup', start), on(document, 'keyup', start)];
+
+	function removeStartHandlers() {
+		startHandlers.forEach((remove) => remove());
 	}
 
 	function start(event: Event) {
 		event.stopPropagation();
 		event.preventDefault();
 
-		uiState.hasStarted = true;
+		ui.hasStarted = true;
 
-		document.removeEventListener('keyup', start);
-		document.removeEventListener('mouseup', start);
+		removeStartHandlers();
 	}
 
-	document.addEventListener('mouseup', start);
-	document.addEventListener('keyup', start);
-	document.addEventListener('keyup', handleKeyUp);
-
 	return () => {
-		document.removeEventListener('keyup', start);
-		document.removeEventListener('mouseup', start);
-		document.removeEventListener('keyup', handleKeyUp);
+		keyUpHandler();
+		removeStartHandlers();
 	};
 }

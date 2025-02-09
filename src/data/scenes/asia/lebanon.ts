@@ -1,5 +1,5 @@
-import { SceneTypes } from '$data/scene-types';
-import { Tags } from '$data/tags';
+import { SceneTypes } from '$lib/enums';
+import { Tags } from '$lib/enums';
 import type { Country } from '$lib/types';
 
 export default {

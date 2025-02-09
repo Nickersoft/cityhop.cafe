@@ -1,21 +1,36 @@
+import { posthog } from 'posthog-js';
+import { nanoid } from 'nanoid';
+
 import { PUBLIC_PH_TOKEN } from '$env/static/public';
-import posthog from 'posthog-js';
-import { v4 as uuid } from 'uuid';
 
-import { nowPlaying } from './stores.svelte';
+import { nowPlaying } from './state.svelte';
 
-function getDistinctID() {
+function createID() {
 	const distinctIDKey = 'distinct-id';
 
 	if (!localStorage.getItem(distinctIDKey)) {
-		localStorage.setItem(distinctIDKey, uuid());
+		localStorage.setItem(distinctIDKey, nanoid());
 	}
 
 	return localStorage.getItem(distinctIDKey)!;
 }
 
-export function setupHeartbeat() {
-	const distinctID = getDistinctID();
+function trigger(id: string) {
+	return fetch('/api/heartbeat', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({
+			distinctID: id,
+			nowPlaying: nowPlaying.scene,
+			currentStation: nowPlaying.station
+		})
+	});
+}
+
+export default function setupHeartbeat() {
+	const distinctID = createID();
 
 	posthog.init(PUBLIC_PH_TOKEN, {
 		api_host: 'https://app.posthog.com',
@@ -24,21 +39,7 @@ export function setupHeartbeat() {
 		}
 	});
 
-	function triggerHeartbeat() {
-		return fetch('/api/heartbeat', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				distinctID: distinctID,
-				nowPlaying: nowPlaying.scene,
-				currentStation: nowPlaying.station
-			})
-		});
-	}
-
-	const timer = setInterval(triggerHeartbeat, 1000 * 60 * 5 /* 5 minutes */);
+	const timer = setInterval(() => trigger(distinctID), 1000 * 60 * 5 /* 5 minutes */);
 
 	return () => {
 		if (timer) {

@@ -1,5 +1,16 @@
-import type { SceneTypes } from '$data/scene-types';
-import type { Tags } from '$data/tags';
+import type { SceneTypes } from '$lib/enums';
+import type { Tags } from '$lib/enums';
+
+export interface UIState {
+	isPlaying: boolean;
+	hasStarted: boolean;
+	isFullscreen: boolean;
+}
+
+export interface NowPlaying {
+	scene: Nullable<Scene>;
+	station: Nullable<Station>;
+}
 
 export interface Genre {
 	name: string;
