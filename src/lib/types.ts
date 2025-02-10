@@ -22,6 +22,7 @@ export interface Station {
 	name: string;
 	displayName?: string;
 	trackID: string;
+	tags?: Tags[];
 	live: boolean;
 	hidden?: boolean;
 }

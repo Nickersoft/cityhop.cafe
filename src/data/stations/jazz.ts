@@ -1,3 +1,4 @@
+import { Tags } from '$lib/enums';
 import type { Genre } from '$lib/types';
 
 export const jazz = {
@@ -32,9 +33,11 @@ export const jazz = {
 			name: 'Relaxing Christmas Jazz',
 			trackID: 'lJlEQim-yMo',
 			hidden: true,
+			tags: [Tags.christmas],
 			live: false
 		},
 		christmas2: {
+			tags: [Tags.christmas],
 			name: 'Instrumental Christmas Jazz',
 			trackID: '4KYZO6eEugY',
 			hidden: true,

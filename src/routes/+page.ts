@@ -1,7 +1,7 @@
 import { IS_CHRISTMAS, IS_HALLOWEEN } from '$consts';
 
-import { christmasScenes, halloweenScenes, sceneMap } from '$data/scenes';
-import { christmasStations, halloweenStations, stationMap } from '$data/stations';
+import { sceneMap } from '$data/scenes';
+import { stationMap } from '$data/stations';
 
 import { draw } from '$lib/utils';
 
@@ -21,19 +21,19 @@ export const load: PageLoad = ({ url }) => {
 		}
 	}
 
-	if (IS_HALLOWEEN) {
-		const scene = draw(halloweenScenes)!;
-		const station = draw(halloweenStations)!;
+	// if (IS_HALLOWEEN) {
+	// 	const scene = draw(halloweenScenes)!;
+	// 	const station = draw(halloweenStations)!;
 
-		return { scene, station };
-	}
+	// 	return { scene, station };
+	// }
 
-	if (IS_CHRISTMAS) {
-		const scene = draw(christmasScenes)!;
-		const station = draw(christmasStations)!;
+	// if (IS_CHRISTMAS) {
+	// 	const scene = draw(christmasScenes)!;
+	// 	const station = draw(christmasStations)!;
 
-		return { scene, station };
-	}
+	// 	return { scene, station };
+	// }
 
 	return {};
 };

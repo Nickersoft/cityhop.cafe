@@ -1,3 +1,4 @@
+import { Tags } from '$lib/enums';
 import type { Genre } from '$lib/types';
 
 export const classical = {
@@ -11,6 +12,7 @@ export const classical = {
 			live: true
 		},
 		christmas: {
+			tags: [Tags.christmas],
 			name: 'Christmas Cozy Home',
 			trackID: 'Eg47HeqEYIQ',
 			live: false,

@@ -1,3 +1,4 @@
+import { Tags } from '$lib/enums';
 import type { Genre } from '$lib/types';
 
 export const lofi = {
@@ -36,6 +37,7 @@ export const lofi = {
 		},
 		christmas: {
 			name: 'Lofi Christmas Radio',
+			tags: [Tags.christmas],
 			trackID: 'ask1B-m26aU',
 			live: true,
 			hidden: true

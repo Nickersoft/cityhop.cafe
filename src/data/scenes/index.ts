@@ -65,21 +65,8 @@ const continents: Continent[] = alphabetical(
 ).map(deepSort);
 
 const sceneMap = getSceneMap(continents);
-
 const scenes: Scene[] = Object.values(sceneMap);
-
-const halloweenScenes = scenes.filter((scene) => scene.tags?.includes(Tags.halloween));
-
-const christmasScenes = scenes.filter((scene) => scene.tags?.includes(Tags.christmas));
-
 const visibleScenes = scenes.filter((scene) => !scene.hidden);
-
 const visibleContinents = continents.filter((scene) => !scene.hidden);
 
-export {
-	visibleScenes as scenes,
-	visibleContinents as continents,
-	sceneMap,
-	halloweenScenes,
-	christmasScenes
-};
+export { visibleScenes as scenes, visibleContinents as continents, sceneMap };

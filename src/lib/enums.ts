@@ -1,13 +1,13 @@
 export enum Tags {
-	snow,
-	fog,
-	rain,
-	morning,
-	night,
-	day,
-	evening,
-	halloween,
-	christmas
+	snow = 'snow',
+	fog = 'fog',
+	rain = 'rain',
+	morning = 'morning',
+	night = 'night',
+	day = 'day',
+	evening = 'evening',
+	halloween = 'halloween',
+	christmas = 'christmas'
 }
 
 export enum SceneTypes {

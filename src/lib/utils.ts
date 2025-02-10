@@ -57,7 +57,7 @@ export function alphabetical<T>(
 	array: readonly T[],
 	getter: (item: T) => string,
 	dir: 'asc' | 'desc' = 'asc'
-) {
+): T[] {
 	if (!array) return [];
 	const asc = (a: T, b: T) => `${getter(a)}`.localeCompare(getter(b));
 	const dsc = (a: T, b: T) => `${getter(b)}`.localeCompare(getter(a));
@@ -92,4 +92,150 @@ export function objectify<T, Key extends string | number | symbol, Value = T>(
 		},
 		{} as Record<Key, Value>
 	);
+}
+
+/**
+ * Split an array into two array based on a true/false condition
+ * function.
+ *
+ * @example
+ * fork([1, 2, 3, 4], (n) => n % 2 === 0) // [[2, 4], [1, 3]]
+ */
+export function fork<T>(array: readonly T[], condition: (item: T) => boolean): [T[], T[]] {
+	const forked: [T[], T[]] = [[], []];
+	if (array) {
+		for (const item of array) {
+			forked[condition(item) ? 0 : 1].push(item);
+		}
+	}
+	return forked;
+}
+
+/**
+ * Map over all the keys to create a new object.
+ *
+ * @example
+ * const a = { a: 1, b: 2, c: 3 }
+ * mapValues(a, (value, key) => value * 2) // => { a: 2, b: 4, c: 6 }
+ */
+export function mapValues<TValue, TKey extends string | number | symbol, TNewValue>(
+	obj: { [K in TKey]: TValue },
+	mapFunc: (value: TValue, key: TKey) => TNewValue
+): { [K in TKey]: TNewValue };
+
+// This overload exists to support cases where `obj` is a partial
+// object whose values are never undefined when the key is also
+// defined. For example:
+//   { [key: string]?: number } versus { [key: string]: number | undefined }
+export function mapValues<TValue, TKey extends string | number | symbol, TNewValue>(
+	obj: { [K in TKey]?: TValue },
+	mapFunc: (value: TValue, key: TKey) => TNewValue
+): { [K in TKey]?: TNewValue };
+
+export function mapValues<TValue, TKey extends string | number | symbol, TNewValue>(
+	obj: { [K in TKey]?: TValue },
+	mapFunc: (value: TValue, key: TKey) => TNewValue
+): Record<TKey, TNewValue> {
+	const keys = Object.keys(obj) as TKey[];
+	return keys.reduce(
+		(acc, key) => {
+			acc[key] = mapFunc(obj[key]!, key);
+			return acc;
+		},
+		{} as Record<TKey, TNewValue>
+	);
+}
+
+/**
+ * Sorts an `array` of items into groups. The return value is a map
+ * where the keys are the group IDs the given `getGroupId` function
+ * produced and the value is an array of each item in that group.
+ *
+ * @see https://radashi-org.github.io/reference/array/group
+ * @example
+ * ```ts
+ * group([1, 2, 3, 4], (n) => n % 2 === 0 ? 'even' : 'odd') // { even: [2], odd: [1, 3, 4] }
+ * ```
+ */
+export function group<T, Key extends string | number | symbol>(
+	array: readonly T[],
+	getGroupId: (item: T) => Key
+): { [K in Key]?: T[] } {
+	return array.reduce(
+		(acc, item) => {
+			const groupId = getGroupId(item);
+			if (!acc[groupId]) {
+				acc[groupId] = [];
+			}
+			acc[groupId].push(item);
+			return acc;
+		},
+		{} as Record<Key, T[]>
+	);
+}
+
+declare const setTimeout: (fn: () => void, ms: number) => unknown;
+declare const clearTimeout: (timer: unknown) => void;
+
+export type DebounceFunction<TArgs extends any[]> = {
+	(...args: TArgs): void;
+	/**
+	 * Cancels the debounced function
+	 */
+	cancel(): void;
+	/**
+	 * Checks if there is any invocation debounced
+	 */
+	isPending(): boolean;
+	/**
+	 * Runs the debounced function immediately
+	 */
+	flush(...args: TArgs): void;
+};
+
+/**
+ * Given a delay and a function returns a new function that will only
+ * call the source function after delay milliseconds have passed
+ * without any invocations.
+ *
+ * The debounce function comes with a `cancel` method to cancel
+ * delayed `func` invocations and a `flush` method to invoke them
+ * immediately.
+ *
+ * @example
+ * const myDebouncedFunc = debounce({ delay: 1000 }, (x) => console.log(x))
+ *
+ * myDebouncedFunc(0)
+ * myDebouncedFunc(1) // Logs 1, but not 0
+ */
+export function debounce<TArgs extends any[]>(
+	{ delay }: { delay: number },
+	func: (...args: TArgs) => any
+): DebounceFunction<TArgs> {
+	let timer: unknown = undefined;
+	let active = true;
+
+	const debounced: DebounceFunction<TArgs> = (...args: TArgs) => {
+		if (active) {
+			clearTimeout(timer);
+			timer = setTimeout(() => {
+				active && func(...args);
+				timer = undefined;
+			}, delay);
+		} else {
+			func(...args);
+		}
+	};
+
+	debounced.isPending = () => {
+		return timer !== undefined;
+	};
+
+	debounced.cancel = () => {
+		active = false;
+	};
+
+	debounced.flush = (...args: TArgs) => func(...args);
+
+	return debounced;
 }
