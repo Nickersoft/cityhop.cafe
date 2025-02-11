@@ -3,7 +3,7 @@ import { json, type RequestHandler } from '@sveltejs/kit';
 import { stations } from '$data/stations';
 
 import { draw } from '$lib/utils';
-import type { Tags } from '$lib/enums';
+import type { Tags } from '../../../../enums';
 
 export const GET: RequestHandler = async ({ url }) => {
 	const tag = url.searchParams.get('tag') as Tags;

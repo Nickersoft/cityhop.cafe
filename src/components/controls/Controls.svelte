@@ -1,5 +1,6 @@
 <script>
-	import NowPlaying from './NowPlaying.svelte';
+	import CurrentScene from './CurrentScene.svelte';
+	import CurrentStation from './CurrentStation.svelte';
 </script>
 
 <!-- <About bind:open={isAboutShowing} />
@@ -14,5 +15,11 @@
 	class="fixed inset-0 z-30 flex flex-col justify-end opacity-0 transition-all duration-300 ease-in-out in-data-[active=true]:translate-y-0 in-data-[active=true]:opacity-100"
 >
 	<!-- <Toolbar on:openAbout={showAbout} on:openSettings={showSettings} /> -->
-	<NowPlaying />
+
+	<div class="from-background/75 translate-y-2 bg-linear-to-t p-4 pt-64">
+		<div class="container mx-auto grid grid-cols-1 lg:grid-cols-2">
+			<CurrentScene />
+			<CurrentStation />
+		</div>
+	</div>
 </div>

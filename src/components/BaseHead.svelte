@@ -1,5 +1,7 @@
 <script lang="ts">
 	import '@fontsource-variable/figtree';
+	import '@fontsource-variable/inter';
+
 	import '$styles/app.css';
 
 	import { MetaTags } from 'svelte-meta-tags';

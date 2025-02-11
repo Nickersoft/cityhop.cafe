@@ -19,11 +19,13 @@ const config = {
       $data: './src/data',
       $fragments : './src/fragments',
       $icons: './src/icons',
+      $enums: './src/enums',
       $lib: './src/lib',
+      $state: "./src/state.svelte",
       $modals: './src/modals',
       $styles: './src/styles',
-      $ui: './src/components/ui',
-      $utils: './src/utils'
+      $types: './src/types',
+      $ui: './src/components/ui'
     }
 	}
 };

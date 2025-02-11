@@ -49,6 +49,7 @@
 	"packageManager": "pnpm@9.15.2+sha512.93e57b0126f0df74ce6bff29680394c0ba54ec47246b9cf321f0121d8d9bb03f750a705f24edc3c1180853afd7c2c3b94196d0a3d53d3e069d9e2793ef11f321",
 	"dependencies": {
 		"@fontsource-variable/figtree": "^5.1.2",
+		"@fontsource-variable/inter": "^5.1.1",
 		"@sveltejs/enhanced-img": "^0.4.4",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",

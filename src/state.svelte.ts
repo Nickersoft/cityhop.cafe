@@ -1,6 +1,6 @@
 import { persistedState } from 'svelte-persisted-state';
 
-import type { UIState, NowPlaying } from '$lib/types';
+import type { UIState, NowPlaying } from './types';
 
 export const nowPlaying = $state<NowPlaying>({
 	scene: null,

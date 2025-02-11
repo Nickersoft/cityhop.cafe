@@ -3,9 +3,10 @@ import { json } from '@sveltejs/kit';
 import { scenes } from '$data/scenes';
 import { stationList } from '$data/stations';
 
-import { draw } from '$lib/utils';
-import type { Station } from '$lib/types';
-import type { Tags } from '$lib/enums';
+import { draw } from '$lib';
+
+import type { Station } from '$types';
+import type { Tags } from '$enums';
 
 import type { RequestHandler } from './$types';
 

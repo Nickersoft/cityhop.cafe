@@ -1,10 +1,10 @@
 <script lang="ts" module>
-	import type { Continent, Country, Scene, SceneGroup } from '$lib/types';
+	import type { Continent, Country, Scene, SceneGroup } from '../../types';
 	export type ResultItem = Continent | Country | SceneGroup | Scene;
 </script>
 
 <script lang="ts">
-	import { Tags } from '$lib/enums';
+	import { Tags } from '../../enums';
 
 	interface Props {
 		item: ResultItem;

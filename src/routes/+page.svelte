@@ -4,13 +4,13 @@
 	import VideoPlayer from '$components/VideoPlayer.svelte';
 	import WaitingRoom from '$components/WaitingRoom.svelte';
 	import AudioPlayer from '$components/AudioPlayer.svelte';
-	import Controls from '$components/Controls.svelte';
+	import { Controls } from '$components/controls';
 
 	import setupHeartbeat from '$lib/heartbeat';
 	import setupHotkeys from '$lib/hotkeys';
 	import setupHover from '$lib/hover';
 
-	import { nowPlaying } from '$lib/state.svelte';
+	import { nowPlaying } from '../state.svelte';
 	import { randomize } from '$lib/now-playing';
 
 	import type { PageProps } from './$types';

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { YouTubePlayer } from 'youtube-player/dist/types';
 
-	import { nowPlaying } from '$lib/state.svelte';
+	import { nowPlaying } from '../state.svelte';
 	import { random } from '$lib/utils';
 
 	import YouTube from '$ui/YouTube.svelte';

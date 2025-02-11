@@ -3,7 +3,7 @@
 
 	import { IS_CHRISTMAS, IS_HALLOWEEN } from '$consts';
 
-	import { ui } from '$lib/state.svelte';
+	import { ui } from '../state.svelte';
 
 	import ProgressBar from '$ui/ProgressBar.svelte';
 </script>

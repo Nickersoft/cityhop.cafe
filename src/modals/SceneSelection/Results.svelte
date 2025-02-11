@@ -1,16 +1,17 @@
 <script lang="ts">
 	import { fade, fly } from 'svelte/transition';
 
-	import { SceneTypes } from '$lib/enums';
-	import type { Scene } from '$lib/types';
+	import type { SceneTypes } from '$enums';
+	import type { Scene } from '$types';
 	import { alphabetical, fork, group, mapValues } from '$lib/utils';
 
 	import Section from './Section.svelte';
+	import type { ResultItem } from './Item.svelte';
 	import Item from './Item.svelte';
 
 	interface Props {
-		results: Item[];
-		onClick?: (item: Item, index: number) => void;
+		results: ResultItem[];
+		onClick?: (item: ResultItem, index: number) => void;
 		emoji?: string | undefined;
 		transitionsEnabled?: boolean;
 		direction?: 'forward' | 'backward';
@@ -20,7 +21,7 @@
 		results,
 		emoji = undefined,
 		onClick,
-		transitionsEnabled = true,
+		transitionsEnabled = false,
 		direction = 'forward'
 	}: Props = $props();
 
@@ -35,7 +36,7 @@
 
 	let groups = $derived(alphabetical(partition[1], ({ name }) => name));
 
-	const handleClick = (item: Item) => () => {
+	const handleClick = (item: ResultItem) => () => {
 		onClick?.(item, results.indexOf(item));
 	};
 
@@ -52,7 +53,7 @@
 	}
 </script>
 
-<div class="relative h-full w-full">
+<div class="relative size-full">
 	{#key results}
 		<div
 			in:enter

@@ -1,4 +1,4 @@
-import type { Station } from '../../lib/types';
+import type { Station } from '../../types';
 import { objectify } from '../../lib/utils';
 
 import { classical } from './classical';

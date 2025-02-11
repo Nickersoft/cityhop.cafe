@@ -1,6 +1,6 @@
-import { Tags } from '$lib/enums';
+import { Tags } from '../../enums';
 
-import type { Continent, Country, Scene, SceneGroup } from '$lib/types';
+import type { Continent, Country, Scene, SceneGroup } from '../../types';
 import { alphabetical } from '$lib/utils';
 
 import africa from './africa';

@@ -1,5 +1,5 @@
-import type { SceneTypes } from '$lib/enums';
-import type { Tags } from '$lib/enums';
+import type { SceneTypes } from './enums';
+import type { Tags } from './enums';
 
 export interface UIState {
 	isPlaying: boolean;

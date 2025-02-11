@@ -1,4 +1,4 @@
-import type { Genre } from '$lib/types';
+import type { Genre } from '../../types';
 
 export const rnb = {
 	name: 'R&B',

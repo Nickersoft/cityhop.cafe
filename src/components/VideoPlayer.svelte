@@ -3,7 +3,7 @@
 
 	import { DEFAULT_VIDEO_END_OFFSET, DEFAULT_VIDEO_START_OFFSET } from '$consts';
 
-	import { nowPlaying, ui } from '$lib/state.svelte';
+	import { nowPlaying, ui } from '../state.svelte';
 
 	import YouTube from '$ui/YouTube.svelte';
 	import { random } from '$lib/utils';

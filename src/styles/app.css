@@ -59,20 +59,21 @@
 	--color-muted-foreground: var(--color-zinc-600);
 	--color-popover: var(--color-white);
 	--color-popover-foreground: var(--color-zinc-900);
-	--color-border: var(--color-zinc-200);
-	--color-input: var(--color-zinc-200);
+	--color-border: --alpha(var(--color-white) / 10%);
+	--color-input: var(--color-border);
 	--color-card: var(--color-white);
 	--color-card-foreground: var(--color-zinc-900);
 	--color-primary: var(--color-foreground);
 	--color-primary-foreground: var(--color-background);
 	--color-secondary: var(--color-zinc-100);
 	--color-secondary-foreground: var(--color-zinc-900);
-	--color-accent: var(--color-emerald-500);
+	--color-accent: --alpha(var(--color-white) / 20%);
 	--color-accent-foreground: var(--color-white);
 	--color-destructive: var(--color-red-600);
 	--color-destructive-foreground: var(--color-white);
 	--color-ring: var(--color-blue-300);
-	--color-radius: 0.5rem;
+
+	--radius: 0.5rem;
 }
 
 @layer base {

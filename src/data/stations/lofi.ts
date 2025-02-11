@@ -1,5 +1,5 @@
-import { Tags } from '$lib/enums';
-import type { Genre } from '$lib/types';
+import { Tags } from '../../enums';
+import type { Genre } from '../../types';
 
 export const lofi = {
 	name: 'Lofi',

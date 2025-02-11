@@ -1,6 +1,6 @@
-import { SceneTypes } from '$lib/enums';
-import { Tags } from '$lib/enums';
-import type { Continent } from '$lib/types';
+import { SceneTypes } from '../../../enums';
+import { Tags } from '../../../enums';
+import type { Continent } from '../../../types';
 
 export default {
 	name: '????',

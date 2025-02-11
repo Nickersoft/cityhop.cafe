@@ -1,4 +1,4 @@
-import type { Continent } from '$lib/types';
+import type { Continent } from '../../../types';
 
 import ghana from './egypt';
 import ethiopia from './ethiopia';

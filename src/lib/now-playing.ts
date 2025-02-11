@@ -2,9 +2,9 @@ import { scenes } from '$data/scenes';
 import { stationList } from '$data/stations';
 
 import { draw } from '$lib/utils';
-import type { Station } from '$lib/types';
+import type { Station } from '../types';
 
-import { nowPlaying, ui } from './state.svelte';
+import { nowPlaying, ui } from '../state.svelte';
 
 const jazzStations = stationList.filter(({ genre }) => genre === 'jazz') as Station[];
 const lofiStations = stationList.filter(({ genre }) => genre === 'lofi') as Station[];

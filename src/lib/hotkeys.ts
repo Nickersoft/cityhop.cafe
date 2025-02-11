@@ -1,6 +1,6 @@
 import { on } from 'svelte/events';
 import { randomize, randomizeScene, randomizeStation } from './now-playing';
-import { ui } from './state.svelte';
+import { ui } from '../state.svelte';
 
 function handleKeyUp(e: KeyboardEvent) {
 	if (e.key === 'g') {

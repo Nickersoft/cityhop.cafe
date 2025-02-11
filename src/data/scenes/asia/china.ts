@@ -1,7 +1,7 @@
-import { SceneTypes } from '$lib/enums';
+import { SceneTypes } from '../../../enums';
 import { genres } from '$data/stations';
-import { Tags } from '$lib/enums';
-import type { Country } from '$lib/types';
+import { Tags } from '../../../enums';
+import type { Country } from '../../../types';
 
 export default {
 	name: 'China',
