@@ -1,10 +1,13 @@
 <script lang="ts" module>
-	import type { Continent, Country, Scene, SceneGroup } from '../../types';
+	import type { Continent, Country, Scene, SceneGroup } from '$types';
 	export type ResultItem = Continent | Country | SceneGroup | Scene;
 </script>
 
 <script lang="ts">
-	import { Tags } from '../../enums';
+	import { Tags } from '$enums';
+
+	import { Image } from '@unpic/svelte';
+	import { getThumbnail } from '$lib/youtube';
 
 	interface Props {
 		item: ResultItem;
@@ -51,6 +54,7 @@
 	class="flex cursor-pointer flex-col items-start justify-start gap-4 rounded-2xl p-4 transition-colors duration-300 ease-in-out hover:bg-white/10"
 >
 	<div class="h-48 w-full">
+		<Image src={getThumbnail(item)} />
 		<!-- <img
 			loading="lazy"
 			decoding="async"

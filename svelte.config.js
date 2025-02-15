@@ -17,12 +17,10 @@ const config = {
       $components: './src/components',
       $consts: './src/consts',
       $data: './src/data',
-      $fragments : './src/fragments',
       $icons: './src/icons',
       $enums: './src/enums',
       $lib: './src/lib',
       $state: "./src/state.svelte",
-      $modals: './src/modals',
       $styles: './src/styles',
       $types: './src/types',
       $ui: './src/components/ui'

@@ -51,6 +51,7 @@
 		"@fontsource-variable/figtree": "^5.1.2",
 		"@fontsource-variable/inter": "^5.1.1",
 		"@sveltejs/enhanced-img": "^0.4.4",
+		"@unpic/svelte": "^1.0.0",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
 		"fuzzysort": "^3.1.0",

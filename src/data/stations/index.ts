@@ -28,5 +28,6 @@ export const stations: StationWithGenre[] = Object.entries(genres).flatMap(
 			genre
 		}))
 );
+
 export const stationMap = objectify(stations, (station) => station.trackID);
 export const stationList = stations.filter((s) => !s.hidden);

@@ -5,7 +5,7 @@ import { stationList } from '$data/stations';
 
 import { draw } from '$lib';
 
-import type { Station } from '$types';
+import type { SceneWithThumbnail, Station } from '$types';
 import type { Tags } from '$enums';
 
 import type { RequestHandler } from './$types';
@@ -29,5 +29,5 @@ export const GET: RequestHandler = async ({ url }) => {
 		);
 	}
 
-	return json(draw(candidates)!);
+	return json(draw(candidates) as SceneWithThumbnail);
 };

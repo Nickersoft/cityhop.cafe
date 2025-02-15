@@ -39,6 +39,10 @@ export interface Continent {
 	countries: Country[];
 }
 
+export interface ContinentWithThumbnail extends Continent {
+	thumbnail: string;
+}
+
 export type Country = SceneGroup & {
 	emoji: 'flag';
 };
@@ -60,4 +64,8 @@ export interface Scene {
 	// Used to better determine a good starting point
 	// Not required
 	length?: number;
+}
+
+export interface SceneWithThumbnail extends Scene {
+	thumbnail: string;
 }

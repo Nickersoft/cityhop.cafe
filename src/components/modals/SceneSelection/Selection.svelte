@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Overlay from '$ui/Overlay.svelte';
-	import Search from '$fragments/Search.svelte';
+	import Search from '$components/SearchUI.svelte';
 
 	import { Searcher } from '$lib';
 

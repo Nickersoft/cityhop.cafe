@@ -9,7 +9,7 @@
 	import Typography from '$ui/Typography.svelte';
 	import Stack from '$ui/Stack.svelte';
 
-	import SceneSelection from '$modals/SceneSelection';
+	import SceneSelection from '$components/modals/SceneSelection';
 
 	let open = $state(false);
 </script>

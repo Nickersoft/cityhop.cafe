@@ -47,7 +47,6 @@
 	}
 </script>
 
-<Stack as="sdfasdf" />
 {#if nowPlaying.scene}
 	<div class="fixed inset-0 bg-black">
 		<div
