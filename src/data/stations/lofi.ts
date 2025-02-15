@@ -1,7 +1,7 @@
-import { Tags } from '../../enums';
-import type { Genre } from '../../types';
+import { createGenre } from '$schema';
+import { Tags } from '$enums';
 
-export const lofi = {
+export const lofi = createGenre({
 	name: 'Lofi',
 	emoji: 'hot-beverage',
 	stations: {
@@ -30,8 +30,8 @@ export const lofi = {
 			live: true
 		},
 		girl: {
+			name: 'Lofi Girl Radio: Beats to Study/Relax To',
 			displayName: 'Lofi Girl Radio: Beats to Study/Relax To',
-			name: 'lofi hip hop radio 📚 - beats to relax/study to',
 			trackID: 'jfKfPfyJRdk',
 			live: true
 		},
@@ -43,4 +43,4 @@ export const lofi = {
 			hidden: true
 		}
 	}
-} satisfies Genre;
+});

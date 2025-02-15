@@ -1,4 +1,5 @@
-import type { Station } from '../../types';
+import type { Genre, Station } from '$schema';
+
 import { objectify } from '../../lib/utils';
 
 import { classical } from './classical';
@@ -25,7 +26,7 @@ export const stations: StationWithGenre[] = Object.entries(genres).flatMap(
 	([genre, { stations }]) =>
 		Object.values(stations).map((station) => ({
 			...station,
-			genre
+			genre: genre as keyof typeof genres
 		}))
 );
 

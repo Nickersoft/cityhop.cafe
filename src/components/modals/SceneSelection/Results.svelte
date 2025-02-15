@@ -2,16 +2,15 @@
 	import { fade, fly } from 'svelte/transition';
 
 	import type { SceneTypes } from '$enums';
-	import type { Scene } from '$types';
+	import type { Scene, SearchResultItem } from '$types';
 	import { alphabetical, fork, group, mapValues } from '$lib/utils';
 
 	import Section from './Section.svelte';
-	import type { ResultItem } from './Item.svelte';
 	import Item from './Item.svelte';
 
 	interface Props {
-		results: ResultItem[];
-		onClick?: (item: ResultItem, index: number) => void;
+		results: SearchResultItem[];
+		onClick?: (item: SearchResultItem, index: number) => void;
 		emoji?: string | undefined;
 		transitionsEnabled?: boolean;
 		direction?: 'forward' | 'backward';
@@ -36,20 +35,20 @@
 
 	let groups = $derived(alphabetical(partition[1], ({ name }) => name));
 
-	const handleClick = (item: ResultItem) => () => {
+	const handleClick = (item: SearchResultItem) => () => {
 		onClick?.(item, results.indexOf(item));
 	};
 
 	function enter(node: HTMLElement) {
 		return transitionsEnabled
 			? fly(node, { x: direction === 'forward' ? 50 : -50 })
-			: fade(node, { duration: 0 });
+			: fly(node, { y: 10, duration: 300 });
 	}
 
 	function exit(node: HTMLElement) {
 		return transitionsEnabled
 			? fly(node, { x: direction === 'forward' ? -50 : 50 })
-			: fade(node, { duration: 0 });
+			: fly(node, { y: 10, duration: 300 });
 	}
 </script>
 
@@ -58,7 +57,7 @@
 		<div
 			in:enter
 			out:exit
-			class="absolute inset-0 grid auto-rows-min grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 overflow-auto pb-12"
+			class="absolute inset-0 grid auto-rows-min grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-6 overflow-auto px-12 pt-1 pb-12"
 		>
 			{#each groups as item}
 				<Item {emoji} {item} onclick={handleClick(item)} />

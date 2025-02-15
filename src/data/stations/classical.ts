@@ -1,13 +1,13 @@
-import { Tags } from '../../enums';
-import type { Genre } from '../../types';
+import { createGenre } from '$schema';
+import { Tags } from '$enums';
 
-export const classical = {
+export const classical = createGenre({
 	name: 'Classical',
 	emoji: 'violin',
 	stations: {
 		baroque: {
+			name: 'Baroque Classical Radio',
 			displayName: 'Baroque Classical Radio',
-			name: '♫ Baroque Live Music 24/7 - Classical Music from the Baroque Period ♫ クラシック ライブ',
 			trackID: '2gO1v2GPMFk',
 			live: true
 		},
@@ -25,4 +25,4 @@ export const classical = {
 			live: true
 		}
 	}
-} satisfies Genre;
+});

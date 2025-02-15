@@ -1,16 +1,12 @@
-<script lang="ts" module>
-	import type { Continent, Country, Scene, SceneGroup } from '$types';
-	export type ResultItem = Continent | Country | SceneGroup | Scene;
-</script>
-
 <script lang="ts">
 	import { Tags } from '$enums';
 
-	import { Image } from '@unpic/svelte';
 	import { getThumbnail } from '$lib/youtube';
+	import Typography from '$ui/Typography.svelte';
+	import type { SearchResultItem } from '$types';
 
 	interface Props {
-		item: ResultItem;
+		item: SearchResultItem;
 		onclick: (e: MouseEvent) => void;
 		emoji?: string | undefined;
 	}
@@ -51,27 +47,30 @@
 
 <button
 	onclick={handleClick}
-	class="flex cursor-pointer flex-col items-start justify-start gap-4 rounded-2xl p-4 transition-colors duration-300 ease-in-out hover:bg-white/10"
+	class="group flex cursor-pointer flex-col items-center justify-start gap-2 rounded-2xl border bg-white/5 p-2 shadow-sm transition-all duration-300 ease-in-out hover:scale-102 hover:bg-white/10"
 >
-	<div class="h-48 w-full">
-		<Image src={getThumbnail(item)} />
-		<!-- <img
-			loading="lazy"
-			decoding="async"
-			src={getThumbnail(item)}
-			width="480"
-			height="360"
-			class="h-full w-full rounded-xl object-cover object-center"
-			alt={item.name}
-		/> -->
-	</div>
+	<img
+		loading="lazy"
+		decoding="async"
+		src={getThumbnail(item)}
+		width="480"
+		height="360"
+		class="h-48 w-full rounded-lg border object-cover object-center"
+		alt={item.name}
+	/>
 
-	<div class="flex flex-row items-center gap-2 px-1">
+	<div class="flex flex-row items-center gap-2 pt-4 pb-2">
 		<!-- {#if icon}
 			<iconify-icon {icon}></iconify-icon>
 		{/if} -->
 
-		<p>{item.name}</p>
+		<Typography
+			size="lg"
+			class="opacity-85 transition-opacity duration-300 group-hover:opacity-100"
+			variant="body"
+		>
+			{item.name}
+		</Typography>
 
 		{#if 'tags' in item}
 			{#if item.tags?.includes(Tags.rain)}

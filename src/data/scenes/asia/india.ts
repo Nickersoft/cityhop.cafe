@@ -1,11 +1,10 @@
-import { SceneTypes } from '../../../enums';
+import { SceneTypes } from '$enums';
 import { genres } from '$data/stations';
-import { Tags } from '../../../enums';
-import type { Country } from '../../../types';
+import { Tags } from '$enums';
+import { createCountry } from '$schema';
 
-export default {
+export default createCountry({
 	name: 'India',
-	emoji: 'flag',
 	scenes: [
 		{
 			name: 'Kolkata',
@@ -88,8 +87,7 @@ export default {
 			type: SceneTypes.drive,
 			videoID: 'Guu6shSEbp8',
 			tags: [Tags.day],
-
 			suggestedTrack: genres.lofi.stations.bollywood
 		}
 	]
-} satisfies Country;
+});

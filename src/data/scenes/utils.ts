@@ -1,5 +1,13 @@
-import type { Continent, Country, Scene, SceneGroup } from '$types';
 import { alphabetical } from '$lib/utils';
+import {
+	isContinent,
+	isCountry,
+	isSceneGroup,
+	type Country,
+	type Scene,
+	type SceneGroup,
+	type SearchResultItem
+} from '$schema';
 
 export function flattenScenes(scenes: (Scene | SceneGroup)[], country: string) {
 	return scenes.reduce(
@@ -19,15 +27,15 @@ export function flattenCountries(countries: Country[]): Record<string, Scene> {
 	);
 }
 
-export function deepSort<T extends Continent | Scene | SceneGroup>(list: T): T {
-	if ('scenes' in list) {
+export function deepSort<T extends SearchResultItem>(list: T): T {
+	if (isSceneGroup(list) || isCountry(list)) {
 		return {
 			...list,
 			scenes: alphabetical(list.scenes.map(deepSort), ({ name }) => name)
 		};
 	}
 
-	if ('countries' in list) {
+	if (isContinent(list)) {
 		return {
 			...list,
 			countries: alphabetical(list.countries.map(deepSort), ({ name }) => name)

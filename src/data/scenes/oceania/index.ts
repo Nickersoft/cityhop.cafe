@@ -1,10 +1,10 @@
-import type { Continent } from '../../../types';
+import { createContinent } from '$schema';
 
 import australia from './australia';
 import newZealand from './new-zealand';
 
-export default {
+export default createContinent({
 	name: 'Oceania',
 	emoji: 'globe-showing-asia-australia',
 	countries: [australia, newZealand]
-} satisfies Continent;
+});

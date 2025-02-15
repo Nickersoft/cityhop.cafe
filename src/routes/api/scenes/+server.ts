@@ -19,5 +19,5 @@ export const GET: RequestHandler = async ({ url }) => {
 		);
 	}
 
-	return json(continents.filter(({ hidden }) => !hidden));
+	return json(continents.filter(({ hidden }) => !hidden).map(({ countries, ...rest }) => rest));
 };

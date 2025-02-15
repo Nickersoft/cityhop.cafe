@@ -1,5 +1,5 @@
-import type { Continent, Scene } from '$types';
 import { alphabetical } from '$lib/utils';
+import type { Continent, Scene } from '$schema';
 
 import africa from './africa';
 import asia from './asia';

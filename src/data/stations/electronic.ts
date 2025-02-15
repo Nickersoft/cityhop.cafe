@@ -1,7 +1,7 @@
+import { createGenre } from '$schema';
 import { Tags } from '../../enums';
-import type { Genre } from '../../types';
 
-export const electronic = {
+export const electronic = createGenre({
 	name: 'Electronic',
 	emoji: 'musical-keyboard',
 	stations: {
@@ -51,4 +51,4 @@ export const electronic = {
 			live: true
 		}
 	}
-} satisfies Genre;
+});

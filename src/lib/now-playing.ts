@@ -2,7 +2,7 @@ import { scenes } from '$data/scenes';
 import { stationList } from '$data/stations';
 
 import { draw } from '$lib/utils';
-import type { Station } from '../types';
+import type { Station } from '$schema';
 
 import { nowPlaying, ui } from '../state.svelte';
 
@@ -36,7 +36,7 @@ export function randomizeScene(calmOnly = false) {
 		);
 	}
 
-	nowPlaying.scene = draw(candidates)!;
+	nowPlaying.scene = draw(candidates) as Scene;
 }
 
 /**

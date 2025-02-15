@@ -1,10 +1,9 @@
-import { SceneTypes } from '../../../enums';
-import { Tags } from '../../../enums';
-import type { Country } from '../../../types';
+import { SceneTypes } from '$enums';
+import { Tags } from '$enums';
+import { createCountry } from '$schema';
 
-export default {
+export default createCountry({
 	name: 'Singapore',
-	emoji: 'flag',
 	scenes: [
 		{
 			name: 'Singapore',
@@ -33,4 +32,4 @@ export default {
 			tags: [Tags.day, Tags.rain]
 		}
 	]
-} satisfies Country;
+});

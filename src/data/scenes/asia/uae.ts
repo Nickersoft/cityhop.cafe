@@ -1,11 +1,10 @@
-import { SceneTypes } from '../../../enums';
+import { SceneTypes } from '$enums';
 import { genres } from '$data/stations';
-import { Tags } from '../../../enums';
-import type { Country } from '../../../types';
+import { Tags } from '$enums';
+import { createCountry } from '$schema';
 
-export default {
+export default createCountry({
 	name: 'United Arab Emirates',
-	emoji: 'flag',
 	scenes: [
 		{
 			name: 'Dubai',
@@ -22,4 +21,4 @@ export default {
 			suggestedTrack: genres.electronic.stations.synthwave
 		}
 	]
-} satisfies Country;
+});

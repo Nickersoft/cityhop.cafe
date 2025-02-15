@@ -1,6 +1,6 @@
-import type { Genre } from '../../types';
+import { createGenre } from '$schema';
 
-export const rnb = {
+export const rnb = createGenre({
 	name: 'R&B',
 	emoji: 'microphone',
 	stations: {
@@ -17,4 +17,4 @@ export const rnb = {
 			live: true
 		}
 	}
-} satisfies Genre;
+});

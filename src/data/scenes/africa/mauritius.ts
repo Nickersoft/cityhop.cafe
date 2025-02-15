@@ -1,10 +1,8 @@
-import { SceneTypes } from '../../../enums';
-import { Tags } from '../../../enums';
-import type { Country } from '../../../types';
+import { createCountry } from '$schema';
+import { SceneTypes, Tags } from '$enums';
 
-export default {
+export default createCountry({
 	name: 'Mauritius',
-	emoji: 'flag',
 	scenes: [
 		{
 			name: 'Port Louis',
@@ -14,4 +12,4 @@ export default {
 			length: 1800
 		}
 	]
-} satisfies Country;
+});

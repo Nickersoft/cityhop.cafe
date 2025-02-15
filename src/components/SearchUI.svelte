@@ -4,7 +4,9 @@
 	export interface SearchProps<T> {
 		children?: Snippet<[T[]]>;
 		items: T[];
+		onInputChange?: (query: string) => void;
 		loading: boolean;
+		inputPlaceholder?: string;
 		onSearch: (query: string) => void;
 		leftButton?: Snippet;
 	}
@@ -12,7 +14,7 @@
 
 <script lang="ts" generics="T">
 	import { Search, X } from '$icons';
-	import { getOverlayContext, Searcher } from '$lib';
+	import { getOverlayContext } from '$lib';
 
 	import Button from '$ui/Button.svelte';
 	import Input from '$ui/Input.svelte';
@@ -21,13 +23,22 @@
 
 	import Stack from '$components/ui/Stack.svelte';
 
-	const { leftButton, onSearch, loading, items, children }: SearchProps<T> = $props();
+	const {
+		leftButton,
+		onSearch,
+		loading,
+		onInputChange,
+		inputPlaceholder,
+		items,
+		children
+	}: SearchProps<T> = $props();
 
 	let query = $state('');
 
 	$effect(() => {
-		console.log('called', query);
-		onSearch(query);
+		const q = query.trim();
+		onInputChange?.(q);
+		onSearch(q);
 	});
 
 	const overlay = getOverlayContext();
@@ -39,14 +50,20 @@
 
 <div
 	use:clickOutside={closeOverlay}
-	class="mx-auto flex size-full max-w-7xl flex-col items-start justify-start py-8"
+	class="mx-auto flex size-full max-w-7xl flex-col items-start justify-start"
 >
-	<header class="grid w-full grid-cols-[1.5rem_1fr_1.5rem] items-center gap-4">
+	<header class="grid w-full grid-cols-[1.5rem_1fr_1.5rem] items-center gap-4 py-8">
 		<div>
 			{@render leftButton?.()}
 		</div>
 
-		<Input bind:value={query} icon={Search} class="h-11 md:text-lg [&_svg]:size-5" type="search" />
+		<Input
+			bind:value={query}
+			placeholder={inputPlaceholder}
+			icon={Search}
+			class="h-11 md:text-base [&_svg]:size-5"
+			type="search"
+		/>
 
 		<Button size="icon" variant="ghost" onclick={closeOverlay}>
 			<X />
@@ -59,7 +76,7 @@
 		role="presentation"
 		class="relative w-full flex-1"
 	>
-		<Stack orientation="column" class="absolute inset-0 w-full grow overflow-y-scroll px-12 py-4">
+		<Stack orientation="column" class="absolute inset-0 w-full grow">
 			{@render children?.(items)}
 		</Stack>
 	</div>

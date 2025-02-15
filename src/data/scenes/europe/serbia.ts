@@ -1,9 +1,8 @@
-import { SceneTypes } from '../../../enums';
+import { SceneTypes } from '$enums';
 import type { Country } from '../../../types';
 
 export default {
 	name: 'Serbia',
-	emoji: 'flag',
 	scenes: [
 		{
 			name: 'Belgrade',

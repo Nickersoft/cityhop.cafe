@@ -1,11 +1,10 @@
-import { SceneTypes } from '../../../enums';
+import { SceneTypes } from '$enums';
 import { genres } from '$data/stations';
-import { Tags } from '../../../enums';
+import { Tags } from '$enums';
 import type { Country } from '../../../types';
 
 export default {
 	name: 'Italy',
-	emoji: 'flag',
 	scenes: [
 		{
 			name: 'Cinque Terre',

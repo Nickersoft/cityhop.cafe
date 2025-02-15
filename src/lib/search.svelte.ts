@@ -1,10 +1,10 @@
-import { untrack } from 'svelte';
+import type { SearchResultItem } from '$types';
 
 import { page } from '$app/state';
 
 import { debounce } from './utils';
 
-export class Searcher<T> {
+export class Searcher<T = SearchResultItem> {
 	#loading = $state(false);
 	#items: T[] = $state([]);
 

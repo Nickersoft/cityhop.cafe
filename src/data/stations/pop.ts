@@ -1,6 +1,6 @@
-import type { Genre } from '../../types';
+import { createGenre } from '$schema';
 
-export const pop = {
+export const pop = createGenre({
 	name: 'Pop',
 	emoji: 'guitar',
 	stations: {
@@ -35,4 +35,4 @@ export const pop = {
 			live: true
 		}
 	}
-} satisfies Genre;
+});

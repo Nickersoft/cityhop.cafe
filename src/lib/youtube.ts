@@ -1,10 +1,9 @@
 import { on } from 'svelte/events';
 import type { Options, YouTubePlayer } from 'youtube-player/dist/types';
+import type { EventType } from 'youtube-player/dist/eventNames';
 
 import createYouTubePlayer from 'youtube-player';
 
-import type { Continent, Scene, SceneGroup } from '$types';
-import type { EventType } from 'youtube-player/dist/eventNames';
 import { PlayerState } from '$enums';
 
 /**
@@ -13,16 +12,8 @@ import { PlayerState } from '$enums';
  * @param num - The number of the thumbnail to get
  * @returns The URL of the thumbnail
  */
-export function getThumbnail<T extends Continent | Scene | SceneGroup>(item: T, num = 3): string {
-	if ('countries' in item) {
-		return getThumbnail(item.countries[0], num);
-	}
-
-	if ('scenes' in item) {
-		return getThumbnail(item.scenes[0], num);
-	}
-
-	return `https://img.youtube.com/vi/${item.videoID}/hq${num}.jpg`;
+export function getThumbnail(videoID: string, num = 3): string {
+	return `https://img.youtube.com/vi/${videoID}/hq${num}.jpg`;
 }
 
 /**

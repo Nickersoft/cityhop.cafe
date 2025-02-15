@@ -22,6 +22,7 @@ const config = {
       $lib: './src/lib',
       $state: "./src/state.svelte",
       $styles: './src/styles',
+      $schema: './src/schema',
       $types: './src/types',
       $ui: './src/components/ui'
     }
