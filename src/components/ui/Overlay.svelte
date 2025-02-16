@@ -42,7 +42,7 @@
 {#if open}
 	<div
 		use:portal
-		class="from-background/85 to-background/95 fixed inset-0 z-9999 size-full bg-radial backdrop-blur-xs"
+		class="from-background/85 to-background/95 fixed inset-0 z-9999 size-full bg-radial backdrop-blur-md"
 		transition:scale={{ start: 1.1, duration: 350 }}
 	>
 		{@render children?.()}

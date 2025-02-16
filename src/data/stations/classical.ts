@@ -13,16 +13,17 @@ export const classical = createGenre({
 		},
 		christmas: {
 			tags: [Tags.christmas],
-			name: 'Christmas Cozy Home',
-			trackID: 'Eg47HeqEYIQ',
+			name: 'Instrumental Christmas Music with Cracking Fireplace - Cozy Christmas Ambience',
+			displayName: 'Christmas Cozy Home',
+			trackID: '6toYzO9spWE',
 			live: false,
 			hidden: true
 		},
 		chinese: {
 			displayName: 'Classical Chinese Radio',
-			name: 'Relaxing With Chinese Bamboo Flute, Guzheng, Erhu, Pipa || 中國傳統音樂 笛子古箏名曲 放鬆音樂 - 古典音樂 安静純音樂 中國古典長笛音樂',
-			trackID: 'dB2KZBsEBwM',
-			live: true
+			name: 'Relaxing With Chinese Bamboo Flute, Guzheng, Erhu | Instrumental Music Collection',
+			trackID: 'XmBji07OtwA',
+			live: false
 		}
 	}
 });

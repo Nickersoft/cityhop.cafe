@@ -7,20 +7,20 @@ export const lofi = createGenre({
 	stations: {
 		bollywood: {
 			displayName: 'Bollywood Lofi Radio',
-			name: 'Hindi Lofi 🎵 | Chill n Relax | 24/7 Bollywood Radio',
-			trackID: 'RRb5XV993W0',
-			live: true
+			name: 'Best of Bollywood Hindi lofi / chill mix playlist | 1 hour non-stop to relax, drive, study, sleep 💙🎵',
+			trackID: 'KRA26LhuTP4',
+			live: false
 		},
 		sleep: {
 			displayName: 'Lofi Sleep & Rain Radio',
-			name: '24/7 - lofi sleep, lofi rain💤 beats to relax at night - music for insomnia, anxiety, peaceful dreams',
-			trackID: 'yOKVwLGSBYE',
-			live: true
+			name: 'lofi sleep, lo-fi rain 💤 8 hours mix 😴 beats to sleep/chill/relax to - music for insomnia & anxiety',
+			trackID: 'gWp8xxB2PxM',
+			live: false
 		},
 		coffeeShop: {
 			displayName: 'Coffee Shop Radio',
 			name: 'Coffee Shop Radio ☕ - 24/7 lofi & jazzy hip-hop beats',
-			trackID: 'lP26UCnoH9s',
+			trackID: 'N_7cSl2oq3o',
 			live: true
 		},
 		chillHop: {
@@ -38,8 +38,8 @@ export const lofi = createGenre({
 		christmas: {
 			name: 'Lofi Christmas Radio',
 			tags: [Tags.christmas],
-			trackID: 'ask1B-m26aU',
-			live: true,
+			trackID: 'Ru8DQ5f5A6U',
+			live: false,
 			hidden: true
 		}
 	}

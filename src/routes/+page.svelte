@@ -41,5 +41,5 @@
 
 <!-- <WaitingRoom /> -->
 <Controls />
-<!-- <VideoPlayer /> -->
-<!-- <AudioPlayer /> -->
+<VideoPlayer />
+<AudioPlayer />

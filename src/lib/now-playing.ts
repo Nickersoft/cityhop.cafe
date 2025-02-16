@@ -1,5 +1,6 @@
 import { scenes } from '$data/scenes';
 import { genres } from '$data/stations';
+import { SceneTypes, Tags } from '$enums';
 
 import { draw } from '$lib/utils';
 import type { Scene } from '$schema';
@@ -34,6 +35,7 @@ export function randomizeScene(calmOnly = false) {
 	}
 
 	nowPlaying.scene = draw(candidates) as Scene;
+	console.log(nowPlaying.scene);
 }
 
 /**

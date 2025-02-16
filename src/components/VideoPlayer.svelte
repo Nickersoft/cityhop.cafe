@@ -22,11 +22,11 @@
 		nowPlaying.scene?.length ? nowPlaying.scene.length - videoOffset.end - videoOffset.start : 1800
 	);
 
-	const randomOffset = $derived(random(videoOffset.start ?? 0, videoOffset.start + offsetLength));
+	const randomOffset = 0;
+	// $derived(random(videoOffset.start ?? 0, videoOffset.start + offsetLength));
 
 	async function onPlay() {
 		ui.isPlaying = true;
-		console.log(player?.getDuration());
 		videoDuration = await player?.getDuration();
 	}
 
@@ -36,7 +36,7 @@
 	}
 
 	function onEnd() {
-		player?.seekTo(videoOffset.start, true);
+		// player?.seekTo(videoOffset.start, true);
 	}
 
 	function onTimeChange(event: CustomEvent) {

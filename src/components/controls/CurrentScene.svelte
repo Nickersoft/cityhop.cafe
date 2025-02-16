@@ -59,7 +59,14 @@
 		</Stack>
 	</Stack>
 
-	<Button onclick={() => (open = true)} variant="link" class="shrink-0">Change Scene</Button>
+	<Button
+		onclick={(e) => {
+			e.stopPropagation();
+			open = true;
+		}}
+		variant="link"
+		class="shrink-0">Change Scene</Button
+	>
 </Stack>
 
 <SceneSelection bind:open />

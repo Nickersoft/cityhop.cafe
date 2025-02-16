@@ -4,12 +4,12 @@
 
 	import { cn } from '$lib/utils';
 
-	export const typographyVariants = cva('normal-case tracking-normal', {
+	export const typographyVariants = cva('normal-case tracking-tight', {
 		variants: {
 			variant: {
-				display: 'font-display font-semibold tracking-tight',
-				headline: 'font-display font-medium tracking-tight',
-				title: 'font-sans font-bold',
+				display: 'font-display font-semibold',
+				headline: 'font-display font-medium',
+				title: 'font-sans font-semibold',
 				body: 'font-sans font-medium',
 				label: 'font-sans uppercase font-semibold tracking-widest'
 			},

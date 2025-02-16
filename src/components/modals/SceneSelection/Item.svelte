@@ -55,7 +55,7 @@
 		src={item.thumbnail}
 		width="480"
 		height="360"
-		class="h-48 w-full rounded-md border object-cover object-center"
+		class="aspect-video w-full rounded-md border object-cover object-center"
 		alt={item.name}
 	/>
 
@@ -65,7 +65,7 @@
 		{/if} -->
 
 		<Typography
-			size="lg"
+			size="md"
 			class="opacity-85 transition-opacity duration-300 group-hover:opacity-100"
 			variant="body"
 		>

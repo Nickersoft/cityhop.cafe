@@ -14,7 +14,6 @@ export class Searcher<T = SearchResultItem> {
 	#query = $state('');
 
 	#url = $derived.by(() => {
-		console.log('derived called');
 		const url = new URL(`/api/${this.route}`, page.url.origin);
 
 		if (this.#query) {
@@ -31,7 +30,6 @@ export class Searcher<T = SearchResultItem> {
 	path = $state<string[]>([]);
 
 	constructor(private route: string) {
-		$inspect(this.#url, this.#loading, this.#items, this.#query, this.path);
 		$effect(() => {
 			this.#loading = true;
 

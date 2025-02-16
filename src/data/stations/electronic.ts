@@ -29,7 +29,7 @@ export const electronic = createGenre({
 		vaporfunk: {
 			displayName: 'VaporFunk Station: Vaporwave Radio',
 			name: 'VaporFunk Station 📼 | 24/7 Vaporwave Radio',
-			trackID: 'cVibfBy77Yg',
+			trackID: 'zcmN2P9JlSQ',
 			live: true
 		},
 		chillsynth: {
