@@ -22,7 +22,7 @@ export const sceneSchema = v.pipe(
 		length: v.optional(v.number())
 	}),
 	v.transform((input) => ({
-		__type: 'scene' as const,
+		__type__: 'scene' as const,
 		thumbnail: getThumbnail(input.videoID),
 		...input
 	}))

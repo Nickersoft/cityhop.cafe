@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { Tags } from '$enums';
-
 	import { getThumbnail } from '$lib/youtube';
-	import Typography from '$ui/Typography.svelte';
+	import { Typography } from '$components/ui';
 	import type { SearchResultItem } from '$schema';
 
 	interface Props {

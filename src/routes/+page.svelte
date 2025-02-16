@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	import VideoPlayer from '$components/VideoPlayer.svelte';
-	import WaitingRoom from '$components/WaitingRoom.svelte';
-	import AudioPlayer from '$components/AudioPlayer.svelte';
+	import VideoPlayer from '$components/video-player.svelte';
+	import WaitingRoom from '$components/waiting-room.svelte';
+	import AudioPlayer from '$components/audio-player.svelte';
 	import { Controls } from '$components/controls';
 
 	import setupHeartbeat from '$lib/heartbeat';

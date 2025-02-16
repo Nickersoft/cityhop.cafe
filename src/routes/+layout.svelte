@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 
-	import BaseHead from '$components/BaseHead.svelte';
+	import BaseHead from '$components/base-head.svelte';
 
 	let { children } = $props();
 

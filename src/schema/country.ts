@@ -6,7 +6,7 @@ export const countrySchema = v.pipe(
 	sceneGroupSchema,
 	v.transform((input) => ({
 		...input,
-		thumbnail: input.scenes[0].thumbnail,
+		thumbnail: input.scenes[0]?.thumbnail,
 		__type__: 'country' as const
 	}))
 );

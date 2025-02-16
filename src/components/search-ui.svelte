@@ -16,12 +16,9 @@
 	import { Search, X } from '$icons';
 	import { getDialogContext, SearchResults } from '$lib';
 
-	import Button from '$ui/Button.svelte';
-	import Input from '$ui/Input.svelte';
+	import { Button, Input, Stack } from '$components/ui';
 
 	import { clickOutside } from '$actions/click-outside';
-
-	import Stack from '$components/ui/Stack.svelte';
 
 	const {
 		leftButton,

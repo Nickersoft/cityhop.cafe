@@ -4,13 +4,8 @@
 	import { nowPlaying } from '$state';
 	import { YouTubeLogoFill } from '$icons';
 
-	import Button from '$ui/Button.svelte';
-	import Link from '$ui/Link.svelte';
-	import Typography from '$ui/Typography.svelte';
-	import Stack from '$ui/Stack.svelte';
-
-	import SceneSelection from '$components/modals/SceneSelection';
-	import Popover from '$components/ui/Popover.svelte';
+	import { Button, Link, Typography, Stack, Popover } from '$components/ui';
+	import { SceneSelection } from '$components/modals';
 
 	let sceneButton: HTMLElement | null = $state(null);
 	let open = $state(false);

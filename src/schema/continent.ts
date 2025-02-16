@@ -19,7 +19,7 @@ export const continentSchema = v.pipe(
 		__type__: 'continent' as const,
 		...input,
 		countries: countries.map(createCountry),
-		thumbnail: countries[0].thumbnail
+		thumbnail: countries[0]?.thumbnail
 	}))
 );
 

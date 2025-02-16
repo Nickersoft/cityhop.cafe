@@ -1,20 +1,18 @@
 <script lang="ts">
 	import type { Component } from 'svelte';
 
-	import Search from '$components/SearchUI.svelte';
+	import { onMount } from 'svelte';
+	import Search from '$components/search-ui.svelte';
 
 	import { Searcher, SearchResults } from '$lib';
 	import { nowPlaying } from '$state';
 	import { ArrowLeft, SteeringWheel } from '$icons';
 	import { isContinent, isCountry, isSceneGroup, type SearchResultItem } from '$schema';
+	import { Stack, Typography, Button, ScrollArea } from '$components/ui';
 
 	import { enter, exit } from './transitions';
 
-	import Item from './Item.svelte';
-	import Stack from '$ui/Stack.svelte';
-	import Typography from '$ui/Typography.svelte';
-	import Button from '$ui/Button.svelte';
-	import ScrollArea from '$ui/ScrollArea.svelte';
+	import Item from './item.svelte';
 
 	const searcher = new Searcher('scenes');
 

@@ -3,9 +3,9 @@
 
 	import { IS_CHRISTMAS, IS_HALLOWEEN } from '$consts';
 
-	import { ui } from '../state.svelte';
+	import { ProgressBar } from '$components/ui';
 
-	import ProgressBar from '$ui/ProgressBar.svelte';
+	import { ui } from '../state.svelte';
 </script>
 
 {#if !ui.isPlaying}

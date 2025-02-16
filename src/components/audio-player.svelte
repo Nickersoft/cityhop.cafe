@@ -2,9 +2,8 @@
 	import type { YouTubePlayer } from 'youtube-player/dist/types';
 
 	import { nowPlaying } from '../state.svelte';
+	import { YouTube } from '$components/ui';
 	import { random } from '$lib/utils';
-
-	import YouTube from '$ui/YouTube.svelte';
 
 	let player = $state<YouTubePlayer | null>(null);
 

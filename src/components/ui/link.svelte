@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { SvelteHTMLElements } from 'svelte/elements';
 
-	import { buttonVariants, type ButtonProps } from './Button.svelte';
+	import { buttonVariants, type ButtonProps } from './button.svelte';
 
 	type Props = ButtonProps & SvelteHTMLElements['a'];
 

@@ -5,7 +5,7 @@
 
 	import { nowPlaying, ui } from '../state.svelte';
 
-	import YouTube from '$ui/YouTube.svelte';
+	import YouTube from '$ui/youtube.svelte';
 	import { random } from '$lib/utils';
 	import Stack from './ui/Stack.svelte';
 

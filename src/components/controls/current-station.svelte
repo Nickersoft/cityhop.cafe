@@ -3,12 +3,8 @@
 	import { nowPlaying, preferences } from '$state';
 	import { cn } from '$lib';
 
-	import Stack from '$ui/Stack.svelte';
-	import Button from '$ui/Button.svelte';
-	import Link from '$ui/Link.svelte';
-	import Marquee from '$ui/Marquee.svelte';
-
-	import { typographyVariants } from '$ui/Typography.svelte';
+	import { Stack, Button, Link, Marquee } from '$components/ui';
+	import { typographyVariants } from '$components/ui/typography.svelte';
 
 	const shouldMarquee = $derived((nowPlaying.station?.name.length ?? 0) > 45);
 </script>

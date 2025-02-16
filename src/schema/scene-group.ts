@@ -3,12 +3,13 @@ import * as v from 'valibot';
 import { alphabetical } from '$lib/utils';
 
 import { sceneSchema, type Scene, type SceneInput } from './scene';
+import { isSceneGroup } from './utils';
 
 function findThumbnail(scenes: (Scene | SceneGroup)[]): string {
-	if (v.is(sceneGroupSchema, scenes[0])) {
+	if (isSceneGroup(scenes[0])) {
 		return findThumbnail(scenes[0].scenes);
 	}
-	return scenes[0].thumbnail;
+	return scenes[0]?.thumbnail;
 }
 
 export interface SceneGroupInput {
@@ -25,7 +26,7 @@ export interface SceneGroup extends SceneGroupInput {
 
 export function deepSort<T extends SceneGroup | Scene>(scenes: T[]): T[] {
 	return alphabetical(scenes, ({ name }) => name).map((scene) => {
-		if (v.is(sceneGroupSchema, scene)) {
+		if (isSceneGroup(scene)) {
 			return {
 				...scene,
 				scenes: deepSort(scene.scenes)
