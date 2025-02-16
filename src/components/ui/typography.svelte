@@ -3,12 +3,14 @@
 	import type { SvelteHTMLElements } from 'svelte/elements';
 
 	import { cn } from '$lib/utils';
+	import type { Snippet } from 'svelte';
+	import { mergeProps } from 'bits-ui';
 
 	export const typographyVariants = cva('normal-case tracking-tight', {
 		variants: {
 			variant: {
-				display: 'font-display font-semibold',
-				headline: 'font-display font-medium',
+				display: 'font-sans font-semibold',
+				headline: 'font-sans font-semibold',
 				title: 'font-sans font-semibold',
 				body: 'font-sans font-medium',
 				label: 'font-sans uppercase font-semibold tracking-widest'
@@ -220,6 +222,7 @@
 	export type TypographyProps = SvelteHTMLElements['p'] &
 		VariantProps<typeof typographyVariants> & {
 			as?: string;
+			child?: Snippet<[{ props: Record<string, unknown> }]>;
 		};
 </script>
 
@@ -231,25 +234,20 @@
 		size,
 		color,
 		align,
+		child,
 		as,
 		...props
 	}: TypographyProps = $props();
 
 	const tag = $derived(as ?? tagVariants({ variant, size }));
+	const classes = $derived(cn(typographyVariants({ variant, align, color, size }), className));
+	const allProps = $derived(mergeProps({ class: classes }, props));
 </script>
 
-<svelte:element
-	this={tag}
-	class={cn(
-		typographyVariants({
-			variant,
-			align,
-			color,
-			size
-		}),
-		className
-	)}
-	{...props}
->
-	{@render children?.()}
-</svelte:element>
+{#if child}
+	{@render child({ props: allProps })}
+{:else}
+	<svelte:element this={tag} {...allProps}>
+		{@render children?.()}
+	</svelte:element>
+{/if}

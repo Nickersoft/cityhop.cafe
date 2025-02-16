@@ -4,7 +4,6 @@ import type { SceneTypes } from '$enums';
 import { page } from '$app/state';
 
 import { alphabetical, debounce, group, mapValues } from './utils';
-import { untrack } from 'svelte';
 
 export class Searcher<T = SearchResultItem> {
 	#loading = $state(false);

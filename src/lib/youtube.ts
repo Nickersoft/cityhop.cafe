@@ -6,6 +6,10 @@ import createYouTubePlayer from 'youtube-player';
 
 import { PlayerState } from '$enums';
 
+export function getYouTubeLink(videoId?: string) {
+	return `https://www.youtube.com/watch?v=${videoId}`;
+}
+
 /**
  * Returns the thumbnail of a scene item
  * @param item - The scene to get the thumbnail of

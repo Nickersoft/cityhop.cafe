@@ -1,8 +1,8 @@
 import { SceneTypes } from '$enums';
 import { Tags } from '$enums';
-import type { Continent } from '../../../types';
+import { createContinent } from '$schema';
 
-export default {
+export default createContinent({
 	name: '????',
 	hidden: true,
 	emoji: '',
@@ -45,4 +45,4 @@ export default {
 			]
 		}
 	]
-} satisfies Continent;
+});

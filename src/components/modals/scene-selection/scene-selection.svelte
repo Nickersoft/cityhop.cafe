@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { Component } from 'svelte';
 
-	import { onMount } from 'svelte';
 	import Search from '$components/search-ui.svelte';
 
 	import { Searcher, SearchResults } from '$lib';

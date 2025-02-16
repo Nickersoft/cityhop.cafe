@@ -1,5 +1,3 @@
-import * as v from 'valibot';
-
 import type { Continent } from './continent';
 import type { Country } from './country';
 import type { Scene } from './scene';

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { YouTubePlayer } from 'youtube-player/dist/types';
 
-	import { nowPlaying } from '../state.svelte';
+	import { nowPlaying, preferences } from '$state';
 	import { YouTube } from '$components/ui';
 	import { random } from '$lib/utils';
 
@@ -12,6 +12,10 @@
 		player?.setVolume(100);
 		player?.playVideo();
 	}
+
+	$effect(() => {
+		player?.setVolume(preferences.current.muteMusic ? 0 : preferences.current.musicVolume);
+	});
 </script>
 
 {#if nowPlaying.station}

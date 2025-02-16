@@ -1,10 +1,6 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
-export function getYouTubeLink(videoId?: string) {
-	return `https://www.youtube.com/watch?v=${videoId}`;
-}
-
 /**
  * Combines multiple class strings into a single class string
  * @param inputs - The class strings to combine

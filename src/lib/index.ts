@@ -7,3 +7,4 @@ export * from './search.svelte';
 export * from './now-playing';
 export * from './search.svelte';
 export * from './utils';
+export * from './youtube';

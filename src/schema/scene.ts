@@ -3,7 +3,7 @@ import * as v from 'valibot';
 import { SceneTypes, Tags } from '$enums';
 
 import { stationSchema } from './station';
-import { getThumbnail } from '$lib/youtube';
+import { getYouTubeLink, getThumbnail } from '$lib/youtube';
 
 const offsetSchema = v.object({
 	start: v.optional(v.number()),
@@ -24,6 +24,7 @@ export const sceneSchema = v.pipe(
 	v.transform((input) => ({
 		__type__: 'scene' as const,
 		thumbnail: getThumbnail(input.videoID),
+		link: getYouTubeLink(input.videoID),
 		...input
 	}))
 );

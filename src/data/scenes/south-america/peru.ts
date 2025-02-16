@@ -1,6 +1,5 @@
 import { createCountry } from '$schema';
 import { SceneTypes, Tags } from '$enums';
-import type { Country } from '../../../types';
 
 export default createCountry({
 	name: 'Peru',

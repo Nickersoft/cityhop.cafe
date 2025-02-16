@@ -3,7 +3,7 @@
 	import { nowPlaying, preferences } from '$state';
 	import { cn } from '$lib';
 
-	import { Stack, Button, Link, Marquee } from '$components/ui';
+	import { Stack, Button, Link, Marquee, Typography } from '$components/ui';
 	import { typographyVariants } from '$components/ui/typography.svelte';
 
 	const shouldMarquee = $derived((nowPlaying.station?.name.length ?? 0) > 45);
@@ -23,16 +23,16 @@
 		justify="start"
 		class="w-full gap-0.5 md:w-auto md:grow"
 	>
-		<Stack orientation="row" align="center" justify="end" gap="sm">
+		<Stack orientation="row" align="center" justify="center" gap="sm">
 			<!-- <Equalizer muted={userPreferences.muteMusic} /> -->
 
-			<span class="glow">
-				{#if preferences.value.musicVolume}
+			<Typography variant="title" size="md" class="glow">
+				{#if preferences.current.muteMusic}
 					Music muted
 				{:else}
 					Now playing
 				{/if}
-			</span>
+			</Typography>
 
 			<!-- <MuteButton class="text-base" bind:muted={userPreferences.muteMusic} /> -->
 

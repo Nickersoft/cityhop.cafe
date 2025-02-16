@@ -1,7 +1,7 @@
 import { SceneTypes } from '$enums';
-import type { Country } from '../../../types';
+import { createCountry } from '$schema';
 
-export default {
+export default createCountry({
 	name: 'Serbia',
 	scenes: [
 		{
@@ -11,4 +11,4 @@ export default {
 			offset: { start: 360, end: -100 }
 		}
 	]
-} satisfies Country;
+});

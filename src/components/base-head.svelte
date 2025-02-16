@@ -1,6 +1,5 @@
 <script lang="ts">
 	import '@fontsource-variable/figtree';
-	import '@fontsource-variable/inter/opsz.css';
 
 	import '$styles/app.css';
 

@@ -1,4 +1,7 @@
 import * as v from 'valibot';
+
+import { getYouTubeLink } from '$lib/youtube';
+
 import { Tags } from '$enums';
 
 export const stationSchema = v.pipe(
@@ -12,6 +15,7 @@ export const stationSchema = v.pipe(
 	}),
 	v.transform((input) => ({
 		__type__: 'station' as const,
+		link: getYouTubeLink(input.trackID),
 		...input
 	}))
 );

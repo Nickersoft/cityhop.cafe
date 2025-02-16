@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 
 @import './mask.css';
+@import './inter.css';
 @import './animate.css';
 
 @custom-variant min-video {
@@ -19,7 +20,7 @@
 	/* -------------------------------------------------------------------------- */
 	/*                                    Fonts                                   */
 	/* -------------------------------------------------------------------------- */
-	--font-sans: Inter Variable, Helvetica, Arial, sans-serif;
+	--font-sans: InterVariable, sans-serif;
 
 	/* -------------------------------------------------------------------------- */
 	/*                                 Animations                                 */
@@ -57,8 +58,8 @@
 	--color-foreground: var(--color-white);
 	--color-muted: --alpha(var(--color-foreground) / 10%);
 	--color-muted-foreground: --alpha(var(--color-foreground) / 30%);
-	--color-popover: var(--color-white);
-	--color-popover-foreground: var(--color-zinc-900);
+	--color-popover: var(--color-background);
+	--color-popover-foreground: var(--color-foreground);
 	--color-border: --alpha(var(--color-white) / 10%);
 	--color-input: var(--color-border);
 	--color-card: var(--color-white);

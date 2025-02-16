@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { Tags } from '$enums';
-	import { getThumbnail } from '$lib/youtube';
-	import { Typography } from '$components/ui';
-	import type { SearchResultItem } from '$schema';
+	import { Stack, Typography } from '$components/ui';
+	import type { SearchResultItem, Station } from '$schema';
+	import { CloudRain, Snowflake } from '$icons';
 
 	interface Props {
-		item: SearchResultItem;
+		item: Exclude<SearchResultItem, Station>;
 		onclick: (e: MouseEvent) => void;
 		emoji?: string | undefined;
 	}
@@ -58,13 +58,13 @@
 		alt={item.name}
 	/>
 
-	<div class="flex flex-row items-center gap-2 pt-2">
+	<Stack orientation="row" gap="sm" align="center" class="w-full pt-2">
 		<!-- {#if icon}
 			<iconify-icon {icon}></iconify-icon>
 		{/if} -->
 
 		<Typography
-			class="opacity-85 transition-opacity duration-300 group-hover:opacity-100"
+			class="grow text-left  opacity-85 transition-opacity duration-300 group-hover:opacity-100"
 			variant="title"
 			size="sm"
 		>
@@ -73,12 +73,12 @@
 
 		{#if 'tags' in item}
 			{#if item.tags?.includes(Tags.rain)}
-				<iconify-icon icon="twemoji:cloud-with-rain"></iconify-icon>
+				<CloudRain class="size-4 opacity-50" />
 			{/if}
 
 			{#if item.tags?.includes(Tags.snow)}
-				<iconify-icon icon="twemoji:snowflake"></iconify-icon>
+				<Snowflake class="size-4 opacity-50" />
 			{/if}
 		{/if}
-	</div>
+	</Stack>
 </button>

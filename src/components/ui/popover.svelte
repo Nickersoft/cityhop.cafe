@@ -19,13 +19,13 @@
 	<Popover.Portal>
 		<Popover.Content
 			class={[
-				'from-background/75 via-background/50 to-background/95 ring-background/75 bg-linear-to-br',
+				'from-popover via-popover/75 to-popover/95 ring-popover/75 bg-linear-to-br',
 				'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
 				'data-[side=bottom]:slide-in-from-top-[10px] data-[side=left]:slide-in-from-right-[10px] data-[side=right]:slide-in-from-left-[10px] data-[side=top]:slide-in-from-bottom-[10px]',
 				'data-[side=bottom]:slide-out-to-top-[10px] data-[side=left]:slide-out-to-right-[10px] data-[side=right]:slide-out-to-left-[10px] data-[side=top]:slide-out-to-bottom-[10px]',
-				'z-30 h-[max(75vh,500px)] w-[max(60vw,800px)] overflow-hidden rounded-2xl border ring-1 shadow-xl shadow-black/20 backdrop-blur-xl'
+				'border-accent z-30 h-[max(75vh,500px)] w-[max(60vw,800px)] overflow-hidden rounded-2xl border ring-1 shadow-xl shadow-black/20 backdrop-blur-xl'
 			]}
-			sideOffset={8}
+			sideOffset={40}
 		>
 			{@render content()}
 		</Popover.Content>

@@ -2,12 +2,9 @@
 	import type { YouTubePlayer } from 'youtube-player/dist/types';
 
 	import { DEFAULT_VIDEO_END_OFFSET, DEFAULT_VIDEO_START_OFFSET } from '$consts';
-
-	import { nowPlaying, ui } from '../state.svelte';
-
-	import YouTube from '$ui/youtube.svelte';
+	import { YouTube } from '$components/ui';
 	import { random } from '$lib/utils';
-	import Stack from './ui/Stack.svelte';
+	import { nowPlaying, ui } from '$state';
 
 	let videoDuration: number | undefined = $state();
 

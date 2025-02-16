@@ -1,17 +1,17 @@
 import { json } from '@sveltejs/kit';
 
 import { scenes } from '$data/scenes';
-import { stationList } from '$data/stations';
+import { stations } from '$data/stations';
 
 import { draw } from '$lib';
 
-import type { SceneWithThumbnail, Station } from '$types';
+import type { Scene, Station } from '$schema';
 import type { Tags } from '$enums';
 
 import type { RequestHandler } from './$types';
 
-const jazzStations = stationList.filter(({ genre }) => genre === 'jazz') as Station[];
-const lofiStations = stationList.filter(({ genre }) => genre === 'lofi') as Station[];
+const jazzStations = stations.filter(({ genre }) => genre === 'jazz') as Station[];
+const lofiStations = stations.filter(({ genre }) => genre === 'lofi') as Station[];
 
 export const GET: RequestHandler = async ({ url }) => {
 	const calmOnly = !!url.searchParams.get('calm');
@@ -29,5 +29,5 @@ export const GET: RequestHandler = async ({ url }) => {
 		);
 	}
 
-	return json(draw(candidates) as SceneWithThumbnail);
+	return json(draw(candidates) as Scene);
 };

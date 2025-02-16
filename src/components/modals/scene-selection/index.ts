@@ -1,1 +1,1 @@
-export { default } from './SceneSelection.svelte';
+export { default } from './scene-selection.svelte';

@@ -1,9 +1,8 @@
-import { SceneTypes } from '$enums';
 import { genres } from '$data/stations';
-import { Tags } from '$enums';
-import type { Country } from '../../../types';
+import { SceneTypes, Tags } from '$enums';
+import { createCountry } from '$schema';
 
-export default {
+export default createCountry({
 	name: 'Italy',
 	scenes: [
 		{
@@ -66,4 +65,4 @@ export default {
 			suggestedTrack: genres.classical.stations.baroque
 		}
 	]
-} satisfies Country;
+});
