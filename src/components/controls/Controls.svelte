@@ -16,7 +16,7 @@
 >
 	<!-- <Toolbar on:openAbout={showAbout} on:openSettings={showSettings} /> -->
 
-	<div class="from-background/75 translate-y-2 bg-linear-to-t p-4 pt-64">
+	<div class="from-background/100 translate-y-2 bg-linear-to-t p-4 pt-64">
 		<div class="container mx-auto grid grid-cols-1 lg:grid-cols-2">
 			<CurrentScene />
 			<CurrentStation />

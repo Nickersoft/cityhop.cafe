@@ -39,7 +39,7 @@
 	});
 </script>
 
-<!-- <WaitingRoom /> -->
+<WaitingRoom />
 <Controls />
 <VideoPlayer />
 <AudioPlayer />

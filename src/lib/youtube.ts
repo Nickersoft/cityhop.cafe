@@ -133,9 +133,39 @@ export function initPlayer(el: HTMLElement, options: InitPlayerOptions = {}) {
 		}
 	});
 
-	const untrackProgress = observePlayerProgress(player, (time) => {
-		onTimeChange?.(new CustomEvent('timeChange', { detail: { time, target: player } }));
+	let lastTimeUpdate = 0;
+	let iframeWindow: Window | null = null;
+
+	player.getIframe().then((frame) => {
+		iframeWindow = frame.contentWindow;
 	});
+
+	// Approach taken from https://gist.github.com/zavan/75ed641de5afb1296dbc02185ebf1ea0
+	// Let's hope it always works
+	function observe<T extends string>(event: MessageEvent<T>) {
+		if (!iframeWindow) return;
+
+		// Check that the event was sent from the YouTube IFrame.
+		if (event.source === iframeWindow) {
+			const data = JSON.parse(event.data);
+
+			// The "infoDelivery" event is used by YT to transmit any
+			// kind of information change in the player,
+			// such as the current time or a playback quality change.
+			if (data.event === 'infoDelivery' && data.info && data.info.currentTime) {
+				// currentTime is emitted very frequently,
+				// but we only care about whole second changes.
+				const time = Math.floor(data.info.currentTime);
+
+				if (time !== lastTimeUpdate) {
+					lastTimeUpdate = time;
+					onTimeChange?.(new CustomEvent('timeChange', { detail: { time, target: player } }));
+				}
+			}
+		}
+	}
+
+	const untrackProgress = on(window, 'message', observe);
 
 	return [
 		player,

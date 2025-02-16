@@ -65,7 +65,7 @@
 		{/if} -->
 
 		<Typography
-			size="md"
+			size="lg"
 			class="opacity-85 transition-opacity duration-300 group-hover:opacity-100"
 			variant="body"
 		>
