@@ -10,7 +10,9 @@
 	import Stack from '$ui/Stack.svelte';
 
 	import SceneSelection from '$components/modals/SceneSelection';
+	import Popover from '$components/ui/Popover.svelte';
 
+	let sceneButton: HTMLElement | null = $state(null);
 	let open = $state(false);
 </script>
 
@@ -59,14 +61,20 @@
 		</Stack>
 	</Stack>
 
-	<Button
-		onclick={(e) => {
-			e.stopPropagation();
-			open = true;
-		}}
-		variant="link"
-		class="shrink-0">Change Scene</Button
-	>
-</Stack>
+	<Popover bind:open>
+		{#snippet trigger({ props })}
+			<Button
+				{...props}
+				variant="link"
+				data-active={open}
+				class="shrink-0 rounded-full data-[active=true]:bg-white/10 data-[active=true]:opacity-100"
+			>
+				Change Scene
+			</Button>
+		{/snippet}
 
-<SceneSelection bind:open />
+		{#snippet content()}
+			<SceneSelection onClose={() => (open = false)} />
+		{/snippet}
+	</Popover>
+</Stack>

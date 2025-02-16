@@ -28,8 +28,18 @@ export const GET: RequestHandler = async ({ url }) => {
 	}
 
 	if (path) {
-		return json(get(visibleContinents, path));
+		const result = get(visibleContinents, path);
+
+		if (result) {
+			if (Array.isArray(result)) {
+				const sanitizedResult = result.map(({ countries, scenes, ...rest }) => rest);
+				return json(sanitizedResult);
+			}
+		}
+
+		return json(result);
 	}
 
+	// Don't return full tree to save on bandwidth
 	return json(visibleContinents.map(({ countries, ...rest }) => rest));
 };

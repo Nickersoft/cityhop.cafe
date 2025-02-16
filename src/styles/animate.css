@@ -1,5 +1,6 @@
 /* ANIMATE.CSS */
 /* Adapted from https://github.com/Wombosvideo/tailwindcss-animate-v4/ */
+@import 'tailwindcss';
 
 @theme inline {
 	/* -------------------------------------------------------------------------- */

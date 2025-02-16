@@ -14,7 +14,7 @@
 
 <script lang="ts" generics="T">
 	import { Search, X } from '$icons';
-	import { getOverlayContext, SearchResults } from '$lib';
+	import { getDialogContext, SearchResults } from '$lib';
 
 	import Button from '$ui/Button.svelte';
 	import Input from '$ui/Input.svelte';
@@ -41,18 +41,15 @@
 		onSearch(q);
 	});
 
-	const overlay = getOverlayContext();
+	const Dialog = getDialogContext();
 
-	function closeOverlay() {
-		overlay?.close();
+	function closeDialog() {
+		Dialog?.close();
 	}
 </script>
 
-<div
-	use:clickOutside={closeOverlay}
-	class="container flex size-full flex-col items-start justify-start"
->
-	<header class="grid w-full grid-cols-[1.5rem_1fr_1.5rem] items-center gap-4 py-8">
+<div class="flex size-full flex-col items-start justify-start">
+	<header class="grid w-full grid-cols-[2.25rem_auto_2.25rem] items-center gap-4 border-b p-4">
 		<div>
 			{@render leftButton?.()}
 		</div>
@@ -65,17 +62,12 @@
 			type="search"
 		/>
 
-		<Button size="icon" variant="ghost" onclick={closeOverlay}>
+		<Button size="icon" variant="ghost" onclick={closeDialog}>
 			<X />
 		</Button>
 	</header>
 
-	<div
-		onclick={closeOverlay}
-		onkeydown={closeOverlay}
-		role="presentation"
-		class="relative w-full flex-1"
-	>
+	<div role="presentation" class="relative w-full flex-1">
 		<Stack orientation="column" class="absolute inset-0 w-full grow">
 			{@render children?.(items)}
 		</Stack>

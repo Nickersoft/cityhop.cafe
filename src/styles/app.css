@@ -19,7 +19,7 @@
 	/* -------------------------------------------------------------------------- */
 	/*                                    Fonts                                   */
 	/* -------------------------------------------------------------------------- */
-	--font-sans: Figtree Variable, Helvetica, Arial, sans-serif;
+	--font-sans: Inter Variable, Helvetica, Arial, sans-serif;
 
 	/* -------------------------------------------------------------------------- */
 	/*                                 Animations                                 */
@@ -55,8 +55,8 @@
 	/* -------------------------------------------------------------------------- */
 	--color-background: var(--color-zinc-900);
 	--color-foreground: var(--color-white);
-	--color-muted: var(--color-zinc-50);
-	--color-muted-foreground: var(--color-zinc-600);
+	--color-muted: --alpha(var(--color-foreground) / 10%);
+	--color-muted-foreground: --alpha(var(--color-foreground) / 30%);
 	--color-popover: var(--color-white);
 	--color-popover-foreground: var(--color-zinc-900);
 	--color-border: --alpha(var(--color-white) / 10%);

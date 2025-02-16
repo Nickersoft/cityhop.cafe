@@ -59,15 +59,15 @@
 		alt={item.name}
 	/>
 
-	<div class="flex flex-row items-center gap-2 pt-4 pb-2">
+	<div class="flex flex-row items-center gap-2 pt-2">
 		<!-- {#if icon}
 			<iconify-icon {icon}></iconify-icon>
 		{/if} -->
 
 		<Typography
-			size="lg"
 			class="opacity-85 transition-opacity duration-300 group-hover:opacity-100"
-			variant="body"
+			variant="title"
+			size="sm"
 		>
 			{item.name}
 		</Typography>

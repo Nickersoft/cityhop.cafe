@@ -5,24 +5,24 @@
 
 	import { Searcher, SearchResults } from '$lib';
 	import { nowPlaying } from '$state';
-	import { SteeringWheel } from '$icons';
-	import { isContinent, isCountry, isSceneGroup, type Scene, type SearchResultItem } from '$schema';
-
-	import Overlay from '$ui/Overlay.svelte';
+	import { ArrowLeft, SteeringWheel } from '$icons';
+	import { isContinent, isCountry, isSceneGroup, type SearchResultItem } from '$schema';
 
 	import { enter, exit } from './transitions';
 
 	import Item from './Item.svelte';
-	import Stack from '$components/ui/Stack.svelte';
-	import Typography from '$components/ui/Typography.svelte';
-
-	interface Props {
-		open: boolean;
-	}
-
-	let { open = $bindable() }: Props = $props();
+	import Stack from '$ui/Stack.svelte';
+	import Typography from '$ui/Typography.svelte';
+	import Button from '$ui/Button.svelte';
+	import ScrollArea from '$ui/ScrollArea.svelte';
 
 	const searcher = new Searcher('scenes');
+
+	interface Props {
+		onClose: () => void;
+	}
+
+	const { onClose }: Props = $props();
 
 	// Transition direction
 	let direction: Nullable<'forward' | 'backward'> = $state(null);
@@ -41,7 +41,7 @@
 		}
 
 		nowPlaying.scene = item;
-		open = false;
+		onClose();
 	}
 
 	function onInputChange() {
@@ -49,57 +49,71 @@
 	}
 </script>
 
-<Overlay {open}>
-	<Search
-		{...searcher.props}
-		{onInputChange}
-		onSearch={searcher.search}
-		inputPlaceholder="Search over 200+ countries and cities worldwide"
-	>
-		{#snippet children(items)}
-			{@const results = new SearchResults(items)}
+<Search
+	{...searcher.props}
+	{onInputChange}
+	onSearch={searcher.search}
+	inputPlaceholder="Search over 200+ countries and cities worldwide"
+>
+	{#snippet leftButton()}
+		<Button
+			disabled={searcher.path.length === 0}
+			size="icon"
+			variant="ghost"
+			onclick={() => {
+				searcher.path.pop();
+				direction = 'backward';
+			}}
+		>
+			<ArrowLeft />
+		</Button>
+	{/snippet}
 
-			{@const {
-				groups,
-				scenes: { drive, walk, bike, boat }
-			} = results}
+	{#snippet children(items)}
+		{@const results = new SearchResults(items)}
 
-			{#snippet section(scenes?: SearchResultItem[], title?: string, Icon?: Component)}
-				{#if scenes && scenes.length > 0}
-					{#if title}
-						<Stack
-							orientation="row"
-							align="center"
-							gap="sm"
-							class="col-span-full border-b border-white/10 p-4"
-						>
-							<Icon />
-							<Typography variant="headline" size="sm">
-								{title}
-							</Typography>
-						</Stack>
-					{/if}
-					{#each scenes as item}
-						<Item {item} onclick={() => onClick?.(item, items.indexOf(item))} />
-					{/each}
-				{/if}
-			{/snippet}
+		{@const {
+			groups,
+			scenes: { drive, walk, bike, boat }
+		} = results}
 
-			<div class="relative size-full">
-				{#key results.items}
-					<div
-						in:enter={{ direction }}
-						out:exit={{ direction }}
-						class="absolute inset-0 grid auto-rows-min grid-cols-[repeat(auto-fill,minmax(275px,1fr))] gap-6 overflow-auto px-12 pt-1 pb-12"
+		{#snippet section(scenes?: SearchResultItem[], title?: string, Icon?: Component)}
+			{#if scenes && scenes.length > 0}
+				{#if title}
+					<Stack
+						orientation="row"
+						align="center"
+						gap="sm"
+						class="col-span-full border-b border-white/10 p-4"
 					>
-						{@render section(groups)}
-						{@render section(drive, 'Drives', SteeringWheel)}
-						{@render section(walk, '👣 Walks')}
-						{@render section(bike, '🚲 Bike Rides')}
-						{@render section(boat, '🚢 Boat Rides')}
-					</div>
-				{/key}
-			</div>
+						<Icon />
+						<Typography variant="headline" size="sm">
+							{title}
+						</Typography>
+					</Stack>
+				{/if}
+				{#each scenes as item}
+					<Item {item} onclick={() => onClick?.(item, items.indexOf(item))} />
+				{/each}
+			{/if}
 		{/snippet}
-	</Search>
-</Overlay>
+
+		<div class="relative size-full">
+			{#key JSON.stringify(results.items)}
+				<div in:enter={{ direction }} out:exit={{ direction }} class="absolute inset-0">
+					<ScrollArea>
+						<div
+							class="grid auto-rows-min grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4 p-4"
+						>
+							{@render section(groups)}
+							{@render section(drive, 'Drives', SteeringWheel)}
+							{@render section(walk, '👣 Walks')}
+							{@render section(bike, '🚲 Bike Rides')}
+							{@render section(boat, '🚢 Boat Rides')}
+						</div>
+					</ScrollArea>
+				</div>
+			{/key}
+		</div>
+	{/snippet}
+</Search>

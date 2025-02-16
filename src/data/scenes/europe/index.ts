@@ -1,4 +1,3 @@
-import type { Continent } from '../../../types';
 import { createContinent } from '$schema';
 
 import austria from './austria';

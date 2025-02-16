@@ -27,7 +27,7 @@
 		}
 	);
 
-	export type ButtonProps = SvelteHTMLElements['button'] &
+	export type ButtonProps = ButtonRootProps &
 		VariantProps<typeof buttonVariants> & {
 			as?: string;
 		};
@@ -35,20 +35,12 @@
 
 <script lang="ts">
 	import { cva, type VariantProps } from 'class-variance-authority';
-	import type { SvelteHTMLElements } from 'svelte/elements';
+
+	import { Button, type ButtonRootProps } from 'bits-ui';
 
 	import { cn } from '$lib/utils';
 
-	const {
-		variant,
-		size,
-		as = 'button',
-		children,
-		class: className,
-		...props
-	}: ButtonProps = $props();
+	const { variant, size, as = 'button', class: className, ...props }: ButtonProps = $props();
 </script>
 
-<svelte:element this={as} class={cn(buttonVariants({ variant, size, className }))} {...props}>
-	{@render children?.()}
-</svelte:element>
+<Button.Root class={cn(buttonVariants({ variant, size, className }))} {...props} />
