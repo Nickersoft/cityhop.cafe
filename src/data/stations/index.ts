@@ -1,4 +1,4 @@
-import type { Genre, Station } from '$schema';
+import type { Station } from '$schema';
 
 import { objectify } from '../../lib/utils';
 
@@ -30,5 +30,8 @@ export const stations: StationWithGenre[] = Object.entries(genres).flatMap(
 		}))
 );
 
-export const stationMap = objectify(stations, (station) => station.trackID);
-export const stationList = stations.filter((s) => !s.hidden);
+const stationMap = objectify(stations, (station) => station.trackID);
+
+export function getStationByID(id: string): Optional<StationWithGenre> {
+	return stationMap[id];
+}

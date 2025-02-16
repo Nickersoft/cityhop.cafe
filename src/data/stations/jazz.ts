@@ -1,6 +1,5 @@
 import { createGenre } from '$schema';
-import { Tags } from '../../enums';
-import type { Genre } from '../../types';
+import { Tags } from '$enums';
 
 export const jazz = createGenre({
 	name: 'Jazz',

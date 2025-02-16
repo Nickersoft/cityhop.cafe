@@ -3,7 +3,7 @@
 
 	import { getThumbnail } from '$lib/youtube';
 	import Typography from '$ui/Typography.svelte';
-	import type { SearchResultItem } from '$types';
+	import type { SearchResultItem } from '$schema';
 
 	interface Props {
 		item: SearchResultItem;
@@ -47,15 +47,15 @@
 
 <button
 	onclick={handleClick}
-	class="group flex cursor-pointer flex-col items-center justify-start gap-2 rounded-2xl border bg-white/5 p-2 shadow-sm transition-all duration-300 ease-in-out hover:scale-102 hover:bg-white/10"
+	class="group flex cursor-pointer flex-col items-center justify-start gap-2 rounded-xl border bg-white/5 p-2 shadow-sm transition-all duration-300 ease-in-out hover:scale-102 hover:bg-white/10"
 >
 	<img
 		loading="lazy"
 		decoding="async"
-		src={getThumbnail(item)}
+		src={item.thumbnail}
 		width="480"
 		height="360"
-		class="h-48 w-full rounded-lg border object-cover object-center"
+		class="h-48 w-full rounded-md border object-cover object-center"
 		alt={item.name}
 	/>
 

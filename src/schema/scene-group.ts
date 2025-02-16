@@ -1,9 +1,11 @@
 import * as v from 'valibot';
 
+import { alphabetical } from '$lib/utils';
+
 import { sceneSchema, type Scene, type SceneInput } from './scene';
 
 function findThumbnail(scenes: (Scene | SceneGroup)[]): string {
-	if ('scenes' in scenes[0]) {
+	if (v.is(sceneGroupSchema, scenes[0])) {
 		return findThumbnail(scenes[0].scenes);
 	}
 	return scenes[0].thumbnail;
@@ -21,12 +23,28 @@ export interface SceneGroup extends SceneGroupInput {
 	scenes: (SceneGroup | Scene)[];
 }
 
+export function deepSort<T extends SceneGroup | Scene>(scenes: T[]): T[] {
+	return alphabetical(scenes, ({ name }) => name).map((scene) => {
+		if (v.is(sceneGroupSchema, scene)) {
+			return {
+				...scene,
+				scenes: deepSort(scene.scenes)
+			};
+		}
+		return scene;
+	});
+}
+
 export const sceneGroupSchema: v.GenericSchema<SceneGroupInput, SceneGroup> = v.pipe(
 	v.object({
 		name: v.string(),
 		previewID: v.optional(v.string()),
 		scenes: v.array(v.lazy(() => v.union([sceneSchema, sceneGroupSchema])))
 	}),
+	v.transform(({ scenes, ...input }) => ({
+		...input,
+		scenes: deepSort(scenes)
+	})),
 	v.transform((input) => ({
 		__type__: 'group' as const,
 		thumbnail: findThumbnail(input.scenes),

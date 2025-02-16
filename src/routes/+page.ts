@@ -1,7 +1,6 @@
 import { IS_CHRISTMAS, IS_HALLOWEEN } from '$consts';
-
-import { sceneMap } from '$data/scenes';
-import { stationMap } from '$data/stations';
+import { getSceneByID } from '$data/scenes';
+import { getStationByID } from '$data/stations';
 
 import { draw } from '$lib/utils';
 
@@ -14,8 +13,8 @@ export const load: PageLoad = ({ url }) => {
 		const [videoID, audioID] = atob(v).split(':');
 
 		if (videoID && audioID) {
-			const scene = sceneMap[videoID];
-			const station = stationMap[audioID];
+			const scene = getSceneByID(videoID);
+			const station = getStationByID(audioID);
 
 			return { scene, station };
 		}

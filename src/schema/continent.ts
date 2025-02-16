@@ -1,4 +1,7 @@
 import * as v from 'valibot';
+
+import { alphabetical } from '$lib/utils';
+
 import { countrySchema, createCountry } from './country';
 
 export const continentSchema = v.pipe(
@@ -6,13 +9,17 @@ export const continentSchema = v.pipe(
 		name: v.string(),
 		hidden: v.optional(v.boolean()),
 		emoji: v.string(),
-		countries: v.array(countrySchema)
+		countries: v.optional(v.array(countrySchema))
 	}),
-	v.transform((input) => ({
+	v.transform(({ countries, ...input }) => ({
+		...input,
+		countries: alphabetical(countries ?? [], ({ name }) => name).map(createCountry)
+	})),
+	v.transform(({ countries, ...input }) => ({
 		__type__: 'continent' as const,
 		...input,
-		countries: input.countries.map(createCountry),
-		thumbnail: input.countries[0].thumbnail
+		countries: countries.map(createCountry),
+		thumbnail: countries[0]?.thumbnail
 	}))
 );
 

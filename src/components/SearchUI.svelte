@@ -14,7 +14,7 @@
 
 <script lang="ts" generics="T">
 	import { Search, X } from '$icons';
-	import { getOverlayContext } from '$lib';
+	import { getOverlayContext, SearchResults } from '$lib';
 
 	import Button from '$ui/Button.svelte';
 	import Input from '$ui/Input.svelte';
@@ -50,7 +50,7 @@
 
 <div
 	use:clickOutside={closeOverlay}
-	class="mx-auto flex size-full max-w-7xl flex-col items-start justify-start"
+	class="container flex size-full flex-col items-start justify-start"
 >
 	<header class="grid w-full grid-cols-[1.5rem_1fr_1.5rem] items-center gap-4 py-8">
 		<div>

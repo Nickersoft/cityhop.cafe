@@ -1,46 +1,19 @@
-import { alphabetical } from '$lib/utils';
-import {
-	isContinent,
-	isCountry,
-	isSceneGroup,
-	type Country,
-	type Scene,
-	type SceneGroup,
-	type SearchResultItem
-} from '$schema';
+import type { Scene, SearchResultItem } from '$schema';
+import { isScene } from '$schema/utils';
 
-export function flattenScenes(scenes: (Scene | SceneGroup)[], country: string) {
-	return scenes.reduce(
-		(acc, scene): Record<string, Scene> =>
-			Object.assign(
-				acc,
-				'scenes' in scene ? flattenScenes(scene.scenes, country) : { [scene.videoID]: scene }
-			),
-		{}
+export function createSceneMap(items: SearchResultItem[]): Record<string, Scene> {
+	return items.reduce(
+		(acc, item) => {
+			if (isScene(item)) return Object.assign(acc, { [item.videoID]: item });
+
+			return ['scenes', 'countries'].reduce((innerAcc, key) => {
+				const collection = item[key as keyof typeof item];
+				if (Array.isArray(collection)) {
+					return Object.assign(innerAcc, createSceneMap(collection));
+				}
+				return innerAcc;
+			}, acc);
+		},
+		{} as Record<string, Scene>
 	);
-}
-
-export function flattenCountries(countries: Country[]): Record<string, Scene> {
-	return countries.reduce(
-		(acc, country) => Object.assign(acc, flattenScenes(country.scenes, country.name)),
-		{}
-	);
-}
-
-export function deepSort<T extends SearchResultItem>(list: T): T {
-	if (isSceneGroup(list) || isCountry(list)) {
-		return {
-			...list,
-			scenes: alphabetical(list.scenes.map(deepSort), ({ name }) => name)
-		};
-	}
-
-	if (isContinent(list)) {
-		return {
-			...list,
-			countries: alphabetical(list.countries.map(deepSort), ({ name }) => name)
-		};
-	}
-
-	return list;
 }

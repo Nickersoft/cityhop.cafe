@@ -2,10 +2,10 @@
 	import Overlay from '$ui/Overlay.svelte';
 	import Search from '$components/SearchUI.svelte';
 
-	import { getOverlayContext, Searcher } from '$lib';
+	import { Searcher } from '$lib';
 
 	import { nowPlaying } from '$state';
-	import { isContinent, isSceneGroup, type SearchResultItem } from '$schema';
+	import { isContinent, isCountry, isSceneGroup, type SearchResultItem } from '$schema';
 
 	import Results from './Results.svelte';
 
@@ -16,31 +16,29 @@
 	let { open = $bindable() }: Props = $props();
 
 	const searcher = new Searcher('scenes');
-	const overlay = getOverlayContext();
 
-	let path: string[] = $state([]);
-	let transitionDirection: 'forward' | 'backward' = $state('forward');
-	let transitionsEnabled = $state(true);
+	// Transition direction
+	let direction: Nullable<'forward' | 'backward'> = $state(null);
 
 	function onClick(item: SearchResultItem, index: number) {
-		transitionDirection = 'forward';
+		direction = 'forward';
 
-		if (isSceneGroup(item)) {
-			path = [...path, `[${index}].scenes`];
+		if (isCountry(item) || isSceneGroup(item)) {
+			searcher.path.push(`[${index}].scenes`);
 			return;
 		}
 
 		if (isContinent(item)) {
-			path = [...path, `[${index}].countries`];
+			searcher.path.push(`[${index}].countries`);
 			return;
 		}
 
 		nowPlaying.scene = item;
-		overlay.close();
+		open = false;
 	}
 
 	function onInputChange(query: string) {
-		transitionsEnabled = query.length === 0;
+		direction = null;
 	}
 </script>
 
@@ -51,8 +49,8 @@
 		onSearch={searcher.search}
 		inputPlaceholder="Search over 200+ countries and cities worldwide"
 	>
-		{#snippet children(results)}
-			<Results {results} {onClick} />
+		{#snippet children(items)}
+			<Results {items} {onClick} {direction} />
 		{/snippet}
 	</Search>
 </Overlay>

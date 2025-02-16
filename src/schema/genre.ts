@@ -1,4 +1,5 @@
 import * as v from 'valibot';
+
 import { stationSchema } from './station';
 
 export const genreSchema = v.object({

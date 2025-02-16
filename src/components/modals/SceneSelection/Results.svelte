@@ -1,99 +1,53 @@
 <script lang="ts">
-	import { fade, fly } from 'svelte/transition';
-
-	import type { SceneTypes } from '$enums';
-	import type { Scene, SearchResultItem } from '$types';
-	import { alphabetical, fork, group, mapValues } from '$lib/utils';
-
-	import Section from './Section.svelte';
 	import Item from './Item.svelte';
 
+	import { SearchResults } from '$lib';
+	import type { Scene, SearchResultItem } from '$schema';
+
+	import { enter, exit } from './transitions';
+
 	interface Props {
-		results: SearchResultItem[];
+		items: SearchResultItem[];
 		onClick?: (item: SearchResultItem, index: number) => void;
 		emoji?: string | undefined;
-		transitionsEnabled?: boolean;
-		direction?: 'forward' | 'backward';
+		direction?: 'forward' | 'backward' | null;
 	}
 
-	let {
-		results,
-		emoji = undefined,
-		onClick,
-		transitionsEnabled = false,
-		direction = 'forward'
-	}: Props = $props();
+	let { items, emoji = undefined, onClick, direction = null }: Props = $props();
 
-	let partition = $derived(fork(results, (scene) => 'type' in scene));
-
-	let scenes = $derived(
-		mapValues(
-			group(partition[0] as Scene[], (scene) => scene.type) as Record<SceneTypes, Scene[]>,
-			(s) => alphabetical(s ?? [], ({ name }) => name)
-		)
-	);
-
-	let groups = $derived(alphabetical(partition[1], ({ name }) => name));
+	const results = $derived(new SearchResults(items));
 
 	const handleClick = (item: SearchResultItem) => () => {
-		onClick?.(item, results.indexOf(item));
+		onClick?.(item, results.items.indexOf(item));
 	};
-
-	function enter(node: HTMLElement) {
-		return transitionsEnabled
-			? fly(node, { x: direction === 'forward' ? 50 : -50 })
-			: fly(node, { y: 10, duration: 300 });
-	}
-
-	function exit(node: HTMLElement) {
-		return transitionsEnabled
-			? fly(node, { x: direction === 'forward' ? -50 : 50 })
-			: fly(node, { y: 10, duration: 300 });
-	}
 </script>
 
+{#snippet section(title: string, scenes?: Scene[])}
+	{#if scenes && scenes.length > 0}
+		<div class="col-span-full border-b border-white/10 p-4 text-xl text-white/90">
+			{title}
+		</div>
+		{#each scenes as item}
+			<Item {emoji} {item} onclick={handleClick(item)} />
+		{/each}
+	{/if}
+{/snippet}
+
 <div class="relative size-full">
-	{#key results}
+	{#key results.items}
 		<div
-			in:enter
-			out:exit
+			in:enter={{ direction }}
+			out:exit={{ direction }}
 			class="absolute inset-0 grid auto-rows-min grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-6 overflow-auto px-12 pt-1 pb-12"
 		>
-			{#each groups as item}
+			{#each results.groups as item}
 				<Item {emoji} {item} onclick={handleClick(item)} />
 			{/each}
 
-			{#if scenes.drive && scenes.drive.length > 0}
-				<Section title="🚗 Drives">
-					{#each scenes.drive as item}
-						<Item {emoji} {item} onclick={handleClick(item)} />
-					{/each}
-				</Section>
-			{/if}
-
-			{#if scenes.walk && scenes.walk.length > 0}
-				<Section title="👣 Walks">
-					{#each scenes.walk as item}
-						<Item {emoji} {item} onclick={handleClick(item)} />
-					{/each}
-				</Section>
-			{/if}
-
-			{#if scenes.bike && scenes.bike.length > 0}
-				<Section title="🚲 Bike Rides">
-					{#each scenes.bike as item}
-						<Item {emoji} {item} onclick={handleClick(item)} />
-					{/each}
-				</Section>
-			{/if}
-
-			{#if scenes.boat && scenes.boat.length > 0}
-				<Section title="🚢 Boat Rides">
-					{#each scenes.boat as item}
-						<Item {emoji} {item} onclick={handleClick(item)} />
-					{/each}
-				</Section>
-			{/if}
+			{@render section('🚗 Drives', results.scenes.drive)}
+			{@render section('👣 Walks', results.scenes.walk)}
+			{@render section('🚲 Bike Rides', results.scenes.bike)}
+			{@render section('🚢 Boat Rides', results.scenes.boat)}
 		</div>
 	{/key}
 </div>

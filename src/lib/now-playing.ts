@@ -1,21 +1,18 @@
 import { scenes } from '$data/scenes';
-import { stationList } from '$data/stations';
+import { genres } from '$data/stations';
 
 import { draw } from '$lib/utils';
-import type { Station } from '$schema';
+import type { Scene } from '$schema';
+import { nowPlaying, ui } from '$state';
 
-import { nowPlaying, ui } from '../state.svelte';
-
-const jazzStations = stationList.filter(({ genre }) => genre === 'jazz') as Station[];
-const lofiStations = stationList.filter(({ genre }) => genre === 'lofi') as Station[];
+const jazzStations = Object.values(genres.jazz.stations);
+const lofiStations = Object.values(genres.lofi.stations);
 
 /**
  * Randomizes the station to a lofi station that is not Bollywood Lofi
  */
 export function randomizeStation() {
-	const candidates = stationList.filter(
-		({ genre, name }) => genre === 'lofi' && !name.toLowerCase().includes('bollywood')
-	);
+	const candidates = lofiStations.filter(({ name }) => !name.toLowerCase().includes('bollywood'));
 	nowPlaying.station = draw(candidates);
 }
 

@@ -62,4 +62,4 @@
 	<Button onclick={() => (open = true)} variant="link" class="shrink-0">Change Scene</Button>
 </Stack>
 
-<SceneSelection open />
+<SceneSelection bind:open />
