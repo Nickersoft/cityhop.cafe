@@ -10,8 +10,7 @@
 	import setupHotkeys from '$lib/hotkeys';
 	import setupHover from '$lib/hover';
 
-	import { nowPlaying } from '../state.svelte';
-	import { randomize } from '$lib/now-playing';
+	import { nowPlaying, ui } from '$state';
 
 	import type { PageProps } from './$types';
 
@@ -27,8 +26,6 @@
 		if (scene && station) {
 			nowPlaying.scene = scene;
 			nowPlaying.station = station;
-		} else {
-			randomize();
 		}
 
 		return () => {
@@ -36,6 +33,14 @@
 			cleanupHotkeys();
 			cleanupHover();
 		};
+	});
+
+	$effect(() => {
+		if (ui.windowActive) {
+			document.body.dataset.active = 'true';
+		} else {
+			document.body.dataset.active = 'false';
+		}
 	});
 </script>
 

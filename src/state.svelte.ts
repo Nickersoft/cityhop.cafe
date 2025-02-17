@@ -17,6 +17,7 @@ export const preferences = persistedState('preferences', {
 
 export const ui = $state<UIState>({
 	isPlaying: false,
+	windowActive: true,
 	hasStarted: false,
 	isFullscreen: false
 });

@@ -1,3 +1,4 @@
+import { page } from '$app/state';
 import { scenes } from '$data/scenes';
 import { genres } from '$data/stations';
 import { SceneTypes, Tags } from '$enums';
@@ -35,7 +36,6 @@ export function randomizeScene(calmOnly = false) {
 	}
 
 	nowPlaying.scene = draw(candidates) as Scene;
-	console.log(nowPlaying.scene);
 }
 
 /**
@@ -50,4 +50,16 @@ export function randomize(calmOnly = false) {
 	} else {
 		randomizeStation();
 	}
+}
+
+/**
+ * Returns a sharable URL with the current scene and station
+ * @returns The sharable URL
+ */
+export function getSharableURL() {
+	const { scene, station } = nowPlaying;
+
+	const key = btoa(`${scene?.videoID}:${station?.trackID}`);
+
+	return `${page.url}/?v=${key}`;
 }

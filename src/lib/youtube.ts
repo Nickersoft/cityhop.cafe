@@ -33,7 +33,6 @@ const observePlayerProgress = (() => {
 	return (player: YouTubePlayer, callback: (progress: number) => void) => {
 		player.getIframe().then((frame) => {
 			iframeWindow = frame.contentWindow;
-			console.log(iframeWindow);
 		});
 
 		// Approach taken from https://gist.github.com/zavan/75ed641de5afb1296dbc02185ebf1ea0
@@ -44,7 +43,7 @@ const observePlayerProgress = (() => {
 			// Check that the event was sent from the YouTube IFrame.
 			if (event.source === iframeWindow) {
 				const data = JSON.parse(event.data);
-				console.log(data);
+
 				// The "infoDelivery" event is used by YT to transmit any
 				// kind of information change in the player,
 				// such as the current time or a playback quality change.
@@ -52,7 +51,7 @@ const observePlayerProgress = (() => {
 					// currentTime is emitted very frequently,
 					// but we only care about whole second changes.
 					const time = Math.floor(data.info.currentTime);
-					console.log(time);
+
 					if (time !== lastTimeUpdate) {
 						lastTimeUpdate = time;
 						callback(time);
@@ -60,7 +59,7 @@ const observePlayerProgress = (() => {
 				}
 			}
 		}
-		console.log('called');
+
 		return on(window, 'message', observe);
 	};
 })();

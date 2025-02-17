@@ -6,11 +6,11 @@
 	import type { Snippet } from 'svelte';
 	import { mergeProps } from 'bits-ui';
 
-	export const typographyVariants = cva('normal-case tracking-tight', {
+	export const typographyVariants = cva('normal-case tracking-[-0.008rem]', {
 		variants: {
 			variant: {
-				display: 'font-sans font-semibold',
-				headline: 'font-sans font-semibold',
+				display: 'font-sans font-semibold tracking-tight',
+				headline: 'font-sans font-semibold tracking-tight',
 				title: 'font-sans font-semibold',
 				body: 'font-sans font-medium',
 				label: 'font-sans uppercase font-semibold tracking-widest'
@@ -31,8 +31,8 @@
 				warn: 'text-warn',
 				primary: 'text-primary',
 				default: 'text-default',
-				subtle: 'text-blue-100',
-				muted: 'text-blue-200',
+				subtle: 'text-foreground/75',
+				muted: 'text-muted-foreground',
 				invert: 'text-invert',
 				inherit: 'text-inherit'
 			}

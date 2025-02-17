@@ -13,14 +13,18 @@
 	<MediaPanel.Header>
 		<MediaPanel.Label>
 			{#if nowPlaying.scene?.type === SceneTypes.walk}
-				You are currently walking in
+				Currently walking in
 			{:else}
-				You are currently driving in
+				Currently driving in
 			{/if}
 		</MediaPanel.Label>
 
 		{#if nowPlaying.scene}
-			<MediaPanel.Title videoID={nowPlaying.scene.videoID} title={nowPlaying.scene.name} />
+			<MediaPanel.Title
+				disableMarquee
+				videoID={nowPlaying.scene.videoID}
+				title={nowPlaying.scene.name}
+			/>
 		{/if}
 	</MediaPanel.Header>
 

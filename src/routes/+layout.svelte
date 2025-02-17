@@ -3,6 +3,8 @@
 
 	import BaseHead from '$components/base-head.svelte';
 
+	import { Toaster } from '$components/ui';
+
 	let { children } = $props();
 
 	onMount(() => {
@@ -30,3 +32,5 @@
 <BaseHead title="CityHop | Aesthetic walks and drives from around the world" />
 
 {@render children?.()}
+
+<Toaster />

@@ -7,19 +7,20 @@
 	interface Props {
 		title: string;
 		videoID: string;
+		disableMarquee?: boolean;
 	}
 
-	const { title, videoID }: Props = $props();
+	const { title, videoID, disableMarquee }: Props = $props();
 </script>
 
 <Stack
 	orientation="row"
 	align="center"
 	justify="start"
-	class="w-full cursor-pointer gap-0.5 font-medium"
+	class="h-10 w-full cursor-pointer gap-0.5 overflow-hidden font-medium"
 >
-	{#if (title.length ?? 0) > 45}
-		<Typography variant="headline" size="sm" class="glow grow">
+	{#if (title.length ?? 0) > 32 && !disableMarquee}
+		<Typography variant="headline" size="sm" class="glow grow leading-none">
 			{#snippet child({ props })}
 				<Marquee {...props}>
 					{title}&nbsp;&nbsp;{title}
@@ -27,7 +28,7 @@
 			{/snippet}
 		</Typography>
 	{:else}
-		<Typography variant="headline" size="md" class="glow">
+		<Typography variant="headline" size="md" class="glow leading-none">
 			{title}
 		</Typography>
 	{/if}

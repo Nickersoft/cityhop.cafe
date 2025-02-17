@@ -260,3 +260,52 @@ export function get<TDefault = unknown>(
 
 	return current;
 }
+
+/**
+ * Sort an array without modifying it and return the newly sorted
+ * value.
+ *
+ * @example
+ * const fish = [
+ *   { name: 'Marlin', weight: 105 },
+ *   { name: 'Bass', weight: 8 },
+ *   { name: 'Trout', weight: 13 }
+ * ]
+ *
+ * sort(fish, f => f.weight) // => [Bass, Trout, Marlin]
+ * sort(fish, f => f.weight, true) // => [Marlin, Trout, Bass]
+ */
+export function sort<T>(array: readonly T[], getter: (item: T) => number, desc = false): T[] {
+	if (!array) {
+		return [];
+	}
+	const asc = (a: T, b: T) => getter(a) - getter(b);
+	const dsc = (a: T, b: T) => getter(b) - getter(a);
+	return array.slice().sort(desc === true ? dsc : asc);
+}
+
+/**
+ * Removes (shakes out) undefined entries from an object. Optional
+ * second argument shakes out values by custom evaluation.
+ *
+ * @example
+ * const a = { a: 1, b: undefined, c: 3 }
+ * shake(a) // => { a: 1, c: 3 }
+ */
+export function shake<T extends object>(
+	obj: T,
+	filter: (value: T[keyof T]) => boolean = (value) => value === undefined
+): T {
+	if (!obj) {
+		return {} as T;
+	}
+
+	const keys = Object.keys(obj) as (keyof T)[];
+
+	return keys.reduce((acc, key) => {
+		if (!filter(obj[key])) {
+			acc[key] = obj[key];
+		}
+		return acc;
+	}, {} as T);
+}

@@ -2,11 +2,11 @@ import { IS_CHRISTMAS, IS_HALLOWEEN } from '$consts';
 import { getSceneByID } from '$data/scenes';
 import { getStationByID } from '$data/stations';
 
-import { draw } from '$lib/utils';
+import type { Scene, Station } from '$schema';
 
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = ({ url }) => {
+export const load: PageLoad = async ({ url }) => {
 	const v = url.searchParams.get('v');
 
 	if (v && v.trim().length > 0) {
@@ -34,5 +34,8 @@ export const load: PageLoad = ({ url }) => {
 	// 	return { scene, station };
 	// }
 
-	return {};
+	return fetch(new URL('/api/random', url)).then((res) => res.json()) as Promise<{
+		scene: Scene;
+		station: Station;
+	}>;
 };

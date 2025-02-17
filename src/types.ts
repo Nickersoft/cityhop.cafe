@@ -2,6 +2,7 @@ import type { Scene, Station } from './schema';
 
 export interface UIState {
 	isPlaying: boolean;
+	windowActive: boolean;
 	hasStarted: boolean;
 	isFullscreen: boolean;
 }

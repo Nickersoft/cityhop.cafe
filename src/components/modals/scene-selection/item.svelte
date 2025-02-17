@@ -46,7 +46,7 @@
 
 <button
 	onclick={handleClick}
-	class="group flex cursor-pointer flex-col items-center justify-start gap-2 rounded-xl border bg-white/5 p-2 shadow-sm transition-all duration-300 ease-in-out hover:scale-102 hover:bg-white/10"
+	class="group flex cursor-pointer flex-col items-center justify-start gap-2 rounded-xl border bg-white/5 p-2 shadow-xl transition-all duration-300 ease-in-out hover:scale-102 hover:bg-white/10"
 >
 	<img
 		loading="lazy"

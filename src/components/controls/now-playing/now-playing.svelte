@@ -4,7 +4,7 @@
 </script>
 
 <div
-	class="from-background/30 to-background/60 container flex flex-col items-center justify-center gap-4 rounded-full border bg-linear-to-br shadow-lg backdrop-blur-2xl lg:flex-row"
+	class="card container flex translate-y-4 flex-col items-center justify-center gap-4 rounded-full border opacity-0 transition-all duration-300 in-data-[active=true]:translate-y-0 in-data-[active=true]:opacity-100 lg:flex-row"
 >
 	<CurrentScene />
 	<div class="bg-border h-px w-full lg:h-full lg:w-px"></div>

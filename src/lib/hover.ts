@@ -1,22 +1,21 @@
+import { ui } from '$state';
 import { on } from 'svelte/events';
 
 let inactiveTimeout: number;
 
 function handleMouseMove() {
-	document.body.setAttribute('data-active', 'true');
+	ui.windowActive = true;
 
 	if (inactiveTimeout) {
 		clearTimeout(inactiveTimeout);
 	}
 
 	inactiveTimeout = setTimeout(() => {
-		document.body.setAttribute('data-active', 'false');
+		ui.windowActive = false;
 	}, 10000);
 }
 
 export default function setupHover() {
-	document.body.setAttribute('data-active', 'true');
-
 	const handlers = [
 		on(document, 'mousemove', handleMouseMove),
 		on(document, 'keydown', handleMouseMove)
