@@ -10,3 +10,5 @@ export { default as YouTubeLogoFill } from '~icons/ph/youtube-logo-fill';
 export { default as TipJar } from '~icons/ph/tip-jar-fill';
 export { default as HandPeace } from '~icons/ph/hand-peace-fill';
 export { default as FadersHorizontal } from '~icons/ph/faders-horizontal-bold';
+export { default as SpeakerSlash } from '~icons/ph/speaker-slash-fill';
+export { default as SpeakerHigh } from '~icons/ph/speaker-high-fill';

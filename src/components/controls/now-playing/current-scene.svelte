@@ -1,8 +1,10 @@
 <script lang="ts">
+	import * as MediaPanel from '../media-panel';
+
 	import { SceneTypes } from '$enums';
 	import { nowPlaying } from '$state';
 
-	import { Popover, MediaPanel } from '$components/ui';
+	import { Popover } from '$components/ui';
 	import { SceneSelection } from '$components/modals';
 	import { ArrowsClockwise } from '$icons';
 
@@ -28,7 +30,7 @@
 		{/if}
 	</MediaPanel.Header>
 
-	<Popover bind:open>
+	<Popover bind:open sideOffset={40}>
 		{#snippet trigger({ props })}
 			<MediaPanel.Button
 				{...props}

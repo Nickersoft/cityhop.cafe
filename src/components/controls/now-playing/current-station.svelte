@@ -1,6 +1,8 @@
 <script lang="ts">
+	import * as MediaPanel from '../media-panel';
+
 	import { nowPlaying, preferences } from '$state';
-	import { MediaPanel, Equalizer, Popover } from '$components/ui';
+	import { Equalizer, Popover } from '$components/ui';
 	import { SceneSelection } from '$components/modals';
 	import { ArrowsClockwise } from '$icons';
 

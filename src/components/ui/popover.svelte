@@ -3,13 +3,23 @@
 	import { Popover, type PopoverRootProps } from 'bits-ui';
 
 	import { ui } from '$state';
+	import { cn } from '$lib';
 
 	interface Props extends PopoverRootProps {
 		trigger: Snippet<[{ props: Record<string, unknown> }]>;
 		content: Snippet;
+		class?: string;
+		sideOffset?: number;
 	}
 
-	let { trigger, content, open = $bindable(false), ...props }: Props = $props();
+	let {
+		sideOffset = 12,
+		trigger,
+		class: className,
+		content,
+		open = $bindable(false),
+		...props
+	}: Props = $props();
 
 	$effect(() => {
 		if (!ui.windowActive) {
@@ -26,14 +36,15 @@
 	</Popover.Trigger>
 	<Popover.Portal to="#controls-overlay">
 		<Popover.Content
-			class={[
+			class={cn([
 				'card',
 				'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
 				'data-[side=bottom]:slide-in-from-top-[10px] data-[side=left]:slide-in-from-right-[10px] data-[side=right]:slide-in-from-left-[10px] data-[side=top]:slide-in-from-bottom-[10px]',
 				'data-[side=bottom]:slide-out-to-top-[10px] data-[side=left]:slide-out-to-right-[10px] data-[side=right]:slide-out-to-left-[10px] data-[side=top]:slide-out-to-bottom-[10px]',
-				'z-30 h-[max(75vh,500px)] w-[max(60vw,800px)] overflow-hidden rounded-2xl shadow-xl'
-			]}
-			sideOffset={40}
+				'z-30 overflow-hidden rounded-2xl shadow-xl',
+				className
+			])}
+			{sideOffset}
 		>
 			{@render content()}
 		</Popover.Content>

@@ -3,7 +3,7 @@
 	import { BAC_LINK } from '$consts';
 	import { TipJar } from '$icons';
 
-	import Settings from './settings';
+	import Settings from './volume';
 	import CopyLink from './copy-link.svelte';
 	import ToolbarButton from './toolbar-button.svelte';
 	import VisitorCount from './visitor-count.svelte';

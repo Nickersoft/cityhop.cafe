@@ -179,10 +179,6 @@
 	--tw-enter-translate-y: 100%;
 }
 
-@utility slide-in-from-bottom-* {
-	--tw-enter-translate-y: --value([percentage], [length]);
-}
-
 @utility slide-in-from-left {
 	--tw-enter-translate-x: -100%;
 }

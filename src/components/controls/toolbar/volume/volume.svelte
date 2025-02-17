@@ -1,18 +1,19 @@
 <script lang="ts">
 	import { Popover } from '$components/ui';
-	import { FadersHorizontal } from '$icons';
+	import { FadersHorizontal, SpeakerHigh } from '$icons';
 
 	import ToolbarButton from '../toolbar-button.svelte';
+	import Slider from './slider.svelte';
 </script>
 
 <Popover>
 	{#snippet trigger({ props })}
 		<ToolbarButton title="Settings" {...props}>
-			<FadersHorizontal />
+			<SpeakerHigh />
 		</ToolbarButton>
 	{/snippet}
 
 	{#snippet content()}
-		<p>Scene Selection</p>
+		<Slider />
 	{/snippet}
 </Popover>

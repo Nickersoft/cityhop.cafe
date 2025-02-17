@@ -12,5 +12,4 @@ export { default as Tooltip } from './tooltip.svelte';
 export { default as Typography, typographyVariants } from './typography.svelte';
 export { default as YouTube } from './youtube.svelte';
 export { default as Toaster, toast } from './toaster.svelte';
-
-export * as MediaPanel from './media-panel';
+export { default as Toggle } from './toggle.svelte';

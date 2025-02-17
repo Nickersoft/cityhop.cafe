@@ -16,6 +16,30 @@
 	}
 }
 
+@layer base {
+	:root {
+		--background: var(--color-zinc-900);
+		--foreground: var(--color-white);
+		--muted: --alpha(var(--foreground) / 10%);
+		--muted-foreground: --alpha(var(--foreground) / 30%);
+		--popover: var(--background);
+		--popover-foreground: var(--foreground);
+		--border: --alpha(var(--color-white) / 10%);
+		--input: var(--border);
+		--card: var(--popover);
+		--card-foreground: var(--popover-foreground);
+		--primary: var(--foreground);
+		--primary-foreground: var(--background);
+		--secondary: var(--color-zinc-100);
+		--secondary-foreground: var(--color-zinc-900);
+		--accent: --alpha(var(--color-white) / 20%);
+		--accent-foreground: var(--color-white);
+		--destructive: var(--color-red-600);
+		--destructive-foreground: var(--color-white);
+		--ring: var(--color-blue-300);
+	}
+}
+
 @theme {
 	/* -------------------------------------------------------------------------- */
 	/*                                    Fonts                                   */
@@ -54,6 +78,7 @@
 	/* -------------------------------------------------------------------------- */
 	/*                                   Colors                                   */
 	/* -------------------------------------------------------------------------- */
+
 	--color-background: var(--color-zinc-900);
 	--color-foreground: var(--color-white);
 	--color-muted: --alpha(var(--color-foreground) / 10%);
