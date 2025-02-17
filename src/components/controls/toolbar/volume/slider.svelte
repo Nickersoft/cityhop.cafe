@@ -1,27 +1,27 @@
 <script lang="ts">
 	import MuteToggle from '$components/mute-toggle.svelte';
 
-	// interface Props {
-	// 	label: string;
-	// 	muted: boolean;
-	// 	value: number;
-	// }
+	import { Slider, Stack } from '$components/ui';
 
-	// let { label, muted = $bindable(), value = $bindable() }: Props = $props();
-
-	// $effect(() => {
-	// 	if (value === 0) {
-	// 		muted = true;
-	// 	}
-	// });
-
-	function onChange() {
-		console.log('onChange');
+	interface Props {
+		label: string;
+		muted: boolean;
+		value: number;
 	}
+
+	let { label, muted = $bindable(), value = $bindable() }: Props = $props();
+
+	$effect(() => {
+		if (value === 0) {
+			muted = true;
+		}
+	});
 </script>
 
-<MuteToggle class="text-xl" onchange={onChange} />
-
+<Stack orientation="row" align="center">
+	<MuteToggle class="text-xl" bind:pressed={muted} />
+	<Slider class="grow" disabled={muted} min={0} max={100} bind:value />
+</Stack>
 <!-- {label}
 
 <input

@@ -4,15 +4,16 @@
 	import { SpeakerHigh, SpeakerSlash } from '$icons';
 	import { cn } from '$lib';
 
-	const { class: className, ...props }: ToggleProps = $props();
+	let { class: className, pressed = $bindable(), ...props }: ToggleProps = $props();
 </script>
 
 <Toggle
+	bind:pressed
 	class={cn(
 		'group/toggle cursor-pointer hover:bg-transparent hover:opacity-100 data-[state=on]:bg-transparent'
 	)}
 	{...props}
 >
-	<SpeakerHigh class="hidden group-data-[state=on]/toggle:block" />
-	<SpeakerSlash class="block group-data-[state=on]/toggle:hidden" />
+	<SpeakerHigh class="hidden group-data-[state=off]/toggle:block" />
+	<SpeakerSlash class="block group-data-[state=off]/toggle:hidden" />
 </Toggle>

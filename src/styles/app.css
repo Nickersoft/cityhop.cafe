@@ -16,50 +16,48 @@
 	}
 }
 
-@layer base {
-	:root {
-		/* --background: var(--color-zinc-50);
-		--foreground: var(--color-zinc-900);
-		--muted: --alpha(var(--foreground) / 10%);
-		--muted-foreground: --alpha(var(--foreground) / 30%);
-		--popover: var(--background);
-		--popover-foreground: var(--foreground);
-		--border: --alpha(var(--color-white) / 10%);
-		--input: var(--border);
-		--card: var(--popover);
-		--card-foreground: var(--popover-foreground);
-		--primary: var(--foreground);
-		--primary-foreground: var(--background);
-		--secondary: var(--color-zinc-100);
-		--secondary-foreground: var(--color-zinc-900);
-		--accent: --alpha(var(--color-white) / 20%);
-		--accent-foreground: var(--color-white);
-		--destructive: var(--color-red-600);
-		--destructive-foreground: var(--color-white);
-		--ring: var(--color-blue-300);
-	}
+:root {
+	--background: var(--color-zinc-50);
+	--foreground: var(--color-zinc-950);
+	--muted: --alpha(var(--foreground) / 10%);
+	--muted-foreground: --alpha(var(--foreground) / 50%);
+	--popover: var(--color-white);
+	--popover-foreground: var(--foreground);
+	--border: --alpha(var(--color-zinc-950) / 10%);
+	--input: --alpha(var(--color-white) / 20%);
+	--card: var(--popover);
+	--card-foreground: var(--popover-foreground);
+	--primary: var(--foreground);
+	--primary-foreground: var(--background);
+	--secondary: var(--color-zinc-100);
+	--secondary-foreground: var(--color-zinc-900);
+	--accent: --alpha(var(--color-zinc-950) / 5%);
+	--accent-foreground: var(--color-white);
+	--destructive: var(--color-red-600);
+	--destructive-foreground: var(--color-white);
+	--ring: var(--color-blue-300);
+}
 
-	&.dark { */
-		--background: var(--color-zinc-900);
-		--foreground: var(--color-white);
-		--muted: --alpha(var(--foreground) / 10%);
-		--muted-foreground: --alpha(var(--foreground) / 30%);
-		--popover: var(--background);
-		--popover-foreground: var(--foreground);
-		--border: --alpha(var(--color-white) / 10%);
-		--input: var(--border);
-		--card: var(--popover);
-		--card-foreground: var(--popover-foreground);
-		--primary: var(--foreground);
-		--primary-foreground: var(--background);
-		--secondary: var(--color-zinc-100);
-		--secondary-foreground: var(--color-zinc-900);
-		--accent: --alpha(var(--color-white) / 20%);
-		--accent-foreground: var(--color-white);
-		--destructive: var(--color-red-600);
-		--destructive-foreground: var(--color-white);
-		--ring: var(--color-blue-300);
-	}
+&.dark {
+	--background: var(--color-zinc-900);
+	--foreground: var(--color-white);
+	--muted: --alpha(var(--foreground) / 10%);
+	--muted-foreground: --alpha(var(--foreground) / 50%);
+	--popover: var(--background);
+	--popover-foreground: var(--foreground);
+	--border: --alpha(var(--color-white) / 10%);
+	--input: --alpha(var(--color-white) / 20%);
+	--card: var(--popover);
+	--card-foreground: var(--popover-foreground);
+	--primary: var(--foreground);
+	--primary-foreground: var(--background);
+	--secondary: var(--color-zinc-100);
+	--secondary-foreground: var(--color-zinc-900);
+	--accent: --alpha(var(--color-white) / 20%);
+	--accent-foreground: var(--color-white);
+	--destructive: var(--color-red-600);
+	--destructive-foreground: var(--color-white);
+	--ring: var(--color-blue-300);
 }
 
 @theme {
@@ -84,13 +82,13 @@
 
 	@keyframes marquee {
 		0% {
-			transform: translateX(0);
+			transform: tranzincX(0);
 		}
 		90% {
-			transform: translateX(-50%);
+			transform: tranzincX(-50%);
 		}
 		100% {
-			transform: translateX(-50%);
+			transform: tranzincX(-50%);
 		}
 	}
 
@@ -135,12 +133,14 @@
 }
 
 @utility glow {
-	text-shadow: 0 0 6px --alpha(var(--color-foreground) / 50%);
+	.dark & {
+		text-shadow: 0 0 6px --alpha(var(--color-foreground) / 50%);
+	}
 }
 
 @utility card {
-	@apply from-card/60 to-card/70 bg-gradient-to-br;
+	@apply from-card/50 to-card/65 bg-gradient-to-br;
 	@apply shadow-lg backdrop-blur-2xl;
-	@apply border-accent border;
-	@apply ring-card/60 ring;
+	@apply border border-white/20;
+	@apply ring ring-black/20;
 }

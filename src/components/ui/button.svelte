@@ -11,7 +11,7 @@
 						'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
 					secondary: 'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
 					ghost:
-						'hover:bg-accent hover:text-accent-foreground text-primary active:opacity-50 tracking-widest font-semibold text-xs uppercase opacity-80 underline-offset-4 hover:opacity-100',
+						'hover:bg-accent hover:text-foreground text-foreground active:opacity-50 tracking-widest font-semibold text-xs uppercase opacity-80 underline-offset-4 hover:opacity-100',
 					link: 'text-primary active:opacity-50 tracking-widest font-semibold text-xs uppercase opacity-75 underline-offset-4 hover:opacity-100'
 				},
 				size: {

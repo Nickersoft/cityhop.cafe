@@ -6,7 +6,7 @@ import type { Scene, Station } from '$schema';
 
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = async ({ url }) => {
+export const load: PageLoad = async ({ fetch, url }) => {
 	const v = url.searchParams.get('v');
 
 	if (v && v.trim().length > 0) {

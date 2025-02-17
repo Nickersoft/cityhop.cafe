@@ -1,23 +1,27 @@
 <script lang="ts">
-	import { Slider } from 'bits-ui';
+	import { Slider, type SliderSingleRootProps } from 'bits-ui';
 
 	import { cn } from '$lib';
 
-	interface Props {
+	interface Props extends Omit<SliderSingleRootProps, 'type'> {
 		value: number;
 	}
 
-	let { value = $bindable() }: Props = $props();
+	let { class: className, value = $bindable(), ...props }: Props = $props();
 </script>
 
 <div class="w-full md:max-w-[280px]">
 	<Slider.Root
+		{...props}
 		type="single"
 		bind:value
-		class="relative flex w-full touch-none items-center select-none"
+		class={cn(
+			'relative flex w-full touch-none items-center select-none disabled:opacity-50',
+			className
+		)}
 	>
 		{#snippet children()}
-			<span class="bg-dark-10 relative h-2 w-full grow cursor-pointer overflow-hidden rounded-full">
+			<span class="bg-accent relative h-2 w-full grow cursor-pointer overflow-hidden rounded-full">
 				<Slider.Range class="bg-foreground absolute h-full" />
 			</span>
 			<Slider.Thumb

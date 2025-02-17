@@ -31,7 +31,7 @@
 
 	type Props = ToggleRootProps & VariantProps<typeof toggleVariants>;
 
-	const { variant, size, class: className, ...props }: Props = $props();
+	let { pressed = $bindable(), variant, size, class: className, ...props }: Props = $props();
 </script>
 
-<Toggle.Root class={cn(toggleVariants({ variant, size, className }))} {...props} />
+<Toggle.Root bind:pressed class={cn(toggleVariants({ variant, size, className }))} {...props} />

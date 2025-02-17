@@ -9,6 +9,7 @@ export { default as ScrollArea } from './scroll-area.svelte';
 export { default as Equalizer } from './equalizer.svelte';
 export { default as Stack } from './stack.svelte';
 export { default as Tooltip } from './tooltip.svelte';
+export { default as Slider } from './slider.svelte';
 export { default as Typography, typographyVariants } from './typography.svelte';
 export { default as YouTube } from './youtube.svelte';
 export { default as Toaster, toast } from './toaster.svelte';

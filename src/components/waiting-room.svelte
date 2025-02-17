@@ -11,7 +11,7 @@
 {#if !ui.isPlaying}
 	<div
 		out:fade={{ duration: 2000 }}
-		class="fixed inset-0 z-50 flex h-full w-full items-center justify-center bg-black text-white"
+		class="bg-background text-foreground fixed inset-0 z-50 flex h-full w-full items-center justify-center"
 	>
 		{#key ui.hasStarted}
 			<div
