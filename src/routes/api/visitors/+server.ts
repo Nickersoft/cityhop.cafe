@@ -1,8 +1,8 @@
 import { PH_API_KEY, PH_PROJECT_ID } from '$env/static/private';
 import dayjs from 'dayjs';
-import { group, shake, sort } from 'radashi';
 
 import type { RequestHandler } from './$types';
+import { shake, sort } from '$lib/utils';
 
 interface Event {
 	id: string;
@@ -36,8 +36,8 @@ export const GET: RequestHandler = async () => {
 	const result = (await fetch(url.toString(), init).then((res) => res.json())) as EventResponse;
 
 	const groupedUsers = shake(
-		group(result.results, (r) => r.distinct_id),
-		(v: Event[]) => {
+		Object.groupBy(result.results, (r) => r.distinct_id),
+		(v: Event[] = []) => {
 			const sorted = sort(v, (r) => dayjs(r.timestamp).unix());
 			const entered = sorted.findLastIndex((r) => r.event === '$pageview');
 			const left = sorted.findLastIndex((r) => r.event === '$pageleave');

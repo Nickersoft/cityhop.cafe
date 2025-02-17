@@ -1,11 +1,10 @@
-import { SceneTypes } from '$data/scene-types';
+import { SceneTypes } from '$enums';
+import { Tags } from '$enums';
+import { createCountry } from '$schema';
 import { genres } from '$data/stations';
-import { Tags } from '$data/tags';
-import type { Country } from '$lib/types';
 
-export default {
+export default createCountry({
 	name: 'Taiwan',
-	emoji: 'flag',
 	scenes: [
 		{
 			name: 'Taipei',
@@ -34,4 +33,4 @@ export default {
 			offset: { start: 70, end: 60 }
 		}
 	]
-} satisfies Country;
+});

@@ -1,13 +1,14 @@
-import type { Genre } from '$lib/types';
+import { createGenre } from '$schema';
+import { Tags } from '$enums';
 
-export const jazz = {
+export const jazz = createGenre({
 	name: 'Jazz',
 	emoji: 'saxophone',
 	stations: {
 		relaxing: {
 			displayName: 'Relaxing Jazz Radio',
-			name: 'Warm Jazz Relaxing Music ☕ Cozy Cabin with Coffee Shop Ambience | Relax Jazz Music for Study, Work',
-			trackID: 'L5v9NRuWp8o',
+			name: 'Warm Relaxing Jazz Music with Cozy Coffee Shop for Working, Studying, Sleeping',
+			trackID: 'fTb6yJ7AlT8',
 			live: true
 		},
 		coffee: {
@@ -24,21 +25,23 @@ export const jazz = {
 		},
 		paris: {
 			displayName: 'Paris Cafe Radio: Positive Bossa Nova Jazz Music',
-			name: 'Positive Bossa Nova Jazz Music for Relax, Good Mood - Paris Cafe Ambience',
-			trackID: 'g6bn6XrhYdc',
+			name: 'Cheerful Bossa Nova Jazz Tunes ☕ Relax and Unwind with Paris Café Atmosphere',
+			trackID: 'gR_x-cdD9Po',
 			live: true
 		},
 		christmas1: {
 			name: 'Relaxing Christmas Jazz',
 			trackID: 'lJlEQim-yMo',
 			hidden: true,
+			tags: [Tags.christmas],
 			live: false
 		},
 		christmas2: {
+			tags: [Tags.christmas],
 			name: 'Instrumental Christmas Jazz',
 			trackID: '4KYZO6eEugY',
 			hidden: true,
 			live: false
 		}
 	}
-} satisfies Genre;
+});

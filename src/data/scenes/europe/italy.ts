@@ -1,11 +1,9 @@
-import { SceneTypes } from '$data/scene-types';
 import { genres } from '$data/stations';
-import { Tags } from '$data/tags';
-import type { Country } from '$lib/types';
+import { SceneTypes, Tags } from '$enums';
+import { createCountry } from '$schema';
 
-export default {
+export default createCountry({
 	name: 'Italy',
-	emoji: 'flag',
 	scenes: [
 		{
 			name: 'Cinque Terre',
@@ -67,4 +65,4 @@ export default {
 			suggestedTrack: genres.classical.stations.baroque
 		}
 	]
-} satisfies Country;
+});

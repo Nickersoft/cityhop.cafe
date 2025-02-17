@@ -1,11 +1,10 @@
-import { SceneTypes } from '$data/scene-types';
+import { createCountry } from '$schema';
+import { SceneTypes } from '$enums';
 import { genres } from '$data/stations';
-import { Tags } from '$data/tags';
-import type { Country } from '$lib/types';
+import { Tags } from '$enums';
 
-export default {
+export default createCountry({
 	name: 'Mexico',
-	emoji: 'flag',
 	scenes: [
 		{
 			name: 'Cancun',
@@ -29,4 +28,4 @@ export default {
 			tags: [Tags.evening, Tags.night]
 		}
 	]
-} satisfies Country;
+});

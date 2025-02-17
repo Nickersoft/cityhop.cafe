@@ -1,15 +1,14 @@
-import { SceneTypes } from '$data/scene-types';
-import { Tags } from '$data/tags';
-import type { Continent } from '$lib/types';
+import { SceneTypes } from '$enums';
+import { Tags } from '$enums';
+import { createContinent } from '$schema';
 
-export default {
+export default createContinent({
 	name: '????',
 	hidden: true,
 	emoji: '',
 	countries: [
 		{
 			name: '█████',
-			emoji: 'flag',
 			scenes: [
 				{
 					name: 'ą̸̬̗̱̦̪̟̟̬͖͖̞̳̤͚͖̩̱͖̺̟̳͉̰̣̠̭̪͔̝̽͛̆́́̓̍̽̓͂́̑́̏̅͆̈́̄͛̾̓̅̃̈́̈́̀͋͋̇̔̈̆̔̈́̅͂̚̚͠͝͠ͅͅͅơ̴̛̛͚̣͇͓̗̯̳̫͉̱̙͍̲̣͇͚̅͗̋̈́̈́͂̌͛̇̊́̿̀̓͂͋́͆̾͂̽́̈͑̏̎́̿͒̄̀͑̅̉̂̐̅̂͘͜͝͝͠͝͠͝͠ͅk̶̡̡̢̼͉̟͓̯̣̟̮̰͔̮̐̂̃́͗̅̆͊̆̐̋́͊̌̒̈́̂̓̏̋̉͋̈́͑̽͛̀̚̚͠͝į̵̡̢̧̢̡̛̛̹̥̗͉̲̗̗̪̼̘̫͕̖̗̬̗̦̬̦̼͔̩͚̫͙͍̰̳͔̤͎̞̠̹̲͍̯̱̭̬̱̌͛̊͐̍͌͌̂̐͂͒̉̽͛̿̊̂͛͊̓͂̽͊̔͘͘̕̚ͅg̷̢̧̧̜̜̻̭̬̱͔̥̞̔͛͂͆͂̔̒̓͑͒̑̿̓ȃ̴̢̼͚̙͎̱̲͕͙̹̼͈̼̃̔͝ḥ̶̨̡̢̡̢͇͚͈̱̮͕͖̮̑̅͘ͅa̶̧̡̧̡̡̨̢̛̛̫͙̹̫̬͓̼͍͚͉̻͚̱̻̪̟̼̮̰͇͇̫͉̮̳͕̬̗͇͉̖͇̗̟̓͒͂͊̿̈́̽̌̋͆̅̎̍͒̋͗̓̀̎͑̉̍͘͝͠ͅr̵̡̨̡̜͓̥̗̥̜̮̰̱͓̱̝̟̫̮̤̪̗͉̥͍͓͈̮̖̈́̎̃̊̂̍̐͛̒̊͗́̂͊̄͑̂̀̎͛̊̈̿̓͒̀̈́͐͗̔̈́͋̿̀̀̈́́̓̾͗̉̀̄̌̕͘͘͜a̴̢̢̧̙̯̟̗͔͉͕͚̜̟̩̜̳̖̼̺̺̳̺̬̗͓̼̤̯͆̀̔͆̈́̈́̉̿̽̓̏̀̄̌̕̚̚͜͝',
@@ -46,4 +45,4 @@ export default {
 			]
 		}
 	]
-} satisfies Continent;
+});

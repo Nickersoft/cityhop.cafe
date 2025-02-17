@@ -1,10 +1,8 @@
-import { SceneTypes } from '$data/scene-types';
-import { Tags } from '$data/tags';
-import type { Country } from '$lib/types';
+import { createCountry } from '$schema';
+import { SceneTypes, Tags } from '$enums';
 
-export default {
+export default createCountry({
 	name: 'Peru',
-	emoji: 'flag',
 	scenes: [
 		{
 			name: 'Cusco',
@@ -28,4 +26,4 @@ export default {
 			offset: { start: 60 }
 		}
 	]
-} satisfies Country;
+});
