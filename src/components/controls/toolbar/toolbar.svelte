@@ -1,9 +1,10 @@
 <script>
-	import { Button, Stack } from '$components/ui';
+	import { Stack } from '$components/ui';
 	import { BAC_LINK } from '$consts';
 	import { TipJar } from '$icons';
+
+	import Settings from './settings';
 	import CopyLink from './copy-link.svelte';
-	import { Settings } from './settings';
 	import ToolbarButton from './toolbar-button.svelte';
 	import VisitorCount from './visitor-count.svelte';
 </script>

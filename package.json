@@ -54,7 +54,7 @@
 		"@fontsource-variable/outfit": "^5.1.1",
 		"@sveltejs/enhanced-img": "^0.4.4",
 		"@unpic/svelte": "^1.0.0",
-		"bits-ui": "^1.1.0",
+		"bits-ui": "^1.2.0",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
 		"dayjs": "^1.11.13",
@@ -67,7 +67,7 @@
 		"svelte-persisted-state": "^1.0.0",
 		"svelte-sonner": "^0.3.28",
 		"tailwind-merge": "^3.0.1",
-		"valibot": "1.0.0-rc.0",
+		"valibot": "1.0.0-rc.1",
 		"youtube-player": "^5.6.0"
 	}
 }

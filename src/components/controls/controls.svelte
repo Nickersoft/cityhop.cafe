@@ -1,6 +1,6 @@
 <script>
 	import NowPlaying from './now-playing';
-	import Toolbar from './toolbar.svelte';
+	import Toolbar from './toolbar';
 </script>
 
 <div

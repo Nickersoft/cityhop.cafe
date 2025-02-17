@@ -6,7 +6,7 @@
 	import { getSharableURL } from '$lib/now-playing';
 	import { Button, toast } from '$components/ui';
 	import { Link } from '$icons';
-	import ToolbarButton from './toolbar-button.svelte';
+	import ToolbarButton from '../toolbar/toolbar-button.svelte';
 
 	function copyURL() {
 		navigator.clipboard.writeText(getSharableURL());

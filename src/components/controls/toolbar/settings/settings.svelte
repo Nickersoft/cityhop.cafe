@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Popover } from '$components/ui';
 	import { FadersHorizontal } from '$icons';
+
 	import ToolbarButton from '../toolbar-button.svelte';
 </script>
 
