@@ -33,16 +33,10 @@
 	const isDark = new MediaQuery('(prefers-color-scheme: dark)');
 
 	$effect(() => {
-		console.log(
-			document.documentElement,
-			preferences.current.theme,
-			preferences.current.theme === 'dark' ||
-				(preferences.current.theme === 'system' && isDark.current)
-		);
 		document.documentElement.classList.toggle(
 			'dark',
 			preferences.current.theme === 'dark' ||
-				(preferences.current.theme === 'system' && isDark.current)
+				(preferences.current.theme !== 'light' && isDark.current)
 		);
 	});
 </script>

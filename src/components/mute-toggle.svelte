@@ -10,7 +10,7 @@
 <Toggle
 	bind:pressed
 	class={cn(
-		'group/toggle cursor-pointer hover:bg-transparent hover:opacity-100 data-[state=on]:bg-transparent'
+		'group/toggle cursor-pointer transition-all duration-300 hover:bg-transparent hover:opacity-100 data-[state=on]:bg-transparent'
 	)}
 	{...props}
 >

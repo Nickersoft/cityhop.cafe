@@ -142,5 +142,5 @@
 	@apply from-card/50 to-card/65 bg-gradient-to-br;
 	@apply shadow-lg backdrop-blur-2xl;
 	@apply border border-white/20;
-	@apply ring ring-black/20;
+	@apply ring ring-zinc-950/60;
 }

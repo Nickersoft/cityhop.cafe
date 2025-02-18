@@ -16,7 +16,7 @@
 		type="single"
 		bind:value
 		class={cn(
-			'relative flex w-full touch-none items-center select-none disabled:opacity-50',
+			'relative flex w-full touch-none items-center transition-all duration-300 select-none data-disabled:opacity-20',
 			className
 		)}
 	>
@@ -27,7 +27,7 @@
 			<Slider.Thumb
 				index={0}
 				class={cn(
-					'border-border-input bg-background hover:border-dark-40 focus-visible:ring-foreground dark:bg-foreground dark:shadow-card block size-[25px] cursor-pointer rounded-full border shadow transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none active:scale-98 disabled:pointer-events-none disabled:opacity-50'
+					'border-border-input bg-background hover:border-dark-40 focus-visible:ring-foreground dark:bg-foreground dark:shadow-card block size-5 cursor-pointer rounded-full border shadow transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none active:scale-98 disabled:pointer-events-none disabled:opacity-50'
 				)}
 			/>
 		{/snippet}
