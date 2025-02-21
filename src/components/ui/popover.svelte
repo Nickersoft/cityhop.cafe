@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import { Popover, type PopoverRootProps } from 'bits-ui';
+	import { Popover, type PopoverContentProps, type PopoverRootProps } from 'bits-ui';
 
 	import { ui } from '$state';
 	import { cn } from '$lib';
@@ -10,6 +10,7 @@
 		content: Snippet;
 		class?: string;
 		sideOffset?: number;
+		align?: PopoverContentProps['align'];
 	}
 
 	let {
@@ -17,6 +18,7 @@
 		trigger,
 		class: className,
 		content,
+		align = 'center',
 		open = $bindable(false),
 		...props
 	}: Props = $props();
@@ -38,12 +40,13 @@
 		<Popover.Content
 			class={cn([
 				'card',
-				'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
+				'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in',
 				'data-[side=bottom]:slide-in-from-top-[10px] data-[side=left]:slide-in-from-right-[10px] data-[side=right]:slide-in-from-left-[10px] data-[side=top]:slide-in-from-bottom-[10px]',
 				'data-[side=bottom]:slide-out-to-top-[10px] data-[side=left]:slide-out-to-right-[10px] data-[side=right]:slide-out-to-left-[10px] data-[side=top]:slide-out-to-bottom-[10px]',
 				'z-30 overflow-hidden rounded-2xl shadow-xl',
 				className
 			])}
+			{align}
 			{sideOffset}
 		>
 			{@render content()}

@@ -4,6 +4,7 @@ export { default as CloudRain } from '~icons/ph/cloud-rain-fill';
 export { default as Link } from '~icons/ph/link-bold';
 export { default as Search } from '~icons/ph/magnifying-glass';
 export { default as Snowflake } from '~icons/ph/snowflake-bold';
+export { default as CurrencyDollarSimple } from '~icons/ph/currency-dollar-simple-bold';
 export { default as SteeringWheel } from '~icons/ph/steering-wheel-fill';
 export { default as X } from '~icons/ph/x';
 export { default as YouTubeLogoFill } from '~icons/ph/youtube-logo-fill';

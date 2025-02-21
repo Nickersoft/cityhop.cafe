@@ -7,7 +7,7 @@
 	import Slider from './slider.svelte';
 </script>
 
-<Popover>
+<Popover align="end">
 	{#snippet trigger({ props })}
 		<ToolbarButton title="Settings" {...props}>
 			<SpeakerHigh />
@@ -15,7 +15,7 @@
 	{/snippet}
 
 	{#snippet content()}
-		<div class="w-96 p-4">
+		<div class="w-96 space-y-4 p-4">
 			<Slider
 				label="Scene Volume"
 				bind:value={preferences.current.sceneVolume}

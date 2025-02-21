@@ -17,21 +17,21 @@
 }
 
 :root {
-	--background: var(--color-zinc-50);
-	--foreground: var(--color-zinc-950);
+	--background: var(--color-neutral-50);
+	--foreground: var(--color-neutral-950);
 	--muted: --alpha(var(--foreground) / 10%);
 	--muted-foreground: --alpha(var(--foreground) / 50%);
 	--popover: var(--color-white);
 	--popover-foreground: var(--foreground);
-	--border: --alpha(var(--color-zinc-950) / 10%);
+	--border: --alpha(var(--color-neutral-950) / 10%);
 	--input: --alpha(var(--color-white) / 20%);
 	--card: var(--popover);
 	--card-foreground: var(--popover-foreground);
 	--primary: var(--foreground);
 	--primary-foreground: var(--background);
-	--secondary: var(--color-zinc-100);
-	--secondary-foreground: var(--color-zinc-900);
-	--accent: --alpha(var(--color-zinc-950) / 5%);
+	--secondary: var(--color-neutral-100);
+	--secondary-foreground: var(--color-neutral-900);
+	--accent: --alpha(var(--color-neutral-950) / 5%);
 	--accent-foreground: var(--color-white);
 	--destructive: var(--color-red-600);
 	--destructive-foreground: var(--color-white);
@@ -39,7 +39,7 @@
 }
 
 &.dark {
-	--background: var(--color-zinc-900);
+	--background: var(--color-neutral-900);
 	--foreground: var(--color-white);
 	--muted: --alpha(var(--foreground) / 10%);
 	--muted-foreground: --alpha(var(--foreground) / 50%);
@@ -51,8 +51,8 @@
 	--card-foreground: var(--popover-foreground);
 	--primary: var(--foreground);
 	--primary-foreground: var(--background);
-	--secondary: var(--color-zinc-100);
-	--secondary-foreground: var(--color-zinc-900);
+	--secondary: var(--color-neutral-100);
+	--secondary-foreground: var(--color-neutral-900);
 	--accent: --alpha(var(--color-white) / 20%);
 	--accent-foreground: var(--color-white);
 	--destructive: var(--color-red-600);
@@ -82,13 +82,13 @@
 
 	@keyframes marquee {
 		0% {
-			transform: tranzincX(0);
+			transform: tranneutralX(0);
 		}
 		90% {
-			transform: tranzincX(-50%);
+			transform: tranneutralX(-50%);
 		}
 		100% {
-			transform: tranzincX(-50%);
+			transform: tranneutralX(-50%);
 		}
 	}
 
@@ -142,5 +142,5 @@
 	@apply from-card/50 to-card/65 bg-gradient-to-br;
 	@apply shadow-lg backdrop-blur-2xl;
 	@apply border border-white/20;
-	@apply ring ring-zinc-950/60;
+	@apply ring ring-neutral-950/60;
 }

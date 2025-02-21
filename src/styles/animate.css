@@ -1,12 +1,18 @@
-/* ANIMATE.CSS */
-/* Adapted from https://github.com/Wombosvideo/tailwindcss-animate-v4/ */
-@import 'tailwindcss';
+/**
+ * TailwindCSS v4.0 compatible replacement for `tailwindcss-animate`.
+ *
+ * WARNING: The asterisks are not supported by some formatters and linters. You
+ * might want to exclude this file from formatters and linters for now.
+ *
+ * @author Luca Bosin <https://github.com/Wombosvideo>
+ * @license MIT
+ */
+
+/* -------------------------------------------------------------------------- */
+/*                                  Variables                                 */
+/* -------------------------------------------------------------------------- */
 
 @theme inline {
-	/* -------------------------------------------------------------------------- */
-	/*                                  Variables                                 */
-	/* -------------------------------------------------------------------------- */
-
 	--animation-delay-0: 0s;
 	--animation-delay-75: 75ms;
 	--animation-delay-100: 0.1s;
@@ -56,6 +62,49 @@
 	--percentage-95: 0.95;
 	--percentage-100: 1;
 
+	--translate-1/2: 50%;
+	--translate-1/3: 33.333333%;
+	--translate-2/3: 66.666667%;
+	--translate-1/4: 25%;
+	--translate-2/4: 50%;
+	--translate-3/4: 75%;
+	--translate-full: 100%;
+	--translate-px: 1px;
+	--translate-0: 0px;
+	--translate-0.5: 0.125rem;
+	--translate-1: 0.25rem;
+	--translate-1.5: 0.375rem;
+	--translate-2: 0.5rem;
+	--translate-2.5: 0.625rem;
+	--translate-3: 0.75rem;
+	--translate-3.5: 0.875rem;
+	--translate-4: 1rem;
+	--translate-5: 1.25rem;
+	--translate-6: 1.5rem;
+	--translate-7: 1.75rem;
+	--translate-8: 2rem;
+	--translate-9: 2.25rem;
+	--translate-10: 2.5rem;
+	--translate-11: 2.75rem;
+	--translate-12: 3rem;
+	--translate-14: 3.5rem;
+	--translate-16: 4rem;
+	--translate-20: 5rem;
+	--translate-24: 6rem;
+	--translate-28: 7rem;
+	--translate-32: 8rem;
+	--translate-36: 9rem;
+	--translate-40: 10rem;
+	--translate-44: 11rem;
+	--translate-48: 12rem;
+	--translate-52: 13rem;
+	--translate-56: 14rem;
+	--translate-60: 15rem;
+	--translate-64: 16rem;
+	--translate-72: 18rem;
+	--translate-80: 20rem;
+	--translate-96: 24rem;
+
 	@keyframes enter {
 		from {
 			opacity: var(--tw-enter-opacity, 1);
@@ -76,7 +125,7 @@
 }
 
 /* -------------------------------------------------------------------------- */
-/*                                Orchestration                               */
+/*                                  Utilities                                 */
 /* -------------------------------------------------------------------------- */
 
 /*
@@ -85,10 +134,10 @@
  * `@theme` section above. Same goes for the `animation-timing-function`, set
  * with `--tw-ease`.
  */
+
 @utility delay-* {
-	animation-delay: --value([duration]);
-	animation-delay: calc(--value(integer) * 1ms);
-	animation-delay: --value(--animation-delay- *);
+	animation-delay: calc(--value(number) * 1ms);
+	animation-delay: --value(--animation-delay- *, [duration], [ *]);
 }
 
 @utility repeat-* {
@@ -103,10 +152,6 @@
 	animation-fill-mode: --value(--animation-fill-mode- *);
 }
 
-/* -------------------------------------------------------------------------- */
-/*                                 Play State                                 */
-/* -------------------------------------------------------------------------- */
-
 @utility running {
 	animation-play-state: running;
 }
@@ -116,115 +161,175 @@
 }
 
 /* -------------------------------------------------------------------------- */
-/*                               Fade Animations                              */
+/*                                   Fade In                                  */
 /* -------------------------------------------------------------------------- */
-
-@utility fade-in-* {
-	--tw-enter-opacity: --value(--percentage- *);
-}
-
-@utility fade-out-* {
-	--tw-exit-opacity: --value(--percentage- *);
-}
 
 @utility fade-in {
 	--tw-enter-opacity: 0;
 }
 
+@utility fade-in-* {
+	--tw-enter-opacity: --value(--percentage- *, [ *]);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  Fade Out                                  */
+/* -------------------------------------------------------------------------- */
+
 @utility fade-out {
 	--tw-exit-opacity: 0;
 }
 
+@utility fade-out-* {
+	--tw-exit-opacity: --value(--percentage- *, [ *]);
+}
+
 /* -------------------------------------------------------------------------- */
-/*                               Zoom Animations                              */
+/*                                   Zoom In                                  */
 /* -------------------------------------------------------------------------- */
 
+@utility zoom-in {
+	--tw-enter-scale: 0;
+}
+
 @utility zoom-in-* {
+	--tw-enter-scale: calc(--value([percentage]) / 100%);
+	--tw-enter-scale: calc(--value([ratio], [number]));
 	--tw-enter-scale: --value(--percentage- *);
 }
 
+/* -------------------------------------------------------------------------- */
+/*                                  Zoom Out                                  */
+/* -------------------------------------------------------------------------- */
+
+@utility zoom-out {
+	--tw-exit-scale: 0;
+}
+
 @utility zoom-out-* {
+	--tw-exit-scale: calc(--value([percentage]) / 100%);
+	--tw-exit-scale: calc(--value([ratio], [number]));
 	--tw-exit-scale: --value(--percentage- *);
 }
 
 /* -------------------------------------------------------------------------- */
-/*                               Spin Animations                              */
+/*                                   Spin In                                  */
 /* -------------------------------------------------------------------------- */
 
+@utility spin-in {
+	--tw-enter-rotate: 30deg;
+}
+
 @utility spin-in-* {
-	--tw-enter-rotate: calc(--value(integer) * 1deg);
+	--tw-enter-rotate: calc(--value(number) * 1deg);
 	--tw-enter-rotate: --value(--rotate- *, [angle]);
 }
 
+/* -------------------------------------------------------------------------- */
+/*                                  Spin Out                                  */
+/* -------------------------------------------------------------------------- */
+
+@utility spin-out {
+	--tw-exit-rotate: 30deg;
+}
+
 @utility spin-out-* {
-	--tw-exit-rotate: calc(--value(integer) * 1deg);
+	--tw-exit-rotate: calc(--value(number) * 1deg);
 	--tw-exit-rotate: --value(--rotate- *, [angle]);
 }
 
 /* -------------------------------------------------------------------------- */
-/*                              Slide Animations                              */
+/*                                  Slide In                                  */
 /* -------------------------------------------------------------------------- */
 
-/* ---------------------------------- Enter --------------------------------- */
-
-@utility slide-in-from-top-* {
-	--tw-enter-translate-y: calc(--value([percentage], [length]) * -1);
-}
+/* ----------------------------------- Top ---------------------------------- */
 
 @utility slide-in-from-top {
 	--tw-enter-translate-y: -100%;
 }
 
+@utility slide-in-from-top-* {
+	--tw-enter-translate-y: calc(--value(integer) * var(--spacing) * -1);
+	--tw-enter-translate-y: calc(--value(--translate- *, [percentage], ratio, [length]) * -1);
+}
+
+/* --------------------------------- Bottom --------------------------------- */
+
 @utility slide-in-from-bottom {
 	--tw-enter-translate-y: 100%;
 }
+
+@utility slide-in-from-bottom-* {
+	--tw-enter-translate-y: calc(--value(integer) * var(--spacing));
+	--tw-enter-translate-y: --value(--translate- *, [percentage], ratio, [length]);
+}
+
+/* ---------------------------------- Left ---------------------------------- */
 
 @utility slide-in-from-left {
 	--tw-enter-translate-x: -100%;
 }
 
 @utility slide-in-from-left-* {
-	--tw-enter-translate-x: calc(--value([percentage], [length]) * -1);
+	--tw-enter-translate-x: calc(--value(integer) * var(--spacing) * -1);
+	--tw-enter-translate-x: calc(--value(--translate- *, [percentage], ratio, [length]) * -1);
 }
+
+/* ---------------------------------- Right --------------------------------- */
 
 @utility slide-in-from-right {
 	--tw-enter-translate-x: 100%;
 }
 
 @utility slide-in-from-right-* {
-	--tw-enter-translate-x: --value([percentage], [length]);
+	--tw-enter-translate-x: calc(--value(integer) * var(--spacing));
+	--tw-enter-translate-x: --value(--translate- *, [percentage], ratio, [length]);
 }
 
-/* ---------------------------------- Exit ---------------------------------- */
+/* -------------------------------------------------------------------------- */
+/*                                  Slide Out                                 */
+/* -------------------------------------------------------------------------- */
+
+/* ----------------------------------- Top ---------------------------------- */
 
 @utility slide-out-to-top {
 	--tw-exit-translate-y: -100%;
 }
 
 @utility slide-out-to-top-* {
-	--tw-exit-translate-y: calc(--value([percentage], [length]) * -1);
+	--tw-exit-translate-y: calc(--value(integer) * var(--spacing) * -1);
+	--tw-exit-translate-y: calc(--value(--translate- *, [percentage], ratio, [length]) * -1);
 }
+
+/* --------------------------------- Bottom --------------------------------- */
 
 @utility slide-out-to-bottom {
 	--tw-exit-translate-y: 100%;
 }
 
 @utility slide-out-to-bottom-* {
-	--tw-exit-translate-y: --value([percentage], [length]);
+	--tw-exit-translate-y: calc(--value(integer) * var(--spacing));
+	--tw-exit-translate-y: --value(--translate- *, [percentage], ratio, [length]);
 }
+
+/* ----------------------------------- Left --------------------------------- */
 
 @utility slide-out-to-left {
 	--tw-exit-translate-x: -100%;
 }
 
 @utility slide-out-to-left-* {
-	--tw-exit-translate-x: calc(--value([percentage], [length]) * -1);
+	--tw-exit-translate-x: calc(--value(integer) * var(--spacing) * -1);
+	--tw-exit-translate-x: calc(--value(--translate- *, [percentage], ratio, [length]) * -1);
 }
+
+/* ---------------------------------- Right --------------------------------- */
 
 @utility slide-out-to-right {
 	--tw-exit-translate-x: 100%;
 }
 
 @utility slide-out-to-right-* {
-	--tw-exit-translate-x: --value([percentage], [length]);
+	--tw-exit-translate-x: calc(--value(integer) * var(--spacing));
+	--tw-exit-translate-x: --value(--translate- *, [percentage], ratio, [length]);
 }

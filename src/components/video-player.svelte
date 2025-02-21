@@ -4,7 +4,7 @@
 	import { DEFAULT_VIDEO_END_OFFSET, DEFAULT_VIDEO_START_OFFSET } from '$consts';
 	import { YouTube } from '$components/ui';
 	import { random } from '$lib/utils';
-	import { nowPlaying, ui } from '$state';
+	import { nowPlaying, preferences, ui } from '$state';
 
 	let videoDuration: number | undefined = $state();
 
@@ -41,6 +41,10 @@
 			onEnd();
 		}
 	}
+
+	$effect(() => {
+		player?.setVolume(preferences.current.muteScene ? 0 : preferences.current.sceneVolume);
+	});
 </script>
 
 {#if nowPlaying.scene}
