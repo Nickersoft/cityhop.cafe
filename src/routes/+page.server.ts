@@ -1,12 +1,12 @@
 import { IS_CHRISTMAS, IS_HALLOWEEN } from '$consts';
 import { getSceneByID } from '$data/scenes';
-import { getStationByID } from '$data/stations';
+import { getStationByID, type StationWithGenre } from '$data/stations';
 
 import type { Scene, Station } from '$schema';
 
-import type { PageLoad } from './$types';
+import type { PageServerLoad } from './$types';
 
-export const load: PageLoad = async ({ fetch, url }) => {
+export const load: PageServerLoad = async ({ fetch, url }) => {
 	const v = url.searchParams.get('v');
 
 	if (v && v.trim().length > 0) {
@@ -36,6 +36,6 @@ export const load: PageLoad = async ({ fetch, url }) => {
 
 	return fetch(new URL('/api/random', url)).then((res) => res.json()) as Promise<{
 		scene: Scene;
-		station: Station;
+		station: StationWithGenre;
 	}>;
 };
