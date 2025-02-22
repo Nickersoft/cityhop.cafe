@@ -1,4 +1,5 @@
-import type { Scene, Station } from './schema';
+import type { StationWithGenre } from '$data/stations';
+import type { Scene } from './schema';
 
 export interface UIState {
 	isPlaying: boolean;
@@ -9,7 +10,7 @@ export interface UIState {
 
 export interface NowPlaying {
 	scene: Nullable<Scene>;
-	station: Nullable<Station>;
+	station: Nullable<StationWithGenre>;
 }
 
 export interface UserPreferences {

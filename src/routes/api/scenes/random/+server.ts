@@ -18,7 +18,7 @@ export const GET: RequestHandler = async ({ url }) => {
 	const tag = url.searchParams.get('tag') as Tags;
 
 	let candidates = scenes.filter((scene) => {
-		return tag ? scene.tags?.includes(tag) : true;
+		return tag ? scene.tags?.includes(tag) : !scene.hidden;
 	});
 
 	if (calmOnly) {

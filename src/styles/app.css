@@ -139,8 +139,8 @@
 }
 
 @utility card {
-	@apply from-card/50 to-card/65 bg-gradient-to-br;
-	@apply shadow-lg backdrop-blur-2xl;
-	@apply border border-white/20;
-	@apply ring ring-neutral-950/60;
+	@apply from-card/80 to-card/70 bg-gradient-to-b;
+	@apply shadow-lg backdrop-blur-md;
+	@apply border border-white/50;
+	@apply dark:border-white/20 dark:ring dark:ring-neutral-950/60;
 }

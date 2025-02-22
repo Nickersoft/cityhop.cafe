@@ -1,55 +1,36 @@
 import { page } from '$app/state';
-import { scenes } from '$data/scenes';
-import { genres } from '$data/stations';
-import { SceneTypes, Tags } from '$enums';
-
-import { draw } from '$lib/utils';
-import type { Scene } from '$schema';
+import type { StationWithGenre } from '$data/stations';
 import { nowPlaying, ui } from '$state';
-
-const jazzStations = Object.values(genres.jazz.stations);
-const lofiStations = Object.values(genres.lofi.stations);
 
 /**
  * Randomizes the station to a lofi station that is not Bollywood Lofi
  */
-export function randomizeStation() {
-	const candidates = lofiStations.filter(({ name }) => !name.toLowerCase().includes('bollywood'));
-	nowPlaying.station = draw(candidates);
+export async function randomizeStation() {
+	const station = await fetch('/api/stations/random').then((res) => res.json());
+	nowPlaying.station = station as StationWithGenre;
 }
 
 /**
  * Randomizes the scene
  * @param calmOnly - If true, only calm scenes (scenes with jazz or lofi) will be selected
  */
-export function randomizeScene(calmOnly = false) {
-	let candidates = scenes;
-
+export async function randomizeScene(calmOnly = false) {
 	ui.isPlaying = false;
 
-	if (calmOnly) {
-		candidates = candidates.filter((b) =>
-			b.suggestedTrack
-				? jazzStations.includes(b.suggestedTrack) || lofiStations.includes(b.suggestedTrack)
-				: true
-		);
-	}
+	const scene = await fetch(`/api/scenes/random?calm=${calmOnly}`).then((res) => res.json());
 
-	nowPlaying.scene = draw(candidates) as Scene;
+	nowPlaying.scene = scene;
 }
 
 /**
  * Randomizes the scene and station, preferring the suggested track if available
  * @param calmOnly - If true, only calm scenes (scenes with jazz or lofi) will be selected
  */
-export function randomize(calmOnly = false) {
-	randomizeScene(calmOnly);
+export async function randomize(calmOnly = false) {
+	const { scene, station } = await fetch('/api/random').then((res) => res.json());
 
-	if (nowPlaying.scene?.suggestedTrack) {
-		nowPlaying.station = nowPlaying.scene.suggestedTrack;
-	} else {
-		randomizeStation();
-	}
+	nowPlaying.scene = scene;
+	nowPlaying.station = station;
 }
 
 /**
@@ -62,4 +43,29 @@ export function getSharableURL() {
 	const key = btoa(`${scene?.videoID}:${station?.trackID}`);
 
 	return `${page.url}/?v=${key}`;
+}
+
+/**
+ * Creates a hashtag from a string
+ * @param str - The string to create a hashtag from
+ */
+function createHashtag(str: string) {
+	return str.replace(/[\W\s]+/g, '');
+}
+
+/**
+ * Returns a URL to share the current scene and station on Bluesky
+ */
+export function getPostURL() {
+	const { scene, station } = nowPlaying;
+
+	if (!scene || !station) return null;
+
+	const post = `Come ${scene.type} in #${createHashtag(
+		scene.name
+	)} with me and chill! 🎧 #cityhop #${createHashtag(station.genre.toLowerCase())}
+    
+  ${getSharableURL()}`;
+
+	return `https://bsky.app/intent/compose?text=${encodeURIComponent(post)}`;
 }

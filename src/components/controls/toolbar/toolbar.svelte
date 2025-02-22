@@ -1,14 +1,15 @@
 <script>
 	import { Stack } from '$components/ui';
 	import { BAC_LINK } from '$consts';
-	import { CurrencyDollarSimple, TipJar } from '$icons';
+	import { BlueSky, CurrencyDollarSimple } from '$icons';
+	import { getPostURL } from '$lib';
+	import { nowPlaying } from '$state';
 
 	import Settings from './volume';
 	import CopyLink from './copy-link.svelte';
 	import ToolbarButton from './toolbar-button.svelte';
 	import VisitorCount from './visitor-count.svelte';
 	import Button from '$components/ui/button.svelte';
-	import Link from '$components/ui/link.svelte';
 </script>
 
 <nav
@@ -29,6 +30,12 @@
 
 	<Stack orientation="row" gap="sm" align="center">
 		<CopyLink />
+
+		{#key nowPlaying}
+			<ToolbarButton href={getPostURL()} title="Share on Bluesky">
+				<BlueSky />
+			</ToolbarButton>
+		{/key}
 
 		<ToolbarButton href={BAC_LINK} title="Support CityHop">
 			<CurrencyDollarSimple />

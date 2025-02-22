@@ -46,7 +46,7 @@
 	}
 </script>
 
-<div class="h-[max(75vh,500px)] w-[max(60vw,800px)]">
+<div class="aspect-[1.3] w-[max(60vw,800px)] max-w-7xl">
 	<Search
 		{...searcher.props}
 		{onInputChange}
@@ -78,12 +78,7 @@
 			{#snippet section(scenes?: SearchResultItem[], title?: string, Icon?: Component)}
 				{#if scenes && scenes.length > 0}
 					{#if title}
-						<Stack
-							orientation="row"
-							align="center"
-							gap="sm"
-							class="col-span-full border-b border-white/10 p-4"
-						>
+						<Stack orientation="row" align="center" gap="sm" class="col-span-full border-b p-4">
 							<Icon />
 							<Typography variant="headline" size="sm">
 								{title}

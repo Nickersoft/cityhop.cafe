@@ -2,9 +2,11 @@
 	import type { YouTubePlayer } from 'youtube-player/dist/types';
 
 	import { DEFAULT_VIDEO_END_OFFSET, DEFAULT_VIDEO_START_OFFSET } from '$consts';
-	import { YouTube } from '$components/ui';
+	import { Button, YouTube } from '$components/ui';
 	import { random } from '$lib/utils';
 	import { nowPlaying, preferences, ui } from '$state';
+	import { variant } from 'valibot';
+	import { ArrowsIn, ArrowsOut } from '$icons';
 
 	let videoDuration: number | undefined = $state();
 
@@ -42,12 +44,35 @@
 		}
 	}
 
+	function toggleFullscreen() {
+		if (document.fullscreenElement) {
+			document.exitFullscreen();
+			ui.isFullscreen = false;
+		} else {
+			document.documentElement.requestFullscreen();
+			ui.isFullscreen = true;
+		}
+	}
+
 	$effect(() => {
 		player?.setVolume(preferences.current.muteScene ? 0 : preferences.current.sceneVolume);
 	});
 </script>
 
 {#if nowPlaying.scene}
+	<Button
+		variant="link"
+		size="icon"
+		onclick={toggleFullscreen}
+		class="absolute top-0 right-0 z-999 m-4 text-white [&_svg]:size-8"
+	>
+		{#if ui.isFullscreen}
+			<ArrowsIn />
+		{:else}
+			<ArrowsOut />
+		{/if}
+	</Button>
+
 	<div class="fixed inset-0 bg-black">
 		<div
 			class={[

@@ -9,13 +9,11 @@ import type { Tags } from '$enums';
 export const GET: RequestHandler = async ({ url }) => {
 	const tag = url.searchParams.get('tag') as Tags;
 
-	let candidates = stations
-		.filter((el) => !el.hidden)
-		.filter((el) => {
-			return tag
-				? el.tags?.includes(tag)
-				: el.genre === 'lofi' && !el.name.toLowerCase().includes('bollywood');
-		});
+	let candidates = stations.filter((el) => {
+		return tag
+			? el.tags?.includes(tag)
+			: el.genre === 'lofi' && !el.hidden && !el.name.toLowerCase().includes('bollywood');
+	});
 
 	return json(draw(candidates) as StationWithGenre);
 };
