@@ -1,5 +1,5 @@
-import { SceneTypes } from '$enums';
-import { Tags } from '$enums';
+import { SceneTypes } from '$lib/enums';
+import { Tags } from '$lib/enums';
 import { createContinent } from '$schema';
 
 export default createContinent({

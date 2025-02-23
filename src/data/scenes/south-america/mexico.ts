@@ -1,7 +1,7 @@
 import { createCountry } from '$schema';
-import { SceneTypes } from '$enums';
+import { SceneTypes } from '$lib/enums';
 import { genres } from '$data/stations';
-import { Tags } from '$enums';
+import { Tags } from '$lib/enums';
 
 export default createCountry({
 	name: 'Mexico',

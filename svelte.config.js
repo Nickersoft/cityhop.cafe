@@ -17,13 +17,9 @@ const config = {
       $components: './src/components',
       $consts: './src/consts',
       $data: './src/data',
-      $icons: './src/icons',
-      $enums: './src/enums',
       $lib: './src/lib',
-      $state: "./src/state.svelte",
       $styles: './src/styles',
       $schema: './src/schema',
-      $types: './src/types'
     }
 	}
 };

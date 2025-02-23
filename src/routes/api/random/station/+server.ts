@@ -4,7 +4,7 @@ import { stations, type StationWithGenre } from '$data/stations';
 
 import { draw } from '$lib/utils';
 
-import type { Tags } from '$enums';
+import type { Tags } from '$lib/enums';
 
 export const GET: RequestHandler = async ({ url }) => {
 	const tag = url.searchParams.get('tag') as Tags;

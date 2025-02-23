@@ -1,14 +1,15 @@
 import { on } from 'svelte/events';
-import { randomize, randomizeScene, randomizeStation } from './now-playing';
-import { ui } from '../state.svelte';
+
+import { ui } from '$lib/state.svelte';
+import { invalidate } from '$app/navigation';
 
 function handleKeyUp(e: KeyboardEvent) {
 	if (e.key === 'g') {
-		randomize();
+		Promise.all([invalidate('app:scene'), invalidate('app:station')]);
 	} else if (e.key === 'k') {
-		randomizeScene();
+		invalidate('app:scene');
 	} else if (e.key === 'm') {
-		randomizeStation();
+		invalidate('app:station');
 	}
 }
 
@@ -18,7 +19,9 @@ export default function setupHotkeys() {
 	const startHandlers = [on(document, 'mouseup', start), on(document, 'keyup', start)];
 
 	function removeStartHandlers() {
-		startHandlers.forEach((remove) => remove());
+		for (const remove of startHandlers) {
+			remove();
+		}
 	}
 
 	function start(event: Event) {

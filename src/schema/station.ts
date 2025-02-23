@@ -2,7 +2,7 @@ import * as v from 'valibot';
 
 import { getYouTubeLink } from '$lib/youtube';
 
-import { Tags } from '$enums';
+import { Tags } from '$lib/enums';
 
 export const stationSchema = v.pipe(
 	v.object({

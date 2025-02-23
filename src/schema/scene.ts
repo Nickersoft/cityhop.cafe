@@ -1,6 +1,6 @@
 import * as v from 'valibot';
 
-import { SceneTypes, Tags } from '$enums';
+import { SceneTypes, Tags } from '$lib/enums';
 
 import { stationSchema } from './station';
 import { getYouTubeLink, getThumbnail } from '$lib/youtube';

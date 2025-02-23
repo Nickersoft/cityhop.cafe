@@ -1,5 +1,5 @@
 import type { StationWithGenre } from '$data/stations';
-import type { Scene } from './schema';
+import type { Scene } from '../schema';
 
 export interface UIState {
 	isPlaying: boolean;

@@ -4,7 +4,7 @@ import type { EventType } from 'youtube-player/dist/eventNames';
 
 import createYouTubePlayer from 'youtube-player';
 
-import { PlayerState } from '$enums';
+import { PlayerState } from '$lib/enums';
 
 export function getYouTubeLink(videoId?: string) {
 	return `https://www.youtube.com/watch?v=${videoId}`;

@@ -3,7 +3,7 @@
 	import { fade } from 'svelte/transition';
 
 	import { Typography } from '$components/ui';
-	import { HandPeace } from '$icons';
+	import { HandPeace } from '$lib/icons';
 
 	let visitorCount = $state<Optional<number>>();
 

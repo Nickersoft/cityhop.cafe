@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Button, Marquee, Stack, Typography } from '$components/ui';
-	import { YouTubeLogoFill } from '$icons';
+	import { YouTubeLogoFill } from '$lib/icons';
 	import { getYouTubeLink } from '$lib/youtube';
 	import Tooltip from '../../ui/tooltip.svelte';
 

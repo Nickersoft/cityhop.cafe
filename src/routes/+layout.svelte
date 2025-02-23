@@ -5,7 +5,7 @@
 	import BaseHead from '$components/base-head.svelte';
 
 	import { Toaster } from '$components/ui';
-	import { preferences } from '$state';
+	import { preferences } from '$lib/state.svelte';
 
 	let { children } = $props();
 

@@ -2,9 +2,9 @@ import { json } from '@sveltejs/kit';
 
 import type { RequestHandler } from './$types';
 
-export const GET: RequestHandler = async ({ url }) => {
-	const sceneURL = new URL('/api/scenes/random', url.origin);
-	const stationURL = new URL('/api/stations/random', url.origin);
+export const GET: RequestHandler = async ({ fetch, url }) => {
+	const sceneURL = new URL('/api/random/scene', url.origin);
+	const stationURL = new URL('/api/random/station', url.origin);
 
 	url.searchParams.forEach((value, key) => {
 		sceneURL.searchParams.append(key, value);
@@ -13,13 +13,8 @@ export const GET: RequestHandler = async ({ url }) => {
 
 	const scene = await fetch(sceneURL).then((res) => res.json());
 
-	if (scene.suggestedTrack) {
-		const station = { ...scene.suggestedTrack };
-		delete scene.suggestedTrack;
-		return json({ scene, station });
-	}
-
-	const station = await fetch(stationURL).then((res) => res.json());
-
-	return json({ scene, station });
+	return json({
+		scene,
+		station: scene.suggestedTrack ?? (await fetch(stationURL).then((res) => res.json()))
+	});
 };

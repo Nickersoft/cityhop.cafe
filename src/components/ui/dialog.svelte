@@ -10,7 +10,7 @@
 	import { fly, scale } from 'svelte/transition';
 	import { computePosition, flip, shift, offset, type Placement } from '@floating-ui/dom';
 
-	import { cn } from '$lib';
+	import { cn } from '$lib/utils';
 
 	import { portal } from '$actions/portal';
 	import { clickOutside } from '$actions/click-outside';

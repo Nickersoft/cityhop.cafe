@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { Tags } from '$enums';
+	import { Tags } from '$lib/enums';
 	import { Stack, Typography } from '$components/ui';
 	import type { SearchResultItem, Station } from '$schema';
-	import { CloudRain, Snowflake } from '$icons';
+	import { CloudRain, Snowflake } from '$lib/icons';
 
 	interface Props {
 		item: Exclude<SearchResultItem, Station>;

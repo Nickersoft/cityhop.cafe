@@ -5,7 +5,7 @@ import { error, json } from '@sveltejs/kit';
 import { continents, scenes } from '$data/scenes';
 
 import type { RequestHandler } from './$types';
-import { get } from '$lib';
+import { get } from '$lib/utils';
 
 export const GET: RequestHandler = async ({ url }) => {
 	const query = url.searchParams.get('q');

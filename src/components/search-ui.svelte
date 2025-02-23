@@ -5,6 +5,7 @@
 		children?: Snippet<[T[]]>;
 		items: T[];
 		onInputChange?: (query: string) => void;
+		onClose: () => void;
 		loading: boolean;
 		inputPlaceholder?: string;
 		onSearch: (query: string) => void;
@@ -13,16 +14,14 @@
 </script>
 
 <script lang="ts" generics="T">
-	import { Search, X } from '$icons';
-	import { getDialogContext, SearchResults } from '$lib';
+	import { Search, X } from '$lib/icons';
 
 	import { Button, Input, Stack } from '$components/ui';
-
-	import { clickOutside } from '$actions/click-outside';
 
 	const {
 		leftButton,
 		onSearch,
+		onClose,
 		loading,
 		onInputChange,
 		inputPlaceholder,
@@ -37,12 +36,6 @@
 		onInputChange?.(q);
 		onSearch(q);
 	});
-
-	const Dialog = getDialogContext();
-
-	function closeDialog() {
-		Dialog?.close();
-	}
 </script>
 
 <div class="flex size-full flex-col items-start justify-start">
@@ -59,7 +52,7 @@
 			type="search"
 		/>
 
-		<Button size="icon" variant="ghost" onclick={closeDialog}>
+		<Button size="icon" variant="ghost" onclick={onClose}>
 			<X />
 		</Button>
 	</header>

@@ -3,9 +3,9 @@
 
 	import Search from '$components/search-ui.svelte';
 
-	import { Searcher, SearchResults } from '$lib';
-	import { nowPlaying } from '$state';
-	import { ArrowLeft, SteeringWheel } from '$icons';
+	import { Searcher, SearchResults } from '$lib/search.svelte';
+	import { nowPlaying } from '$lib/state.svelte';
+	import { ArrowLeft, SteeringWheel } from '$lib/icons';
 	import { isContinent, isCountry, isSceneGroup, type SearchResultItem } from '$schema';
 	import { Stack, Typography, Button, ScrollArea } from '$components/ui';
 

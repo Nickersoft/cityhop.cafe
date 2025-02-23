@@ -1,9 +1,9 @@
 <script>
 	import { Stack } from '$components/ui';
-	import { BAC_LINK } from '$consts';
-	import { BlueSky, CurrencyDollarSimple } from '$icons';
-	import { getPostURL } from '$lib';
-	import { nowPlaying } from '$state';
+	import { BAC_LINK } from '$lib/consts';
+	import { BlueSky, CurrencyDollarSimple } from '$lib/icons';
+	import { getPostURL } from '$lib/share';
+	import { nowPlaying } from '$lib/state.svelte';
 
 	import Settings from './volume';
 	import CopyLink from './copy-link.svelte';

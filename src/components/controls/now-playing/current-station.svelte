@@ -1,9 +1,9 @@
 <script lang="ts">
 	import * as MediaPanel from '../media-panel';
 
-	import { nowPlaying, preferences } from '$state';
+	import { nowPlaying, preferences } from '$lib/state.svelte';
 	import { Equalizer, Popover } from '$components/ui';
-	import { ArrowsClockwise } from '$icons';
+	import { ArrowsClockwise } from '$lib/icons';
 	import { StationSelection } from '$components/modals';
 
 	let open = $state(false);

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Stack, typographyVariants } from '$components/ui';
-	import { cn } from '$lib';
+	import { cn } from '$lib/utils';
 	import type { Snippet } from 'svelte';
 
 	interface Props {

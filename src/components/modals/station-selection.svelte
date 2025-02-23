@@ -2,10 +2,10 @@
 	import Search from '$components/search-ui.svelte';
 	import { ScrollArea, Stack, Typography } from '$components/ui';
 	import { Accordion } from 'bits-ui';
-	import { Searcher } from '$lib';
-	import { nowPlaying } from '$state';
+	import { Searcher } from '$lib/search.svelte';
+	import { nowPlaying } from '$lib/state.svelte';
 	import type { StationWithGenre } from '$data/stations';
-	// import { Music } from '$icons'; // Add this import for the music icon
+	// import { Music } from '$lib/icons'; // Add this import for the music icon
 
 	interface Props {
 		onClose: () => void;

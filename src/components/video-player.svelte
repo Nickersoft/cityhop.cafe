@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type { YouTubePlayer } from 'youtube-player/dist/types';
 
-	import { DEFAULT_VIDEO_END_OFFSET, DEFAULT_VIDEO_START_OFFSET } from '$consts';
+	import { DEFAULT_VIDEO_END_OFFSET, DEFAULT_VIDEO_START_OFFSET } from '$lib/consts';
 	import { Button, YouTube } from '$components/ui';
 	import { random } from '$lib/utils';
-	import { nowPlaying, preferences, ui } from '$state';
+	import { nowPlaying, preferences, ui } from '$lib/state.svelte';
 	import { variant } from 'valibot';
-	import { ArrowsIn, ArrowsOut } from '$icons';
+	import { ArrowsIn, ArrowsOut } from '$lib/icons';
 
 	let videoDuration: number | undefined = $state();
 

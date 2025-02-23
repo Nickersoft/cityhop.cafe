@@ -1,5 +1,5 @@
 import { isScene, type Scene, type SearchResultItem } from '$schema';
-import type { SceneTypes } from '$enums';
+import type { SceneTypes } from '$lib/enums';
 
 import { page } from '$app/state';
 

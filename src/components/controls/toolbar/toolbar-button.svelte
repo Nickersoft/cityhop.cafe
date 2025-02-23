@@ -3,7 +3,7 @@
 	import { mergeProps } from 'bits-ui';
 
 	import { type ButtonProps, Button, Tooltip } from '$components/ui';
-	import { cn } from '$lib';
+	import { cn } from '$lib/utils';
 
 	type Props = ButtonProps & {
 		children: Snippet;

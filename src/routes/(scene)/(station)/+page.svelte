@@ -10,23 +10,28 @@
 	import setupHotkeys from '$lib/hotkeys';
 	import setupHover from '$lib/hover';
 
-	import { nowPlaying, ui } from '$state';
+	import { nowPlaying, ui } from '$lib/state.svelte';
 
 	import type { PageProps } from './$types';
 
 	const { data }: PageProps = $props();
 
-	const { scene, station } = data;
+	$effect(() => {
+		if (nowPlaying.scene?.videoID !== data.scene.videoID) {
+			nowPlaying.scene = data.scene;
+		}
+	});
+
+	$effect(() => {
+		if (nowPlaying.station?.trackID !== data.station.trackID) {
+			nowPlaying.station = data.station;
+		}
+	});
 
 	onMount(() => {
 		const cleanupHeartbeat = setupHeartbeat();
 		const cleanupHotkeys = setupHotkeys();
 		const cleanupHover = setupHover();
-
-		if (scene && station) {
-			nowPlaying.scene = scene;
-			nowPlaying.station = station;
-		}
 
 		return () => {
 			cleanupHeartbeat();
@@ -44,7 +49,7 @@
 	});
 </script>
 
-<WaitingRoom />
+<!-- <WaitingRoom /> -->
 <Controls />
 <VideoPlayer />
 <AudioPlayer />

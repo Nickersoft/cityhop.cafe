@@ -1,12 +1,12 @@
 <script lang="ts">
 	import * as MediaPanel from '../media-panel';
 
-	import { SceneTypes } from '$enums';
-	import { nowPlaying } from '$state';
+	import { SceneTypes } from '$lib/enums';
+	import { nowPlaying } from '$lib/state.svelte';
 
 	import { Popover } from '$components/ui';
 	import { SceneSelection } from '$components/modals';
-	import { ArrowsClockwise } from '$icons';
+	import { ArrowsClockwise } from '$lib/icons';
 
 	let open = $state(false);
 </script>

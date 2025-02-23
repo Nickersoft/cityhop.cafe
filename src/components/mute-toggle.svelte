@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Toggle, { type ToggleProps } from '$components/ui/toggle.svelte';
 
-	import { SpeakerHigh, SpeakerSlash } from '$icons';
-	import { cn } from '$lib';
+	import { SpeakerHigh, SpeakerSlash } from '$lib/icons';
+	import { cn } from '$lib/utils';
 
 	let { class: className, pressed = $bindable(), ...props }: ToggleProps = $props();
 </script>

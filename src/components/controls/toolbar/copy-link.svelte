@@ -3,9 +3,9 @@
 
 	import { fly } from 'svelte/transition';
 
-	import { getSharableURL } from '$lib/now-playing';
+	import { getSharableURL } from '$lib/share';
 	import { Button, toast } from '$components/ui';
-	import { Link } from '$icons';
+	import { Link } from '$lib/icons';
 	import ToolbarButton from '../toolbar/toolbar-button.svelte';
 
 	function copyURL() {

@@ -1,5 +1,5 @@
 import { createGenre } from '$schema';
-import { Tags } from '$enums';
+import { Tags } from '$lib/enums';
 
 export const classical = createGenre({
 	name: 'Classical',

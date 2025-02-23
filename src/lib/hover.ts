@@ -1,4 +1,4 @@
-import { ui } from '$state';
+import { ui } from '$lib/state.svelte';
 import { on } from 'svelte/events';
 
 let inactiveTimeout: number;

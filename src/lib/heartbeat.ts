@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 
 import { PUBLIC_PH_TOKEN } from '$env/static/public';
 
-import { nowPlaying } from '../state.svelte';
+import { nowPlaying } from '$lib/state.svelte';
 
 function createID() {
 	const distinctIDKey = 'distinct-id';

@@ -9,7 +9,7 @@
 	import figtreeVariable from '@fontsource-variable/figtree/files/figtree-latin-wght-normal.woff2';
 
 	import { page } from '$app/state';
-	import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE } from '$consts';
+	import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE } from '$lib/consts';
 
 	const ogImage = $derived(`${page.url.origin}/og.jpg`);
 	const twtImage = $derived(`${page.url.origin}/twitter.jpg`);
