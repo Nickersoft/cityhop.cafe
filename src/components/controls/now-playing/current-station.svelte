@@ -3,8 +3,8 @@
 
 	import { nowPlaying, preferences } from '$state';
 	import { Equalizer, Popover } from '$components/ui';
-	import { SceneSelection } from '$components/modals';
 	import { ArrowsClockwise } from '$icons';
+	import { StationSelection } from '$components/modals';
 
 	let open = $state(false);
 </script>
@@ -19,8 +19,6 @@
 			{:else}
 				Now playing
 			{/if}
-
-			<!-- <MuteButton class="text-base" bind:muted={userPreferences.muteMusic} /> -->
 		</MediaPanel.Label>
 
 		{#if nowPlaying.station}
@@ -28,7 +26,7 @@
 		{/if}
 	</MediaPanel.Header>
 
-	<Popover bind:open>
+	<Popover bind:open align="end" sideOffset={40}>
 		{#snippet trigger({ props })}
 			<MediaPanel.Button
 				{...props}
@@ -36,12 +34,12 @@
 				class="data-[active=true]:bg-white/10 data-[active=true]:opacity-100"
 			>
 				<ArrowsClockwise />
-				Change Scene
+				Change Station
 			</MediaPanel.Button>
 		{/snippet}
 
 		{#snippet content()}
-			<SceneSelection onClose={() => (open = false)} />
+			<StationSelection onClose={() => (open = false)} />
 		{/snippet}
 	</Popover>
 </MediaPanel.Root>

@@ -46,7 +46,7 @@
 	}
 </script>
 
-<div class="aspect-[1.3] w-[max(60vw,800px)] max-w-7xl">
+<div class="aspect-[1.5] w-[max(60vw,800px)] max-w-7xl">
 	<Search
 		{...searcher.props}
 		{onInputChange}

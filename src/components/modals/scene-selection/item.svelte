@@ -17,20 +17,6 @@
 		onclick?.(e);
 	}
 
-	// function getThumbnail(_item: Item) {
-	// 	if ('videoID' in _item) {
-	// 		return getVideoThumbnail(_item.videoID);
-	// 	}
-
-	// 	if ('countries' in _item) {
-	// 		return getThumbnail(_item.countries[0]);
-	// 	}
-
-	// 	if ('scenes' in _item) {
-	// 		return getThumbnail(_item.scenes[0]);
-	// 	}
-	// }
-
 	// let icon: string | undefined = $derived.by(() => {
 	// 	if ('emoji' in item) {
 	// 		if (item.emoji === 'flag') {
@@ -46,7 +32,7 @@
 
 <button
 	onclick={handleClick}
-	class="group bg-card/50 hover:bg-card/10 border-input flex cursor-pointer flex-col items-center justify-start gap-2 rounded-xl border p-2 shadow-sm transition-all duration-300 ease-in-out hover:scale-102 dark:bg-white/5 dark:hover:bg-white/10"
+	class="group bg-card/50 hover:bg-card border-input flex cursor-pointer flex-col items-center justify-start gap-2 rounded-xl border p-2 shadow-sm transition-all duration-300 ease-in-out hover:scale-102 dark:bg-white/5 dark:hover:bg-white/10"
 >
 	<img
 		loading="lazy"
