@@ -4,7 +4,7 @@
 	import { Accordion } from 'bits-ui';
 	import { Searcher } from '$lib/search.svelte';
 	import { nowPlaying } from '$lib/state.svelte';
-	import type { StationWithGenre } from '$data/stations';
+	import type { StationWithGenre } from '$server/data';
 	// import { Music } from '$lib/icons'; // Add this import for the music icon
 
 	interface Props {

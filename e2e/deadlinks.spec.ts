@@ -1,7 +1,7 @@
 import { expect, test, Page } from '@playwright/test';
 
-import { stationList } from '../src/data/stations';
-import { scenes } from '../src/data/scenes';
+import { stationList } from '$src/data/stations';
+import { scenes } from '$src/data/scenes';
 import { describe } from 'node:test';
 
 export async function validateVideoLink(page: Page, videoID: string): Promise<boolean> {

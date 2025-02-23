@@ -1,6 +1,6 @@
 import { json, type RequestHandler } from '@sveltejs/kit';
 
-import { stations, type StationWithGenre } from '$data/stations';
+import { stations, type StationWithGenre } from '$server/data/stations';
 
 import { draw } from '$lib/utils';
 

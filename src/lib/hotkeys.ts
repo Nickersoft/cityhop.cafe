@@ -1,15 +1,15 @@
 import { on } from 'svelte/events';
 
-import { ui } from '$lib/state.svelte';
-import { invalidate } from '$app/navigation';
+import { nowPlaying, ui } from '$lib/state.svelte';
+import { randomScene, randomStation } from '$lib/api';
 
-function handleKeyUp(e: KeyboardEvent) {
-	if (e.key === 'g') {
-		Promise.all([invalidate('app:scene'), invalidate('app:station')]);
-	} else if (e.key === 'k') {
-		invalidate('app:scene');
-	} else if (e.key === 'm') {
-		invalidate('app:station');
+async function handleKeyUp(e: KeyboardEvent) {
+	if (e.key === 'g' || e.key === 'k') {
+		nowPlaying.scene = await randomScene();
+	}
+
+	if (e.key === 'g' || e.key === 'm') {
+		nowPlaying.station = await randomStation();
 	}
 }
 

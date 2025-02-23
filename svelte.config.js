@@ -16,10 +16,9 @@ const config = {
       $actions: './src/actions',
       $components: './src/components',
       $consts: './src/consts',
-      $data: './src/data',
       $lib: './src/lib',
       $styles: './src/styles',
-      $schema: './src/schema',
+      $server: './src/server',
     }
 	}
 };

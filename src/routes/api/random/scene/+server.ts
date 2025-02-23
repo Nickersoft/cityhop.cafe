@@ -1,11 +1,11 @@
 import { json } from '@sveltejs/kit';
 
-import { scenes } from '$data/scenes';
-import { stations } from '$data/stations';
+import { scenes } from '$server/data/scenes';
+import { stations } from '$server/data/stations';
 
 import { draw } from '$lib/utils';
 
-import type { Scene, Station } from '$schema';
+import type { Scene, Station } from '$server/schema';
 import type { Tags } from '$lib/enums';
 
 import type { RequestHandler } from './$types';

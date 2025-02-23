@@ -1,4 +1,4 @@
-import { isScene, type Scene, type SearchResultItem } from '$schema';
+import { isScene, type Scene, type SearchResultItem } from '$server/schema';
 import type { SceneTypes } from '$lib/enums';
 
 import { page } from '$app/state';

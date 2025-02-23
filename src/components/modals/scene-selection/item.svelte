@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Tags } from '$lib/enums';
 	import { Stack, Typography } from '$components/ui';
-	import type { SearchResultItem, Station } from '$schema';
+	import type { SearchResultItem, Station } from '$server/schema';
 	import { CloudRain, Snowflake } from '$lib/icons';
 
 	interface Props {

@@ -5,7 +5,6 @@
 	import { Button, YouTube } from '$components/ui';
 	import { random } from '$lib/utils';
 	import { nowPlaying, preferences, ui } from '$lib/state.svelte';
-	import { variant } from 'valibot';
 	import { ArrowsIn, ArrowsOut } from '$lib/icons';
 
 	let videoDuration: number | undefined = $state();

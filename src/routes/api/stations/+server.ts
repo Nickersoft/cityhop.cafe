@@ -2,7 +2,7 @@ import fuzzysort from 'fuzzysort';
 
 import { json } from '@sveltejs/kit';
 
-import { stations } from '$data/stations';
+import { stations } from '$server/data/stations';
 
 import type { RequestHandler } from './$types';
 

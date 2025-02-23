@@ -1,12 +1,9 @@
 <script lang="ts">
-	import { page } from '$app/state';
-
-	import { fly } from 'svelte/transition';
-
 	import { getSharableURL } from '$lib/share';
-	import { Button, toast } from '$components/ui';
+	import { toast } from '$components/ui';
 	import { Link } from '$lib/icons';
-	import ToolbarButton from '../toolbar/toolbar-button.svelte';
+
+	import ToolbarButton from './toolbar-button.svelte';
 
 	function copyURL() {
 		navigator.clipboard.writeText(getSharableURL());

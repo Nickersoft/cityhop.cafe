@@ -6,7 +6,7 @@
 	import { Searcher, SearchResults } from '$lib/search.svelte';
 	import { nowPlaying } from '$lib/state.svelte';
 	import { ArrowLeft, SteeringWheel } from '$lib/icons';
-	import { isContinent, isCountry, isSceneGroup, type SearchResultItem } from '$schema';
+	import { isContinent, isCountry, isSceneGroup, type SearchResultItem } from '$server/schema';
 	import { Stack, Typography, Button, ScrollArea } from '$components/ui';
 
 	import { enter, exit } from './transitions';

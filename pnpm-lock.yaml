@@ -38,6 +38,12 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      country-flag-icons:
+        specifier: ^1.5.18
+        version: 1.5.18
+      country-to-iso:
+        specifier: ^1.6.0
+        version: 1.6.0
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
@@ -987,6 +993,12 @@ packages:
 
   core-js@3.40.0:
     resolution: {integrity: sha512-7vsMc/Lty6AGnn7uFpYT56QesI5D2Y/UkgKounk87OP9Z2H9Z8kj6jzcSGAxFmUtDOS0ntK6lbQz+Nsa0Jj6mQ==}
+
+  country-flag-icons@1.5.18:
+    resolution: {integrity: sha512-z+Uzesi8u8IdkViqqbzzbkf3+a7WJpcET5B7sPwTg7GXqPYpVEgNlZ/FC3l8KO4mEf+mNkmzKLppKTN4PlCJEQ==}
+
+  country-to-iso@1.6.0:
+    resolution: {integrity: sha512-K8ngB/ayC6zGPf7s95S+foYpCLyCP78SOPQx4ArWHrWOrLI5NLgp4yz18GS5pfEoX6koV9nR1PlvoATHVDy4/Q==}
 
   css.escape@1.5.1:
     resolution: {integrity: sha512-YUifsXXuknHlUsmlgyY0PKzgPOr7/FjCePfHNt0jxm83wHZi44VDMQ7/fGNkjY3/jV1MC+1CmZbaHzugyeRtpg==}
@@ -2579,6 +2591,10 @@ snapshots:
   cookie@0.6.0: {}
 
   core-js@3.40.0: {}
+
+  country-flag-icons@1.5.18: {}
+
+  country-to-iso@1.6.0: {}
 
   css.escape@1.5.1: {}
 

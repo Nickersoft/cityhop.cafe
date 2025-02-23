@@ -2,7 +2,7 @@
 	import { Button, Marquee, Stack, Typography } from '$components/ui';
 	import { YouTubeLogoFill } from '$lib/icons';
 	import { getYouTubeLink } from '$lib/youtube';
-	import Tooltip from '../../ui/tooltip.svelte';
+	import { Tooltip } from '$components/ui';
 
 	interface Props {
 		title: string;

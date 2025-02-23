@@ -1,4 +1,3 @@
-import { posthog } from 'posthog-js';
 import { nanoid } from 'nanoid';
 
 import { PUBLIC_PH_TOKEN } from '$env/static/public';
@@ -12,7 +11,7 @@ function createID() {
 		localStorage.setItem(distinctIDKey, nanoid());
 	}
 
-	return localStorage.getItem(distinctIDKey)!;
+	return localStorage.getItem(distinctIDKey) as string;
 }
 
 function trigger(id: string) {
@@ -32,11 +31,13 @@ function trigger(id: string) {
 export default function setupHeartbeat() {
 	const distinctID = createID();
 
-	posthog.init(PUBLIC_PH_TOKEN, {
-		api_host: 'https://app.posthog.com',
-		loaded(ph) {
-			ph.identify(distinctID);
-		}
+	import('posthog-js').then(({ posthog }) => {
+		posthog.init(PUBLIC_PH_TOKEN, {
+			api_host: 'https://app.posthog.com',
+			loaded(ph) {
+				ph.identify(distinctID);
+			}
+		});
 	});
 
 	const timer = setInterval(() => trigger(distinctID), 1000 * 60 * 5 /* 5 minutes */);

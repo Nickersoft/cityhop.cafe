@@ -5,7 +5,7 @@
 		children?: Snippet<[T[]]>;
 		items: T[];
 		onInputChange?: (query: string) => void;
-		onClose: () => void;
+		onClose?: () => void;
 		loading: boolean;
 		inputPlaceholder?: string;
 		onSearch: (query: string) => void;

@@ -1,6 +1,4 @@
 <script lang="ts">
-	import * as MediaPanel from '../media-panel';
-
 	import { SceneTypes } from '$lib/enums';
 	import { nowPlaying } from '$lib/state.svelte';
 
@@ -8,10 +6,23 @@
 	import { SceneSelection } from '$components/modals';
 	import { ArrowsClockwise } from '$lib/icons';
 
+	import * as MediaPanel from '../media-panel';
+
 	let open = $state(false);
 </script>
 
 <MediaPanel.Root>
+	<div
+		class="relative size-12 overflow-hidden rounded-full border border-white/40 before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-b before:from-white before:mix-blend-soft-light"
+	>
+		<img
+			loading="lazy"
+			decoding="async"
+			src={`/flags/${nowPlaying.scene?.country}.svg`}
+			alt="Country flag"
+		/>
+	</div>
+
 	<MediaPanel.Header>
 		<MediaPanel.Label>
 			{#if nowPlaying.scene?.type === SceneTypes.walk}
