@@ -10,7 +10,11 @@ export class Searcher<T = SearchResultItem> {
 
 	#items: T[] = $state([]);
 
+	#path = $state<string[]>([]);
+
 	#query = $state('');
+
+	#cache = new Map<URL, SearchResultItem[]>();
 
 	#url = $derived.by(() => {
 		const url = new URL(`/api/${this.route}`, page.url.origin);
@@ -18,29 +22,63 @@ export class Searcher<T = SearchResultItem> {
 		if (this.#query) {
 			url.searchParams.delete('p');
 			url.searchParams.set('q', this.#query);
-		} else if (this.path && this.path.length > 0) {
+		} else if (this.#path && this.#path.length > 0) {
 			url.searchParams.delete('q');
-			url.searchParams.set('p', this.path.join(''));
+			url.searchParams.set('p', this.#path.join(''));
 		}
 
 		return url;
 	});
 
-	path = $state<string[]>([]);
-
 	constructor(private route: string) {
 		$effect(() => {
 			this.#loading = true;
+
+			if (this.#cache.has(this.#url)) {
+				this.#items = this.#cache.get(this.#url) as T[];
+				return;
+			}
 
 			fetch(this.#url)
 				.then((res) => res.json())
 				.then((data) => {
 					this.#items = data;
+					this.#cache.set(this.#url, data);
 				})
 				.finally(() => {
 					this.#loading = false;
 				});
 		});
+	}
+
+	get items() {
+		return this.#items;
+	}
+
+	get path() {
+		return this.#path;
+	}
+
+	pushPathComponent(component: string) {
+		this.#path.push(component);
+	}
+
+	popPathComponent() {
+		return this.#path.pop();
+	}
+
+	prefetch(component: string) {
+		const url = new URL(`/api/${this.route}`, page.url.origin);
+
+		url.searchParams.set('p', [...this.#path, component].join(''));
+
+		if (!this.#cache.has(url)) {
+			fetch(url)
+				.then((res) => res.json())
+				.then((data) => {
+					this.#cache.set(url, data);
+				});
+		}
 	}
 
 	search = debounce({ delay: 150 }, (q) => {

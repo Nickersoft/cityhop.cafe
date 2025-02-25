@@ -24,20 +24,35 @@
 	// Transition direction
 	let direction: Nullable<'forward' | 'backward'> = $state(null);
 
-	function onClick(item: SearchResultItem, index: number) {
-		direction = 'forward';
-
+	function prefetch(item: SearchResultItem) {
 		if (isCountry(item) || isSceneGroup(item)) {
-			searcher.path.push(`[${index}].scenes`);
+			searcher.prefetch(`[${searcher.items.indexOf(item)}].scenes`);
 			return;
 		}
 
 		if (isContinent(item)) {
-			searcher.path.push(`[${index}].countries`);
+			searcher.prefetch(`[${searcher.items.indexOf(item)}].countries`);
+			return;
+		}
+	}
+
+	function onClick(item: SearchResultItem) {
+		direction = 'forward';
+
+		const index = searcher.items.indexOf(item);
+
+		if (isCountry(item) || isSceneGroup(item)) {
+			searcher.pushPathComponent(`[${index}].scenes`);
+			return;
+		}
+
+		if (isContinent(item)) {
+			searcher.pushPathComponent(`[${index}].countries`);
 			return;
 		}
 
 		nowPlaying.scene = item;
+
 		onClose();
 	}
 
@@ -59,7 +74,7 @@
 				size="icon"
 				variant="ghost"
 				onclick={() => {
-					searcher.path.pop();
+					searcher.popPathComponent();
 					direction = 'backward';
 				}}
 			>
@@ -86,7 +101,7 @@
 						</Stack>
 					{/if}
 					{#each scenes as item}
-						<Item {item} onclick={() => onClick?.(item, items.indexOf(item))} />
+						<Item onHover={prefetch} {item} onSelect={onClick} />
 					{/each}
 				{/if}
 			{/snippet}

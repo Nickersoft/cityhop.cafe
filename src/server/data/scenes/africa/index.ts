@@ -8,6 +8,6 @@ import southAfrica from './south-africa';
 
 export default createContinent({
 	name: 'Africa',
-	emoji: 'globe-showing-europe-africa',
+	emoji: '🌍',
 	countries: [egypt, ethiopia, ghana, mauritius, southAfrica]
 });

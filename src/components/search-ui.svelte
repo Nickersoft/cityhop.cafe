@@ -4,6 +4,7 @@
 	export interface SearchProps<T> {
 		children?: Snippet<[T[]]>;
 		items: T[];
+		filterTags?: string[];
 		onInputChange?: (query: string) => void;
 		onClose?: () => void;
 		loading: boolean;

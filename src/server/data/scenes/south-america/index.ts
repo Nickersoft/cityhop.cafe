@@ -6,6 +6,6 @@ import peru from './peru';
 
 export default createContinent({
 	name: 'South America',
-	emoji: 'globe-showing-americas',
+	emoji: '🌎',
 	countries: [brazil, mexico, peru]
 });

@@ -6,19 +6,25 @@
 
 	interface Props {
 		item: Exclude<SearchResultItem, Station>;
-		onclick: (e: MouseEvent) => void;
+		onHover: (item: SearchResultItem) => void;
+		onSelect: (item: SearchResultItem) => void;
 	}
 
-	let { onclick, item }: Props = $props();
+	let { onHover, onSelect, item }: Props = $props();
 
 	function handleClick(e: MouseEvent) {
 		e.stopPropagation();
-		onclick?.(e);
+		onSelect(item);
+	}
+
+	function handleHover() {
+		onHover(item);
 	}
 </script>
 
 <button
 	onclick={handleClick}
+	onmouseenter={handleHover}
 	class="group bg-card/50 hover:bg-card border-input flex cursor-pointer flex-col items-center justify-start gap-2 rounded-xl border p-2 shadow-sm transition-all duration-300 ease-in-out hover:scale-102 dark:bg-white/5 dark:hover:bg-white/10"
 >
 	<img

@@ -18,7 +18,7 @@ import ukraine from './ukraine';
 
 export default createContinent({
 	name: 'Europe',
-	emoji: 'globe-showing-europe-africa',
+	emoji: '🌍',
 	countries: [
 		austria,
 		bosnia,

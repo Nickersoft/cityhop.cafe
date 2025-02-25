@@ -18,7 +18,7 @@
 	)}
 >
 	<span
-		class="animate-marquee absolute top-1/2 block -translate-y-1/2 whitespace-nowrap delay-4000 will-change-transform"
+		class="animate-marquee absolute top-1/2 block -translate-y-1/2 whitespace-nowrap will-change-transform [animation-delay:4s]"
 	>
 		{@render children?.()}
 	</span>

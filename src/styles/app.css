@@ -36,28 +36,28 @@
 	--destructive: var(--color-red-600);
 	--destructive-foreground: var(--color-white);
 	--ring: var(--color-blue-300);
-}
 
-&.dark {
-	--background: var(--color-neutral-900);
-	--foreground: var(--color-white);
-	--muted: --alpha(var(--foreground) / 10%);
-	--muted-foreground: --alpha(var(--foreground) / 50%);
-	--popover: var(--background);
-	--popover-foreground: var(--foreground);
-	--border: --alpha(var(--color-white) / 10%);
-	--input: --alpha(var(--color-white) / 20%);
-	--card: var(--popover);
-	--card-foreground: var(--popover-foreground);
-	--primary: var(--foreground);
-	--primary-foreground: var(--background);
-	--secondary: var(--color-neutral-100);
-	--secondary-foreground: var(--color-neutral-900);
-	--accent: --alpha(var(--color-white) / 20%);
-	--accent-foreground: var(--color-white);
-	--destructive: var(--color-red-600);
-	--destructive-foreground: var(--color-white);
-	--ring: var(--color-blue-300);
+	@variant dark {
+		--background: var(--color-neutral-950);
+		--foreground: var(--color-white);
+		--muted: --alpha(var(--foreground) / 10%);
+		--muted-foreground: --alpha(var(--foreground) / 50%);
+		--popover: var(--background);
+		--popover-foreground: var(--foreground);
+		--border: --alpha(var(--color-white) / 10%);
+		--input: --alpha(var(--color-white) / 20%);
+		--card: var(--popover);
+		--card-foreground: var(--popover-foreground);
+		--primary: var(--foreground);
+		--primary-foreground: var(--background);
+		--secondary: var(--color-neutral-100);
+		--secondary-foreground: var(--color-neutral-950);
+		--accent: --alpha(var(--color-white) / 20%);
+		--accent-foreground: var(--color-white);
+		--destructive: var(--color-red-600);
+		--destructive-foreground: var(--color-white);
+		--ring: var(--color-blue-300);
+	}
 }
 
 @theme {
@@ -162,5 +162,5 @@
 	@apply from-card/80 to-card/70 bg-gradient-to-b;
 	@apply shadow-lg backdrop-blur-md;
 	@apply border border-white/50;
-	@apply dark:border-white/20 dark:ring dark:ring-neutral-950/60;
+	@apply dark:border-white/10 dark:ring dark:ring-neutral-950/60;
 }

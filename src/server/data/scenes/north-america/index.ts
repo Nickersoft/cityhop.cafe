@@ -5,6 +5,6 @@ import us from './us';
 
 export default createContinent({
 	name: 'North America',
-	emoji: 'globe-showing-americas',
+	emoji: '🌎',
 	countries: [us, canada]
 });

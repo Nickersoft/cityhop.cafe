@@ -17,7 +17,7 @@ import vietnam from './vietnam';
 
 export default createContinent({
 	name: 'Asia',
-	emoji: 'globe-showing-asia-australia',
+	emoji: '🌏',
 	countries: [
 		china,
 		india,

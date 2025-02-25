@@ -5,6 +5,6 @@ import newZealand from './new-zealand';
 
 export default createContinent({
 	name: 'Oceania',
-	emoji: 'globe-showing-asia-australia',
+	emoji: '🌏',
 	countries: [australia, newZealand]
 });
