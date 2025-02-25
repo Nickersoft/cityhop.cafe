@@ -4,13 +4,13 @@
 	export interface SearchProps<T> {
 		children?: Snippet<[T[]]>;
 		items: T[];
-		filterTags?: string[];
 		onInputChange?: (query: string) => void;
 		onClose?: () => void;
 		loading: boolean;
 		inputPlaceholder?: string;
 		onSearch: (query: string) => void;
 		leftButton?: Snippet;
+		filters?: Snippet;
 	}
 </script>
 
@@ -27,7 +27,8 @@
 		onInputChange,
 		inputPlaceholder,
 		items,
-		children
+		children,
+		filters
 	}: SearchProps<T> = $props();
 
 	let query = $state('');
@@ -57,6 +58,10 @@
 			<X />
 		</Button>
 	</header>
+
+	{#if filters}
+		{@render filters()}
+	{/if}
 
 	<div role="presentation" class="relative w-full flex-1">
 		<Stack orientation="column" class="absolute inset-0 w-full grow">

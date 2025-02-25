@@ -10,6 +10,8 @@
 	import { Stack, Typography, Button, ScrollArea } from '$components/ui';
 
 	import { enter, exit } from './transitions';
+	import { Tags } from '$lib/enums';
+	import Filter from './filter.svelte';
 
 	import Item from './item.svelte';
 
@@ -23,6 +25,8 @@
 
 	// Transition direction
 	let direction: Nullable<'forward' | 'backward'> = $state(null);
+
+	let activeFilters = $state<Set<Tags>>(new Set());
 
 	function prefetch(item: SearchResultItem) {
 		if (isCountry(item) || isSceneGroup(item)) {
@@ -59,6 +63,23 @@
 	function onInputChange() {
 		direction = null;
 	}
+
+	function toggleFilter(tag: Tags) {
+		if (activeFilters.has(tag)) {
+			activeFilters.delete(tag);
+		} else {
+			activeFilters.add(tag);
+		}
+		searcher.setTags(Array.from(activeFilters));
+	}
+
+	$effect(() => {
+		// Reset filters when search query changes to empty
+		if (!searcher.query) {
+			activeFilters.clear();
+			searcher.setTags([]);
+		}
+	});
 </script>
 
 <div class="aspect-[1.5] w-[max(60vw,800px)] max-w-7xl">
@@ -80,6 +101,18 @@
 			>
 				<ArrowLeft />
 			</Button>
+		{/snippet}
+
+		{#snippet filters()}
+			<div class="flex flex-wrap gap-2 border-b p-4">
+				{#each Object.values(Tags) as tag}
+					<Filter
+						{tag}
+						pressed={activeFilters.has(tag)}
+						onPressedChange={(pressed) => toggleFilter(tag)}
+					/>
+				{/each}
+			</div>
 		{/snippet}
 
 		{#snippet children(items)}
