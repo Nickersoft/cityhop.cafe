@@ -14,7 +14,7 @@ function findThumbnail(scenes: (Scene | SceneGroup)[]): string {
 
 export interface SceneGroupInput {
 	name: string;
-	previewID?: string;
+	emoji?: string;
 	scenes?: (SceneGroupInput | SceneInput)[];
 }
 
@@ -43,7 +43,7 @@ export function deepSort<T extends SceneGroup | Scene>(scenes: T[]): T[] {
 export const sceneGroupSchema: v.GenericSchema<SceneGroupInput, SceneGroup> = v.pipe(
 	v.object({
 		name: v.string(),
-		previewID: v.optional(v.string()),
+		emoji: v.optional(v.string()),
 		scenes: v.optional(v.array(v.lazy(() => v.union([sceneSchema, sceneGroupSchema]))))
 	}),
 	v.transform(({ scenes, ...input }) => ({

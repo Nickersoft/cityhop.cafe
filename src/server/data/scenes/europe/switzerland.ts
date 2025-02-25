@@ -64,7 +64,7 @@ export default createCountry({
 		{
 			name: 'Zurich',
 			type: SceneTypes.drive,
-			videoID: '_H03CjepcJc',
+			videoID: 'WVggB714jqU',
 			offset: { start: 120 },
 			tags: [Tags.evening]
 		}

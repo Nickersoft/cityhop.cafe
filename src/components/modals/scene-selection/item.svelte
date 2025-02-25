@@ -7,27 +7,14 @@
 	interface Props {
 		item: Exclude<SearchResultItem, Station>;
 		onclick: (e: MouseEvent) => void;
-		emoji?: string | undefined;
 	}
 
-	let { onclick, item, emoji = undefined }: Props = $props();
+	let { onclick, item }: Props = $props();
 
 	function handleClick(e: MouseEvent) {
 		e.stopPropagation();
 		onclick?.(e);
 	}
-
-	// let icon: string | undefined = $derived.by(() => {
-	// 	if ('emoji' in item) {
-	// 		if (item.emoji === 'flag') {
-	// 			return `twemoji:flag-${dash(item.name)}`;
-	// 		} else {
-	// 			return `twemoji:${item.emoji}`;
-	// 		}
-	// 	} else if (emoji) {
-	// 		return `twemoji:${emoji}`;
-	// 	}
-	// });
 </script>
 
 <button
@@ -45,15 +32,12 @@
 	/>
 
 	<Stack orientation="row" gap="sm" align="center" class="w-full pt-2">
-		<!-- {#if icon}
-			<iconify-icon {icon}></iconify-icon>
-		{/if} -->
-
 		<Typography
 			class="grow text-left  opacity-85 transition-opacity duration-300 group-hover:opacity-100"
 			variant="title"
 			size="sm"
 		>
+			{item.emoji}{' '}
 			{item.name}
 		</Typography>
 

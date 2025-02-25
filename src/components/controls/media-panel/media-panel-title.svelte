@@ -17,7 +17,7 @@
 	orientation="row"
 	align="center"
 	justify="start"
-	class="h-10 w-full cursor-pointer gap-0.5 overflow-hidden font-medium"
+	class="h-8 w-full cursor-pointer gap-0.5 overflow-hidden font-medium"
 >
 	{#if (title.length ?? 0) > 32 && !disableMarquee}
 		<Typography variant="headline" size="sm" class="glow grow leading-none">

@@ -13,15 +13,9 @@
 
 <MediaPanel.Root>
 	<div
-		class="relative size-12 overflow-hidden rounded-full border border-white/40 before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-b before:from-white before:mix-blend-soft-light"
-	>
-		<img
-			loading="lazy"
-			decoding="async"
-			src={`/flags/${nowPlaying.scene?.country}.svg`}
-			alt="Country flag"
-		/>
-	</div>
+		class="size-12 rounded-full bg-(url:--bg) ring-1 shadow-[inset_0_3px_8px_--alpha(white/50%),inset_0_-3px_8px_--alpha(black/20%)] ring-white/10"
+		style={`--bg: url("/flags/${nowPlaying.scene?.country}.svg")`}
+	></div>
 
 	<MediaPanel.Header>
 		<MediaPanel.Label>

@@ -14,6 +14,8 @@ export const sceneSchema = v.pipe(
 	v.object({
 		name: v.string(),
 		type: v.enum(SceneTypes),
+		country: v.optional(v.string()),
+		emoji: v.optional(v.string()),
 		videoID: v.string(),
 		tags: v.optional(v.array(v.enum(Tags))),
 		hidden: v.optional(v.boolean()),
@@ -31,4 +33,3 @@ export const sceneSchema = v.pipe(
 
 export type SceneInput = v.InferInput<typeof sceneSchema>;
 export type Scene = v.InferOutput<typeof sceneSchema>;
-export type SceneWithCountry = Scene & { country: string };
