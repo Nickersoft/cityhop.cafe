@@ -3,10 +3,9 @@ import * as v from 'valibot';
 import { alphabetical } from '$lib/utils';
 
 import { sceneSchema, type Scene, type SceneInput } from './scene';
-import { isSceneGroup } from './utils';
 
 function findThumbnail(scenes: (Scene | SceneGroup)[]): string {
-	if (isSceneGroup(scenes[0])) {
+	if (scenes[0].__type__ === 'group') {
 		return findThumbnail(scenes[0].scenes);
 	}
 	return scenes[0]?.thumbnail;
@@ -30,7 +29,7 @@ export interface SceneGroupWithCountry extends SceneGroup {
 
 export function deepSort<T extends SceneGroup | Scene>(scenes: T[]): T[] {
 	return alphabetical(scenes, ({ name }) => name).map((scene) => {
-		if (isSceneGroup(scene)) {
+		if (scene.__type__ === 'group') {
 			return {
 				...scene,
 				scenes: deepSort(scene.scenes)

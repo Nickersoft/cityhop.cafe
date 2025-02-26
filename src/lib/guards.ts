@@ -1,9 +1,5 @@
-import type { Continent } from './continent';
-import type { Country } from './country';
-import type { Scene, SceneInput } from './scene';
-import type { SceneGroup, SceneGroupInput } from './scene-group';
-
-export type SearchResultItem = Continent | Country | SceneGroup | Scene;
+import type { Continent, Country, SceneGroup, Scene } from '$server/schema';
+import type { SearchResultItem } from './types';
 
 export function isSceneGroup(item: SearchResultItem): item is SceneGroup {
 	return item.__type__ === 'group';

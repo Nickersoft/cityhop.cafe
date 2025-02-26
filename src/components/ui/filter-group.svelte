@@ -12,20 +12,23 @@
 	import { ToggleGroup } from 'bits-ui';
 
 	interface Props {
+		value: string[];
 		filters: Filter[];
 	}
 
-	const { filters }: Props = $props();
-
-	let value: string[] = $state([]);
+	let { value = $bindable([]), filters }: Props = $props();
 </script>
 
-<ToggleGroup.Root bind:value type="multiple" class="flex flex-row gap-2">
+<ToggleGroup.Root
+	bind:value
+	type="multiple"
+	class="flex flex-row items-center justify-center gap-2"
+>
 	{#each filters as filter}
 		<ToggleGroup.Item
 			aria-label={`Toggle ${filter.label} Filter`}
 			value={filter.value}
-			class="text-secondary-foreground border-border flex h-7 flex-row items-center gap-1 rounded-full border bg-white/10 px-3 text-sm font-medium"
+			class="text-secondary-foreground data-[state=on]:text-primary-foreground border-border data-[state=on]:bg-primary flex h-7 cursor-pointer flex-row items-center gap-1.5 rounded-full border bg-white/10 px-3 text-sm font-medium"
 		>
 			<filter.icon class="size-4" />
 			{filter.label}

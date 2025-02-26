@@ -1,19 +1,21 @@
 <script lang="ts">
-	import type { Component } from 'svelte';
+	import { getContext, untrack, type Component } from 'svelte';
 
 	import Search from '$components/search-ui.svelte';
 
 	import { Searcher, SearchResults } from '$lib/search.svelte';
 	import { nowPlaying } from '$lib/state.svelte';
 	import { ArrowLeft, SteeringWheel } from '$lib/icons';
-	import { isContinent, isCountry, isSceneGroup, type SearchResultItem } from '$server/schema';
-	import { FilterGroup, type Filter, Stack, Typography, Button, ScrollArea } from '$components/ui';
+	import { FilterGroup, Stack, Typography, Button, ScrollArea } from '$components/ui';
+	import type { SearchResultItem } from '$lib/types';
+	import { isContinent, isCountry, isSceneGroup } from '$lib/guards';
 
 	import { enter, exit } from './transitions';
-	import { Tags } from '$lib/enums';
+	import { FILTER_LIST } from './consts';
 
 	import Item from './item.svelte';
 
+	const totalScenes = getContext('totalScenes');
 	const searcher = new Searcher('scenes');
 
 	interface Props {
@@ -24,8 +26,6 @@
 
 	// Transition direction
 	let direction: Nullable<'forward' | 'backward'> = $state(null);
-
-	let activeFilters = $state<Set<Tags>>(new Set());
 
 	function prefetch(item: SearchResultItem) {
 		if (isCountry(item) || isSceneGroup(item)) {
@@ -63,23 +63,13 @@
 		direction = null;
 	}
 
-	const filterList: Filter[] = [
-		{
-			value: Tags.night,
-			label: 'Drives',
-			icon: SteeringWheel
-		},
-		{
-			value: Tags.snow,
-			label: 'Walks',
-			icon: SteeringWheel
-		},
-		{
-			value: Tags.fog,
-			label: 'Bike Rides',
-			icon: SteeringWheel
-		}
-	];
+	let activeFilters = $state<string[]>([]);
+
+	$effect(() => {
+		direction = null;
+		untrack(() => searcher.clearPath());
+		searcher.setTags(activeFilters);
+	});
 </script>
 
 <div class="aspect-[1.5] w-[max(60vw,800px)] max-w-7xl">
@@ -87,7 +77,7 @@
 		{...searcher.props}
 		{onInputChange}
 		onSearch={searcher.search}
-		inputPlaceholder="Search over 200+ countries and cities worldwide"
+		inputPlaceholder={`Search over ${totalScenes}+ countries and cities worldwide`}
 	>
 		{#snippet leftButton()}
 			<Button
@@ -104,7 +94,7 @@
 		{/snippet}
 
 		{#snippet filters()}
-			<FilterGroup filters={filterList} />
+			<FilterGroup bind:value={activeFilters} filters={FILTER_LIST} />
 		{/snippet}
 
 		{#snippet children(items)}

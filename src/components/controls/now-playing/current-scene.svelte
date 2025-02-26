@@ -13,7 +13,7 @@
 
 <MediaPanel.Root>
 	<div
-		class="size-12 rounded-full bg-(url:--bg) ring-1 shadow-[inset_0_3px_8px_--alpha(white/50%),inset_0_-3px_8px_--alpha(black/20%)] ring-white/10"
+		class="size-12 rounded-full bg-(url:--bg) shadow-[inset_0_3px_8px_--alpha(white/50%),inset_0_-3px_8px_--alpha(black/20%)] ring-1 ring-white/10"
 		style={`--bg: url("/flags/${nowPlaying.scene?.country}.svg")`}
 	></div>
 
@@ -27,11 +27,7 @@
 		</MediaPanel.Label>
 
 		{#if nowPlaying.scene}
-			<MediaPanel.Title
-				disableMarquee
-				videoID={nowPlaying.scene.videoID}
-				title={nowPlaying.scene.name}
-			/>
+			<MediaPanel.Title videoID={nowPlaying.scene.videoID} title={nowPlaying.scene.name} />
 		{/if}
 	</MediaPanel.Header>
 

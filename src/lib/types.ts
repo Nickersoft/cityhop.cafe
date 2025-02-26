@@ -1,5 +1,7 @@
 import type { StationWithGenre } from '$server/data/stations';
-import type { Scene } from '$server/schema';
+import type { Continent, Country, Scene, SceneGroup } from '$server/schema';
+
+export type SearchResultItem = Continent | Country | SceneGroup | Scene;
 
 export interface UIState {
 	isPlaying: boolean;

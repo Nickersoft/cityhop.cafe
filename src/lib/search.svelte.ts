@@ -1,9 +1,10 @@
-import { isScene, type Scene, type SearchResultItem } from '$server/schema';
-import type { SceneTypes } from '$lib/enums';
-
 import { page } from '$app/state';
 
-import { alphabetical, debounce, group, mapValues } from './utils';
+import type { SceneTypes } from '$lib/enums';
+import type { Scene } from '$server/schema';
+import { alphabetical, debounce, group, mapValues } from '$lib/utils';
+import type { SearchResultItem } from '$lib/types';
+import { isScene } from '$lib/guards';
 
 export class Searcher<T = SearchResultItem> {
 	#loading = $state(false);
@@ -30,7 +31,7 @@ export class Searcher<T = SearchResultItem> {
 		}
 
 		if (this.#tags && this.#tags.length > 0) {
-			url.searchParams.set('tags', this.#tags.join(','));
+			url.searchParams.set('t', this.#tags.join(','));
 		}
 
 		return url;
@@ -63,6 +64,16 @@ export class Searcher<T = SearchResultItem> {
 
 	get path() {
 		return this.#path;
+	}
+
+	setTags(tags: string[]) {
+		this.#tags = tags;
+	}
+
+	clearPath() {
+		if (this.#path.length > 0) {
+			this.#path = [];
+		}
 	}
 
 	pushPathComponent(component: string) {

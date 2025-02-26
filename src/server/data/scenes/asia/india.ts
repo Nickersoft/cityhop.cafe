@@ -1,5 +1,5 @@
 import { SceneTypes } from '$lib/enums';
-import { genres } from '$server/data';
+import { genres } from '$server/data/stations';
 import { Tags } from '$lib/enums';
 import { createCountry } from '$server/schema';
 

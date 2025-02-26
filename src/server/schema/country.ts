@@ -4,7 +4,6 @@ import getCountryEmoji from 'country-flag-icons/unicode';
 import { countryToAlpha2 } from 'country-to-iso';
 
 import { sceneGroupSchema, type SceneGroup } from './scene-group';
-import { isSceneGroup } from './utils';
 import type { Scene } from './scene';
 
 type SceneOrGroup = Scene | SceneGroup;
@@ -15,7 +14,7 @@ function injectCountryInfo(
 	emoji: string | undefined
 ): SceneOrGroup[] {
 	return items.map((item) =>
-		isSceneGroup(item)
+		item.__type__ === 'group'
 			? { ...item, emoji, scenes: injectCountryInfo(item.scenes, code, emoji) }
 			: { ...item, country: code, emoji }
 	);

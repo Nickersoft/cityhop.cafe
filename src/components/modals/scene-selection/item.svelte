@@ -1,8 +1,9 @@
 <script lang="ts">
-	import { Tags } from '$lib/enums';
 	import { Stack, Typography } from '$components/ui';
-	import type { SearchResultItem, Station } from '$server/schema';
-	import { CloudRain, Snowflake } from '$lib/icons';
+	import type { SearchResultItem } from '$lib/types';
+	import type { Station } from '$server/schema';
+
+	import { FILTER_LIST } from './consts';
 
 	interface Props {
 		item: Exclude<SearchResultItem, Station>;
@@ -48,13 +49,12 @@
 		</Typography>
 
 		{#if 'tags' in item}
-			{#if item.tags?.includes(Tags.rain)}
-				<CloudRain class="size-4 opacity-50" />
-			{/if}
-
-			{#if item.tags?.includes(Tags.snow)}
-				<Snowflake class="size-4 opacity-50" />
-			{/if}
+			{#each item.tags ?? [] as tag}
+				{@const Icon = FILTER_LIST.find((filter) => filter.value === tag)?.icon}
+				{#if Icon}
+					<Icon class="size-4 opacity-50" />
+				{/if}
+			{/each}
 		{/if}
 	</Stack>
 </button>

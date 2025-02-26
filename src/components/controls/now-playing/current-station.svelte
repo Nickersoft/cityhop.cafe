@@ -10,7 +10,7 @@
 </script>
 
 <MediaPanel.Root>
-	<Equalizer muted={preferences.current.muteMusic} />
+	<Equalizer bind:muted={preferences.current.muteMusic} />
 
 	<MediaPanel.Header>
 		<MediaPanel.Label>

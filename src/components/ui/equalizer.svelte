@@ -3,16 +3,20 @@
 		muted: boolean;
 	}
 
-	let { muted }: Props = $props();
+	let { muted = $bindable() }: Props = $props();
 </script>
 
-<div class="group flex h-5 w-8 flex-row items-end justify-end gap-0.5" data-muted={muted}>
+<button
+	onclick={() => (muted = !muted)}
+	class="group flex h-5 w-8 cursor-pointer flex-row items-end justify-end gap-0.5"
+	data-muted={muted}
+>
 	{#each Array.from({ length: 4 }).fill(0)}
 		<span
-			class="bar inline-block w-full bg-gradient-to-b from-blue-400 to-blue-500 group-data-[muted=true]:h-1/4! group-data-[muted=true]:[animation:none]! dark:bg-white dark:from-blue-200 dark:to-blue-500"
+			class="bar inline-block w-full rounded-full bg-gradient-to-b from-yellow-500 to-orange-600 group-data-[muted=true]:h-1/4! group-data-[muted=true]:[animation:none]! dark:bg-white dark:from-yellow-400 dark:to-orange-500"
 		></span>
 	{/each}
-</div>
+</button>
 
 <style>
 	.bar {

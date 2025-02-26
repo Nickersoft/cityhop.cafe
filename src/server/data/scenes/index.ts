@@ -1,4 +1,4 @@
-import type { Continent, Country, Scene, SceneWithCountry } from '$server/schema';
+import type { Continent, Country, Scene } from '$server/schema';
 
 import africa from './africa';
 import asia from './asia';
@@ -24,9 +24,9 @@ const countries: Country[] = continents.flatMap((continent) => continent.countri
 
 const sceneMap = createSceneMap(continents);
 
-const scenes: SceneWithCountry[] = Object.values(sceneMap);
+const scenes: Scene[] = Object.values(sceneMap);
 
-export function getSceneByID(id: string): Optional<SceneWithCountry> {
+export function getSceneByID(id: string): Optional<Scene> {
 	return sceneMap[id];
 }
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, setContext } from 'svelte';
 
 	import VideoPlayer from '$components/video-player.svelte';
 	import WaitingRoom from '$components/waiting-room.svelte';
@@ -15,6 +15,9 @@
 	import type { PageProps } from './$types';
 
 	const { data }: PageProps = $props();
+
+	// Used in scene-selection.svelte
+	setContext('totalScenes', data.totalScenes);
 
 	$effect(() => {
 		nowPlaying.scene = data.scene;

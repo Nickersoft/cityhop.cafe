@@ -27,8 +27,8 @@
 	--input: --alpha(var(--color-white) / 20%);
 	--card: var(--popover);
 	--card-foreground: var(--popover-foreground);
-	--primary: var(--foreground);
-	--primary-foreground: var(--background);
+	--primary: --alpha(var(--color-white) / 60%);
+	--primary-foreground: var(---color-neutral-950);
 	--secondary: var(--color-neutral-100);
 	--secondary-foreground: var(--color-neutral-900);
 	--accent: --alpha(var(--color-neutral-950) / 5%);
@@ -48,8 +48,8 @@
 		--input: --alpha(var(--color-white) / 20%);
 		--card: var(--popover);
 		--card-foreground: var(--popover-foreground);
-		--primary: var(--foreground);
-		--primary-foreground: var(--background);
+		--primary: var(--color-white);
+		--primary-foreground: var(--color-neutral-950);
 		--secondary: var(--color-neutral-700);
 		--secondary-foreground: var(--color-neutral-50);
 		--accent: --alpha(var(--color-white) / 20%);
@@ -82,13 +82,13 @@
 
 	@keyframes marquee {
 		0% {
-			transform: tranneutralX(0);
+			transform: translateX(0);
 		}
 		90% {
-			transform: tranneutralX(-50%);
+			transform: translateX(-50%);
 		}
 		100% {
-			transform: tranneutralX(-50%);
+			transform: translateX(-50%);
 		}
 	}
 

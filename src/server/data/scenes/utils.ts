@@ -1,13 +1,8 @@
-import {
-	type SceneWithCountry,
-	type SearchResultItem,
-	isContinent,
-	isCountry,
-	isScene,
-	isSceneGroup
-} from '$server/schema';
+import { isScene, isSceneGroup, isCountry, isContinent } from '$lib/guards';
+import type { SearchResultItem } from '$lib/types';
+import type { Scene } from '$server/schema';
 
-export function createSceneMap(items: SearchResultItem[]): Record<string, SceneWithCountry> {
+export function createSceneMap(items: SearchResultItem[]): Record<string, Scene> {
 	return items.reduce(
 		(acc, item) => {
 			if (isScene(item)) {
@@ -28,6 +23,6 @@ export function createSceneMap(items: SearchResultItem[]): Record<string, SceneW
 
 			return acc;
 		},
-		{} as Record<string, SceneWithCountry>
+		{} as Record<string, Scene>
 	);
 }
