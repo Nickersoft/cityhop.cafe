@@ -1,51 +1,25 @@
-import type { SceneTypes } from '$data/scene-types';
-import type { Tags } from '$data/tags';
+import type { StationWithGenre } from '$server/data/stations';
+import type { Continent, Country, Scene, SceneGroup } from '$server/schema';
 
-export interface Genre {
-	name: string;
-	emoji: string;
-	stations: Record<string, Station>;
+export type SearchResultItem = Continent | Country | SceneGroup | Scene;
+
+export interface UIState {
+	isPlaying: boolean;
+	windowActive: boolean;
+	hasStarted: boolean;
+	isFullscreen: boolean;
 }
 
-export interface Station {
-	name: string;
-	displayName?: string;
-	trackID: string;
-	live: boolean;
-	hidden?: boolean;
+export interface NowPlaying {
+	scene: Nullable<Scene>;
+	station: Nullable<StationWithGenre>;
 }
 
-export interface Offset {
-	start?: number;
-	end?: number;
-}
-
-export interface Continent {
-	name: string;
-	hidden?: boolean;
-	emoji: string;
-	countries: Country[];
-}
-
-export type Country = SceneGroup & {
-	emoji: 'flag';
-};
-
-export interface SceneGroup {
-	name: string;
-	previewID?: string;
-	scenes: (Scene | SceneGroup)[];
-}
-
-export interface Scene {
-	name: string;
-	type: SceneTypes;
-	videoID: string;
-	tags?: Tags[];
-	hidden?: boolean;
-	suggestedTrack?: Station;
-	offset?: Offset;
-	// Used to better determine a good starting point
-	// Not required
-	length?: number;
+export interface UserPreferences {
+	preserveAudio: boolean;
+	theme: 'system' | 'light' | 'dark';
+	musicVolume: number;
+	sceneVolume: number;
+	muteMusic: boolean;
+	muteScene: boolean;
 }

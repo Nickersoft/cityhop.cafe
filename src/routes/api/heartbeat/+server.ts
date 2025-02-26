@@ -1,6 +1,7 @@
 import { PUBLIC_PH_TOKEN } from '$env/static/public';
-import type { Scene, Station } from '$lib/types';
 import { PostHog } from 'posthog-node';
+
+import type { Scene, Station } from '$server/schema';
 
 import type { RequestHandler } from './$types';
 
