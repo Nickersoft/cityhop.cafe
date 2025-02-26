@@ -113,7 +113,7 @@ importers:
         version: 0.43.0(svelte@5.20.4)
       svelte-meta-tags:
         specifier: ^4.0.4
-        version: 4.1.0(svelte@5.20.4)(typescript@5.7.3)
+        version: 4.1.1(svelte@5.20.4)(typescript@5.7.3)
       tailwindcss:
         specifier: ^3.4.15
         version: 3.4.17
@@ -1723,8 +1723,8 @@ packages:
     peerDependencies:
       svelte: ^3.19.0 || ^4.0.0
 
-  svelte-meta-tags@4.1.0:
-    resolution: {integrity: sha512-XBG4L6wOEabMMNzKgYW5u5vsdkOKNbHqUY/UeAhSrsxNubCP5suh8yGCjtw7qx76kToQ4qDR6Z9VSN4Yuj2bMQ==}
+  svelte-meta-tags@4.1.1:
+    resolution: {integrity: sha512-7FaGUy4PuTvUpHZ43K9qtetc/MTIVMduFH5PMs7NMtwNVlICDk903CQEpJDJgYXlRNgo7a/EHg6dAFqA5usF9A==}
     peerDependencies:
       svelte: ^5.0.0
 
@@ -3446,7 +3446,7 @@ snapshots:
     dependencies:
       svelte: 5.20.4
 
-  svelte-meta-tags@4.1.0(svelte@5.20.4)(typescript@5.7.3):
+  svelte-meta-tags@4.1.1(svelte@5.20.4)(typescript@5.7.3):
     dependencies:
       schema-dts: 1.1.2(typescript@5.7.3)
       svelte: 5.20.4
