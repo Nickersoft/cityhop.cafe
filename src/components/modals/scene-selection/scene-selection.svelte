@@ -7,11 +7,10 @@
 	import { nowPlaying } from '$lib/state.svelte';
 	import { ArrowLeft, SteeringWheel } from '$lib/icons';
 	import { isContinent, isCountry, isSceneGroup, type SearchResultItem } from '$server/schema';
-	import { Stack, Typography, Button, ScrollArea } from '$components/ui';
+	import { FilterGroup, type Filter, Stack, Typography, Button, ScrollArea } from '$components/ui';
 
 	import { enter, exit } from './transitions';
 	import { Tags } from '$lib/enums';
-	import Filter from './filter.svelte';
 
 	import Item from './item.svelte';
 
@@ -64,22 +63,23 @@
 		direction = null;
 	}
 
-	function toggleFilter(tag: Tags) {
-		if (activeFilters.has(tag)) {
-			activeFilters.delete(tag);
-		} else {
-			activeFilters.add(tag);
+	const filterList: Filter[] = [
+		{
+			value: Tags.night,
+			label: 'Drives',
+			icon: SteeringWheel
+		},
+		{
+			value: Tags.snow,
+			label: 'Walks',
+			icon: SteeringWheel
+		},
+		{
+			value: Tags.fog,
+			label: 'Bike Rides',
+			icon: SteeringWheel
 		}
-		searcher.setTags(Array.from(activeFilters));
-	}
-
-	$effect(() => {
-		// Reset filters when search query changes to empty
-		if (!searcher.query) {
-			activeFilters.clear();
-			searcher.setTags([]);
-		}
-	});
+	];
 </script>
 
 <div class="aspect-[1.5] w-[max(60vw,800px)] max-w-7xl">
@@ -104,15 +104,7 @@
 		{/snippet}
 
 		{#snippet filters()}
-			<div class="flex flex-wrap gap-2 border-b p-4">
-				{#each Object.values(Tags) as tag}
-					<Filter
-						{tag}
-						pressed={activeFilters.has(tag)}
-						onPressedChange={(pressed) => toggleFilter(tag)}
-					/>
-				{/each}
-			</div>
+			<FilterGroup filters={filterList} />
 		{/snippet}
 
 		{#snippet children(items)}

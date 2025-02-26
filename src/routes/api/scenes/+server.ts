@@ -10,6 +10,7 @@ import { get } from '$lib/utils';
 export const GET: RequestHandler = async ({ url }) => {
 	const query = url.searchParams.get('q');
 	const path = url.searchParams.get('p');
+	const tags = url.searchParams.get('tags');
 	const visibleScenes = scenes.filter(({ hidden }) => !hidden);
 	const visibleContinents = continents.filter(({ hidden }) => !hidden);
 
@@ -24,6 +25,7 @@ export const GET: RequestHandler = async ({ url }) => {
 					keys: ['name', 'country', 'category']
 				})
 				.map(({ obj }) => obj)
+				.filter((scene) => (tags ? scene.tags.includes(tags) : true))
 		);
 	}
 

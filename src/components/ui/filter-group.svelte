@@ -1,13 +1,15 @@
-<script lang="ts">
-	import type { Component } from 'svelte';
-
-	import { ToggleGroup } from 'bits-ui';
-
-	interface Filter {
+<script lang="ts" module>
+	export interface Filter {
 		value: string;
 		label: string;
 		icon: Component;
 	}
+</script>
+
+<script lang="ts">
+	import type { Component } from 'svelte';
+
+	import { ToggleGroup } from 'bits-ui';
 
 	interface Props {
 		filters: Filter[];
@@ -18,17 +20,14 @@
 	let value: string[] = $state([]);
 </script>
 
-<ToggleGroup.Root
-	bind:value
-	type="multiple"
-	class="h-input rounded-card-sm border-border bg-background-alt shadow-mini flex items-center gap-x-0.5 border px-[4px] py-1"
->
+<ToggleGroup.Root bind:value type="multiple" class="flex flex-row gap-2">
 	{#each filters as filter}
 		<ToggleGroup.Item
 			aria-label={`Toggle ${filter.label} Filter`}
 			value={filter.value}
-			class="rounded-9px bg-background-alt hover:bg-muted active:bg-dark-10 data-[state=on]:bg-muted data-[state=off]:text-foreground-alt data-[state=on]:text-foreground active:data-[state=on]:bg-dark-10 inline-flex size-10 items-center justify-center transition-all active:scale-[0.98]"
+			class="text-secondary-foreground border-border flex h-7 flex-row items-center gap-1 rounded-full border bg-white/10 px-3 text-sm font-medium"
 		>
+			<filter.icon class="size-4" />
 			{filter.label}
 		</ToggleGroup.Item>
 	{/each}

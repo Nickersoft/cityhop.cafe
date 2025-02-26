@@ -14,6 +14,8 @@ export class Searcher<T = SearchResultItem> {
 
 	#query = $state('');
 
+	#tags = $state<string[]>([]);
+
 	#cache = new Map<URL, SearchResultItem[]>();
 
 	#url = $derived.by(() => {
@@ -25,6 +27,10 @@ export class Searcher<T = SearchResultItem> {
 		} else if (this.#path && this.#path.length > 0) {
 			url.searchParams.delete('q');
 			url.searchParams.set('p', this.#path.join(''));
+		}
+
+		if (this.#tags && this.#tags.length > 0) {
+			url.searchParams.set('tags', this.#tags.join(','));
 		}
 
 		return url;

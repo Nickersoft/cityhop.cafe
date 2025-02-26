@@ -50,8 +50,8 @@
 		--card-foreground: var(--popover-foreground);
 		--primary: var(--foreground);
 		--primary-foreground: var(--background);
-		--secondary: var(--color-neutral-100);
-		--secondary-foreground: var(--color-neutral-950);
+		--secondary: var(--color-neutral-700);
+		--secondary-foreground: var(--color-neutral-50);
 		--accent: --alpha(var(--color-white) / 20%);
 		--accent-foreground: var(--color-white);
 		--destructive: var(--color-red-600);
@@ -159,7 +159,7 @@
 }
 
 @utility card {
-	@apply from-card/80 to-card/70 bg-gradient-to-b;
+	@apply from-card/55 to-card/65 bg-gradient-to-br;
 	@apply shadow-lg backdrop-blur-md;
 	@apply border border-white/50;
 	@apply dark:border-white/10 dark:ring dark:ring-neutral-950/60;
