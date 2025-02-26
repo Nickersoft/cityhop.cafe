@@ -46,7 +46,7 @@
 			"esbuild"
 		]
 	},
-	"packageManager": "pnpm@9.15.2+sha512.93e57b0126f0df74ce6bff29680394c0ba54ec47246b9cf321f0121d8d9bb03f750a705f24edc3c1180853afd7c2c3b94196d0a3d53d3e069d9e2793ef11f321",
+	"packageManager": "pnpm@10.5.0+sha512.11106a5916c7406fe4b8cb8e3067974b8728f47308a4f5ac5e850304afa6f57e2847d7950dfe78877d8d36bfb401d381c4215db3a4c3547ffa63c14333a6fa51",
 	"dependencies": {
 		"@floating-ui/dom": "^1.6.13",
 		"@fontsource-variable/figtree": "^5.1.2",
