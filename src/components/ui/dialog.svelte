@@ -1,115 +1,28 @@
-<script lang="ts" module>
-	export interface DialogContext {
-		close: () => void;
-	}
-</script>
-
 <script lang="ts">
-	import { onMount, setContext, type Snippet } from 'svelte';
-	import { on } from 'svelte/events';
-	import { fly, scale } from 'svelte/transition';
-	import { computePosition, flip, shift, offset, type Placement } from '@floating-ui/dom';
-
 	import { cn } from '$lib/utils';
-
-	import { portal } from '$actions/portal';
-	import { clickOutside } from '$actions/click-outside';
+	import { Dialog } from 'bits-ui';
+	import type { Snippet } from 'svelte';
 
 	interface Props {
-		open: boolean;
-		onOpenChange?: (open: boolean) => void;
-		children?: Snippet;
-		anchor?: HTMLElement;
-		placement?: Placement;
+		trigger: Snippet<[{ props: Record<string, unknown> }]>;
+		content: Snippet;
 	}
 
-	let {
-		onOpenChange,
-		open = $bindable(),
-		children,
-		anchor = undefined,
-		placement
-	}: Props = $props();
-
-	let dialog: HTMLDivElement | null = $state(null);
-
-	// Update position when anchor changes
-	$effect(() => {
-		if (!anchor || !dialog || !placement) return;
-
-		computePosition(anchor, dialog, {
-			placement,
-			middleware: [
-				offset(8), // Add some spacing
-				flip(), // Flip to opposite side if no space
-				shift() // Shift along axis if needed
-			]
-		}).then(({ x, y }) => {
-			if (!dialog) return;
-
-			Object.assign(dialog.style, {
-				left: `${x}px`,
-				top: `${y}px`,
-				position: 'absolute'
-			});
-		});
-	});
-
-	function handleClose() {
-		open = false;
-		onOpenChange?.(open);
-	}
-
-	onMount(() => {
-		const removeKeydownListener = on(window, 'keydown', (event: KeyboardEvent) => {
-			if (event.key === 'Escape' && open) {
-				handleClose();
-			}
-		});
-
-		return () => {
-			removeKeydownListener();
-		};
-	});
-
-	setContext('dialog', { close: handleClose } satisfies DialogContext);
-
-	function animate(node: HTMLElement, { duration }: { duration: number }) {
-		switch (placement) {
-			case 'top':
-			case 'top-end':
-			case 'top-start':
-				return fly(node, { y: 15, duration });
-			case 'bottom':
-			case 'bottom-end':
-			case 'bottom-start':
-				return fly(node, { y: -15, duration });
-			case 'left':
-			case 'left-end':
-			case 'left-start':
-				return fly(node, { x: 15, duration });
-			case 'right':
-			case 'right-end':
-			case 'right-start':
-				return fly(node, { x: -15, duration });
-			default:
-				return scale(node, { start: 1.1, duration });
-		}
-	}
+	const { trigger, content }: Props = $props();
 </script>
 
-{#if open}
-	<div
-		bind:this={dialog}
-		use:clickOutside={handleClose}
-		use:portal
-		class={cn(
-			'from-background/50 to-background/95 ring-background/75 z-9999 overflow-hidden rounded-2xl border bg-radial ring-1 shadow-xl shadow-black/20 backdrop-blur-md',
-			// Center positioning when no anchor
-			!anchor ? 'fixed inset-0 size-200' : 'h-[max(75vh,500px)] w-full max-w-[60vw]'
-		)}
-		transition:animate={{ duration: 300 }}
-	>
-		{@render children?.()}
-	</div>
-{/if}
+<Dialog.Root>
+	<Dialog.Trigger child={trigger} />
+	<Dialog.Portal>
+		<Dialog.Overlay
+			class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/80"
+		/>
+		<Dialog.Content
+			class={cn(
+				'card',
+				'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] border p-5 outline-hidden sm:max-w-[490px] md:w-full'
+			)}
+			children={content}
+		/>
+	</Dialog.Portal>
+</Dialog.Root>

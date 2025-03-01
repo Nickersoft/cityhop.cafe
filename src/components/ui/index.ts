@@ -1,5 +1,6 @@
 export { default as Button, type ButtonProps } from './button.svelte';
 export { default as Equalizer } from './equalizer.svelte';
+export { default as Dialog } from './dialog.svelte';
 export { default as Input } from './input.svelte';
 export { default as Link } from './link.svelte';
 export { default as Marquee } from './marquee.svelte';

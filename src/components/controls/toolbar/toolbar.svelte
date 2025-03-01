@@ -1,5 +1,6 @@
 <script>
-	import { Stack } from '$components/ui';
+	import { Stack, Button, Dialog } from '$components/ui';
+	import { About } from '$components/modals';
 	import { BAC_LINK } from '$lib/consts';
 	import { BlueSky, CurrencyDollarSimple } from '$lib/icons';
 	import { getPostURL } from '$lib/share';
@@ -9,7 +10,6 @@
 	import CopyLink from './copy-link.svelte';
 	import ToolbarButton from './toolbar-button.svelte';
 	import VisitorCount from './visitor-count.svelte';
-	import Button from '$components/ui/button.svelte';
 </script>
 
 <nav
@@ -43,9 +43,17 @@
 
 		<Settings />
 
-		<Button href={BAC_LINK} class="text-sm tracking-normal normal-case" variant="link">
-			About CityHop
-		</Button>
+		<Dialog>
+			{#snippet trigger({ props })}
+				<Button {...props} class="text-sm tracking-normal normal-case" variant="link">
+					About CityHop
+				</Button>
+			{/snippet}
+
+			{#snippet content()}
+				<About />
+			{/snippet}
+		</Dialog>
 	</Stack>
 
 	<!-- 	<ToolbarButton icon="mdi:cat" action="https://kittycat.cafe" title="Visit KittyCat Cafe" />

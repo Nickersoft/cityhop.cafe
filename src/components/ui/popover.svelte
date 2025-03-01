@@ -31,11 +31,7 @@
 </script>
 
 <Popover.Root {...props} bind:open>
-	<Popover.Trigger>
-		{#snippet child(args)}
-			{@render trigger(args)}
-		{/snippet}
-	</Popover.Trigger>
+	<Popover.Trigger child={trigger} />
 	<Popover.Portal to="#controls-overlay">
 		<Popover.Content
 			class={cn([

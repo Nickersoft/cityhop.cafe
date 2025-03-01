@@ -45,7 +45,7 @@
 	});
 </script>
 
-<WaitingRoom />
+<!-- <WaitingRoom /> -->
 <Controls />
-<VideoPlayer />
-<AudioPlayer />
+<!-- <VideoPlayer />
+<AudioPlayer /> -->
