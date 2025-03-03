@@ -18,6 +18,6 @@ export { default as SpeakerSlash } from '~icons/ph/speaker-slash-fill';
 export { default as SteeringWheel } from '~icons/ph/steering-wheel-fill';
 export { default as Sun } from '~icons/ph/sun-fill';
 export { default as SunHorizon } from '~icons/ph/sun-horizon-fill';
-export { default as TipJar } from '~icons/ph/tip-jar-fill';
+export { default as Coffee } from '~icons/ph/coffee-fill';
 export { default as X } from '~icons/ph/x';
 export { default as YouTubeLogoFill } from '~icons/ph/youtube-logo-fill';

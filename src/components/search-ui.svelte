@@ -15,9 +15,11 @@
 </script>
 
 <script lang="ts" generics="T">
-	import { Search, X } from '$lib/icons';
+	import { fade } from 'svelte/transition';
+	import { onDestroy } from 'svelte';
 
-	import { Button, Input, Stack } from '$components/ui';
+	import { Search, X } from '$lib/icons';
+	import { Button, Spinner, Input, Stack } from '$components/ui';
 
 	const {
 		leftButton,
@@ -32,12 +34,45 @@
 	}: SearchProps<T> = $props();
 
 	let query = $state('');
+	let showLoading = $state(false);
+	let loadingTimeout: ReturnType<typeof setTimeout> | undefined;
 
 	$effect(() => {
 		const q = query.trim();
 		onInputChange?.(q);
 		onSearch(q);
 	});
+
+	$effect(() => {
+		// Clear any existing timeout when loading state changes
+		if (loadingTimeout) {
+			clearTimeout(loadingTimeout);
+		}
+
+		if (loading) {
+			// Only show loading spinner if loading takes longer than 300ms
+			loadingTimeout = setTimeout(() => {
+				showLoading = true;
+			}, 300);
+		} else {
+			// Immediately hide loading spinner when loading is complete
+			showLoading = false;
+		}
+	});
+
+	// Cleanup any pending timeout on component destruction
+	onDestroy(() => {
+		if (loadingTimeout) {
+			clearTimeout(loadingTimeout);
+		}
+	});
+
+	function handleKeyUp(event: KeyboardEvent) {
+		event.stopPropagation();
+		if (event.target) {
+			query = (event.target as HTMLInputElement).value;
+		}
+	}
 </script>
 
 <div class="flex size-full flex-col items-start justify-start">
@@ -48,7 +83,7 @@
 			</div>
 
 			<Input
-				bind:value={query}
+				onkeyup={handleKeyUp}
 				placeholder={inputPlaceholder}
 				icon={Search}
 				class="h-11 md:text-base [&_svg]:size-5"
@@ -68,6 +103,11 @@
 	</header>
 
 	<div role="presentation" class="relative w-full flex-1">
+		{#if showLoading}
+			<div transition:fade class="absolute flex size-full items-center justify-center">
+				<Spinner size="lg" />
+			</div>
+		{/if}
 		<Stack orientation="column" class="absolute inset-0 w-full grow">
 			{@render children?.(items)}
 		</Stack>

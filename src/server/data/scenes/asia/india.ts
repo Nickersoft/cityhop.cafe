@@ -15,6 +15,14 @@ export default createCountry({
 			suggestedTrack: genres.lofi.stations.bollywood
 		},
 		{
+			name: 'Sikkim',
+			type: SceneTypes.drive,
+			videoID: 'h-jKUudLTFE',
+			length: 1980,
+			tags: [Tags.day],
+			suggestedTrack: genres.lofi.stations.bollywood
+		},
+		{
 			name: 'Kolkata',
 			type: SceneTypes.drive,
 			videoID: '6iG9PpV20_U',
@@ -54,8 +62,9 @@ export default createCountry({
 				},
 				{
 					name: 'Tilak Nagar Market',
-					videoID: 'FTfpaW_Rr2M',
+					videoID: '2dH-7HwPvQM',
 					type: SceneTypes.walk,
+					tags: [Tags.day],
 					suggestedTrack: genres.lofi.stations.bollywood
 				},
 				{

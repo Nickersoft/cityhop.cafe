@@ -18,6 +18,12 @@ export default createCountry({
 			videoID: 'q21Kj-pxJW4',
 			offset: { start: 30 },
 			tags: [Tags.day]
+		},
+		{
+			name: 'Melbourne',
+			type: SceneTypes.walk,
+			videoID: 'cMKSDgGbBZA',
+			tags: [Tags.day]
 		}
 	]
 });

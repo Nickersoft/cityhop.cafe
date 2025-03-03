@@ -12,6 +12,8 @@ export const IS_CHRISTMAS = IS_DECEMBER && new Date().getDate() === 25;
 
 export const BAC_LINK = 'https://www.buymeacoffee.com/tnick';
 
+export const REQUEST_LINK = 'https://github.com/Nickersoft/cityhop.cafe/issues/new/choose';
+
 export const SITE_TITLE = 'CityHop';
 
 export const SITE_DESCRIPTION =
