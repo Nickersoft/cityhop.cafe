@@ -30,3 +30,9 @@ export enum PlayerState {
 	BUFFERING = 3,
 	CUED = 5
 }
+
+export enum Hotkeys {
+	RANDOM_SCENE = 'k',
+	RANDOM_STATION = 'm',
+	RANDOM = 'g'
+}

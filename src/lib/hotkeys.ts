@@ -2,13 +2,14 @@ import { on } from 'svelte/events';
 
 import { nowPlaying, ui } from '$lib/state.svelte';
 import { randomScene, randomStation } from '$lib/api';
+import { Hotkeys } from '$lib/enums';
 
 async function handleKeyUp(e: KeyboardEvent) {
-	if (e.key === 'g' || e.key === 'k') {
+	if (e.key === Hotkeys.RANDOM || e.key === Hotkeys.RANDOM_SCENE) {
 		nowPlaying.scene = await randomScene();
 	}
 
-	if (e.key === 'g' || e.key === 'm') {
+	if (e.key === Hotkeys.RANDOM || e.key === Hotkeys.RANDOM_STATION) {
 		nowPlaying.station = await randomStation();
 	}
 }
