@@ -31,7 +31,7 @@ importers:
         version: 1.227.0(@rrweb/types@2.0.0-alpha.17)
       posthog-node:
         specifier: ^4.3.1
-        version: 4.8.1
+        version: 4.9.0
       radashi:
         specifier: ^12.2.3
         version: 12.3.4
@@ -1523,8 +1523,8 @@ packages:
     peerDependencies:
       '@rrweb/types': 2.0.0-alpha.17
 
-  posthog-node@4.8.1:
-    resolution: {integrity: sha512-ApMEC1+DbctP/88+VhaCl8SRKpIoReibMf7Mb3rxw3yMthr1rKaM4opbHdZJ0buLhwS5zX8B2ckqLjpwpSjRPg==}
+  posthog-node@4.9.0:
+    resolution: {integrity: sha512-Jg4YmHTzUUJ/lrwPAvYQcF6xpfaW/l11UJISlTqajj1+xANv3WJXRtBml+atWVqbwTvSBlkzXwEq9rd0Sy188A==}
     engines: {node: '>=15.0.0'}
 
   preact@10.26.4:
@@ -3226,7 +3226,7 @@ snapshots:
       preact: 10.26.4
       web-vitals: 4.2.4
 
-  posthog-node@4.8.1:
+  posthog-node@4.9.0:
     dependencies:
       axios: 1.8.1
     transitivePeerDependencies:
