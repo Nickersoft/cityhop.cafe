@@ -28,7 +28,7 @@
 			{/snippet}
 		</Typography>
 	{:else}
-		<Typography variant="headline" size="md" class="glow leading-none">
+		<Typography variant="headline" size="md" class="glow line-clamp-1 leading-none">
 			{title}
 		</Typography>
 	{/if}

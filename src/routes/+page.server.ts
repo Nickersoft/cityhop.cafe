@@ -1,4 +1,6 @@
 import { getSceneByID, getStationByID, randomScene, randomStation } from '$lib/api';
+import { IS_DECEMBER, IS_OCTOBER } from '$lib/consts';
+import { Tags } from '$lib/enums';
 import { scenes } from '$server/data';
 
 import type { PageServerLoad } from './$types';
@@ -20,9 +22,19 @@ export const load: PageServerLoad = async ({ fetch, url }) => {
 		}
 	}
 
+	let tags: string[] = [];
+
+	if (IS_OCTOBER) {
+		tags = [Tags.halloween];
+	}
+
+	if (IS_DECEMBER) {
+		tags = [Tags.christmas];
+	}
+
 	return {
 		totalScenes,
-		scene: await randomScene(fetch),
-		station: await randomStation(fetch)
+		scene: await randomScene({ calm: true, tags }, fetch),
+		station: await randomStation({ tags }, fetch)
 	};
 };

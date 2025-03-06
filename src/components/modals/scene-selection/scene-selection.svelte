@@ -72,7 +72,7 @@
 	});
 </script>
 
-<div class="aspect-[1.5] w-[max(60vw,800px)] max-w-7xl">
+<div class="aspect-square w-[95vw] max-w-4xl md:aspect-[1.5]">
 	<Search
 		{...searcher.props}
 		{onInputChange}
@@ -126,7 +126,7 @@
 					<div in:enter={{ direction }} out:exit={{ direction }} class="absolute inset-0">
 						<ScrollArea>
 							<div
-								class="grid auto-rows-min grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4 p-4"
+								class="grid auto-rows-min grid-cols-[repeat(auto-fill,minmax(var(--size),1fr))] gap-2 p-2 [--size:200px] max-md:[--size:150px] md:gap-4 md:p-4"
 							>
 								{@render section(groups)}
 								{@render section(drive, 'Drives', SteeringWheel)}

@@ -27,12 +27,12 @@
 	--input: --alpha(var(--color-white) / 20%);
 	--card: var(--popover);
 	--card-foreground: var(--popover-foreground);
-	--primary: --alpha(var(--color-white) / 60%);
-	--primary-foreground: var(---color-neutral-950);
+	--primary: var(--color-neutral-950);
+	--primary-foreground: var(--color-neutral-50);
 	--secondary: var(--color-neutral-100);
 	--secondary-foreground: var(--color-neutral-900);
 	--accent: --alpha(var(--color-neutral-950) / 5%);
-	--accent-foreground: var(--color-white);
+	--accent-foreground: var(--foreground);
 	--destructive: var(--color-red-600);
 	--destructive-foreground: var(--color-white);
 	--ring: var(--color-blue-300);

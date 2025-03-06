@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { Popover } from '$components/ui';
 	import { SpeakerHigh } from '$lib/icons';
-	import { preferences } from '$lib/state.svelte';
+	import { isMobile, preferences } from '$lib/state.svelte';
 
 	import ToolbarButton from '../toolbar-button.svelte';
 	import Slider from './slider.svelte';
 </script>
 
-<Popover align="end">
+<Popover sideOffset={isMobile ? 24 : 12} align={isMobile ? 'center' : 'end'}>
 	{#snippet trigger({ props })}
 		<ToolbarButton title="Settings" {...props}>
 			<SpeakerHigh />
@@ -15,7 +15,7 @@
 	{/snippet}
 
 	{#snippet content()}
-		<div class="w-96 space-y-4 p-4">
+		<div class="w-[95vw] max-w-96 space-y-4 p-4">
 			<Slider
 				label="Scene Volume"
 				bind:value={preferences.current.sceneVolume}

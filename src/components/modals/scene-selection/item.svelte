@@ -32,8 +32,6 @@
 		loading="lazy"
 		decoding="async"
 		src={item.thumbnail}
-		width="480"
-		height="360"
 		class="border-input aspect-video w-full rounded-md border object-cover object-center"
 		alt={item.name}
 	/>

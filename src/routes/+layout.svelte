@@ -1,11 +1,11 @@
 <script>
 	import { onMount } from 'svelte';
-	import { MediaQuery } from 'svelte/reactivity';
+	import { Tooltip } from 'bits-ui';
 
 	import BaseHead from '$components/base-head.svelte';
 
 	import { Toaster } from '$components/ui';
-	import { preferences } from '$lib/state.svelte';
+	import { isDark, preferences } from '$lib/state.svelte';
 
 	let { children } = $props();
 
@@ -30,8 +30,6 @@
 		});
 	});
 
-	const isDark = new MediaQuery('(prefers-color-scheme: dark)');
-
 	$effect(() => {
 		document.documentElement.classList.toggle(
 			'dark',
@@ -43,6 +41,8 @@
 
 <BaseHead title="CityHop | Aesthetic walks and drives from around the world" />
 
-{@render children?.()}
+<Tooltip.Provider>
+	{@render children?.()}
+</Tooltip.Provider>
 
 <Toaster />

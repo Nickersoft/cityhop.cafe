@@ -9,12 +9,6 @@
 	const { children }: Props = $props();
 </script>
 
-<Stack
-	orientation="column"
-	align="start"
-	justify="start"
-	class="w-full md:w-auto md:grow"
-	gap="none"
->
+<Stack orientation="column" align="start" justify="start" class="w-auto grow" gap="none">
 	{@render children()}
 </Stack>

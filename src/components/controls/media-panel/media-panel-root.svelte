@@ -9,6 +9,12 @@
 	const { children }: Props = $props();
 </script>
 
-<Stack orientation="row" gap="md" align="center" justify="between" wrap class="flex-1 py-4">
+<Stack
+	orientation="row"
+	gap="md"
+	align="center"
+	justify="between"
+	class="flex-1 py-4 max-md:w-full max-md:px-4"
+>
 	{@render children()}
 </Stack>

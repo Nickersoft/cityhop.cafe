@@ -7,7 +7,7 @@
 
 	function copyURL() {
 		navigator.clipboard.writeText(getSharableURL());
-		toast('Sharable link copied to clipboard!');
+		toast.success('Sharable link copied to clipboard!');
 	}
 </script>
 

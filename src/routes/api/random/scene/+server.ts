@@ -15,11 +15,11 @@ const lofiStations = stations.filter(({ genre }) => genre === 'lofi') as Station
 
 export const GET: RequestHandler = async ({ url }) => {
 	const calmOnly = !!url.searchParams.get('calm');
-	const tag = url.searchParams.get('tag') as Tags;
+	const tags = (url.searchParams.get('tags')?.split(',') ?? []) as Tags[];
 
-	let candidates = scenes.filter((scene) => {
-		return tag ? scene.tags?.includes(tag) : !scene.hidden;
-	});
+	let candidates = scenes.filter((scene) =>
+		tags.length > 0 ? tags.some((tag) => scene.tags?.includes(tag)) : !scene.hidden
+	);
 
 	if (calmOnly) {
 		candidates = candidates.filter((b) =>

@@ -24,9 +24,7 @@ function createHashtag(str: string) {
 /**
  * Returns a URL to share the current scene and station on Bluesky
  */
-export function getPostURL() {
-	const { scene, station } = nowPlaying;
-
+export function getPostURL({ scene, station }: typeof nowPlaying) {
 	if (!scene || !station) return null;
 
 	const post = `Come ${scene.type} in #${createHashtag(

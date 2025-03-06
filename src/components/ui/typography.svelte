@@ -35,18 +35,22 @@
 				muted: 'text-muted-foreground',
 				invert: 'text-invert',
 				inherit: 'text-inherit'
+			},
+			responsive: {
+				true: '',
+				false: ''
 			}
 		},
 		compoundVariants: [
 			{
 				variant: 'display',
 				size: 'lg',
-				class: 'tablet:text-[3rem] text-[4.5rem] leading-none'
+				class: 'text-[3rem] sm:text-[3.5rem] md:text-[4rem] lg:text-[4.5rem] leading-none'
 			},
 			{
 				variant: 'display',
 				size: 'md',
-				class: 'text-5xl phone:text-4xl'
+				class: 'text-5xl'
 			},
 			{
 				variant: 'display',
@@ -76,7 +80,7 @@
 			{
 				variant: 'title',
 				size: 'md',
-				class: 'text-base'
+				class: 'ext-base'
 			},
 			{
 				variant: 'title',
@@ -111,13 +115,14 @@
 			{
 				variant: 'label',
 				size: 'sm',
-				class: 'text-2xs'
+				class: 'text-[0.65rem]'
 			}
 		],
 		defaultVariants: {
 			variant: 'body',
 			size: 'md',
-			color: 'default'
+			color: 'default',
+			responsive: false
 		}
 	});
 
@@ -234,13 +239,16 @@
 		size,
 		color,
 		align,
+		responsive = false,
 		child,
 		as,
 		...props
 	}: TypographyProps = $props();
 
 	const tag = $derived(as ?? tagVariants({ variant, size }));
-	const classes = $derived(cn(typographyVariants({ variant, align, color, size }), className));
+	const classes = $derived(
+		cn(typographyVariants({ variant, align, color, size, responsive }), className)
+	);
 	const allProps = $derived(mergeProps({ class: classes }, props));
 </script>
 

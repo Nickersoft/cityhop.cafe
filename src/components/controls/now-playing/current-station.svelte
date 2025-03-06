@@ -34,7 +34,7 @@
 				class="data-[active=true]:bg-white/10 data-[active=true]:opacity-100"
 			>
 				<ArrowsClockwise />
-				Change Station
+				Change
 			</MediaPanel.Button>
 		{/snippet}
 

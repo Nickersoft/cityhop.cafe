@@ -12,10 +12,12 @@
 </script>
 
 <MediaPanel.Root>
-	<div
-		class="size-12 rounded-full bg-(url:--bg) shadow-[inset_0_3px_8px_--alpha(white/50%),inset_0_-3px_8px_--alpha(black/20%)] ring-1 ring-white/10"
-		style={`--bg: url("/flags/${nowPlaying.scene?.country}.svg")`}
-	></div>
+	{#if nowPlaying.scene?.country}
+		<div
+			class="size-8 shrink-0 rounded-full shadow-[inset_0_3px_8px_--alpha(white/50%),inset_0_-3px_8px_--alpha(black/20%)] ring-1 ring-white/10 md:size-12"
+			style={`background-image: url("/flags/${nowPlaying.scene?.country}.svg")`}
+		></div>
+	{/if}
 
 	<MediaPanel.Header>
 		<MediaPanel.Label>
@@ -39,7 +41,7 @@
 				class="data-[active=true]:bg-white/10 data-[active=true]:opacity-100"
 			>
 				<ArrowsClockwise />
-				Change Scene
+				Change
 			</MediaPanel.Button>
 		{/snippet}
 

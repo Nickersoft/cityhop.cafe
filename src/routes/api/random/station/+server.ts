@@ -7,11 +7,11 @@ import { draw } from '$lib/utils';
 import type { Tags } from '$lib/enums';
 
 export const GET: RequestHandler = async ({ url }) => {
-	const tag = url.searchParams.get('tag') as Tags;
+	const tags = (url.searchParams.get('tags')?.split(',') ?? []) as Tags[];
 
 	let candidates = stations.filter((el) => {
-		return tag
-			? el.tags?.includes(tag)
+		return tags.length > 0
+			? tags.some((tag) => el.tags?.includes(tag))
 			: el.genre === 'lofi' && !el.hidden && !el.name.toLowerCase().includes('bollywood');
 	});
 

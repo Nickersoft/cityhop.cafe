@@ -17,7 +17,7 @@
 	gap="sm"
 	class={cn(
 		typographyVariants({ variant: 'body', size: 'md', color: 'muted' }),
-		'h-5 font-medium italic'
+		'h-5 font-medium whitespace-nowrap italic'
 	)}
 >
 	{@render children()}

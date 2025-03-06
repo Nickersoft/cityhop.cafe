@@ -1,6 +1,11 @@
 import { persistedState } from 'svelte-persisted-state';
+import { MediaQuery } from 'svelte/reactivity';
 
 import type { UIState, NowPlaying, UserPreferences } from './types';
+
+export const isMobile = new MediaQuery('(max-width: 640px)');
+
+export const isDark = new MediaQuery('(prefers-color-scheme: dark)');
 
 export const nowPlaying = $state<NowPlaying>({
 	scene: null,

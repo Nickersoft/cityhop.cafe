@@ -13,7 +13,7 @@
 
 <Stack
 	orientation="row"
-	class="**:[p_a]:text-foreground items-start justify-start gap-8 **:[p_a]:underline"
+	class="**:[p_a]:text-foreground items-start justify-start gap-8 max-md:flex-col **:[p_a]:underline"
 >
 	<article class="flex-1 space-y-4">
 		<Typography color="subtle">
@@ -40,7 +40,7 @@
 			</a>.
 		</Typography>
 
-		<Stack orientation="row" class="py-2">
+		<Stack orientation="row" class="py-2 max-md:flex-col max-md:items-stretch">
 			<Button href={BAC_LINK} rel="noopener noreferrer" target="_blank">
 				<Coffee />
 				Buy Tyler a Coffee
@@ -51,16 +51,16 @@
 		</Stack>
 	</article>
 
-	<div class="bg-foreground/4 w-full max-w-[300px] rounded-lg border">
-		<Typography variant="label" size="md" class="mb-4 block border-b p-4">
+	<div class="bg-foreground/4 w-full max-w-[300px] rounded-lg border max-md:hidden">
+		<Typography variant="label" color="muted" size="md" class="mb-4 block border-b p-4">
 			Keyboard Shortcuts
 		</Typography>
 
 		<div class="space-y-2 pb-3">
 			{#snippet shortcutItem(label: string, hotkey: string)}
 				<Stack orientation="row" justify="between" class="px-4">
-					<Typography size="md">{label}</Typography>
-					<kbd class="bg-foreground/10 rounded-sm border px-2 py-1 text-xs font-semibold">
+					<Typography size="md" color="subtle">{label}</Typography>
+					<kbd class="bg-foreground/5 rounded-sm border px-2 py-1 text-xs font-semibold">
 						{hotkey}
 					</kbd>
 				</Stack>
