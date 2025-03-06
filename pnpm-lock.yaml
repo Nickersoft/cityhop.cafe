@@ -28,7 +28,7 @@ importers:
         version: 2.3.0
       posthog-js:
         specifier: ^1.190.2
-        version: 1.227.0(@rrweb/types@2.0.0-alpha.17)
+        version: 1.227.2(@rrweb/types@2.0.0-alpha.17)
       posthog-node:
         specifier: ^4.3.1
         version: 4.9.0
@@ -1518,10 +1518,16 @@ packages:
     resolution: {integrity: sha512-dle9A3yYxlBSrt8Fu+IpjGT8SY8hN0mlaA6GY8t0P5PjIOZemULz/E2Bnm/2dcUOena75OTNkHI76uZBNUUq3A==}
     engines: {node: ^10 || ^12 || >=14}
 
-  posthog-js@1.227.0:
-    resolution: {integrity: sha512-xdXpBI+6SJDG3vUSxW3KH8o4B5CrHz0Y95anSaHjIzkEeRd9NbTTDku/Hy9lLt1+8tkiwvsh6fYi7jS1UBHL/g==}
+  posthog-js@1.227.2:
+    resolution: {integrity: sha512-McEerqeQHZpV+enlVqOXCcGUFtV3FZb4AmYkN8xU9mm0VRpa1feyEF7pFZJabKWLrqba0MrVpY6b6dse17HrOQ==}
     peerDependencies:
       '@rrweb/types': 2.0.0-alpha.17
+      rrweb-snapshot: 2.0.0-alpha.17
+    peerDependenciesMeta:
+      '@rrweb/types':
+        optional: true
+      rrweb-snapshot:
+        optional: true
 
   posthog-node@4.9.0:
     resolution: {integrity: sha512-Jg4YmHTzUUJ/lrwPAvYQcF6xpfaW/l11UJISlTqajj1+xANv3WJXRtBml+atWVqbwTvSBlkzXwEq9rd0Sy188A==}
@@ -2247,6 +2253,7 @@ snapshots:
   '@rrweb/types@2.0.0-alpha.17':
     dependencies:
       rrweb-snapshot: 2.0.0-alpha.18
+    optional: true
 
   '@sveltejs/acorn-typescript@1.0.5(acorn@8.14.1)':
     dependencies:
@@ -3218,13 +3225,14 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  posthog-js@1.227.0(@rrweb/types@2.0.0-alpha.17):
+  posthog-js@1.227.2(@rrweb/types@2.0.0-alpha.17):
     dependencies:
-      '@rrweb/types': 2.0.0-alpha.17
       core-js: 3.41.0
       fflate: 0.4.8
       preact: 10.26.4
       web-vitals: 4.2.4
+    optionalDependencies:
+      '@rrweb/types': 2.0.0-alpha.17
 
   posthog-node@4.9.0:
     dependencies:
@@ -3299,6 +3307,7 @@ snapshots:
   rrweb-snapshot@2.0.0-alpha.18:
     dependencies:
       postcss: 8.5.3
+    optional: true
 
   run-parallel@1.2.0:
     dependencies:
