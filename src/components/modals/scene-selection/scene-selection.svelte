@@ -72,7 +72,7 @@
 	});
 </script>
 
-<div class="aspect-square w-[95vw] max-w-4xl md:aspect-[1.5]">
+<div class="w-[95vw] max-w-4xl max-md:h-full md:aspect-[1.5]">
 	<Search
 		{...searcher.props}
 		{onInputChange}

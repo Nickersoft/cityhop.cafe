@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { SceneTypes } from '$lib/enums';
-	import { nowPlaying } from '$lib/state.svelte';
+	import { isMobile, nowPlaying } from '$lib/state.svelte';
 
 	import { Popover } from '$components/ui';
 	import { SceneSelection } from '$components/modals';
@@ -9,6 +9,12 @@
 	import * as MediaPanel from '../media-panel';
 
 	let open = $state(false);
+
+	const component = $derived(
+		isMobile.current
+			? import('$components/ui/drawer.svelte').then(({ default: Drawer }) => Drawer)
+			: import('$components/ui/popover.svelte').then(({ default: Popover }) => Popover)
+	);
 </script>
 
 <MediaPanel.Root>
@@ -33,20 +39,22 @@
 		{/if}
 	</MediaPanel.Header>
 
-	<Popover bind:open sideOffset={40}>
-		{#snippet trigger({ props })}
-			<MediaPanel.Button
-				{...props}
-				data-active={open}
-				class="data-[active=true]:bg-white/10 data-[active=true]:opacity-100"
-			>
-				<ArrowsClockwise />
-				Change
-			</MediaPanel.Button>
-		{/snippet}
+	{#await component then Component}
+		<Component bind:open sideOffset={40} class="max-md:h-[90vh]">
+			{#snippet trigger({ props })}
+				<MediaPanel.Button
+					{...props}
+					data-active={open}
+					class="data-[active=true]:bg-white/10 data-[active=true]:opacity-100"
+				>
+					<ArrowsClockwise />
+					Change
+				</MediaPanel.Button>
+			{/snippet}
 
-		{#snippet content()}
-			<SceneSelection onClose={() => (open = false)} />
-		{/snippet}
-	</Popover>
+			{#snippet content()}
+				<SceneSelection onClose={() => (open = false)} />
+			{/snippet}
+		</Component>
+	{/await}
 </MediaPanel.Root>
