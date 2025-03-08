@@ -1,10 +1,11 @@
-import { expect, test, Page } from '@playwright/test';
-
-import { stationList } from '$src/data/stations';
-import { scenes } from '$src/data/scenes';
 import { describe } from 'node:test';
 
-export async function validateVideoLink(page: Page, videoID: string): Promise<boolean> {
+import { expect, test, type Page } from '@playwright/test';
+
+import { stations } from '$server/data/stations';
+import { scenes } from '$server/data/scenes';
+
+async function validateVideoLink(page: Page, videoID: string): Promise<boolean> {
 	await page.goto(`https://www.youtube.com/watch?v=${videoID}`, { waitUntil: 'domcontentloaded' });
 	const pageContent = await page.content();
 	const unavailableTexts = ['Video unavailable', 'This video is unavailable'];
@@ -15,7 +16,7 @@ export async function validateVideoLink(page: Page, videoID: string): Promise<bo
 describe('Check link validity', () => {
 	test('Validate station links', async ({ page }) => {
 		test.slow();
-		for (const station of stationList) {
+		for (const station of stations) {
 			const videoID = station.trackID as string;
 			await test.step(`Checking station ${station.name} (${videoID})`, async () => {
 				const valid = await validateVideoLink(page, videoID);
