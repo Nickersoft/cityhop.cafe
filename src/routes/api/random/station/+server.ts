@@ -1,6 +1,6 @@
 import { json, type RequestHandler } from '@sveltejs/kit';
 
-import { stations, type StationWithGenre } from '$server/data/stations';
+import { genres, stations, type StationWithGenre } from '$server/data/stations';
 
 import { draw } from '$lib/utils';
 
@@ -12,7 +12,9 @@ export const GET: RequestHandler = async ({ url }) => {
 	let candidates = stations.filter((el) => {
 		return tags.length > 0
 			? tags.some((tag) => el.tags?.includes(tag))
-			: el.genre === 'lofi' && !el.hidden && !el.name.toLowerCase().includes('bollywood');
+			: el.genre.name === genres.lofi.name &&
+					!el.hidden &&
+					!el.name.toLowerCase().includes('bollywood');
 	});
 
 	return json(draw(candidates) as StationWithGenre);

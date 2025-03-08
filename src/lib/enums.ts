@@ -12,6 +12,7 @@ export enum Tags {
 
 export enum SceneTypes {
 	walk = 'walk',
+	train = 'train',
 	drive = 'drive',
 	bike = 'bike',
 	boat = 'boat'

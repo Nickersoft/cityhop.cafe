@@ -1,11 +1,13 @@
 <script lang="ts">
-	import Search from '$components/search-ui.svelte';
-	import { ScrollArea, Stack, Typography } from '$components/ui';
+	import * as icons from '$lib/icons';
+
+	import { ScrollArea, Typography } from '$components/ui';
 	import { Accordion } from 'bits-ui';
 	import { Searcher } from '$lib/search.svelte';
 	import { nowPlaying } from '$lib/state.svelte';
 	import type { StationWithGenre } from '$server/data';
-	// import { Music } from '$lib/icons'; // Add this import for the music icon
+
+	import Search from '$components/search-ui.svelte';
 
 	interface Props {
 		onClose: () => void;
@@ -19,43 +21,50 @@
 		nowPlaying.station = station;
 		onClose();
 	}
-
-	function toTitleCase(str: string) {
-		return str.replace(
-			/\w\S*/g,
-			(txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
-		);
-	}
 </script>
 
-<div class="aspect-[1.5] w-[max(60vw,800px)] max-w-7xl">
+<div class="w-[95vw] max-w-4xl max-md:h-screen md:aspect-[1.5]">
 	<Search
 		{...searcher.props}
 		onSearch={searcher.search}
 		inputPlaceholder="Search through our curated collection of radio stations"
 	>
 		{#snippet children(items)}
-			{@const groupedItems = Object.groupBy(items, (station) => station.genre)}
+			{@const groupedItems = Object.groupBy(items, (station) => station.genre.name)}
 
 			<ScrollArea>
 				<Accordion.Root type="multiple" class="w-full">
-					{#each Object.entries(groupedItems) as [genre, stations]}
-						<Accordion.Item value={genre}>
-							<Accordion.Trigger class="flex w-full cursor-pointer items-center gap-2 border-b p-4">
-								<!-- <Music class="size-4" /> -->
-								<Typography variant="headline" size="sm">
-									{toTitleCase(genre)}
+					{#each Object.entries(groupedItems) as [genreName, stations = []]}
+						{@const genre = groupedItems[genreName as keyof typeof groupedItems]?.[0].genre}
+						{@const Icon = icons[genre?.icon as keyof typeof icons]}
+
+						<Accordion.Item value={genreName}>
+							<Accordion.Trigger
+								class="group flex w-full cursor-pointer items-center gap-2 border-b p-4"
+							>
+								<Icon class="size-4" />
+								<Typography variant="headline" size="sm" class="flex-1 text-left">
+									{genreName}
 								</Typography>
+								<div class="relative size-6 *:absolute *:transition-all *:duration-300">
+									<icons.Plus
+										size={24}
+										class="opacity-100 group-data-[state=open]:rotate-45 group-data-[state=open]:opacity-0"
+									/>
+									<icons.Minus size={24} />
+								</div>
 							</Accordion.Trigger>
 							<Accordion.Content class="overflow-hidden p-4">
-								<ul class="flex flex-col gap-2">
-									{#each stations as station}
+								<ul class="flex w-full flex-col items-stretch gap-2">
+									{#each stations.sort((a, b) => a.name.localeCompare(b.name)) as station}
 										<li>
 											<button
-												class="hover:bg-muted/50 active:bg-muted/30 flex w-full cursor-pointer items-center gap-4 rounded-lg p-4 text-left transition-all duration-150"
+												class="hover:bg-muted/50 active:bg-muted/30 w-full cursor-pointer rounded-lg p-4 text-left font-medium transition-all duration-150"
 												onclick={() => onStationSelect(station)}
 											>
-												<div class="font-medium">{station.name}</div>
+												<span class="line-clamp-1 w-full">
+													{station.name}
+												</span>
 											</button>
 										</li>
 									{/each}

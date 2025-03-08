@@ -1,4 +1,4 @@
-import type { Station } from '$server/schema';
+import type { Genre, Station } from '$server/schema';
 
 import { objectify } from '$lib/utils';
 
@@ -19,15 +19,11 @@ export const genres = {
 };
 
 export interface StationWithGenre extends Station {
-	genre: keyof typeof genres;
+	genre: Omit<Genre, 'stations'>;
 }
 
-export const stations: StationWithGenre[] = Object.entries(genres).flatMap(
-	([genre, { stations }]) =>
-		Object.values(stations).map((station) => ({
-			...station,
-			genre: genre as keyof typeof genres
-		}))
+export const stations: StationWithGenre[] = Object.values(genres).flatMap(
+	({ stations, ...genre }) => Object.values(stations).map((station) => ({ ...station, genre }))
 );
 
 const stationMap = objectify(stations, (station) => station.trackID);

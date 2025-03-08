@@ -2,7 +2,7 @@ import { createGenre } from '$server/schema';
 
 export const rnb = createGenre({
 	name: 'R&B',
-	emoji: 'microphone',
+	icon: 'VinylRecord',
 	stations: {
 		korean: {
 			displayName: 'Korean Indie/R&B/Hip-Hop Radio',

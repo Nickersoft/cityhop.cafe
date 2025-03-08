@@ -3,7 +3,7 @@ import { Tags } from '$lib/enums';
 
 export const electronic = createGenre({
 	name: 'Electronic',
-	emoji: 'musical-keyboard',
+	icon: 'Waveform',
 	stations: {
 		halloween1: {
 			tags: [Tags.halloween],

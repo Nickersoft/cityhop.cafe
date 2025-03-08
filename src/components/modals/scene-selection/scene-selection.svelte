@@ -5,7 +5,7 @@
 
 	import { Searcher, SearchResults } from '$lib/search.svelte';
 	import { nowPlaying } from '$lib/state.svelte';
-	import { ArrowLeft, SteeringWheel } from '$lib/icons';
+	import { ArrowLeft, Bicycle, Boat, Footprints, SteeringWheel, TrainSimple } from '$lib/icons';
 	import { FilterGroup, Stack, Typography, Button, ScrollArea } from '$components/ui';
 	import type { SearchResultItem } from '$lib/types';
 	import { isContinent, isCountry, isSceneGroup } from '$lib/guards';
@@ -102,7 +102,7 @@
 
 			{@const {
 				groups,
-				scenes: { drive, walk, bike, boat }
+				scenes: { drive, walk, bike, boat, train }
 			} = results}
 
 			{#snippet section(scenes?: SearchResultItem[], title?: string, Icon?: Component)}
@@ -130,9 +130,10 @@
 							>
 								{@render section(groups)}
 								{@render section(drive, 'Drives', SteeringWheel)}
-								{@render section(walk, '👣 Walks')}
-								{@render section(bike, '🚲 Bike Rides')}
-								{@render section(boat, '🚢 Boat Rides')}
+								{@render section(train, 'Train Rides', TrainSimple)}
+								{@render section(walk, 'Walks', Footprints)}
+								{@render section(bike, 'Bike Rides', Bicycle)}
+								{@render section(boat, 'Boat Rides', Boat)}
 							</div>
 						</ScrollArea>
 					</div>

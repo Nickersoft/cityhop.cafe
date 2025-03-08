@@ -44,7 +44,7 @@ export default createCountry({
 
 		{
 			name: 'Tirano',
-			type: SceneTypes.drive,
+			type: SceneTypes.train,
 			videoID: 'Mw9qiV7XlFs',
 			offset: { start: 30 },
 			tags: [Tags.day]

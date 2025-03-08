@@ -48,7 +48,7 @@ export default createCountry({
 		},
 		{
 			name: 'Akita',
-			type: SceneTypes.drive,
+			type: SceneTypes.train,
 			videoID: 'CIRlmM8wI1g',
 			offset: { start: 200 },
 			tags: [Tags.day]

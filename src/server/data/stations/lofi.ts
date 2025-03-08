@@ -3,7 +3,7 @@ import { Tags } from '$lib/enums';
 
 export const lofi = createGenre({
 	name: 'Lofi',
-	emoji: 'hot-beverage',
+	icon: 'CassetteTape',
 	stations: {
 		bollywood: {
 			displayName: 'Bollywood Lofi Radio',

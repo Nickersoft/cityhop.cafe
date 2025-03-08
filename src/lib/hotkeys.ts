@@ -1,4 +1,5 @@
 import { on } from 'svelte/events';
+import { invalidate } from '$app/navigation';
 
 import { nowPlaying, ui } from '$lib/state.svelte';
 import { randomScene, randomStation } from '$lib/api';
@@ -31,7 +32,15 @@ export default function setupHotkeys() {
 
 		ui.hasStarted = true;
 
-		removeStartHandlers();
+		setTimeout(() => {
+			if (ui.isPlaying) {
+				removeStartHandlers();
+			} else {
+				invalidate('/').then(() => {
+					start(event);
+				});
+			}
+		}, 5000);
 	}
 
 	return () => {

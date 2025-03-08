@@ -3,7 +3,7 @@ import { Tags } from '$lib/enums';
 
 export const jazz = createGenre({
 	name: 'Jazz',
-	emoji: 'saxophone',
+	icon: 'PianoKeys',
 	stations: {
 		relaxing: {
 			displayName: 'Relaxing Jazz Radio',

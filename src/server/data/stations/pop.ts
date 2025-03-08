@@ -2,7 +2,7 @@ import { createGenre } from '$server/schema';
 
 export const pop = createGenre({
 	name: 'Pop',
-	emoji: 'guitar',
+	icon: 'MicrophoneStage',
 	stations: {
 		spanish: {
 			displayName: 'Spanish Hits Radio',

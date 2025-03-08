@@ -29,8 +29,8 @@ export function getPostURL({ scene, station }: typeof nowPlaying) {
 
 	const post = `Come ${scene.type} in #${createHashtag(
 		scene.name
-	)} with me and chill! 🎧 #cityhop #${createHashtag(station.genre.toLowerCase())}
-    
+	)} with me and chill! 🎧 #cityhop #${createHashtag(station.genre.name.toLowerCase())}
+
   ${getSharableURL()}`;
 
 	return `https://bsky.app/intent/compose?text=${encodeURIComponent(post)}`;

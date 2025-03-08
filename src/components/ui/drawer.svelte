@@ -5,13 +5,12 @@
 
 	interface Props {
 		class?: string;
+		open?: boolean;
 		trigger: Snippet<[{ props: Record<string, unknown> }]>;
 		content: Snippet;
 	}
 
-	let open = $state(false);
-
-	const { trigger, content, class: className }: Props = $props();
+	let { trigger, open = $bindable(false), content, class: className }: Props = $props();
 
 	function openDrawer() {
 		open = true;
