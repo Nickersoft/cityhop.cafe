@@ -1,8 +1,10 @@
 <script lang="ts">
 	import * as icons from '$lib/icons';
 
-	import { ScrollArea, Typography } from '$components/ui';
+	import { fade, fly } from 'svelte/transition';
 	import { Accordion } from 'bits-ui';
+
+	import { ScrollArea, Typography } from '$components/ui';
 	import { Searcher } from '$lib/search.svelte';
 	import { nowPlaying } from '$lib/state.svelte';
 	import type { StationWithGenre } from '$server/data';
@@ -34,43 +36,45 @@
 
 			<ScrollArea>
 				<Accordion.Root type="multiple" class="w-full">
-					{#each Object.entries(groupedItems) as [genreName, stations = []]}
+					{#each Object.entries(groupedItems) as [genreName, stations = []], idx}
 						{@const genre = groupedItems[genreName as keyof typeof groupedItems]?.[0].genre}
 						{@const Icon = icons[genre?.icon as keyof typeof icons]}
 
-						<Accordion.Item value={genreName}>
-							<Accordion.Trigger
-								class="group flex w-full cursor-pointer items-center gap-2 border-b p-4"
-							>
-								<Icon class="size-4" />
-								<Typography variant="headline" size="sm" class="flex-1 text-left">
-									{genreName}
-								</Typography>
-								<div class="relative size-6 *:absolute *:transition-all *:duration-300">
-									<icons.Plus
-										size={24}
-										class="opacity-100 group-data-[state=open]:rotate-45 group-data-[state=open]:opacity-0"
-									/>
-									<icons.Minus size={24} />
-								</div>
-							</Accordion.Trigger>
-							<Accordion.Content class="overflow-hidden p-4">
-								<ul class="flex w-full flex-col items-stretch gap-2">
-									{#each stations.sort((a, b) => a.name.localeCompare(b.name)) as station}
-										<li>
-											<button
-												class="hover:bg-muted/50 active:bg-muted/30 w-full cursor-pointer rounded-lg p-4 text-left font-medium transition-all duration-150"
-												onclick={() => onStationSelect(station)}
-											>
-												<span class="line-clamp-1 w-full">
-													{station.name}
-												</span>
-											</button>
-										</li>
-									{/each}
-								</ul>
-							</Accordion.Content>
-						</Accordion.Item>
+						<div in:fly={{ y: 16, delay: idx * 72 }} out:fade>
+							<Accordion.Item value={genreName}>
+								<Accordion.Trigger
+									class="group flex w-full cursor-pointer items-center gap-2 border-b p-4"
+								>
+									<Icon class="size-4" />
+									<Typography variant="headline" size="sm" class="flex-1 text-left">
+										{genreName}
+									</Typography>
+									<div class="relative size-6 *:absolute *:transition-all *:duration-300">
+										<icons.Plus
+											size={24}
+											class="opacity-100 group-data-[state=open]:rotate-45 group-data-[state=open]:opacity-0"
+										/>
+										<icons.Minus size={24} />
+									</div>
+								</Accordion.Trigger>
+								<Accordion.Content class="overflow-hidden p-4">
+									<ul class="flex w-full flex-col items-stretch gap-2">
+										{#each stations.sort((a, b) => a.name.localeCompare(b.name)) as station}
+											<li>
+												<button
+													class="hover:bg-muted/50 active:bg-muted/30 w-full cursor-pointer rounded-lg p-4 text-left font-medium transition-all duration-150"
+													onclick={() => onStationSelect(station)}
+												>
+													<span class="line-clamp-1 w-full">
+														{station.name}
+													</span>
+												</button>
+											</li>
+										{/each}
+									</ul>
+								</Accordion.Content>
+							</Accordion.Item>
+						</div>
 					{/each}
 				</Accordion.Root>
 			</ScrollArea>
