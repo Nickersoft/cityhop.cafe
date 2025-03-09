@@ -12,7 +12,6 @@
 	import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE } from '$lib/consts';
 
 	const ogImage = $derived(`${page.url.origin}/og.jpg`);
-	const twtImage = $derived(`${page.url.origin}/twitter.jpg`);
 
 	interface Props {
 		title: string;
@@ -45,6 +44,6 @@
 		cardType: 'summary_large_image',
 		title: SITE_TITLE,
 		description: SITE_DESCRIPTION,
-		image: twtImage
+		image: ogImage
 	}}
 />
