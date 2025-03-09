@@ -6,6 +6,8 @@
 	import { random } from '$lib/utils';
 	import { nowPlaying, preferences, ui } from '$lib/state.svelte';
 	import { ArrowsIn, ArrowsOut } from '$lib/icons';
+	import { onMount } from 'svelte';
+	import { on } from 'svelte/events';
 
 	let videoDuration: number | undefined = $state();
 
@@ -46,15 +48,21 @@
 	function toggleFullscreen() {
 		if (document.fullscreenElement) {
 			document.exitFullscreen();
-			ui.isFullscreen = false;
 		} else {
 			document.documentElement.requestFullscreen();
-			ui.isFullscreen = true;
 		}
 	}
 
 	$effect(() => {
 		player?.setVolume(preferences.current.muteScene ? 0 : preferences.current.sceneVolume);
+	});
+
+	onMount(() => {
+		const removeListener = on(document, 'fullscreenchange', () => {
+			ui.isFullscreen = !!document.fullscreenElement;
+		});
+
+		return removeListener;
 	});
 </script>
 
@@ -63,7 +71,7 @@
 		variant="link"
 		size="icon"
 		onclick={toggleFullscreen}
-		class="fixed top-0 right-0 z-30 m-4 text-white [&_svg]:size-8"
+		class="fixed top-28 right-0 z-40 m-4 text-white md:top-12 xl:top-0 [&_svg]:size-8"
 	>
 		{#if ui.isFullscreen}
 			<ArrowsIn />

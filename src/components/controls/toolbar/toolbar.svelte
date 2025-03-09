@@ -30,8 +30,8 @@
     card absolute inset-x-0 top-0 z-9999 container
     flex -translate-y-4 flex-col items-center justify-between py-1
     opacity-0 transition-all duration-300
-    in-data-[active=true]:translate-y-0 in-data-[active=true]:opacity-100 max-md:gap-4 max-md:py-4
-    md:flex-row md:rounded-b-full
+    in-data-[active=true]:translate-y-0 in-data-[active=true]:opacity-100 max-md:max-w-none max-md:gap-4
+    max-md:py-4 md:flex-row md:rounded-b-full
   "
 >
 	<VisitorCount />
