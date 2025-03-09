@@ -22,9 +22,9 @@ export default createCountry({
 		{
 			name: 'Tubingen',
 			type: SceneTypes.walk,
-			videoID: 'jVAVdk819TI',
+			videoID: 'PDBO1AwQDO0',
 			tags: [Tags.day],
-			offset: { start: 30 }
+			offset: { start: 10 }
 		},
 		{
 			name: 'Berlin',

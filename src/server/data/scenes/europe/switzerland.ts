@@ -57,8 +57,7 @@ export default createCountry({
 		{
 			name: 'Zürich',
 			type: SceneTypes.walk,
-			videoID: 'mEuj3Ye9QDw',
-			offset: { start: 60 },
+			videoID: 'SqMEcxsYk5o',
 			tags: [Tags.day]
 		},
 		{

@@ -49,14 +49,10 @@ export default createCountry({
 			name: 'New Delhi',
 			scenes: [
 				{
-					name: 'Meena Bazaar',
-					videoID: 'InPGfxTjiFI',
-					type: SceneTypes.walk,
-					suggestedTrack: genres.lofi.stations.bollywood
-				},
-				{
 					name: 'Connaught Place',
-					videoID: '6F0lXW6i-Sc',
+					videoID: 'JaGCO3sanHg',
+					offset: { start: 120 },
+					tags: [Tags.rain, Tags.day],
 					type: SceneTypes.walk,
 					suggestedTrack: genres.lofi.stations.bollywood
 				},
