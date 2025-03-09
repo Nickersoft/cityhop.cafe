@@ -1,81 +1,48 @@
 <script>
-	import '@fontsource-variable/figtree';
-	import 'iconify-icon';
-
-	import figtreeVariable from '@fontsource-variable/figtree/files/figtree-latin-wght-normal.woff2';
-	import figtreeVariableItalic from '@fontsource-variable/figtree/files/figtree-latin-wght-italic.woff2';
-
-	import { MetaTags } from 'svelte-meta-tags';
-
-	import { page } from '$app/stores';
-
-	import '../app.postcss';
-
 	import { onMount } from 'svelte';
-	/**
-	 * @typedef {Object} Props
-	 * @property {import('svelte').Snippet} [children]
-	 */
+	import { Tooltip } from 'bits-ui';
 
-	/** @type {Props} */
+	import BaseHead from '$components/base-head.svelte';
+
+	import { Toaster } from '$components/ui';
+	import { isDark, preferences } from '$lib/state.svelte';
+
 	let { children } = $props();
 
 	onMount(() => {
-		navigator.mediaSession.setActionHandler('play', function () {
+		navigator.mediaSession.setActionHandler('play', () => {
 			/* Code excerpted. */
 		});
-		navigator.mediaSession.setActionHandler('pause', function () {
+		navigator.mediaSession.setActionHandler('pause', () => {
 			/* Code excerpted. */
 		});
-		navigator.mediaSession.setActionHandler('seekbackward', function () {
+		navigator.mediaSession.setActionHandler('seekbackward', () => {
 			/* Code excerpted. */
 		});
-		navigator.mediaSession.setActionHandler('seekforward', function () {
+		navigator.mediaSession.setActionHandler('seekforward', () => {
 			/* Code excerpted. */
 		});
-		navigator.mediaSession.setActionHandler('previoustrack', function () {
+		navigator.mediaSession.setActionHandler('previoustrack', () => {
 			/* Code excerpted. */
 		});
-		navigator.mediaSession.setActionHandler('nexttrack', function () {
+		navigator.mediaSession.setActionHandler('nexttrack', () => {
 			/* Code excerpted. */
 		});
 	});
 
-	const siteTitle = 'CityHop';
-
-	const siteDescription =
-		'Take leisurely walks and drives around the world while chilling to lofi music 🎶';
-
-	const siteURL = 'https://www.cityhop.cafe/';
-
-	const ogImage = `${$page.url.origin}/og.jpg`;
-
-	const twtImage = `${$page.url.origin}/twitter.jpg`;
+	$effect(() => {
+		document.documentElement.classList.toggle(
+			'dark',
+			preferences.current.theme === 'dark' ||
+				(preferences.current.theme !== 'light' && isDark.current)
+		);
+	});
 </script>
 
-<svelte:head>
-	{#each [figtreeVariable, figtreeVariableItalic] as ft}
-		<link rel="preload" as="font" crossorigin="anonymous" href={ft} type="font/woff2" />
-	{/each}
-</svelte:head>
+<BaseHead title="CityHop | Aesthetic walks and drives from around the world" />
 
-<MetaTags
-	title="CityHop | Aesthetic walks and drives from around the world"
-	description={siteDescription}
-	canonical={siteURL}
-	openGraph={{
-		url: siteURL,
-		title: siteTitle,
-		description: siteDescription,
-		images: [{ url: ogImage }],
-		siteName: 'CityHop'
-	}}
-	twitter={{
-		cardType: 'summary_large_image',
-		title: siteTitle,
-		description: siteDescription,
-		image: twtImage
-	}}
-/>
+<Tooltip.Provider>
+	{@render children?.()}
+</Tooltip.Provider>
 
-{@render children?.()}
+<Toaster />

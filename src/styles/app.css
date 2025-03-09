@@ -1,0 +1,166 @@
+@import 'tailwindcss';
+
+@import './mask.css';
+@import './inter.css';
+@import './animate.css';
+
+@custom-variant min-video {
+	@media (min-aspect-ratio: 16/9) {
+		@slot;
+	}
+}
+
+@custom-variant max-video {
+	@media (max-aspect-ratio: 16/9) {
+		@slot;
+	}
+}
+
+:root {
+	--background: var(--color-neutral-50);
+	--foreground: var(--color-neutral-950);
+	--muted: --alpha(var(--foreground) / 10%);
+	--muted-foreground: --alpha(var(--foreground) / 50%);
+	--popover: var(--color-white);
+	--popover-foreground: var(--foreground);
+	--border: --alpha(var(--color-neutral-950) / 10%);
+	--input: --alpha(var(--color-white) / 20%);
+	--card: var(--popover);
+	--card-foreground: var(--popover-foreground);
+	--primary: var(--color-neutral-950);
+	--primary-foreground: var(--color-neutral-50);
+	--secondary: var(--color-neutral-100);
+	--secondary-foreground: var(--color-neutral-900);
+	--accent: --alpha(var(--color-neutral-950) / 5%);
+	--accent-foreground: var(--foreground);
+	--destructive: var(--color-red-600);
+	--destructive-foreground: var(--color-white);
+	--ring: var(--color-blue-300);
+
+	@variant dark {
+		--background: var(--color-neutral-950);
+		--foreground: var(--color-white);
+		--muted: --alpha(var(--foreground) / 10%);
+		--muted-foreground: --alpha(var(--foreground) / 50%);
+		--popover: var(--background);
+		--popover-foreground: var(--foreground);
+		--border: --alpha(var(--color-white) / 10%);
+		--input: --alpha(var(--color-white) / 20%);
+		--card: var(--popover);
+		--card-foreground: var(--popover-foreground);
+		--primary: var(--color-white);
+		--primary-foreground: var(--color-neutral-950);
+		--secondary: var(--color-neutral-700);
+		--secondary-foreground: var(--color-neutral-50);
+		--accent: --alpha(var(--color-white) / 20%);
+		--accent-foreground: var(--color-white);
+		--destructive: var(--color-red-600);
+		--destructive-foreground: var(--color-white);
+		--ring: var(--color-blue-300);
+	}
+}
+
+@theme {
+	/* -------------------------------------------------------------------------- */
+	/*                                    Fonts                                   */
+	/* -------------------------------------------------------------------------- */
+	--font-sans: InterVariable, sans-serif;
+
+	/* -------------------------------------------------------------------------- */
+	/*                                 Animations                                 */
+	/* -------------------------------------------------------------------------- */
+	@keyframes load {
+		0% {
+			width: 0%;
+			left: 0;
+		}
+
+		100% {
+			width: 100%;
+		}
+	}
+
+	@keyframes marquee {
+		0% {
+			transform: translateX(0);
+		}
+		90% {
+			transform: translateX(-50%);
+		}
+		100% {
+			transform: translateX(-50%);
+		}
+	}
+
+	@keyframes accordion-down {
+		from {
+			height: 0;
+		}
+		to {
+			height: var(--bits-accordion-content-height);
+		}
+	}
+
+	@keyframes accordion-up {
+		from {
+			height: var(--bits-accordion-content-height);
+		}
+		to {
+			height: 0;
+		}
+	}
+
+	--animate-load: load 5s ease-out 100ms both;
+	--animate-marquee: marquee 60s linear infinite;
+	--animate-accordion-down: accordion-down 0.2s ease-out;
+	--animate-accordion-up: accordion-up 0.2s ease-out;
+}
+
+@theme inline {
+	/* -------------------------------------------------------------------------- */
+	/*                                   Colors                                   */
+	/* -------------------------------------------------------------------------- */
+
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-card: var(--card);
+	--color-card-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
+	--color-ring: var(--ring);
+	--radius: var(--radius);
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground font-sans antialiased;
+	}
+}
+
+@utility glow {
+	.dark & {
+		text-shadow: 0 0 6px --alpha(var(--color-foreground) / 50%);
+	}
+}
+
+@utility card {
+	@apply from-card/55 to-card/65 bg-gradient-to-br;
+	@apply shadow-lg backdrop-blur-md;
+	@apply border border-white/50;
+	@apply dark:border-white/10 dark:ring dark:ring-neutral-950/60;
+}

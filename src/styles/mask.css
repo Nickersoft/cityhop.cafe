@@ -1,0 +1,43 @@
+/* -------------------------------------------------------------------------- */
+/*                                  Utilities                                 */
+/* -------------------------------------------------------------------------- */
+
+@utility container {
+	margin-inline: auto;
+	padding-inline: 2rem;
+}
+
+@utility indicator-* {
+	--indicator-color: --value(--color- *);
+}
+
+@utility mask-linear-* {
+	mask-image: linear-gradient(
+		calc(--value(integer) * 1deg),
+		--alpha(black / var(--mask-from, 100%)) var(--mask-from-step, 0%),
+		--alpha(black / var(--mask-to, 0%)) var(--mask-to-step, 100%)
+	);
+}
+
+@utility mask-linear-to-b {
+	@apply mask-linear-180;
+}
+
+@utility mask-linear-to-r {
+	@apply mask-linear-0;
+}
+
+@utility mask-from-* {
+	--mask-from: calc(--value(integer) * 1%);
+	--mask-from-step: --value(percentage);
+}
+
+@utility mask-to-* {
+	--mask-to: calc(--value(integer) * 1%);
+	--mask-to-step: --value(percentage);
+}
+
+@utility mask-via-* {
+	--mask-via: calc(--value(integer) * 1%);
+	--mask-via-step: --value(percentage);
+}
