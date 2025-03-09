@@ -22,6 +22,9 @@
 </script>
 
 <svelte:head>
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<link rel="icon" type="image/png" href="/favicon.png" />
+
 	{#each [figtreeVariable, figtreeVariableItalic] as ft}
 		<link rel="preload" as="font" crossorigin="anonymous" href={ft} type="font/woff2" />
 	{/each}
