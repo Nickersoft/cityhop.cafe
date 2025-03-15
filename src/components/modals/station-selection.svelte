@@ -28,6 +28,7 @@
 <div class="w-[95vw] max-w-4xl max-md:h-screen md:aspect-[1.5]">
 	<Search
 		{...searcher.props}
+		{onClose}
 		onSearch={searcher.search}
 		inputPlaceholder="Search through our curated collection of radio stations"
 	>
@@ -51,10 +52,11 @@
 									</Typography>
 									<div class="relative size-6 *:absolute *:transition-all *:duration-300">
 										<icons.Plus
-											size={24}
+											width={24}
+											height={24}
 											class="opacity-100 group-data-[state=open]:rotate-45 group-data-[state=open]:opacity-0"
 										/>
-										<icons.Minus size={24} />
+										<icons.Minus width={24} height={24} />
 									</div>
 								</Accordion.Trigger>
 								<Accordion.Content class="overflow-hidden p-4">

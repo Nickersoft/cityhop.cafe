@@ -2,7 +2,6 @@
 	import { SceneTypes } from '$lib/enums';
 	import { isMobile, nowPlaying } from '$lib/state.svelte';
 
-	import { Popover } from '$components/ui';
 	import { SceneSelection } from '$components/modals';
 	import { ArrowsClockwise } from '$lib/icons';
 

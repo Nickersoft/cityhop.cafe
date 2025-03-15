@@ -1,7 +1,7 @@
 import { ui } from '$lib/state.svelte';
 import { on } from 'svelte/events';
 
-let inactiveTimeout: number;
+let inactiveTimeout: NodeJS.Timeout;
 
 function handleMouseMove() {
 	ui.windowActive = true;

@@ -1,6 +1,8 @@
+/// <reference types="vitest/config" />
+import { defineConfig } from 'vite';
+
 import { svelteTesting } from '@testing-library/svelte/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vite';
 
 import icons from 'unplugin-icons/vite';
 import tailwindcss from '@tailwindcss/vite';

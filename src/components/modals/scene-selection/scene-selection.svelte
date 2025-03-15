@@ -75,6 +75,7 @@
 <div class="w-[95vw] max-w-4xl max-md:h-full md:aspect-[1.5]">
 	<Search
 		{...searcher.props}
+		{onClose}
 		{onInputChange}
 		onSearch={searcher.search}
 		inputPlaceholder={`Search over ${totalScenes}+ countries and cities worldwide`}
