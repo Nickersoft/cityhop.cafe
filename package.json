@@ -61,7 +61,7 @@
 		"nanoid": "^5.1.4",
 		"posthog-js": "^1.231.0",
 		"posthog-node": "^4.10.1",
-		"sharp": "^0.33.5",
+		"sharp": "^0.34.0",
 		"svelte-meta-tags": "^4.2.0",
 		"svelte-persisted-state": "^1.0.0",
 		"svelte-sonner": "^0.3.28",
