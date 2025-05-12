@@ -25,7 +25,7 @@
         "sharp": "^0.34.0",
         "svelte-meta-tags": "^4.2.0",
         "svelte-persisted-state": "^1.0.0",
-        "svelte-sonner": "^0.3.28",
+        "svelte-sonner": "^1.0.0",
         "tailwind-merge": "^3.0.2",
         "valibot": "1.1.0",
         "vaul-svelte": "0.3.2",
@@ -778,7 +778,7 @@
 
     "svelte-persisted-state": ["svelte-persisted-state@1.0.0", "", { "peerDependencies": { "svelte": "^5.0.0-next.1" } }, "sha512-+yVknmQULtlJ1Q0UOmtICPnUpyoIvtON9q+WGMkbXBcFT/2QeMdynsmgZL/T+C40IegmTMZyr+oGZhyaiL+jgQ=="],
 
-    "svelte-sonner": ["svelte-sonner@0.3.28", "", { "peerDependencies": { "svelte": "^3.0.0 || ^4.0.0 || ^5.0.0-next.1" } }, "sha512-K3AmlySeFifF/cKgsYNv5uXqMVNln0NBAacOYgmkQStLa/UoU0LhfAACU6Gr+YYC8bOCHdVmFNoKuDbMEsppJg=="],
+    "svelte-sonner": ["svelte-sonner@1.0.0", "", { "peerDependencies": { "svelte": "^5.0.0" } }, "sha512-qKtAJJwjz50iCzKtk27j8nERYG2rZJIwFUhZBIYVOhjijKfjMDT6o0vsaYRtTI+ZxroU+4J96R7x80qTevF90A=="],
 
     "svelte-toolbelt": ["svelte-toolbelt@0.7.1", "", { "dependencies": { "clsx": "^2.1.1", "runed": "^0.23.2", "style-to-object": "^1.0.8" }, "peerDependencies": { "svelte": "^5.0.0" } }, "sha512-HcBOcR17Vx9bjaOceUvxkY3nGmbBmCBBbuWLLEWO6jtmWH8f/QoWmbyUfQZrpDINH39en1b8mptfPQT9VKQ1xQ=="],
 
