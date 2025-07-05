@@ -231,7 +231,7 @@
 		};
 </script>
 
-<script>
+<script lang="ts">
 	const {
 		variant,
 		children,

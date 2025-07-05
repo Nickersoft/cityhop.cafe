@@ -3,6 +3,7 @@ import { createContinent } from '$server/schema';
 import austria from './austria';
 import bosnia from './bosnia';
 import czechia from './czechia';
+import denmark from './denmark';
 import france from './france';
 import germany from './germany';
 import italy from './italy';
@@ -23,6 +24,7 @@ export default createContinent({
 		austria,
 		bosnia,
 		czechia,
+		denmark,
 		france,
 		germany,
 		italy,

@@ -6,8 +6,8 @@ export const rnb = createGenre({
 	stations: {
 		korean: {
 			displayName: 'Korean Indie/R&B/Hip-Hop Radio',
-			trackID: 'IUT1qAhMY4w',
-			name: '24/7 Korean Underground Indie/R&B/Hip-hop Radio',
+			trackID: '-QOcD9Qivi4',
+			name: '24/7 이곳이 바로 힙스터 성지 😎 kozypop radio, k-pop, krnb, indie',
 			live: true
 		},
 		rnb: {

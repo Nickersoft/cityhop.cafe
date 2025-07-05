@@ -1,8 +1,8 @@
 @import 'tailwindcss';
+@import 'tw-animate-css';
 
 @import './mask.css';
 @import './inter.css';
-@import './animate.css';
 
 @custom-variant min-video {
 	@media (min-aspect-ratio: 16/9) {

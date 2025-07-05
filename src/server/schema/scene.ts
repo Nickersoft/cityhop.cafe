@@ -15,6 +15,7 @@ export const sceneSchema = v.pipe(
 		name: v.string(),
 		type: v.enum(SceneTypes),
 		country: v.optional(v.string()),
+		countryCode: v.optional(v.string()),
 		emoji: v.optional(v.string()),
 		videoID: v.string(),
 		tags: v.optional(v.array(v.enum(Tags))),

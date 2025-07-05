@@ -13,19 +13,19 @@ export const pop = createGenre({
 		oldies: {
 			displayName: '70s & 80s Hits Radio',
 			name: 'Radio 70s 80s Mix [ 24 /7 Live ] Listen 70s Hits with Best of 80s Songs ● Oldies Songs',
-			trackID: '_kDdKzJ6gLg',
+			trackID: 'WnCfvAMM9eY',
 			live: true
 		},
 		cityPop: {
 			displayName: 'Japanese City Pop Mix',
 			name: 'warm nights in tokyo [ city pop シティ・ポップ ]',
-			trackID: 'TYwQtMGIjF8',
+			trackID: 'UaIjnejqfJg',
 			live: false
 		},
 		hits: {
 			displayName: 'Top Hits Radio',
-			name: "Hits Radio 1 Live Pop Radio' Top Hits 2023",
-			trackID: '8M0AvPvPg0A',
+			name: 'Best Radio 1 POP Hits [ 24/7 Live ] Best of POP 2025 Songs',
+			trackID: 'b-bK2Vn3D38',
 			live: true
 		}
 	}

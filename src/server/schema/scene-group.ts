@@ -23,10 +23,6 @@ export interface SceneGroup extends SceneGroupInput {
 	scenes: (SceneGroup | Scene)[];
 }
 
-export interface SceneGroupWithCountry extends SceneGroup {
-	country: string;
-}
-
 export function deepSort<T extends SceneGroup | Scene>(scenes: T[]): T[] {
 	return alphabetical(scenes, ({ name }) => name).map((scene) => {
 		if (scene.__type__ === 'group') {

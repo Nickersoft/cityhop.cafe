@@ -24,10 +24,11 @@ export const GET: RequestHandler = async ({ url }) => {
 		tags.length > 0 ? tags.some((t) => scene.tags?.includes(t)) : true;
 
 	if (query) {
+		console.log(visibleScenes);
 		return json(
 			fuzzysort
 				.go(query, visibleScenes, {
-					keys: ['name', 'country', 'category']
+					keys: ['name', 'countryCode', 'country', 'category']
 				})
 				.map(({ obj }) => obj)
 				.filter(filterTags)

@@ -3,12 +3,13 @@ import { Tags } from '$lib/enums';
 import { createCountry } from '$server/schema';
 
 export default createCountry({
-	name: 'Vietnam',
+	name: 'Denmark',
 	scenes: [
 		{
-			name: 'Ho Chi Minh City',
+			name: 'Cophenhagen',
 			type: SceneTypes.walk,
-			videoID: '-U7zcFxppfM',
+			videoID: 'KMCdDE6FSP8',
+			offset: { start: 50 },
 			tags: [Tags.night]
 		}
 	]

@@ -2,7 +2,7 @@
 	import * as MediaPanel from '../media-panel';
 
 	import { isMobile, nowPlaying, preferences } from '$lib/state.svelte';
-	import { Equalizer, Popover } from '$components/ui';
+	import { Equalizer } from '$components/ui';
 	import { ArrowsClockwise } from '$lib/icons';
 	import { StationSelection } from '$components/modals';
 

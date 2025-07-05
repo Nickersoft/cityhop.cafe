@@ -20,7 +20,7 @@ export const lofi = createGenre({
 		coffeeShop: {
 			displayName: 'Coffee Shop Radio',
 			name: 'Coffee Shop Radio ☕ - 24/7 lofi & jazzy hip-hop beats',
-			trackID: 'N_7cSl2oq3o',
+			trackID: 'UI5NKkW8acM',
 			live: true
 		},
 		chillHop: {

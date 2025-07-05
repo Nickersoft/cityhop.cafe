@@ -17,10 +17,10 @@
 </script>
 
 <MediaPanel.Root>
-	{#if nowPlaying.scene?.country}
+	{#if nowPlaying.scene?.countryCode}
 		<div
 			class="size-8 shrink-0 rounded-full shadow-[inset_0_3px_8px_--alpha(white/50%),inset_0_-3px_8px_--alpha(black/20%)] ring-1 ring-white/10 md:size-12"
-			style={`background-image: url("/flags/${nowPlaying.scene?.country}.svg")`}
+			style={`background-image: url("/flags/${nowPlaying.scene?.countryCode}.svg")`}
 		></div>
 	{/if}
 

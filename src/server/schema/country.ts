@@ -10,13 +10,14 @@ type SceneOrGroup = Scene | SceneGroup;
 
 function injectCountryInfo(
 	items: SceneOrGroup[],
+	country: string,
 	code: string,
 	emoji: string | undefined
 ): SceneOrGroup[] {
 	return items.map((item) =>
 		item.__type__ === 'group'
-			? { ...item, emoji, scenes: injectCountryInfo(item.scenes, code, emoji) }
-			: { ...item, country: code, emoji }
+			? { ...item, emoji, scenes: injectCountryInfo(item.scenes, country, code, emoji) }
+			: { ...item, country, countryCode: code, emoji }
 	);
 }
 
@@ -28,7 +29,7 @@ export const countrySchema = v.pipe(
 
 		return {
 			...input,
-			scenes: code ? injectCountryInfo(input.scenes, code, emoji) : input.scenes,
+			scenes: code ? injectCountryInfo(input.scenes, input.name, code, emoji) : input.scenes,
 			code,
 			emoji,
 			thumbnail: input.scenes[0]?.thumbnail,
