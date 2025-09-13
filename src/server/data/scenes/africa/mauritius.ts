@@ -7,9 +7,8 @@ export default createCountry({
 		{
 			name: 'Port Louis',
 			type: SceneTypes.walk,
-			videoID: 'PcP5XiZX1CY',
-			tags: [Tags.day],
-			length: 1800
+			videoID: 'wibuNB3j_D8',
+			tags: [Tags.day]
 		}
 	]
 });

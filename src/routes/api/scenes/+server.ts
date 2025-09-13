@@ -28,7 +28,7 @@ export const GET: RequestHandler = async ({ url }) => {
 		return json(
 			fuzzysort
 				.go(query, visibleScenes, {
-					keys: ['name', 'countryCode', 'country', 'category']
+					keys: ['name', 'path', 'countryCode', 'country', 'category']
 				})
 				.map(({ obj }) => obj)
 				.filter(filterTags)

@@ -37,10 +37,10 @@ export const jazz = createGenre({
 			live: false
 		},
 		christmas2: {
-			tags: [Tags.christmas],
-			name: 'Instrumental Christmas Jazz',
-			trackID: '4KYZO6eEugY',
+			name: 'Christmas Starbucks 🎄 Merry Christmas 2025 🎄 24 Hours of Happy Starbucks Jazz Music For Work, Study',
+			trackID: 'BFmzf34s9ec',
 			hidden: true,
+			tags: [Tags.christmas],
 			live: false
 		}
 	}

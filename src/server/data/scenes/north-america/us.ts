@@ -280,7 +280,7 @@ export default createCountry({
 			]
 		},
 		{
-			name: 'Philadelphia',
+			name: 'Pennsylvania',
 			scenes: [
 				{
 					name: 'Pittsburgh',
@@ -288,6 +288,13 @@ export default createCountry({
 					type: SceneTypes.drive,
 					offset: { start: 30 },
 					tags: [Tags.night]
+				},
+				{
+					name: 'Philadelphia',
+					videoID: 's8qHtAMz_JU',
+					type: SceneTypes.walk,
+					offset: { start: 120 },
+					tags: [Tags.day]
 				}
 			]
 		},

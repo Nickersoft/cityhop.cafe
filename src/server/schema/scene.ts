@@ -19,6 +19,7 @@ export const sceneSchema = v.pipe(
 		emoji: v.optional(v.string()),
 		videoID: v.string(),
 		tags: v.optional(v.array(v.enum(Tags))),
+		path: v.optional(v.array(v.string())),
 		hidden: v.optional(v.boolean()),
 		suggestedTrack: v.optional(stationSchema),
 		offset: v.optional(offsetSchema),
