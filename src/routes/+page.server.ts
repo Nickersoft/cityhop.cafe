@@ -1,5 +1,5 @@
 import { getSceneByID, getStationByID, randomScene, randomStation } from '$lib/api';
-import { IS_DECEMBER, IS_OCTOBER } from '$lib/consts';
+import { IS_CHRISTMAS, IS_HALLOWEEN } from '$lib/consts';
 import { Tags } from '$lib/enums';
 import { scenes } from '$server/data';
 
@@ -24,11 +24,11 @@ export const load: PageServerLoad = async ({ fetch, url }) => {
 
 	let tags: string[] = [];
 
-	if (IS_OCTOBER) {
+	if (IS_HALLOWEEN) {
 		tags = [Tags.halloween];
 	}
 
-	if (IS_DECEMBER) {
+	if (IS_CHRISTMAS) {
 		tags = [Tags.christmas];
 	}
 
