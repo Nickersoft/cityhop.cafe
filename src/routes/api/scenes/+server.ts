@@ -4,8 +4,9 @@ import { error, json } from '@sveltejs/kit';
 
 import { continents, scenes } from '$server/data/scenes';
 
+import { get } from 'es-toolkit/compat';
+
 import type { RequestHandler } from './$types';
-import { get } from '$lib/utils';
 import type { Tags } from '$lib/enums';
 import type { Scene } from '$server/schema';
 
@@ -24,7 +25,6 @@ export const GET: RequestHandler = async ({ url }) => {
 		tags.length > 0 ? tags.some((t) => scene.tags?.includes(t)) : true;
 
 	if (query) {
-		console.log(visibleScenes);
 		return json(
 			fuzzysort
 				.go(query, visibleScenes, {

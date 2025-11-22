@@ -1,8 +1,9 @@
 import { page } from '$app/state';
 
+import { mapValues, groupBy, sortBy, debounce } from 'es-toolkit';
+
 import type { SceneTypes } from '$lib/enums';
 import type { Scene } from '$server/schema';
-import { alphabetical, debounce, group, mapValues } from '$lib/utils';
 import type { SearchResultItem } from '$lib/types';
 import { isScene } from '$lib/guards';
 
@@ -98,9 +99,9 @@ export class Searcher<T = SearchResultItem> {
 		}
 	}
 
-	search = debounce({ delay: 150 }, (q) => {
+	search = debounce((q) => {
 		this.#query = q;
-	});
+	}, 150);
 
 	get props() {
 		return {
@@ -119,15 +120,15 @@ export class SearchResults {
 
 	get scenes() {
 		return mapValues(
-			group(this.items.filter(isScene), (scene) => scene.type),
-			(s) => alphabetical(s ?? [], ({ name }) => name)
+			groupBy(this.items.filter(isScene), (scene) => scene.type),
+			(s) => sortBy(s ?? [], ['name'])
 		) as Record<SceneTypes, Scene[]>;
 	}
 
 	get groups() {
-		return alphabetical(
+		return sortBy(
 			this.items.filter((scene) => !isScene(scene)),
-			({ name }) => name
+			['name']
 		) as Exclude<SearchResultItem, Scene>[];
 	}
 }

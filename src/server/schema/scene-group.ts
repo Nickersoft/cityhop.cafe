@@ -1,6 +1,5 @@
 import * as v from 'valibot';
-
-import { alphabetical } from '$lib/utils';
+import { sortBy } from 'es-toolkit';
 
 import { sceneSchema, type Scene, type SceneInput } from './scene';
 
@@ -24,7 +23,7 @@ export interface SceneGroup extends SceneGroupInput {
 }
 
 export function deepSort<T extends SceneGroup | Scene>(scenes: T[]): T[] {
-	return alphabetical(scenes, ({ name }) => name).map((scene) => {
+	return sortBy(scenes, ['name']).map((scene) => {
 		if (scene.__type__ === 'group') {
 			return {
 				...scene,

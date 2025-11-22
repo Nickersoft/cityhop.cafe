@@ -1,9 +1,8 @@
 import { json } from '@sveltejs/kit';
+import { sample } from 'es-toolkit';
 
 import { scenes } from '$server/data/scenes';
 import { genres, stations } from '$server/data/stations';
-
-import { draw } from '$lib/utils';
 
 import type { Scene, Station } from '$server/schema';
 import type { Tags } from '$lib/enums';
@@ -29,5 +28,5 @@ export const GET: RequestHandler = async ({ url }) => {
 		);
 	}
 
-	return json(draw(candidates) as Scene);
+	return json(sample(candidates) as Scene);
 };

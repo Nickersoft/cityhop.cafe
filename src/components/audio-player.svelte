@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { YouTubePlayer } from 'youtube-player/dist/types';
+	import { random } from 'es-toolkit';
 
 	import { nowPlaying, preferences } from '$lib/state.svelte';
 	import { YouTube } from '$components/ui';
-	import { random } from '$lib/utils';
 
 	let player = $state<YouTubePlayer | null>(null);
 

@@ -1,6 +1,6 @@
-import type { Genre, Station } from '$server/schema';
+import { keyBy } from 'es-toolkit';
 
-import { objectify } from '$lib/utils';
+import type { Genre, Station } from '$server/schema';
 
 import { classical } from './classical';
 import { electronic } from './electronic';
@@ -26,7 +26,7 @@ export const stations: StationWithGenre[] = Object.values(genres).flatMap(
 	({ stations, ...genre }) => Object.values(stations).map((station) => ({ ...station, genre }))
 );
 
-const stationMap = objectify(stations, (station) => station.trackID);
+const stationMap = keyBy(stations, (station) => station.trackID);
 
 export function getStationByID(id: string): Optional<StationWithGenre> {
 	return stationMap[id];

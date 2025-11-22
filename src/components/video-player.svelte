@@ -1,13 +1,13 @@
 <script lang="ts">
 	import type { YouTubePlayer } from 'youtube-player/dist/types';
+	import { onMount } from 'svelte';
+	import { on } from 'svelte/events';
+	import { random } from 'es-toolkit';
 
 	import { DEFAULT_VIDEO_END_OFFSET, DEFAULT_VIDEO_START_OFFSET } from '$lib/consts';
 	import { Button, YouTube } from '$components/ui';
-	import { random } from '$lib/utils';
 	import { nowPlaying, preferences, ui } from '$lib/state.svelte';
 	import { ArrowsIn, ArrowsOut } from '$lib/icons';
-	import { onMount } from 'svelte';
-	import { on } from 'svelte/events';
 
 	let videoDuration: number | undefined = $state();
 

@@ -1,15 +1,6 @@
 import type { Filter } from '$components/ui';
 import { Tags } from '$lib/enums';
-import {
-	CloudFog,
-	CloudMoon,
-	CloudRain,
-	Moon,
-	Snowflake,
-	SteeringWheel,
-	Sun,
-	SunHorizon
-} from '$lib/icons';
+import { CloudFog, CloudMoon, CloudRain, Moon, Snowflake, Sun, SunHorizon } from '$lib/icons';
 
 export const FILTER_LIST: Filter[] = [
 	{

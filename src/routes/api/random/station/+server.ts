@@ -1,8 +1,7 @@
 import { json, type RequestHandler } from '@sveltejs/kit';
+import { sample } from 'es-toolkit';
 
 import { genres, stations, type StationWithGenre } from '$server/data/stations';
-
-import { draw } from '$lib/utils';
 
 import type { Tags } from '$lib/enums';
 
@@ -17,5 +16,5 @@ export const GET: RequestHandler = async ({ url }) => {
 					!el.name.toLowerCase().includes('bollywood');
 	});
 
-	return json(draw(candidates) as StationWithGenre);
+	return json(sample(candidates) as StationWithGenre);
 };

@@ -1,8 +1,7 @@
 import * as v from 'valibot';
 
-import { alphabetical } from '$lib/utils';
-
 import { countrySchema, createCountry } from './country';
+import { sortBy } from 'es-toolkit';
 
 export const continentSchema = v.pipe(
 	v.object({
@@ -13,7 +12,7 @@ export const continentSchema = v.pipe(
 	}),
 	v.transform(({ countries, ...input }) => ({
 		...input,
-		countries: alphabetical(countries ?? [], ({ name }) => name).map(createCountry)
+		countries: sortBy(countries ?? [], ['name']).map(createCountry)
 	})),
 	v.transform(({ countries, ...input }) => ({
 		__type__: 'continent' as const,
