@@ -4,7 +4,7 @@ import { omitBy, sortBy } from 'es-toolkit';
 
 import { PH_API_KEY, PH_PROJECT_ID } from '$env/static/private';
 
-import type { RequestHandler } from './$types';
+import { query } from '$app/server';
 
 interface Event {
 	id: string;
@@ -26,7 +26,7 @@ interface EventResponse {
 	results: Event[];
 }
 
-export const GET: RequestHandler = async () => {
+export const getVisitors = query(async () => {
 	const threshold = dayjs().subtract(5, 'minute').toISOString();
 
 	const url = new URL(`https://app.posthog.com/api/projects/${PH_PROJECT_ID}/events/`);
@@ -47,7 +47,6 @@ export const GET: RequestHandler = async () => {
 		}
 	);
 
-	const count = Object.keys(groupedUsers).length - 1; // Subtract 1 to account for current user
-
-	return new Response(String(count));
-};
+	// Subtract 1 to account for current user
+	return Object.keys(groupedUsers).length - 1;
+});

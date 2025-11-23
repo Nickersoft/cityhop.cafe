@@ -1,27 +1,14 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 
 	import { Typography } from '$components/ui';
 	import { HandPeace } from '$lib/icons';
+	import { getVisitors } from '$server/visitors.remote';
 
-	let visitorCount = $state<Optional<number>>();
-
-	async function updateVisitorCount() {
-		const result = await fetch('/api/visitors').then((r) => r.text());
-		visitorCount = Number.parseInt(result, 10);
-	}
-
-	onMount(() => {
-		updateVisitorCount();
-
-		window.addEventListener('focus', updateVisitorCount);
-
-		return () => {
-			window.removeEventListener('focus', updateVisitorCount);
-		};
-	});
+	const visitorCount = await getVisitors();
 </script>
+
+<svelte:window onfocus={() => getVisitors().refresh()} />
 
 <div>
 	{#if visitorCount && visitorCount > 0}

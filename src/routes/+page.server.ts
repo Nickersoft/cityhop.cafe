@@ -1,11 +1,12 @@
-import { getSceneByID, getStationByID, randomScene, randomStation } from '$lib/api';
 import { IS_CHRISTMAS, IS_HALLOWEEN } from '$lib/consts';
 import { Tags } from '$lib/enums';
-import { scenes } from '../functions/data';
+import { getSceneByID, getStationByID, scenes } from '$server/data';
+import { getRandomScene } from '$server/scenes.remote';
+import { getRandomStation } from '$server/stations.remote';
 
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ fetch, url }) => {
+export const load: PageServerLoad = async ({ url }) => {
 	const v = url.searchParams.get('v');
 
 	const totalScenes = Math.floor(scenes.filter(({ hidden }) => !hidden).length / 100) * 100;
@@ -16,13 +17,13 @@ export const load: PageServerLoad = async ({ fetch, url }) => {
 		if (videoID && audioID) {
 			return {
 				totalScenes,
-				scene: await getSceneByID(videoID, fetch),
-				station: await getStationByID(audioID, fetch)
+				scene: getSceneByID(videoID),
+				station: getStationByID(audioID)
 			};
 		}
 	}
 
-	let tags: string[] = [];
+	let tags: Tags[] = [];
 
 	if (IS_HALLOWEEN) {
 		tags = [Tags.halloween];
@@ -34,7 +35,7 @@ export const load: PageServerLoad = async ({ fetch, url }) => {
 
 	return {
 		totalScenes,
-		scene: await randomScene({ calm: true, tags }, fetch),
-		station: await randomStation({ tags }, fetch)
+		scene: await getRandomScene({ calmOnly: true, tags }),
+		station: await getRandomStation({ tags })
 	};
 };

@@ -18,8 +18,8 @@ export const countrySchema = sceneGroupSchema.transform((input) => {
 	};
 });
 
-export type CountryInput = z.InferInput<typeof countrySchema>;
-export type Country = z.InferOutput<typeof countrySchema>;
+export type CountryInput = z.input<typeof countrySchema>;
+export type Country = z.output<typeof countrySchema>;
 
 export function createCountry(input: CountryInput): Country {
 	return z.parse(countrySchema, input);

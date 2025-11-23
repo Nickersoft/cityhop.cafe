@@ -20,8 +20,13 @@
 	setContext('totalScenes', data.totalScenes);
 
 	$effect(() => {
-		nowPlaying.scene = data.scene;
-		nowPlaying.station = data.station;
+		if (data.scene) {
+			nowPlaying.scene = data.scene;
+		}
+
+		if (data.station) {
+			nowPlaying.station = data.station;
+		}
 	});
 
 	onMount(() => {

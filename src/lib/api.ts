@@ -1,5 +1,5 @@
-import type { StationWithGenre } from '../functions/data/stations';
-import type { Scene } from '../functions/schema';
+import type { StationWithGenre } from '$server/data';
+import type { Scene } from '$server/schema';
 import { Tags } from './enums';
 import { nowPlaying } from './state.svelte';
 
@@ -25,28 +25,6 @@ function makeCall<T>(
 	const fn = customFetch ? customFetch(finalUrl) : fetch(finalUrl);
 
 	return fn.then((res) => res.json());
-}
-
-export function randomScene(
-	params: Record<string, unknown> = {},
-	fetch: Fetcher = window.fetch
-): Promise<Scene> {
-	return makeCall<Scene>('random/scene', params, fetch);
-}
-
-export function randomStation(
-	params: Record<string, string | string[]> = {},
-	fetch: Fetcher = window.fetch
-): Promise<StationWithGenre> {
-	return makeCall<StationWithGenre>('random/station', params, fetch);
-}
-
-export function getSceneByID(id: string, fetch: Fetcher): Promise<Scene> {
-	return makeCall<Scene>(`scenes/${id}`, {}, fetch);
-}
-
-export function getStationByID(id: string, fetch: Fetcher): Promise<StationWithGenre> {
-	return makeCall<StationWithGenre>(`stations/${id}`, {}, fetch);
 }
 
 export async function getSpooky() {

@@ -22,6 +22,7 @@ const config = {
 		alias: {
 			$actions: './src/actions',
 			$components: './src/components',
+			$server: './src/server',
 			$consts: './src/consts',
 			$lib: './src/lib',
 			$styles: './src/styles',

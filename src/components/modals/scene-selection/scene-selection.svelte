@@ -2,13 +2,16 @@
 	import { getContext, untrack, type Component } from 'svelte';
 
 	import Search from '$components/search-ui.svelte';
+	import { FilterGroup, Stack, Typography, Button, ScrollArea } from '$components/ui';
 
 	import { Searcher, SearchResults } from '$lib/search.svelte';
 	import { nowPlaying } from '$lib/state.svelte';
 	import { ArrowLeft, Bicycle, Boat, Footprints, SteeringWheel, TrainSimple } from '$lib/icons';
-	import { FilterGroup, Stack, Typography, Button, ScrollArea } from '$components/ui';
 	import type { SearchResultItem } from '$lib/types';
-	import { isContinent, isCountry, isSceneGroup } from '$lib/guards';
+	import { isContinent, isCountry, isScene, isSceneGroup } from '$lib/guards';
+	import type { Tags } from '$lib/enums';
+
+	import { getScenes } from '$server/scenes.remote';
 
 	import { enter, exit } from './transitions';
 	import { FILTER_LIST } from './consts';
@@ -16,7 +19,7 @@
 	import Item from './item.svelte';
 
 	const totalScenes = getContext('totalScenes');
-	const searcher = new Searcher('scenes');
+	const searcher = new Searcher(getScenes);
 
 	interface Props {
 		onClose: () => void;
@@ -54,7 +57,9 @@
 			return;
 		}
 
-		nowPlaying.scene = item;
+		if (isScene(item)) {
+			nowPlaying.scene = item;
+		}
 
 		onClose();
 	}
@@ -63,7 +68,7 @@
 		direction = null;
 	}
 
-	let activeFilters = $state<string[]>([]);
+	let activeFilters = $state<Tags[]>([]);
 
 	$effect(() => {
 		direction = null;

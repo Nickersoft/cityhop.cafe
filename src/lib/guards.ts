@@ -1,4 +1,4 @@
-import type { Continent, Country, SceneGroup, Scene } from '../functions/schema';
+import type { Continent, Country, SceneGroup, Scene } from '$server/schema';
 import type { SearchResultItem } from './types';
 
 export function isSceneGroup(item: SearchResultItem): item is SceneGroup {

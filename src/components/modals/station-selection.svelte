@@ -7,17 +7,17 @@
 	import { ScrollArea, Typography } from '$components/ui';
 	import { Searcher } from '$lib/search.svelte';
 	import { nowPlaying } from '$lib/state.svelte';
-	import type { StationWithGenre } from '$server/data';
+	import { getStations } from '../../server/stations.remote';
+	import type { StationWithGenre } from '../../server/data';
 
 	import Search from '$components/search-ui.svelte';
-
 	interface Props {
 		onClose: () => void;
 	}
 
 	let { onClose }: Props = $props();
 
-	const searcher = new Searcher<StationWithGenre>('stations');
+	const searcher = new Searcher<StationWithGenre>(getStations);
 
 	function onStationSelect(station: StationWithGenre) {
 		nowPlaying.station = station;
