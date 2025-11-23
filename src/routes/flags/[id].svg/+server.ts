@@ -3,7 +3,7 @@ import * as Flags from 'country-flag-icons/string/1x1';
 import { countryToAlpha2 } from 'country-to-iso';
 import { error } from '@sveltejs/kit';
 
-import { countries } from '$server/data';
+import { countries } from '../../../functions/data';
 
 import type { EntryGenerator, RequestHandler } from './$types';
 

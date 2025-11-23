@@ -1,10 +1,10 @@
 import { json } from '@sveltejs/kit';
 import { sample } from 'es-toolkit';
 
-import { scenes } from '$server/data/scenes';
-import { genres, stations } from '$server/data/stations';
+import { scenes } from '../../../../functions/data/scenes';
+import { genres, stations } from '../../../../functions/data/stations';
 
-import type { Scene, Station } from '$server/schema';
+import type { Scene, Station } from '../../../../functions/schema';
 import type { Tags } from '$lib/enums';
 
 import type { RequestHandler } from './$types';

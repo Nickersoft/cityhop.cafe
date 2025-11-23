@@ -1,5 +1,5 @@
-import type { StationWithGenre } from '$server/data/stations';
-import type { Scene } from '$server/schema';
+import type { StationWithGenre } from '../functions/data/stations';
+import type { Scene } from '../functions/schema';
 import { Tags } from './enums';
 import { nowPlaying } from './state.svelte';
 

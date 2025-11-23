@@ -1,7 +1,7 @@
 import { getSceneByID, getStationByID, randomScene, randomStation } from '$lib/api';
 import { IS_CHRISTMAS, IS_HALLOWEEN } from '$lib/consts';
 import { Tags } from '$lib/enums';
-import { scenes } from '$server/data';
+import { scenes } from '../functions/data';
 
 import type { PageServerLoad } from './$types';
 

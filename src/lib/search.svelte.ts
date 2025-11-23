@@ -3,7 +3,7 @@ import { page } from '$app/state';
 import { mapValues, groupBy, sortBy, debounce } from 'es-toolkit';
 
 import type { SceneTypes } from '$lib/enums';
-import type { Scene } from '$server/schema';
+import type { Scene } from '../functions/schema';
 import type { SearchResultItem } from '$lib/types';
 import { isScene } from '$lib/guards';
 
@@ -38,7 +38,7 @@ export class Searcher<T = SearchResultItem> {
 		return url;
 	});
 
-	constructor(private route: string) {
+	constructor(private searchFn: string) {
 		$effect(() => {
 			this.#loading = true;
 

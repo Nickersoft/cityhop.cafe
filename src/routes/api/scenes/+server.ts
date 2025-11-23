@@ -2,13 +2,13 @@ import fuzzysort from 'fuzzysort';
 
 import { error, json } from '@sveltejs/kit';
 
-import { continents, scenes } from '$server/data/scenes';
+import { continents, scenes } from '../../../functions/data/scenes';
 
 import { get } from 'es-toolkit/compat';
 
 import type { RequestHandler } from './$types';
 import type { Tags } from '$lib/enums';
-import type { Scene } from '$server/schema';
+import type { Scene } from '../../../functions/schema';
 
 export const GET: RequestHandler = async ({ url }) => {
 	const query = url.searchParams.get('q');

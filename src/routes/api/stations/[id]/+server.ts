@@ -1,6 +1,6 @@
 import { error, json, type RequestHandler } from '@sveltejs/kit';
 
-import { getStationByID } from '$server/data/stations';
+import { getStationByID } from '../../../../functions/data/stations';
 
 export const GET: RequestHandler = async ({ params: { id } }) => {
 	const station = getStationByID(id ?? '');

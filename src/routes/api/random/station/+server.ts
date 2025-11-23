@@ -1,7 +1,7 @@
 import { json, type RequestHandler } from '@sveltejs/kit';
 import { sample } from 'es-toolkit';
 
-import { genres, stations, type StationWithGenre } from '$server/data/stations';
+import { genres, stations, type StationWithGenre } from '../../../../functions/data/stations';
 
 import type { Tags } from '$lib/enums';
 

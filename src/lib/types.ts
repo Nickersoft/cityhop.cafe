@@ -1,5 +1,5 @@
-import type { StationWithGenre } from '$server/data/stations';
-import type { Continent, Country, Scene, SceneGroup } from '$server/schema';
+import type { StationWithGenre } from '../functions/data/stations';
+import type { Continent, Country, Scene, SceneGroup } from '../functions/schema';
 
 export type SearchResultItem = Continent | Country | SceneGroup | Scene;
 
