@@ -2,16 +2,18 @@ import { on } from 'svelte/events';
 import { invalidate } from '$app/navigation';
 
 import { nowPlaying, ui } from '$lib/state.svelte';
-import { randomScene, randomStation } from '$lib/api';
+
 import { Hotkeys } from '$lib/enums';
+import { getRandomScene } from '$server/scenes.remote';
+import { getRandomStation } from '$server/stations.remote';
 
 async function handleKeyUp(e: KeyboardEvent) {
 	if (e.key === Hotkeys.RANDOM || e.key === Hotkeys.RANDOM_SCENE) {
-		nowPlaying.scene = await randomScene();
+		nowPlaying.scene = await getRandomScene({});
 	}
 
 	if (e.key === Hotkeys.RANDOM || e.key === Hotkeys.RANDOM_STATION) {
-		nowPlaying.station = await randomStation();
+		nowPlaying.station = await getRandomStation({});
 	}
 }
 

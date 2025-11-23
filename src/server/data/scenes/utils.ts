@@ -1,6 +1,6 @@
 import { isScene, isSceneGroup, isCountry, isContinent } from '$lib/guards';
 import type { SearchResultItem } from '$lib/types';
-import type { Country, Scene } from '$server/schema';
+import type { Country, Scene } from '../../schema';
 
 export function createSceneMap(
 	items: SearchResultItem[],

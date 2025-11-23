@@ -2,6 +2,8 @@ import { nanoid } from 'nanoid';
 
 import { PUBLIC_PH_TOKEN } from '$env/static/public';
 
+import { heartbeat } from '$server/heartbeat.remote';
+
 import { nowPlaying } from '$lib/state.svelte';
 
 function createID() {
@@ -12,20 +14,6 @@ function createID() {
 	}
 
 	return localStorage.getItem(distinctIDKey) as string;
-}
-
-function trigger(id: string) {
-	return fetch('/api/heartbeat', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify({
-			distinctID: id,
-			nowPlaying: nowPlaying.scene,
-			currentStation: nowPlaying.station
-		})
-	});
 }
 
 export default function setupHeartbeat() {
@@ -40,7 +28,16 @@ export default function setupHeartbeat() {
 		});
 	});
 
-	const timer = setInterval(() => trigger(distinctID), 1000 * 60 * 5 /* 5 minutes */);
+	const timer = setInterval(
+		() => {
+			heartbeat({
+				distinctID,
+				nowPlaying: nowPlaying.scene,
+				currentStation: nowPlaying.station
+			});
+		},
+		1000 * 60 * 5 /* 5 minutes */
+	);
 
 	return () => {
 		if (timer) {

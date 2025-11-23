@@ -1,4 +1,4 @@
-import * as v from 'valibot';
+import { z } from 'zod';
 import { sortBy } from 'es-toolkit';
 
 import { sceneSchema, type Scene, type SceneInput } from './scene';
@@ -34,19 +34,22 @@ export function deepSort<T extends SceneGroup | Scene>(scenes: T[]): T[] {
 	});
 }
 
-export const sceneGroupSchema: v.GenericSchema<SceneGroupInput, SceneGroup> = v.pipe(
-	v.object({
-		name: v.string(),
-		emoji: v.optional(v.string()),
-		scenes: v.optional(v.array(v.lazy(() => v.union([sceneSchema, sceneGroupSchema]))))
-	}),
-	v.transform(({ scenes, ...input }) => ({
+export const sceneGroupSchema: z.ZodType<SceneGroup, SceneGroupInput> = z
+	.object({
+		name: z.string(),
+		emoji: z.string().optional(),
+		get scenes() {
+			return z.array(z.union([sceneSchema, sceneGroupSchema])).optional();
+		}
+	})
+	.transform(({ scenes, ...input }) => ({
 		...input,
-		scenes: deepSort(scenes ?? [])
-	})),
-	v.transform((input) => ({
+		get scenes() {
+			return deepSort(scenes ?? []);
+		}
+	}))
+	.transform((input) => ({
 		__type__: 'group' as const,
 		thumbnail: findThumbnail(input.scenes),
 		...input
-	}))
-);
+	}));

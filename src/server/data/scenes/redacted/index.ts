@@ -1,6 +1,6 @@
 import { SceneTypes } from '$lib/enums';
 import { Tags } from '$lib/enums';
-import { createContinent } from '$server/schema';
+import { createContinent } from '../../../schema';
 
 export default createContinent({
 	name: '????',

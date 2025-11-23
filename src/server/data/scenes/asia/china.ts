@@ -1,6 +1,6 @@
-import { createCountry } from '$server/schema';
+import { createCountry } from '../../../schema';
 import { SceneTypes, Tags } from '$lib/enums';
-import { genres } from '$server/data/stations';
+import { genres } from '../../stations';
 
 export default createCountry({
 	name: 'China',

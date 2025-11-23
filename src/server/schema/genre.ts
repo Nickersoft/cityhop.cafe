@@ -1,16 +1,16 @@
-import * as v from 'valibot';
+import { z } from 'zod';
 
 import { stationSchema } from './station';
 
-export const genreSchema = v.object({
-	name: v.string(),
-	icon: v.string(),
-	stations: v.record(v.string(), stationSchema)
+export const genreSchema = z.object({
+	name: z.string(),
+	icon: z.string(),
+	stations: z.record(z.string(), stationSchema)
 });
 
-export type GenreInput = v.InferInput<typeof genreSchema>;
-export type Genre = v.InferOutput<typeof genreSchema>;
+export type GenreInput = z.input<typeof genreSchema>;
+export type Genre = z.output<typeof genreSchema>;
 
 export function createGenre(input: GenreInput): Genre {
-	return v.parse(genreSchema, input);
+	return z.parse(genreSchema, input);
 }

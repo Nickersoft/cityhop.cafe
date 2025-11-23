@@ -1,4 +1,4 @@
-import { createCountry } from '$server/schema';
+import { createCountry } from '../../../schema';
 import { SceneTypes, Tags } from '$lib/enums';
 
 export default createCountry({

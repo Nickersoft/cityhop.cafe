@@ -1,4 +1,4 @@
-import type { Continent, Country, Scene } from '$server/schema';
+import type { Continent, Country, Scene } from '../../schema';
 
 import africa from './africa';
 import asia from './asia';

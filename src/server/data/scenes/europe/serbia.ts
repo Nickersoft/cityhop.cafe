@@ -1,5 +1,5 @@
 import { SceneTypes } from '$lib/enums';
-import { createCountry } from '$server/schema';
+import { createCountry } from '../../../schema';
 
 export default createCountry({
 	name: 'Serbia',

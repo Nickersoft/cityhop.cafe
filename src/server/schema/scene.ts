@@ -1,37 +1,36 @@
-import * as v from 'valibot';
+import { z } from 'zod';
 
 import { SceneTypes, Tags } from '$lib/enums';
 
 import { stationSchema } from './station';
 import { getYouTubeLink, getThumbnail } from '$lib/youtube';
 
-const offsetSchema = v.object({
-	start: v.optional(v.number()),
-	end: v.optional(v.number())
+const offsetSchema = z.object({
+	start: z.optional(z.number()),
+	end: z.optional(z.number())
 });
 
-export const sceneSchema = v.pipe(
-	v.object({
-		name: v.string(),
-		type: v.enum(SceneTypes),
-		country: v.optional(v.string()),
-		countryCode: v.optional(v.string()),
-		emoji: v.optional(v.string()),
-		videoID: v.string(),
-		tags: v.optional(v.array(v.enum(Tags))),
-		path: v.optional(v.array(v.string())),
-		hidden: v.optional(v.boolean()),
-		suggestedTrack: v.optional(stationSchema),
-		offset: v.optional(offsetSchema),
-		length: v.optional(v.number())
-	}),
-	v.transform((input) => ({
+export const sceneSchema = z
+	.object({
+		name: z.string(),
+		type: z.enum(SceneTypes),
+		country: z.optional(z.string()),
+		countryCode: z.optional(z.string()),
+		emoji: z.optional(z.string()),
+		videoID: z.string(),
+		tags: z.optional(z.array(z.enum(Tags))),
+		path: z.optional(z.array(z.string())),
+		hidden: z.optional(z.boolean()),
+		suggestedTrack: z.optional(stationSchema),
+		offset: z.optional(offsetSchema),
+		length: z.optional(z.number())
+	})
+	.transform((input) => ({
 		__type__: 'scene' as const,
 		thumbnail: getThumbnail(input.videoID),
 		link: getYouTubeLink(input.videoID),
 		...input
-	}))
-);
+	}));
 
-export type SceneInput = v.InferInput<typeof sceneSchema>;
-export type Scene = v.InferOutput<typeof sceneSchema>;
+export type SceneInput = z.input<typeof sceneSchema>;
+export type Scene = z.output<typeof sceneSchema>;

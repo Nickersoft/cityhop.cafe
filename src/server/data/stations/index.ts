@@ -1,6 +1,6 @@
 import { keyBy } from 'es-toolkit';
 
-import type { Genre, Station } from '$server/schema';
+import type { Genre, Station } from '../../schema';
 
 import { classical } from './classical';
 import { electronic } from './electronic';

@@ -1,4 +1,4 @@
-import { createGenre } from '$server/schema';
+import { createGenre } from '../../schema';
 import { Tags } from '$lib/enums';
 
 export const jazz = createGenre({

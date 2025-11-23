@@ -2,10 +2,14 @@ import { page } from '$app/state';
 
 import { mapValues, groupBy, sortBy, debounce } from 'es-toolkit';
 
-import type { SceneTypes } from '$lib/enums';
-import type { Scene } from '$server/schema';
+import type { SceneTypes, Tags } from '$lib/enums';
 import type { SearchResultItem } from '$lib/types';
 import { isScene } from '$lib/guards';
+
+import type { SearchParams } from '$server/schema';
+import type { Scene } from '$server/schema';
+
+export type SearchFn<T> = (params: SearchParams) => Promise<T[]>;
 
 export class Searcher<T = SearchResultItem> {
 	#loading = $state(false);
@@ -16,45 +20,25 @@ export class Searcher<T = SearchResultItem> {
 
 	#query = $state('');
 
-	#tags = $state<string[]>([]);
+	#tags = $state<Tags[]>([]);
 
-	#cache = new Map<URL, SearchResultItem[]>();
-
-	#url = $derived.by(() => {
-		const url = new URL(`/api/${this.route}`, page.url.origin);
-
-		if (this.#query) {
-			url.searchParams.delete('p');
-			url.searchParams.set('q', this.#query);
-		} else if (this.#path && this.#path.length > 0) {
-			url.searchParams.delete('q');
-			url.searchParams.set('p', this.#path.join(''));
-		}
-
-		if (this.#tags && this.#tags.length > 0) {
-			url.searchParams.set('t', this.#tags.join(','));
-		}
-
-		return url;
-	});
-
-	constructor(private route: string) {
+	constructor(private searchFn: SearchFn<T>) {
 		$effect(() => {
 			this.#loading = true;
 
-			if (this.#cache.has(this.#url)) {
-				this.#items = this.#cache.get(this.#url) as T[];
-				return;
-			}
-
-			fetch(this.#url)
-				.then((res) => res.json())
+			this.searchFn({
+				query: this.#query,
+				path: this.#path.join(''),
+				tags: this.#tags
+			})
 				.then((data) => {
 					this.#items = data;
-					this.#cache.set(this.#url, data);
 				})
 				.finally(() => {
 					this.#loading = false;
+				})
+				.catch((error) => {
+					console.error(error);
 				});
 		});
 	}
@@ -67,7 +51,7 @@ export class Searcher<T = SearchResultItem> {
 		return this.#path;
 	}
 
-	setTags(tags: string[]) {
+	setTags(tags: Tags[]) {
 		this.#tags = tags;
 	}
 
@@ -86,17 +70,11 @@ export class Searcher<T = SearchResultItem> {
 	}
 
 	prefetch(component: string) {
-		const url = new URL(`/api/${this.route}`, page.url.origin);
-
-		url.searchParams.set('p', [...this.#path, component].join(''));
-
-		if (!this.#cache.has(url)) {
-			fetch(url)
-				.then((res) => res.json())
-				.then((data) => {
-					this.#cache.set(url, data);
-				});
-		}
+		this.searchFn({
+			query: this.#query,
+			path: [...this.#path, component].join(''),
+			tags: this.#tags
+		});
 	}
 
 	search = debounce((q) => {

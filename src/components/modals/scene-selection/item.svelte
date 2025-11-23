@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Stack, Typography } from '$components/ui';
 	import type { SearchResultItem } from '$lib/types';
-	import type { Station } from '$server/schema';
+	import type { Station } from '$server/schema/search';
 
 	import { FILTER_LIST } from './consts';
 

@@ -1,4 +1,4 @@
-import { createGenre } from '$server/schema';
+import { createGenre } from '../../schema';
 
 export const rnb = createGenre({
 	name: 'R&B',

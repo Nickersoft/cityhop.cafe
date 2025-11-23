@@ -1,4 +1,4 @@
-import { createContinent } from '$server/schema';
+import { createContinent } from '../../../schema';
 
 import ghana from './egypt';
 import ethiopia from './ethiopia';
