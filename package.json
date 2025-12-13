@@ -29,7 +29,7 @@
 		"@types/youtube-player": "^5.5.11",
 		"jsdom": "^27.2.0",
 		"oxlint": "^1.29.0",
-		"oxlint-tsgolint": "^0.8.1",
+		"oxlint-tsgolint": "^0.9.0",
 		"prettier": "^3.6.2",
 		"prettier-plugin-svelte": "^3.4.0",
 		"prettier-plugin-tailwindcss": "^0.7.1",
