@@ -6,7 +6,7 @@ export default createCountry({
 	name: 'Denmark',
 	scenes: [
 		{
-			name: 'Cophenhagen',
+			name: 'Copenhagen',
 			type: SceneTypes.walk,
 			videoID: 'KMCdDE6FSP8',
 			offset: { start: 50 },

@@ -10,6 +10,13 @@ export default createCountry({
 			videoID: 'Fvt6rD9tt1c',
 			tags: [Tags.day],
 			offset: { start: 60 }
+		},
+		{
+			name: 'Johannesburg',
+			type: SceneTypes.drive,
+			videoID: '_XMr0bE5cwo',
+			offset: { start: 30 },
+			tags: [Tags.day]
 		}
 	]
 });

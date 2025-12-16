@@ -13,7 +13,9 @@ import taiwan from './taiwan';
 import thailand from './thailand';
 import turkey from './turkey';
 import uae from './uae';
+import indonesia from './indonesia';
 import vietnam from './vietnam';
+import siberia from './siberia';
 
 export default createContinent({
 	name: 'Asia',
@@ -24,7 +26,9 @@ export default createContinent({
 		japan,
 		jordan,
 		korea,
+		indonesia,
 		laos,
+		siberia,
 		lebanon,
 		russia,
 		singapore,

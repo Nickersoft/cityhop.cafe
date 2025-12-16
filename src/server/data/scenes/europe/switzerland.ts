@@ -20,6 +20,20 @@ export default createCountry({
 			tags: [Tags.christmas, Tags.snow]
 		},
 		{
+			name: 'Grimentz',
+			videoID: 'QHugs4KDnms',
+			type: SceneTypes.walk,
+			offset: { start: 180 },
+			tags: [Tags.day, Tags.snow, Tags.christmas]
+		},
+		{
+			name: 'Wegen',
+			videoID: 'XJuCyP_dCHY',
+			type: SceneTypes.walk,
+			offset: { start: 30 },
+			tags: [Tags.day, Tags.snow, Tags.christmas]
+		},
+		{
 			name: 'Zurich Airport',
 			videoID: 'vl_BfAZf4LY',
 			type: SceneTypes.walk,

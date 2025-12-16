@@ -29,6 +29,12 @@ export default createCountry({
 					tags: [Tags.night, Tags.snow]
 				},
 				{
+					name: 'Apgujeong',
+					type: SceneTypes.walk,
+					videoID: 'iNxCAi3RN54',
+					tags: [Tags.night, Tags.snow, Tags.christmas]
+				},
+				{
 					name: 'Euljiro',
 					type: SceneTypes.walk,
 					videoID: 'g010nClpG2U',

@@ -42,6 +42,13 @@ export const jazz = createGenre({
 			hidden: true,
 			tags: [Tags.christmas],
 			live: false
+		},
+		christmas3: {
+			trackID: 'A9hR-SwE6J8',
+			live: false,
+			name: 'Cozy Christmas Coffee Shop Ambience with Smooth Jazz Music 🎄 Christmas Jazz Instrumental Music',
+			tags: [Tags.christmas],
+			hidden: true
 		}
 	}
 });

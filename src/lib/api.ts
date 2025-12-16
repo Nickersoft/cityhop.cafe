@@ -1,38 +1,15 @@
-import type { StationWithGenre } from '$server/data';
-import type { Scene } from '$server/schema';
+import { getRandomScene } from '$server/scenes.remote';
+import { getRandomStation } from '$server/stations.remote';
+
 import { Tags } from './enums';
 import { nowPlaying } from './state.svelte';
 
-type Fetcher = typeof globalThis.fetch;
-
-function makeCall<T>(
-	url: string,
-	params: Record<string, unknown> = {},
-	customFetch?: Fetcher
-): Promise<T> {
-	const queryString = new URLSearchParams(
-		Object.entries(params).reduce(
-			(acc, [key, value]) => {
-				const v = Array.isArray(value) ? value.join(',') : value?.toString();
-				if (v) acc[key] = v;
-				return acc;
-			},
-			{} as Record<string, string>
-		)
-	).toString();
-
-	const finalUrl = `/api/${url}${queryString ? `?${queryString}` : ''}`;
-	const fn = customFetch ? customFetch(finalUrl) : fetch(finalUrl);
-
-	return fn.then((res) => res.json());
-}
-
 export async function getSpooky() {
-	nowPlaying.scene = await makeCall<Scene>('random/scene', { tags: Tags.halloween });
-	nowPlaying.station = await makeCall<StationWithGenre>('random/station', { tags: Tags.halloween });
+	nowPlaying.scene = await getRandomScene({ tags: [Tags.halloween] });
+	nowPlaying.station = await getRandomStation({ tags: [Tags.halloween] });
 }
 
 export async function getFestive() {
-	nowPlaying.scene = await makeCall<Scene>('random/scene', { tags: Tags.christmas });
-	nowPlaying.station = await makeCall<StationWithGenre>('random/station', { tags: Tags.christmas });
+	nowPlaying.scene = await getRandomScene({ tags: [Tags.christmas] });
+	nowPlaying.station = await getRandomStation({ tags: [Tags.christmas] });
 }
