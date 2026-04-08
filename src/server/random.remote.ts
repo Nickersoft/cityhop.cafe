@@ -1,6 +1,7 @@
 import { query } from '$app/server';
 
-import { getRandomScene, randomSceneSchema } from './scenes.remote';
+import { getRandomScene } from './scenes.remote';
+import { randomSceneSchema } from './schema';
 import { getRandomStation } from './stations.remote';
 
 export const getRandom = query(randomSceneSchema, async ({ calmOnly, tags }) => {

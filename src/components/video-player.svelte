@@ -71,7 +71,7 @@
 		variant="link"
 		size="icon"
 		onclick={toggleFullscreen}
-		class="fixed top-28 right-0 z-40 m-4 text-white md:top-12 xl:top-0 [&_svg]:size-8"
+		class="fixed top-28 right-0 z-40 m-4 text-white md:top-0 [&_svg]:size-8"
 	>
 		{#if ui.isFullscreen}
 			<ArrowsIn />

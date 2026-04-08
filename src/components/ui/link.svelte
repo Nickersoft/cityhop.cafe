@@ -7,8 +7,7 @@
 
 	const { href, children, variant, size, ...props }: Props = $props();
 
-	const openInNew =
-		href?.startsWith('http') || href?.startsWith('mailto') || href?.startsWith('tel');
+	const openInNew = $derived(href && /^(http|mailto|tel)/.test(href));
 </script>
 
 <a
