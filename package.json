@@ -42,7 +42,7 @@
 	"dependencies": {
 		"@fontsource-variable/inter": "^5.2.8",
 		"@iconify-json/simple-icons": "^1.2.77",
-		"@sveltejs/enhanced-img": "^0.10.4",
+		"@sveltejs/enhanced-img": "^0.11.0",
 		"bits-ui": "^2.17.3",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
