@@ -3,10 +3,10 @@
 	"extends": ["config:base"],
 	"updateLockFiles": true,
 	"automerge": true,
-  "packageRules": [
-    {
-      "matchPackageNames": ["vite"],
-      "updateTypes": ["minor", "patch"]
-    }
-  ]
+	"packageRules": [
+		{
+			"matchPackageNames": ["vite"],
+			"updateTypes": ["minor", "patch"]
+		}
+	]
 }

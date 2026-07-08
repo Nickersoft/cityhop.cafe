@@ -22,7 +22,7 @@ export interface SceneGroup extends SceneGroupInput {
 	scenes: (SceneGroup | Scene)[];
 }
 
-export function deepSort<T extends SceneGroup | Scene>(scenes: T[]): T[] {
+function deepSort<T extends SceneGroup | Scene>(scenes: T[]): T[] {
 	return sortBy(scenes, ['name']).map((scene) => {
 		if (scene.__type__ === 'group') {
 			return {

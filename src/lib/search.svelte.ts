@@ -1,5 +1,3 @@
-import { page } from '$app/state';
-
 import { mapValues, groupBy, sortBy, debounce } from 'es-toolkit';
 
 import type { SceneTypes, Tags } from '$lib/enums';

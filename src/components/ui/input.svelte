@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
-	import type { Component } from 'svelte';
+	import type { ComponentType } from 'svelte';
 	import type { SvelteHTMLElements } from 'svelte/elements';
 
 	type Props = SvelteHTMLElements['input'] & {
-		icon: Component;
+		icon: ComponentType;
 	};
 
 	let { class: className, value = $bindable(), icon: Icon, ...props }: Props = $props();

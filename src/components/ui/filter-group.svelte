@@ -1,14 +1,14 @@
 <script lang="ts" module>
+	import type { ComponentType } from 'svelte';
+
 	export interface Filter {
 		value: string;
 		label: string;
-		icon: Component;
+		icon: ComponentType;
 	}
 </script>
 
 <script lang="ts">
-	import type { Component } from 'svelte';
-
 	import { ToggleGroup } from 'bits-ui';
 
 	interface Props {

@@ -6,6 +6,7 @@ import czechia from './czechia';
 import denmark from './denmark';
 import france from './france';
 import germany from './germany';
+import hungary from './hungary';
 import italy from './italy';
 import monaco from './monaco';
 import netherlands from './netherlands';
@@ -27,6 +28,7 @@ export default createContinent({
 		denmark,
 		france,
 		germany,
+		hungary,
 		italy,
 		monaco,
 		netherlands,

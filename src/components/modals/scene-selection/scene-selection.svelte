@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getContext, untrack, type Component } from 'svelte';
+	import { getContext, untrack, type ComponentType } from 'svelte';
 
 	import Search from '$components/search-ui.svelte';
 	import { FilterGroup, Stack, Typography, Button, ScrollArea } from '$components/ui';
@@ -111,7 +111,7 @@
 				scenes: { drive, walk, bike, boat, train }
 			} = results}
 
-			{#snippet section(scenes?: SearchResultItem[], title?: string, Icon?: Component)}
+			{#snippet section(scenes?: SearchResultItem[], title?: string, Icon?: ComponentType)}
 				{#if scenes && scenes.length > 0}
 					{#if title}
 						<Stack orientation="row" align="center" gap="sm" class="col-span-full border-b p-4">

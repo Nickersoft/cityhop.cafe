@@ -1,4 +1,3 @@
-import z from 'zod';
 import fuzzysort from 'fuzzysort';
 
 import { sample } from 'es-toolkit';

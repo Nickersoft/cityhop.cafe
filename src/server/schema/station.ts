@@ -19,5 +19,4 @@ export const stationSchema = z
 		...input
 	}));
 
-export type StationInput = z.input<typeof stationSchema>;
 export type Station = z.output<typeof stationSchema>;

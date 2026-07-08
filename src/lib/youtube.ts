@@ -1,5 +1,5 @@
 import { on } from 'svelte/events';
-import type { Options, YouTubePlayer } from 'youtube-player/dist/types';
+import type { Options } from 'youtube-player/dist/types';
 import type { EventType } from 'youtube-player/dist/eventNames';
 
 import createYouTubePlayer from 'youtube-player';
@@ -19,50 +19,6 @@ export function getYouTubeLink(videoId?: string) {
 export function getThumbnail(videoID: string, num = 3): string {
 	return `https://img.youtube.com/vi/${videoID}/hq${num}.jpg`;
 }
-
-/**
- * Observes the current time of the YouTube player
- * @param player - The YouTube player
- * @param callback - The callback to be called when the time changes
- * @returns A function to stop observing the player
- */
-const observePlayerProgress = (() => {
-	let lastTimeUpdate = 0;
-	let iframeWindow: Window | null = null;
-
-	return (player: YouTubePlayer, callback: (progress: number) => void) => {
-		player.getIframe().then((frame) => {
-			iframeWindow = frame.contentWindow;
-		});
-
-		// Approach taken from https://gist.github.com/zavan/75ed641de5afb1296dbc02185ebf1ea0
-		// Let's hope it always works
-		function observe<T extends string>(event: MessageEvent<T>) {
-			if (!iframeWindow) return;
-
-			// Check that the event was sent from the YouTube IFrame.
-			if (event.source === iframeWindow) {
-				const data = JSON.parse(event.data);
-
-				// The "infoDelivery" event is used by YT to transmit any
-				// kind of information change in the player,
-				// such as the current time or a playback quality change.
-				if (data.event === 'infoDelivery' && data.info && data.info.currentTime) {
-					// currentTime is emitted very frequently,
-					// but we only care about whole second changes.
-					const time = Math.floor(data.info.currentTime);
-
-					if (time !== lastTimeUpdate) {
-						lastTimeUpdate = time;
-						callback(time);
-					}
-				}
-			}
-		}
-
-		return on(window, 'message', observe);
-	};
-})();
 
 type EventHandler = <T>(event: CustomEvent<T>) => void;
 

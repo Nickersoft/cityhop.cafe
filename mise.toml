@@ -1,3 +1,34 @@
 [tools]
 bun = "latest"
 node = "24"
+
+[tasks]
+sync = "bun svelte-kit sync"
+
+[tasks."ci:install"]
+run = "bun install --frozen-lockfile"
+
+[tasks."check:sv"]
+depends = ["sync"]
+run = "bun svelte-check --tsconfig ./tsconfig.json --tsgo"
+
+[tasks."check:vp"]
+run = "bun vp check"
+
+[tasks.check]
+depends = ["check:sv", "check:vp"]
+
+[tasks.lint]
+run = "vp lint --type-aware ."
+
+[tasks."check:sv:watch"]
+run = "bun svelte-check --tsconfig ./tsconfig.json --tsgo"
+
+[tasks.format]
+run = "bun vp fmt ."
+
+[tasks.test]
+run = "bun --bun playwright install --with-deps && bun --bun playwright test"
+
+[tasks.knip]
+run = "bun knip"

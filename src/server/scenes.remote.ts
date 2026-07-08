@@ -1,13 +1,11 @@
 import fuzzysort from 'fuzzysort';
 
-import { z } from 'zod';
 import { error } from '@sveltejs/kit';
 import { sample } from 'es-toolkit';
 import { get } from 'es-toolkit/compat';
 
 import { query } from '$app/server';
 import type { SearchResultItem } from '$lib/types';
-import { Tags } from '$lib/enums';
 
 import { scenes, continents, stations, genres } from './data';
 import type { Scene, Station } from './schema';
@@ -45,7 +43,7 @@ export const getScenes = query(searchSchema, ({ query, path, tags }): SearchResu
 
 		if (result) {
 			if (Array.isArray(result)) {
-				return result.map(({ countries, scenes, ...rest }) => rest);
+				return result.map(({ countries: _c, scenes: _s, ...rest }) => rest);
 			}
 		}
 
@@ -53,7 +51,7 @@ export const getScenes = query(searchSchema, ({ query, path, tags }): SearchResu
 	}
 
 	// Don't return full tree to save on bandwidth
-	return visibleContinents.map(({ countries, ...rest }) => rest);
+	return visibleContinents.map(({ countries: _, ...rest }) => rest);
 });
 
 export const getRandomScene = query(randomSceneSchema, ({ tags, calmOnly }) => {

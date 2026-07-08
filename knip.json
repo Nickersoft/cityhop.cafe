@@ -1,0 +1,8 @@
+{
+	"$schema": "https://unpkg.com/knip@6/schema.json",
+	"entry": ["src/components/controls/media-panel/index.ts"],
+	"include": ["nsExports"],
+	"ignore": ["src/lib/icons.ts"],
+	"ignoreDependencies": ["svelte-check", "@typescript/native-preview"],
+	"tags": ["-lintignore"]
+}

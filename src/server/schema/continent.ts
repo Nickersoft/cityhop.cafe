@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { countrySchema, createCountry } from './country';
 import { sortBy } from 'es-toolkit';
 
-export const continentSchema = z
+const continentSchema = z
 	.object({
 		name: z.string(),
 		hidden: z.optional(z.boolean()),

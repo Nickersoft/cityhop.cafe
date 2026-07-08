@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 import { stationSchema } from './station';
 
-export const genreSchema = z.object({
+const genreSchema = z.object({
 	name: z.string(),
 	icon: z.string(),
 	stations: z.record(z.string(), stationSchema)

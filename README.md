@@ -3,7 +3,8 @@
 
   <br />
 
-  [![MadeWithSvelte.com shield](https://madewithsvelte.com/storage/repo-shields/4734-shield.svg)](https://madewithsvelte.com/p/cityhop-cafe/shield-link)
+[![MadeWithSvelte.com shield](https://madewithsvelte.com/storage/repo-shields/4734-shield.svg)](https://madewithsvelte.com/p/cityhop-cafe/shield-link)
+
 </div>
 
 ---
