@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 
-import { PUBLIC_PH_TOKEN } from '$env/static/public';
+import { env } from '$env/dynamic/public';
 
 import { heartbeat } from '$server/heartbeat.remote';
 
@@ -17,10 +17,16 @@ function createID() {
 }
 
 export default function setupHeartbeat() {
+	const token = env.PUBLIC_PH_TOKEN;
+
+	if (!token) {
+		return () => {};
+	}
+
 	const distinctID = createID();
 
 	import('posthog-js').then(({ posthog }) => {
-		posthog.init(PUBLIC_PH_TOKEN, {
+		posthog.init(token, {
 			api_host: 'https://app.posthog.com',
 			loaded(ph) {
 				ph.identify(distinctID);
@@ -41,7 +47,7 @@ export default function setupHeartbeat() {
 
 	return () => {
 		if (timer) {
-			clearTimeout(timer);
+			clearInterval(timer);
 		}
 	};
 }

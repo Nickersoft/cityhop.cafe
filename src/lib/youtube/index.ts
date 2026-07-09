@@ -1,21 +1,15 @@
 import { on } from 'svelte/events';
-import type { Options } from 'youtube-player/dist/types';
-import type { EventType } from 'youtube-player/dist/eventNames';
-
-import createYouTubePlayer from 'youtube-player';
 
 import { PlayerState } from '$lib/enums';
+
+import type { EventType } from './events';
+import createYouTubePlayer from './player';
+import type { Options, PlayerEvent } from './types';
 
 export function getYouTubeLink(videoId?: string) {
 	return `https://www.youtube.com/watch?v=${videoId}`;
 }
 
-/**
- * Returns the thumbnail of a scene item
- * @param item - The scene to get the thumbnail of
- * @param num - The number of the thumbnail to get
- * @returns The URL of the thumbnail
- */
 export function getThumbnail(videoID: string, num = 3): string {
 	return `https://img.youtube.com/vi/${videoID}/hq${num}.jpg`;
 }
@@ -28,6 +22,7 @@ export interface PlayerEvents {
 	onEnd?: EventHandler;
 	onAPIChange?: EventHandler;
 	onVolumeChange?: EventHandler;
+	onAutoplayBlocked?: EventHandler;
 	onPlay?: EventHandler;
 	onPause?: EventHandler;
 	onStateChange?: EventHandler;
@@ -38,6 +33,10 @@ export interface PlayerEvents {
 
 export type InitPlayerOptions = Options & PlayerEvents;
 
+function toCustomEvent(event: string, detail: PlayerEvent) {
+	return new CustomEvent(event, { detail });
+}
+
 export function initPlayer(el: HTMLElement, options: InitPlayerOptions = {}) {
 	const {
 		onReady,
@@ -47,6 +46,7 @@ export function initPlayer(el: HTMLElement, options: InitPlayerOptions = {}) {
 		onPause,
 		onAPIChange,
 		onVolumeChange,
+		onAutoplayBlocked,
 		onStateChange,
 		onPlaybackRateChange,
 		onPlaybackQualityChange,
@@ -58,6 +58,7 @@ export function initPlayer(el: HTMLElement, options: InitPlayerOptions = {}) {
 		error: onError,
 		apiChange: onAPIChange,
 		volumeChange: onVolumeChange,
+		autoplayBlocked: onAutoplayBlocked,
 		playbackRateChange: onPlaybackRateChange,
 		playbackQualityChange: onPlaybackQualityChange
 	};
@@ -67,15 +68,17 @@ export function initPlayer(el: HTMLElement, options: InitPlayerOptions = {}) {
 	for (const [event, callback] of Object.entries(eventMap)) {
 		if (callback) {
 			player.on(event as EventType, (detail) => {
-				callback(new CustomEvent(event, { detail }));
+				callback(toCustomEvent(event, detail));
 			});
 		}
 	}
 
-	player.on('stateChange', (event) => {
+	player.on('stateChange', (detail) => {
+		const event = toCustomEvent('stateChange', detail);
+
 		onStateChange?.(event);
 
-		switch (event.data) {
+		switch (detail.data) {
 			case PlayerState.ENDED: {
 				onEnd?.(event);
 				break;
@@ -99,21 +102,13 @@ export function initPlayer(el: HTMLElement, options: InitPlayerOptions = {}) {
 		iframeWindow = frame.contentWindow;
 	});
 
-	// Approach taken from https://gist.github.com/zavan/75ed641de5afb1296dbc02185ebf1ea0
-	// Let's hope it always works
 	function observe<T extends string>(event: MessageEvent<T>) {
 		if (!iframeWindow) return;
 
-		// Check that the event was sent from the YouTube IFrame.
 		if (event.source === iframeWindow) {
 			const data = JSON.parse(event.data);
 
-			// The "infoDelivery" event is used by YT to transmit any
-			// kind of information change in the player,
-			// such as the current time or a playback quality change.
 			if (data.event === 'infoDelivery' && data.info && data.info.currentTime) {
-				// currentTime is emitted very frequently,
-				// but we only care about whole second changes.
 				const time = Math.floor(data.info.currentTime);
 
 				if (time !== lastTimeUpdate) {

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { YouTubePlayer } from 'youtube-player/dist/types';
 	import { onMount } from 'svelte';
 	import { on } from 'svelte/events';
 	import { random } from 'es-toolkit';
@@ -8,6 +7,8 @@
 	import { Button, YouTube } from '$components/ui';
 	import { nowPlaying, preferences, ui } from '$lib/state.svelte';
 	import { ArrowsIn, ArrowsOut } from '$lib/icons';
+	import { clearPlaybackStartTimeout, START_PLAYBACK_EVENT } from '$lib/playback-events';
+	import type { YouTubePlayer } from '$lib/youtube/types';
 
 	let videoDuration: number | undefined = $state();
 
@@ -26,6 +27,9 @@
 
 	async function onPlay() {
 		ui.isPlaying = true;
+		ui.playbackBlocked = false;
+		ui.playbackError = null;
+		clearPlaybackStartTimeout();
 		videoDuration = await player?.getDuration();
 	}
 
@@ -36,6 +40,21 @@
 
 	function onEnd() {
 		player?.seekTo(videoOffset.start, true);
+	}
+
+	function onError(event: CustomEvent) {
+		ui.playbackError = `YouTube player error ${String(event.detail?.data ?? 'unknown')}`;
+		ui.playbackBlocked = true;
+	}
+
+	function onAutoplayBlocked() {
+		ui.playbackBlocked = true;
+	}
+
+	function startPlayback() {
+		ui.playbackBlocked = false;
+		ui.playbackError = null;
+		player?.playVideo();
 	}
 
 	function onTimeChange(event: CustomEvent) {
@@ -58,11 +77,15 @@
 	});
 
 	onMount(() => {
-		const removeListener = on(document, 'fullscreenchange', () => {
+		const removeFullscreenListener = on(document, 'fullscreenchange', () => {
 			ui.isFullscreen = !!document.fullscreenElement;
 		});
+		const removeStartListener = on(document, START_PLAYBACK_EVENT, startPlayback);
 
-		return removeListener;
+		return () => {
+			removeFullscreenListener();
+			removeStartListener();
+		};
 	});
 </script>
 
@@ -93,6 +116,8 @@
 			<YouTube
 				id="video"
 				{onEnd}
+				{onError}
+				{onAutoplayBlocked}
 				{onTimeChange}
 				{onReady}
 				{onPlay}
@@ -101,7 +126,7 @@
 					playerVars: {
 						controls: 0,
 						start: randomOffset,
-						autoplay: 1,
+						autoplay: 0,
 						disablekb: 1,
 						modestbranding: 1,
 						playsinline: 1

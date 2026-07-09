@@ -1,5 +1,5 @@
 import z from 'zod';
-import { PUBLIC_PH_TOKEN } from '$env/static/public';
+import { env } from '$env/dynamic/public';
 import { PostHog } from 'posthog-node';
 
 import { getRequestEvent, query } from '$app/server';
@@ -13,9 +13,13 @@ export const heartbeat = query(
 		currentStation: stationSchema.nullable()
 	}),
 	async ({ distinctID, nowPlaying, currentStation }) => {
+		if (!env.PUBLIC_PH_TOKEN) {
+			return true;
+		}
+
 		const { getClientAddress } = getRequestEvent();
 
-		const ph = new PostHog(PUBLIC_PH_TOKEN, {
+		const ph = new PostHog(env.PUBLIC_PH_TOKEN, {
 			host: 'https://app.posthog.com',
 			flushAt: 1,
 			flushInterval: 0

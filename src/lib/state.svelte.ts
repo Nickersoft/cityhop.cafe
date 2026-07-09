@@ -25,5 +25,7 @@ export const ui = $state<UIState>({
 	isPlaying: false,
 	windowActive: true,
 	hasStarted: false,
-	isFullscreen: false
+	isFullscreen: false,
+	playbackBlocked: false,
+	playbackError: null
 });

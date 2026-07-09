@@ -1,9 +1,9 @@
 import { on } from 'svelte/events';
-import { invalidate } from '$app/navigation';
 
 import { nowPlaying, ui } from '$lib/state.svelte';
 
 import { Hotkeys } from '$lib/enums';
+import { requestPlaybackStart } from '$lib/playback-events';
 import { getRandomScene } from '$server/scenes.remote';
 import { getRandomStation } from '$server/stations.remote';
 
@@ -29,18 +29,11 @@ export default function setupHotkeys() {
 	}
 
 	function start(event: Event) {
-		event.stopPropagation();
-		event.preventDefault();
+		requestPlaybackStart(event);
 
-		ui.hasStarted = true;
-
-		setTimeout(() => {
+		window.setTimeout(() => {
 			if (ui.isPlaying) {
 				removeStartHandlers();
-			} else {
-				invalidate('/').then(() => {
-					start(event);
-				});
 			}
 		}, 5000);
 	}

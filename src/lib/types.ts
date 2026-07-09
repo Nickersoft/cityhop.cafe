@@ -12,6 +12,8 @@ export interface UIState {
 	windowActive: boolean;
 	hasStarted: boolean;
 	isFullscreen: boolean;
+	playbackBlocked: boolean;
+	playbackError: string | null;
 }
 
 export interface NowPlaying {

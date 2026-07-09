@@ -3,8 +3,9 @@
 
 	import { IS_CHRISTMAS, IS_HALLOWEEN } from '$lib/consts';
 
-	import { ProgressBar } from '$components/ui';
+	import { Button, ProgressBar } from '$components/ui';
 
+	import { requestPlaybackStart } from '$lib/playback-events';
 	import { ui } from '$lib/state.svelte';
 </script>
 
@@ -19,7 +20,12 @@
 				in:fly|local={{ y: 10, duration: 800, delay: 100 }}
 				class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center"
 			>
-				{#if ui.hasStarted}
+				{#if ui.playbackBlocked || ui.playbackError}
+					Playback needs another tap.
+					<div class="mt-4">
+						<Button variant="outline" onclick={requestPlaybackStart}>Try again</Button>
+					</div>
+				{:else if ui.hasStarted}
 					{#if IS_HALLOWEEN}
 						Happy Halloween...
 					{:else if IS_CHRISTMAS}

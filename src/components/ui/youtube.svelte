@@ -1,7 +1,6 @@
 <script lang="ts">
-	import type { Options, YouTubePlayer } from 'youtube-player/dist/types';
-
 	import { initPlayer, type PlayerEvents } from '$lib/youtube';
+	import type { Options, YouTubePlayer } from '$lib/youtube/types';
 
 	interface Props extends PlayerEvents {
 		id?: string | undefined;
@@ -17,9 +16,6 @@
 	function play(videoId: string) {
 		if (!player || !videoId) return;
 
-		// this is needed because the loadVideoById function always starts playing,
-		// even if you have set autoplay to 1 whereas the cueVideoById function
-		// never starts autoplaying
 		return options.playerVars?.autoplay === 1
 			? player.loadVideoById(videoId, options.playerVars.start)
 			: player.cueVideoById(videoId, options?.playerVars?.start);
