@@ -10,7 +10,7 @@
         "@typescript/native-preview": "^7.0.0-dev.20260707.2",
         "knip": "^6.26.0",
         "typescript": "^6.0.3",
-        "vite-plus": "0.2.4",
+        "vite-plus": "^0.2.4",
       },
     },
     "app": {
@@ -51,11 +51,15 @@
         "tailwindcss": "^4.3.2",
         "unplugin-icons": "^23.0.1",
         "vite": "npm:@voidzero-dev/vite-plus-core@0.2.3",
+        "vite-plus": "^0.2.4",
       },
     },
     "packages/youtube": {
       "name": "youtube",
       "version": "0.0.0",
+      "devDependencies": {
+        "vite-plus": "^0.2.4",
+      },
     },
   },
   "packages": {
@@ -877,7 +881,7 @@
 
     "@vercel/nft/estree-walker": ["estree-walker@2.0.2", "", {}, "sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w=="],
 
-    "cityhop.cafe/youtube": ["youtube@file:packages/youtube", {}],
+    "cityhop.cafe/youtube": ["youtube@file:packages/youtube", { "devDependencies": { "vite-plus": "^0.2.4" } }],
 
     "mlly/pkg-types": ["pkg-types@1.3.1", "", { "dependencies": { "confbox": "^0.1.8", "mlly": "^1.7.4", "pathe": "^2.0.1" } }, "sha512-/Jm5M4RvtBFVkKWRu2BLUTNP8/M2a+UwuAX+ae4770q1qVGtfjG+WTCupoZixokjmHiry8uI+dlY8KXYV5HVVQ=="],
 

@@ -25,7 +25,8 @@
 		"svelte-check": "^4.7.2",
 		"tailwindcss": "^4.3.2",
 		"unplugin-icons": "^23.0.1",
-		"vite": "npm:@voidzero-dev/vite-plus-core@0.2.3"
+		"vite": "npm:@voidzero-dev/vite-plus-core@0.2.3",
+		"vite-plus": "^0.2.4"
 	},
 	"dependencies": {
 		"@fontsource-variable/inter": "^5.2.8",
