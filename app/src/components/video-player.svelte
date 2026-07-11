@@ -7,7 +7,11 @@
 	import { Button, YouTube } from '$components/ui';
 	import { nowPlaying, preferences, ui } from '$lib/state.svelte';
 	import { ArrowsIn, ArrowsOut } from '$lib/icons';
-	import { clearPlaybackStartTimeout, START_PLAYBACK_EVENT } from '$lib/playback-events';
+	import {
+		clearPlaybackStartTimeout,
+		hasPlaybackStartBeenRequested,
+		START_PLAYBACK_EVENT
+	} from '$lib/playback-events';
 	import type { YouTubePlayer } from 'youtube';
 
 	let videoDuration: number | undefined = $state();
@@ -36,6 +40,10 @@
 	function onReady(event: CustomEvent) {
 		player = event.detail.target;
 		player?.setVolume(15);
+
+		if (hasPlaybackStartBeenRequested()) {
+			queueMicrotask(startPlayback);
+		}
 	}
 
 	function onEnd() {

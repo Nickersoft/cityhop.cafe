@@ -5,7 +5,7 @@
 
 	import { nowPlaying, preferences } from '$lib/state.svelte';
 	import { YouTube } from '$components/ui';
-	import { START_PLAYBACK_EVENT } from '$lib/playback-events';
+	import { hasPlaybackStartBeenRequested, START_PLAYBACK_EVENT } from '$lib/playback-events';
 	import type { YouTubePlayer } from 'youtube';
 
 	let player = $state<YouTubePlayer | null>(null);
@@ -13,6 +13,10 @@
 	function onReady(event: CustomEvent) {
 		player = event.detail.target;
 		player?.setVolume(100);
+
+		if (hasPlaybackStartBeenRequested()) {
+			queueMicrotask(startPlayback);
+		}
 	}
 
 	function startPlayback() {
