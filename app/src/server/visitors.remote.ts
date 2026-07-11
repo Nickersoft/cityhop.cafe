@@ -37,6 +37,10 @@ export const getVisitors = query(async () => {
 
 	const result = (await fetch(url.toString(), init).then((res) => res.json())) as EventResponse;
 
+	if (!result.results || result.results.length === 0) {
+		return 0;
+	}
+
 	const groupedUsers = omitBy(
 		Object.groupBy(result.results, (r) => r.distinct_id),
 		(v: Event[] = []) => {

@@ -1,12 +1,12 @@
 import { defineConfig } from 'vite-plus';
 
-import { sveltekit } from '@sveltejs/kit/vite';
-
-import tailwindcss from '@tailwindcss/vite';
-
 export default defineConfig({
 	staged: {
-		'*': ['vp check --fix', 'svelte-check --tsgo']
+		'*': ['vp check --fix'],
+		'app/**/*.svelte': ['vp exec --filter ./app -- svelte-check --tsconfig ./tsconfig.json --tsgo']
+	},
+	lint: {
+		plugins: ['typescript', 'import', 'unicorn']
 	},
 	fmt: {
 		useTabs: true,
@@ -16,6 +16,5 @@ export default defineConfig({
 		sortTailwindcss: {},
 		sortPackageJson: false,
 		ignorePatterns: ['package-lock.json', 'pnpm-lock.yaml', 'yarn.lock']
-	},
-	plugins: [sveltekit(), tailwindcss()]
+	}
 });

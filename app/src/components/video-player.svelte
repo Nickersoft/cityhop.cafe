@@ -8,7 +8,7 @@
 	import { nowPlaying, preferences, ui } from '$lib/state.svelte';
 	import { ArrowsIn, ArrowsOut } from '$lib/icons';
 	import { clearPlaybackStartTimeout, START_PLAYBACK_EVENT } from '$lib/playback-events';
-	import type { YouTubePlayer } from '$lib/youtube/types';
+	import type { YouTubePlayer } from 'youtube';
 
 	let videoDuration: number | undefined = $state();
 

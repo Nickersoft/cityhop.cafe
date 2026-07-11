@@ -1,6 +1,6 @@
-import { afterEach, describe, expect, test, vi } from 'vitest';
+import { afterEach, describe, expect, test, vi } from 'vite-plus/test';
 
-import createYouTubePlayer from './player';
+import { createYouTubePlayer } from './player';
 
 describe('createYouTubePlayer', () => {
 	afterEach(() => {

@@ -1,7 +1,7 @@
 import { createEmitter } from './emitter';
 import { EVENT_NAMES, type EventType } from './events';
 import { FUNCTION_NAMES, type FunctionName } from './functions';
-import { loadYouTubeIframeApi } from './load-youtube-iframe-api';
+import { loadYouTubeIframeApi } from './iframe';
 import type { Options, PlayerEvent, YouTubePlayer, YouTubePlayerInstance } from './types';
 
 type PlayerMethod = (...args: unknown[]) => unknown;
@@ -30,7 +30,7 @@ function isPlayer(
 	);
 }
 
-export default function createYouTubePlayer(
+export function createYouTubePlayer(
 	element: HTMLElement | string | YouTubePlayerInstance,
 	options: Options = {}
 ) {

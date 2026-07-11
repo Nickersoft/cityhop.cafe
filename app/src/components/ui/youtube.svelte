@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { initPlayer, type PlayerEvents } from '$lib/youtube';
-	import type { Options, YouTubePlayer } from '$lib/youtube/types';
+	import type { Options, YouTubePlayer } from 'youtube';
 
 	interface Props extends PlayerEvents {
 		id?: string | undefined;

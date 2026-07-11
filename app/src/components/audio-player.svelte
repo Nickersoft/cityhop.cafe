@@ -6,7 +6,7 @@
 	import { nowPlaying, preferences } from '$lib/state.svelte';
 	import { YouTube } from '$components/ui';
 	import { START_PLAYBACK_EVENT } from '$lib/playback-events';
-	import type { YouTubePlayer } from '$lib/youtube/types';
+	import type { YouTubePlayer } from 'youtube';
 
 	let player = $state<YouTubePlayer | null>(null);
 

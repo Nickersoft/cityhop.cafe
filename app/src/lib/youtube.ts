@@ -2,9 +2,7 @@ import { on } from 'svelte/events';
 
 import { PlayerState } from '$lib/enums';
 
-import type { EventType } from './events';
-import createYouTubePlayer from './player';
-import type { Options, PlayerEvent } from './types';
+import { type EventType, type Options, type PlayerEvent, createYouTubePlayer } from 'youtube';
 
 export function getYouTubeLink(videoId?: string) {
 	return `https://www.youtube.com/watch?v=${videoId}`;

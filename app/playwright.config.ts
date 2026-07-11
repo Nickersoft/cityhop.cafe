@@ -3,6 +3,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
 	reporter: 'html',
 	retries: 1,
+	workers: process.env.CI ? 2 : undefined,
 	projects: [
 		{
 			name: 'chromium',

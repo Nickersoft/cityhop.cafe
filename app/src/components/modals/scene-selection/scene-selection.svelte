@@ -115,7 +115,7 @@
 				{#if scenes && scenes.length > 0}
 					{#if title}
 						<Stack orientation="row" align="center" gap="sm" class="col-span-full border-b p-4">
-							<Icon />
+							<Icon class="size-4" />
 							<Typography variant="headline" size="sm">
 								{title}
 							</Typography>

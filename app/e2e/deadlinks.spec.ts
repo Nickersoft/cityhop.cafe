@@ -15,6 +15,8 @@ async function validateVideoLink(page: Page, videoID: string): Promise<boolean> 
 }
 
 test.describe('Validate station links', () => {
+	test.describe.configure({ mode: 'parallel' });
+
 	for (const station of stations) {
 		const videoID = station.trackID as string;
 
@@ -27,6 +29,8 @@ test.describe('Validate station links', () => {
 });
 
 test.describe('Validate scene links', () => {
+	test.describe.configure({ mode: 'parallel' });
+
 	for (const scene of scenes) {
 		const videoID = scene.videoID as string;
 
