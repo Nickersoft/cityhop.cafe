@@ -1,10 +1,11 @@
 <script lang="ts" module>
-	import type { ComponentType } from 'svelte';
+	import type { Component } from 'svelte';
+	import type { SVGAttributes } from 'svelte/elements';
 
 	export interface Filter {
 		value: string;
 		label: string;
-		icon: ComponentType;
+		icon: Component<SVGAttributes<SVGSVGElement>>;
 	}
 </script>
 

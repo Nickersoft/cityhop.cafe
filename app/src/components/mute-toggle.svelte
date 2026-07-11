@@ -10,10 +10,11 @@
 <Toggle
 	bind:pressed
 	class={cn(
-		'group/toggle cursor-pointer transition-all duration-300 hover:bg-transparent hover:opacity-100 data-[state=on]:bg-transparent'
+		'group/toggle cursor-pointer transition-all duration-300 hover:bg-transparent hover:opacity-100 data-[state=on]:bg-transparent',
+		className
 	)}
 	{...props}
 >
-	<SpeakerHigh class="hidden group-data-[state=off]/toggle:block" />
-	<SpeakerSlash class="block group-data-[state=off]/toggle:hidden" />
+	<SpeakerHigh class="hidden size-4 group-data-[state=off]/toggle:block" />
+	<SpeakerSlash class="block size-4 group-data-[state=off]/toggle:hidden" />
 </Toggle>

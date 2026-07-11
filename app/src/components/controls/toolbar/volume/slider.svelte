@@ -30,7 +30,7 @@
 	</Typography>
 
 	<Stack orientation="row" align="center">
-		<MuteToggle class="text-xl" pressed={showMute} onPressedChange={handleMute} />
+		<MuteToggle class="shrink-0" pressed={showMute} onPressedChange={handleMute} />
 		<Slider
 			onValueCommit={handleChange}
 			disabled={muted}

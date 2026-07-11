@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { getContext, untrack, type ComponentType } from 'svelte';
+	import { getContext, untrack, type Component } from 'svelte';
+	import type { SVGAttributes } from 'svelte/elements';
 
 	import Search from '$components/search-ui.svelte';
 	import { FilterGroup, Stack, Typography, Button, ScrollArea } from '$components/ui';
@@ -111,7 +112,11 @@
 				scenes: { drive, walk, bike, boat, train }
 			} = results}
 
-			{#snippet section(scenes?: SearchResultItem[], title?: string, Icon?: ComponentType)}
+			{#snippet section(
+				scenes?: SearchResultItem[],
+				title?: string,
+				Icon?: Component<SVGAttributes<SVGSVGElement>>
+			)}
 				{#if scenes && scenes.length > 0}
 					{#if title}
 						<Stack orientation="row" align="center" gap="sm" class="col-span-full border-b p-4">
