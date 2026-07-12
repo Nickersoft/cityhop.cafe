@@ -38,7 +38,7 @@
 		"dayjs": "^1.11.21",
 		"es-toolkit": "^1.49.0",
 		"fuzzysort": "^3.1.0",
-		"nanoid": "^5.1.16",
+		"nanoid": "^6.0.0",
 		"posthog-js": "^1.398.2",
 		"posthog-node": "^5.40.0",
 		"svelte-meta-tags": "^5.0.1",
