@@ -6,7 +6,11 @@ export default defineConfig({
 		'app/**/*.svelte': ['vp exec --filter ./app -- svelte-check --tsconfig ./tsconfig.json --tsgo']
 	},
 	lint: {
-		plugins: ['typescript', 'import', 'unicorn']
+		options: {
+			typeAware: true,
+			typeCheck: false
+		},
+		plugins: ['typescript', 'unicorn']
 	},
 	fmt: {
 		useTabs: true,

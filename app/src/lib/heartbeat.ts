@@ -25,7 +25,7 @@ export default function setupHeartbeat() {
 
 	const distinctID = createID();
 
-	import('posthog-js').then(({ posthog }) => {
+	void import('posthog-js').then(({ posthog }) => {
 		posthog.init(token, {
 			api_host: 'https://app.posthog.com',
 			loaded(ph) {
@@ -36,7 +36,7 @@ export default function setupHeartbeat() {
 
 	const timer = setInterval(
 		() => {
-			heartbeat({
+			void heartbeat({
 				distinctID,
 				nowPlaying: nowPlaying.scene,
 				currentStation: nowPlaying.station

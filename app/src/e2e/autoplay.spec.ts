@@ -82,3 +82,101 @@ test('keeps the audio iframe measurable for YouTube', async ({ page }) => {
 	expect(audioBox?.width).toBeGreaterThanOrEqual(200);
 	expect(audioBox?.height).toBeGreaterThanOrEqual(200);
 });
+
+test('plays replacement scene and station videos without rebuilding the players', async ({
+	page
+}) => {
+	await page.addInitScript(() => {
+		type EventHandler = (event: { data?: number; target: Player }) => void;
+		type Events = {
+			onReady?: EventHandler;
+			onStateChange?: EventHandler;
+		};
+		type Call = { player: string; method: 'cue' | 'load' };
+		type PlayerWindow = { youTubeCalls: Call[] };
+
+		class Player {
+			private readonly events: Events | undefined;
+			private readonly iframe: HTMLIFrameElement;
+			private readonly playerId: string;
+
+			constructor(element: HTMLElement | string, options: { events?: Events }) {
+				const host = typeof element === 'string' ? document.getElementById(element) : element;
+
+				if (!host) {
+					throw new Error('Missing YouTube player host');
+				}
+
+				this.events = options.events;
+				this.playerId = host.id;
+				this.iframe = document.createElement('iframe');
+				this.iframe.id = host.id;
+				host.replaceChildren(this.iframe);
+
+				window.setTimeout(() => this.events?.onReady?.({ target: this }), 0);
+			}
+
+			cueVideoById() {
+				playerWindow.youTubeCalls.push({ player: this.playerId, method: 'cue' });
+			}
+
+			loadVideoById() {
+				playerWindow.youTubeCalls.push({ player: this.playerId, method: 'load' });
+				this.events?.onStateChange?.({ data: 1, target: this });
+			}
+
+			playVideo() {
+				this.events?.onStateChange?.({ data: 1, target: this });
+			}
+
+			setVolume() {}
+
+			getDuration() {
+				return 3600;
+			}
+
+			getIframe() {
+				return this.iframe;
+			}
+
+			seekTo() {}
+
+			destroy() {}
+		}
+
+		const playerWindow = window as unknown as PlayerWindow;
+		playerWindow.youTubeCalls = [];
+		(window as unknown as { YT: { Player: typeof Player } }).YT = { Player };
+	});
+
+	await page.goto('/');
+	await page.keyboard.press('Enter');
+	await expect(page.locator('iframe#video')).toBeVisible();
+
+	await page.getByRole('button', { name: 'Change' }).first().click();
+	await page.getByRole('button', { name: /Paris/ }).first().click();
+
+	await expect
+		.poll(() =>
+			page.evaluate(() =>
+				(
+					window as unknown as { youTubeCalls: { player: string; method: string }[] }
+				).youTubeCalls.some(({ player, method }) => player === 'video' && method === 'load')
+			)
+		)
+		.toBe(true);
+
+	await page.getByRole('button', { name: 'Change' }).nth(1).click();
+	await page.getByRole('button', { name: 'Lofi' }).click();
+	await page.getByRole('button', { name: /Lofi Girl Radio/ }).click();
+
+	await expect
+		.poll(() =>
+			page.evaluate(() =>
+				(
+					window as unknown as { youTubeCalls: { player: string; method: string }[] }
+				).youTubeCalls.some(({ player, method }) => player === 'audio' && method === 'load')
+			)
+		)
+		.toBe(true);
+});

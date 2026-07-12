@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { untrack } from 'svelte';
+
 	import { initPlayer, type PlayerEvents } from '$lib/youtube';
 	import type { Options, YouTubePlayer } from 'youtube';
 
@@ -12,25 +14,34 @@
 
 	let playerElem = $state<HTMLElement | null>(null);
 	let player: YouTubePlayer;
+	let loadedVideoId = $state<string>();
 
-	function play(videoId: string) {
+	function cueVideo(videoId: string) {
 		if (!player || !videoId) return;
 
-		return options.playerVars?.autoplay === 1
-			? player.loadVideoById(videoId, options.playerVars.start)
-			: player.cueVideoById(videoId, options?.playerVars?.start);
+		loadedVideoId = videoId;
+		return player.cueVideoById(videoId, options.playerVars?.start);
+	}
+
+	function loadVideo(videoId: string) {
+		if (!player || !videoId) return;
+
+		loadedVideoId = videoId;
+		return player.loadVideoById(videoId, options.playerVars?.start);
 	}
 
 	$effect(() => {
 		if (playerElem) {
 			let teardown: () => void;
+			const initialOptions = untrack(() => options);
+			const initialEvents = untrack(() => events);
 
 			[player, teardown] = initPlayer(playerElem, {
-				...options,
-				...events,
+				...initialOptions,
+				...initialEvents,
 				onReady(event) {
 					onReady?.(event);
-					play(videoId);
+					cueVideo(videoId);
 				}
 			});
 
@@ -39,7 +50,9 @@
 	});
 
 	$effect(() => {
-		play(videoId);
+		if (loadedVideoId && videoId !== loadedVideoId) {
+			loadVideo(videoId);
+		}
 	});
 </script>
 

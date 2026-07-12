@@ -96,7 +96,7 @@ export function initPlayer(el: HTMLElement, options: InitPlayerOptions = {}) {
 	let lastTimeUpdate = 0;
 	let iframeWindow: Window | null = null;
 
-	player.getIframe().then((frame) => {
+	void player.getIframe().then((frame) => {
 		iframeWindow = frame.contentWindow;
 	});
 
@@ -122,7 +122,7 @@ export function initPlayer(el: HTMLElement, options: InitPlayerOptions = {}) {
 	return [
 		player,
 		() => {
-			player.destroy();
+			void player.destroy();
 			untrackProgress();
 		}
 	] as const;

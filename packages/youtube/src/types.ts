@@ -152,10 +152,6 @@ export interface YouTubePlayer {
 	unMute(): Promise<void>;
 	getSphericalProperties(): Promise<object>;
 	setSphericalProperties(properties: object): Promise<void>;
-	on(
-		eventType: 'stateChange',
-		listener: (event: PlayerEvent & { data: number }) => void
-	): (event: PlayerEvent & { data: number }) => void;
 	on(eventType: EventType, listener: (event: PlayerEvent) => void): (event: PlayerEvent) => void;
 	off(eventType: EventType, listener: (event: PlayerEvent) => void): void;
 }

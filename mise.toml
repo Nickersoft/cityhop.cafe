@@ -8,4 +8,7 @@ node = "24"
 config_roots = ["packages/*", "app"]
 
 [tasks.test]
-depends = ["//packages/...:test", "//app:test"]
+depends = ["//...:test"]
+
+[tasks.check]
+depends = ["//...:check"]

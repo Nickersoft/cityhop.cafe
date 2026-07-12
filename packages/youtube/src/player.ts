@@ -63,7 +63,7 @@ export function createYouTubePlayer(
 			return;
 		}
 
-		loadYouTubeIframeApi(emitter).then((YT) => {
+		void loadYouTubeIframeApi(emitter).then((YT) => {
 			player = new YT!.Player(element, { ...options, events });
 		});
 	});
@@ -78,7 +78,7 @@ export function createYouTubePlayer(
 		])
 	) as unknown as YouTubePlayer;
 
-	player.on = emitter.on as YouTubePlayer['on'];
+	player.on = emitter.on;
 	player.off = emitter.off;
 
 	return player;

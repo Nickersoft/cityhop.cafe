@@ -10,7 +10,7 @@ export default defineConfig({
 			use: { ...devices['Desktop Chrome'] }
 		}
 	],
-	testDir: 'e2e',
+	testDir: 'src/e2e',
 	use: {
 		baseURL: 'http://127.0.0.1:4173'
 	},

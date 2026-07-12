@@ -68,7 +68,7 @@ export class Searcher<T = SearchResultItem> {
 	}
 
 	prefetch(component: string) {
-		this.searchFn({
+		return this.searchFn({
 			query: this.#query,
 			path: [...this.#path, component].join(''),
 			tags: this.#tags

@@ -3,3 +3,4 @@ _.path = "{{config_root}}/node_modules/.bin"
 
 [tasks]
 test = "vp test"
+check = "vp check"
