@@ -92,7 +92,7 @@ test('plays replacement scene and station videos without rebuilding the players'
 			onReady?: EventHandler;
 			onStateChange?: EventHandler;
 		};
-		type Call = { player: string; method: 'cue' | 'load' };
+		type Call = { player: string; method: 'cue' | 'load'; videoId: string };
 		type PlayerWindow = { youTubeCalls: Call[] };
 
 		class Player {
@@ -116,12 +116,12 @@ test('plays replacement scene and station videos without rebuilding the players'
 				window.setTimeout(() => this.events?.onReady?.({ target: this }), 0);
 			}
 
-			cueVideoById() {
-				playerWindow.youTubeCalls.push({ player: this.playerId, method: 'cue' });
+			cueVideoById(videoId: string) {
+				playerWindow.youTubeCalls.push({ player: this.playerId, method: 'cue', videoId });
 			}
 
-			loadVideoById() {
-				playerWindow.youTubeCalls.push({ player: this.playerId, method: 'load' });
+			loadVideoById(videoId: string) {
+				playerWindow.youTubeCalls.push({ player: this.playerId, method: 'load', videoId });
 				this.events?.onStateChange?.({ data: 1, target: this });
 			}
 
@@ -150,11 +150,41 @@ test('plays replacement scene and station videos without rebuilding the players'
 	});
 
 	await page.goto('/');
+	await expect(page.getByText('Press any key or click anywhere to begin')).toBeVisible();
+	await expect
+		.poll(() =>
+			page.evaluate(
+				() =>
+					(window as unknown as { youTubeCalls: { method: string }[] }).youTubeCalls.filter(
+						({ method }) => method === 'cue'
+					).length
+			)
+		)
+		.toBe(2);
 	await page.keyboard.press('Enter');
+	await expect(page.getByText('Press any key or click anywhere to begin')).toBeHidden();
 	await expect(page.locator('iframe#video')).toBeVisible();
+	const initialVideoId = await page.evaluate(
+		() =>
+			(
+				window as unknown as { youTubeCalls: { player: string; method: string; videoId: string }[] }
+			).youTubeCalls.find(({ player, method }) => player === 'video' && method === 'cue')?.videoId
+	);
+	const initialAudioVideoId = await page.evaluate(
+		() =>
+			(
+				window as unknown as { youTubeCalls: { player: string; method: string; videoId: string }[] }
+			).youTubeCalls.find(({ player, method }) => player === 'audio' && method === 'cue')?.videoId
+	);
 
 	await page.getByRole('button', { name: 'Change' }).first().click();
-	await page.getByRole('button', { name: /Paris/ }).first().click();
+	await page
+		.getByPlaceholder('Search over 200+ countries and cities worldwide')
+		.pressSequentially('Paris');
+	await page
+		.getByRole('button', { name: /Paris/ })
+		.nth(initialVideoId === 'lN43inpI2lk' ? 1 : 0)
+		.click();
 
 	await expect
 		.poll(() =>
@@ -168,7 +198,11 @@ test('plays replacement scene and station videos without rebuilding the players'
 
 	await page.getByRole('button', { name: 'Change' }).nth(1).click();
 	await page.getByRole('button', { name: 'Lofi' }).click();
-	await page.getByRole('button', { name: /Lofi Girl Radio/ }).click();
+	await page
+		.getByRole('button', {
+			name: initialAudioVideoId === 'X4VbdwhkE10' ? /Coffee Shop Radio/ : /Lofi Girl Radio/
+		})
+		.click();
 
 	await expect
 		.poll(() =>
