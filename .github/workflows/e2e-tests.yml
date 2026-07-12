@@ -18,15 +18,6 @@ jobs:
       - name: Install dependencies
         run: mise run //app:ci:install
 
-      - name: Capture formatter rewrite
-        run: |
-          (
-            cd app
-            ../node_modules/.bin/vp check --fix
-          )
-          git diff -- app/vite.config.ts
-          git diff --exit-code -- app/vite.config.ts
-
       - name: Run check
         env:
           PUBLIC_PH_TOKEN: 'fake-token'

@@ -6,6 +6,9 @@ import tailwindcss from '@tailwindcss/vite';
 import icons from 'unplugin-icons/vite';
 
 export default defineConfig({
+	staged: {
+		'*': 'vp check --fix'
+	},
 	server: {
 		fs: {
 			allow: ['..']
