@@ -1,0 +1,52 @@
+name: Link Audit
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 3 * * *'
+  push:
+    branches: [main, develop]
+    paths:
+      - 'app/src/server/data/**'
+      - 'app/e2e/deadlinks.spec.ts'
+      - 'app/playwright.config.ts'
+      - 'app/mise.toml'
+      - 'mise.toml'
+      - 'package.json'
+      - 'app/package.json'
+      - 'bun.lock'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'app/src/server/data/**'
+      - 'app/e2e/deadlinks.spec.ts'
+      - 'app/playwright.config.ts'
+      - 'app/mise.toml'
+      - 'mise.toml'
+      - 'package.json'
+      - 'app/package.json'
+      - 'bun.lock'
+
+jobs:
+  link-audit:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup mise
+        uses: jdx/mise-action@v4
+
+      - name: Install dependencies
+        run: mise run //app:ci:install
+
+      - name: Run link audit
+        run: mise run //app:test:links
+
+      - name: Upload Playwright Report
+        uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: playwright-link-audit-report
+          path: playwright-report/
+          retention-days: 30

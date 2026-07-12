@@ -1,0 +1,11 @@
+{
+	"name": "youtube",
+	"private": true,
+	"version": "0.0.0",
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"devDependencies": {
+		"vite-plus": "^0.2.4"
+	}
+}

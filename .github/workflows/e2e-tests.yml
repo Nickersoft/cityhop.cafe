@@ -16,14 +16,14 @@ jobs:
         uses: jdx/mise-action@v4
 
       - name: Install dependencies
-        run: mise run ci:install
+        run: mise run //app:ci:install
 
       - name: Run check
         env:
           PUBLIC_PH_TOKEN: 'fake-token'
           PH_API_KEY: 'fake-key'
           PH_PROJECT_ID: '12345'
-        run: mise run check
+        run: mise run //app:check
 
   test:
     timeout-minutes: 60
@@ -35,7 +35,7 @@ jobs:
         uses: jdx/mise-action@v4
 
       - name: Install dependencies
-        run: mise run ci:install
+        run: mise run //app:ci:install
 
       - name: Run E2E tests
         run: mise run test
