@@ -25,7 +25,7 @@
         "country-to-iso": "^1.6.3",
         "dayjs": "^1.11.21",
         "es-toolkit": "^1.49.0",
-        "fuzzysort": "^3.1.0",
+        "fuzzysort": "^4.0.0",
         "nanoid": "^6.0.0",
         "posthog-js": "^1.398.2",
         "posthog-node": "^5.40.0",
@@ -651,7 +651,7 @@
 
     "fsevents": ["fsevents@2.3.3", "", { "os": "darwin" }, "sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw=="],
 
-    "fuzzysort": ["fuzzysort@3.1.0", "", {}, "sha512-sR9BNCjBg6LNgwvxlBd0sBABvQitkLzoVY9MYYROQVX/FvfJ4Mai9LsGhDgd8qYdds0bY77VzYd5iuB+v5rwQQ=="],
+    "fuzzysort": ["fuzzysort@4.0.0", "", {}, "sha512-8UNAmcrGfHI1qGqEc1V/EzNLIgm1lwKEAiObFbP38+OCJGwQy0OzuA7LTjDtGsvCINtLvoIb2dM+/MAef8Rvcg=="],
 
     "get-tsconfig": ["get-tsconfig@4.14.0", "", { "dependencies": { "resolve-pkg-maps": "^1.0.0" } }, "sha512-yTb+8DXzDREzgvYmh6s9vHsSVCHeC0G3PI5bEXNBHtmshPnO+S5O7qgLEOn0I5QvMy6kpZN8K1NKGyilLb93wA=="],
 
