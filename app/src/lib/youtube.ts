@@ -1,8 +1,12 @@
-import { on } from 'svelte/events';
-
 import { PlayerState } from '$lib/enums';
 
-import { type EventType, type Options, type PlayerEvent, createYouTubePlayer } from 'youtube';
+import {
+	type EventType,
+	type Options,
+	type PlayerEvent,
+	createYouTubePlayer,
+	observeYouTubeProgress
+} from 'youtube';
 
 export function getYouTubeLink(videoId?: string) {
 	return `https://www.youtube.com/watch?v=${videoId}`;
@@ -93,37 +97,17 @@ export function initPlayer(el: HTMLElement, options: InitPlayerOptions = {}) {
 		}
 	});
 
-	let lastTimeUpdate = 0;
-	let iframeWindow: Window | null = null;
-
-	void player.getIframe().then((frame) => {
-		iframeWindow = frame.contentWindow;
-	});
-
-	function observe<T extends string>(event: MessageEvent<T>) {
-		if (!iframeWindow) return;
-
-		if (event.source === iframeWindow) {
-			const data = JSON.parse(event.data);
-
-			if (data.event === 'infoDelivery' && data.info && data.info.currentTime) {
-				const time = Math.floor(data.info.currentTime);
-
-				if (time !== lastTimeUpdate) {
-					lastTimeUpdate = time;
-					onTimeChange?.(new CustomEvent('timeChange', { detail: { time, target: player } }));
-				}
-			}
-		}
-	}
-
-	const untrackProgress = on(window, 'message', observe);
+	const untrackProgress = onTimeChange
+		? observeYouTubeProgress(player, (time) => {
+				onTimeChange(new CustomEvent('timeChange', { detail: { time, target: player } }));
+			})
+		: undefined;
 
 	return [
 		player,
 		() => {
+			untrackProgress?.();
 			void player.destroy();
-			untrackProgress();
 		}
 	] as const;
 }
