@@ -32,7 +32,7 @@ export const lofi = createGenre({
 		girl: {
 			name: 'Lofi Girl Radio: Beats to Study/Relax To',
 			displayName: 'Lofi Girl Radio: Beats to Study/Relax To',
-			trackID: 'X4VbdwhkE10',
+			trackID: 'rFZHOHl-L8A',
 			live: true
 		},
 		christmas: {
