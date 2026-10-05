@@ -13,7 +13,7 @@
 		"@typescript/native-preview": "^7.0.0-dev.20260707.2",
 		"knip": "^6.32.2",
 		"typescript": "^7.0.2",
-		"vite-plus": "^0.2.9"
+		"vite-plus": "^0.3.0"
 	},
 	"devEngines": {
 		"packageManager": {
