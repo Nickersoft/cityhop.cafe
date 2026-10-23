@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { getSharableURL } from '$lib/share';
-	import { toast } from '$components/ui';
-	import { Link } from '$lib/icons';
+	import { getSharableURL } from '#lib/share.js';
+	import { toast } from '#components/ui';
+	import { Link } from '#lib/icons.js';
 
 	import ToolbarButton from './toolbar-button.svelte';
 

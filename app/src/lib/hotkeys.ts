@@ -1,12 +1,12 @@
 import { on } from 'svelte/events';
 
-import { nowPlaying, ui } from '$lib/state.svelte';
+import { nowPlaying, ui } from '#lib/state.svelte.js';
 
-import { Hotkeys } from '$lib/enums';
-import { requestPlaybackStart } from '$lib/playback-events';
+import { Hotkeys } from '#lib/enums.js';
+import { requestPlaybackStart } from '#lib/playback-events.js';
 import { isPlaybackStartEvent } from './playback-start-event';
-import { getRandomScene } from '$server/scenes.remote';
-import { getRandomStation } from '$server/stations.remote';
+import { getRandomScene } from '#lib/remote/scenes.remote';
+import { getRandomStation } from '#lib/remote/stations.remote';
 
 async function handleKeyUp(e: KeyboardEvent) {
 	if (e.key === Hotkeys.RANDOM || e.key === Hotkeys.RANDOM_SCENE) {

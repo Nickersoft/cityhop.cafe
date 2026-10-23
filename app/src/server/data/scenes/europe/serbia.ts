@@ -1,4 +1,4 @@
-import { SceneTypes } from '$lib/enums';
+import { SceneTypes } from '#lib/enums.js';
 import { createCountry } from '../../../schema';
 
 export default createCountry({

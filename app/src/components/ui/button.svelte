@@ -38,7 +38,7 @@
 
 	import { Button, type ButtonRootProps } from 'bits-ui';
 
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 
 	const { variant, size, as = 'button', class: className, ...props }: ButtonProps = $props();
 </script>

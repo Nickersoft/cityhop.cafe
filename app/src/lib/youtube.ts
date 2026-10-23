@@ -1,6 +1,6 @@
 import { on } from 'svelte/events';
 
-import { PlayerState } from '$lib/enums';
+import { PlayerState } from '#lib/enums.js';
 
 import { type EventType, type Options, type PlayerEvent, createYouTubePlayer } from 'youtube';
 

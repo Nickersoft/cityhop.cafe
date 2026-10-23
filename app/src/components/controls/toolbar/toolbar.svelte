@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 
-	import { Stack, Button } from '$components/ui';
-	import { BAC_LINK, IS_DECEMBER, IS_OCTOBER } from '$lib/consts';
-	import { BlueSky, CurrencyDollarSimple } from '$lib/icons';
-	import { getPostURL } from '$lib/share';
-	import { getFestive, getSpooky } from '$lib/api';
-	import { nowPlaying } from '$lib/state.svelte';
+	import { Stack, Button } from '#components/ui';
+	import { BAC_LINK, IS_DECEMBER, IS_OCTOBER } from '#lib/consts.js';
+	import { BlueSky, CurrencyDollarSimple } from '#lib/icons.js';
+	import { getPostURL } from '#lib/share.js';
+	import { getFestive, getSpooky } from '#lib/api.js';
+	import { nowPlaying } from '#lib/state.svelte.js';
 
 	import Settings from './volume';
 	import CopyLink from './copy-link.svelte';

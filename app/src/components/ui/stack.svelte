@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { cva, type VariantProps } from 'class-variance-authority';
 
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import type { SvelteHTMLElements } from 'svelte/elements';
 
 	const stackVariants = cva('flex', {

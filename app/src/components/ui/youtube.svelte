@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { untrack } from 'svelte';
 
-	import { initPlayer, type PlayerEvents } from '$lib/youtube';
+	import { initPlayer, type PlayerEvents } from '#lib/youtube.js';
 	import type { Options, YouTubePlayer } from 'youtube';
 
 	interface Props extends PlayerEvents {

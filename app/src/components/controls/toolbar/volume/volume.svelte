@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Popover } from '$components/ui';
-	import { SpeakerHigh } from '$lib/icons';
-	import { isMobile, preferences } from '$lib/state.svelte';
+	import { Popover } from '#components/ui';
+	import { SpeakerHigh } from '#lib/icons.js';
+	import { isMobile, preferences } from '#lib/state.svelte.js';
 
 	import ToolbarButton from '../toolbar-button.svelte';
 	import Slider from './slider.svelte';

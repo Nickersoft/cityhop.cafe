@@ -1,12 +1,12 @@
 <script>
-	import { About } from '$components/modals';
-	import { Button } from '$components/ui';
-	import { isMobile } from '$lib/state.svelte';
+	import { About } from '#components/modals';
+	import { Button } from '#components/ui';
+	import { isMobile } from '#lib/state.svelte.js';
 
 	const component = $derived(
 		isMobile.current
-			? import('$components/ui/drawer.svelte').then(({ default: Drawer }) => Drawer)
-			: import('$components/ui/dialog.svelte').then(({ default: Dialog }) => Dialog)
+			? import('#components/ui/drawer.svelte').then(({ default: Drawer }) => Drawer)
+			: import('#components/ui/dialog.svelte').then(({ default: Dialog }) => Dialog)
 	);
 </script>
 

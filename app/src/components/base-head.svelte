@@ -1,10 +1,10 @@
 <script lang="ts">
-	import '$styles/app.css';
+	import '#styles/app.css';
 
 	import { MetaTags } from 'svelte-meta-tags';
 
 	import { page } from '$app/state';
-	import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE } from '$lib/consts';
+	import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE } from '#lib/consts.js';
 
 	const ogImage = $derived(`${page.url.origin}/og.jpg`);
 

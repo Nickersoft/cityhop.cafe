@@ -1,5 +1,5 @@
-import type { StationWithGenre } from '$server/data/stations';
-import type { Continent, Country, Scene, SceneGroup } from '$server/schema';
+import type { StationWithGenre } from '#server/data/stations';
+import type { Continent, Country, Scene, SceneGroup } from '#server/schema';
 
 export type SearchResultItem =
 	| Omit<Continent, 'countries'>

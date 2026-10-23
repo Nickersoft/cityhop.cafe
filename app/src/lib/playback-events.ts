@@ -1,4 +1,4 @@
-import { ui } from '$lib/state.svelte';
+import { ui } from '#lib/state.svelte.js';
 
 export const START_PLAYBACK_EVENT = 'cityhop:start-playback';
 const PLAYBACK_START_FALLBACK_DELAY = 8000;

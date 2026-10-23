@@ -1,4 +1,4 @@
-import { ui } from '$lib/state.svelte';
+import { ui } from '#lib/state.svelte.js';
 import { on } from 'svelte/events';
 
 let inactiveTimeout: NodeJS.Timeout;

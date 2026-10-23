@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Slider, type SliderSingleRootProps } from 'bits-ui';
 
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 
 	interface Props extends Omit<SliderSingleRootProps, 'type'> {
 		value: number;

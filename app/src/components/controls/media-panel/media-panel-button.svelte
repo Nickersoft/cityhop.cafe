@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Button, type ButtonProps } from '$components/ui';
-	import { cn } from '$lib/utils';
+	import { Button, type ButtonProps } from '#components/ui';
+	import { cn } from '#lib/utils.js';
 	import type { Snippet } from 'svelte';
 
 	type Props = ButtonProps & {

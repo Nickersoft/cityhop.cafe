@@ -17,7 +17,7 @@ run = "bun install --frozen-lockfile"
 
 [tasks."check:sv"]
 depends = ["sync"]
-run = "svelte-check --tsconfig ./tsconfig.json --tsgo"
+run = "svelte-check --tsconfig ./tsconfig.json --tsgo-experimental-api"
 
 [tasks."check:vp"]
 run = "vp check"
@@ -29,7 +29,7 @@ depends = ["check:sv", "check:vp"]
 run = "vp lint --type-aware ."
 
 [tasks."check:sv:watch"]
-run = "svelte-check --tsconfig ./tsconfig.json --tsgo"
+run = "svelte-check --tsconfig ./tsconfig.json --tsgo-experimental-api"
 
 [tasks.format]
 run = "vp fmt ."

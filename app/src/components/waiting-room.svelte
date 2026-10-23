@@ -1,12 +1,12 @@
 <script>
 	import { fade, fly, scale } from 'svelte/transition';
 
-	import { IS_CHRISTMAS, IS_HALLOWEEN } from '$lib/consts';
+	import { IS_CHRISTMAS, IS_HALLOWEEN } from '#lib/consts.js';
 
-	import { Button, ProgressBar } from '$components/ui';
+	import { Button, ProgressBar } from '#components/ui';
 
-	import { requestPlaybackStart } from '$lib/playback-events';
-	import { ui } from '$lib/state.svelte';
+	import { requestPlaybackStart } from '#lib/playback-events.js';
+	import { ui } from '#lib/state.svelte.js';
 </script>
 
 {#if !ui.isPlaying}

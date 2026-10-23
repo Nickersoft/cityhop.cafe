@@ -1,5 +1,5 @@
 import { page } from '$app/state';
-import { nowPlaying } from '$lib/state.svelte';
+import { nowPlaying } from '#lib/state.svelte.js';
 
 /**
  * Returns a sharable URL with the current scene and station

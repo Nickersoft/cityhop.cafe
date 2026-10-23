@@ -1,8 +1,8 @@
-import { IS_CHRISTMAS, IS_HALLOWEEN } from '$lib/consts';
-import { Tags } from '$lib/enums';
-import { getSceneByID, getStationByID, scenes } from '$server/data';
-import { getRandomScene } from '$server/scenes.remote';
-import { getRandomStation } from '$server/stations.remote';
+import { IS_CHRISTMAS, IS_HALLOWEEN } from '#lib/consts.js';
+import { Tags } from '#lib/enums.js';
+import { getSceneByID, getStationByID, scenes } from '#server/data';
+import { getRandomScene } from '#lib/remote/scenes.remote';
+import { getRandomStation } from '#lib/remote/stations.remote';
 
 import type { PageServerLoad } from './$types';
 

@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { SceneTypes } from '$lib/enums';
-	import { isMobile, nowPlaying } from '$lib/state.svelte';
+	import { SceneTypes } from '#lib/enums.js';
+	import { isMobile, nowPlaying } from '#lib/state.svelte.js';
 
-	import { SceneSelection } from '$components/modals';
-	import { ArrowsClockwise } from '$lib/icons';
+	import { SceneSelection } from '#components/modals';
+	import { ArrowsClockwise } from '#lib/icons.js';
 
 	import * as MediaPanel from '../media-panel';
 
@@ -11,8 +11,8 @@
 
 	const component = $derived(
 		isMobile.current
-			? import('$components/ui/drawer.svelte').then(({ default: Drawer }) => Drawer)
-			: import('$components/ui/popover.svelte').then(({ default: Popover }) => Popover)
+			? import('#components/ui/drawer.svelte').then(({ default: Drawer }) => Drawer)
+			: import('#components/ui/popover.svelte').then(({ default: Popover }) => Popover)
 	);
 </script>
 

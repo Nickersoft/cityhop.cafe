@@ -1,7 +1,7 @@
 import { expect, test, type Page } from '@playwright/test';
 
-import { stations } from '$server/data/stations';
-import { scenes } from '$server/data/scenes';
+import { stations } from '#server/data/stations';
+import { scenes } from '#server/data/scenes';
 
 async function validateVideoLink(page: Page, videoID: string): Promise<boolean> {
 	await page.goto(`https://www.youtube.com/watch?v=${videoID}`, { waitUntil: 'domcontentloaded' });

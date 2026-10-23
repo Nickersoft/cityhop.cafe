@@ -2,7 +2,7 @@
 	import { type VariantProps, cva } from 'class-variance-authority';
 	import type { SvelteHTMLElements } from 'svelte/elements';
 
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import type { Snippet } from 'svelte';
 	import { mergeProps } from 'bits-ui';
 

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import MuteToggle from '$components/mute-toggle.svelte';
+	import MuteToggle from '#components/mute-toggle.svelte';
 
-	import { Slider, Stack, Typography } from '$components/ui';
+	import { Slider, Stack, Typography } from '#components/ui';
 
 	interface Props {
 		label: string;

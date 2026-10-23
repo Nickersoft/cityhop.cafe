@@ -1,17 +1,17 @@
 <script lang="ts">
 	import * as MediaPanel from '../media-panel';
 
-	import { isMobile, nowPlaying, preferences } from '$lib/state.svelte';
-	import { Equalizer } from '$components/ui';
-	import { ArrowsClockwise } from '$lib/icons';
-	import { StationSelection } from '$components/modals';
+	import { isMobile, nowPlaying, preferences } from '#lib/state.svelte.js';
+	import { Equalizer } from '#components/ui';
+	import { ArrowsClockwise } from '#lib/icons.js';
+	import { StationSelection } from '#components/modals';
 
 	let open = $state(false);
 
 	const component = $derived(
 		isMobile.current
-			? import('$components/ui/drawer.svelte').then(({ default: Drawer }) => Drawer)
-			: import('$components/ui/popover.svelte').then(({ default: Popover }) => Popover)
+			? import('#components/ui/drawer.svelte').then(({ default: Drawer }) => Drawer)
+			: import('#components/ui/popover.svelte').then(({ default: Popover }) => Popover)
 	);
 </script>
 

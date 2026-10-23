@@ -1,9 +1,9 @@
 import { z } from 'zod';
 
-import { SceneTypes, Tags } from '$lib/enums';
+import { SceneTypes, Tags } from '#lib/enums.js';
 
 import { stationSchema } from './station';
-import { getYouTubeLink, getThumbnail } from '$lib/youtube';
+import { getYouTubeLink, getThumbnail } from '#lib/youtube.js';
 
 const offsetSchema = z.object({
 	start: z.optional(z.number()),

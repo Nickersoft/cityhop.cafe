@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { Button, Marquee, Stack, Typography } from '$components/ui';
-	import { YouTubeLogoFill } from '$lib/icons';
-	import { getYouTubeLink } from '$lib/youtube';
-	import { Tooltip } from '$components/ui';
+	import { Button, Marquee, Stack, Typography } from '#components/ui';
+	import { YouTubeLogoFill } from '#lib/icons.js';
+	import { getYouTubeLink } from '#lib/youtube.js';
+	import { Tooltip } from '#components/ui';
 
 	interface Props {
 		title: string;

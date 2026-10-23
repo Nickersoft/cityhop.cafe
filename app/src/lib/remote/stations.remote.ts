@@ -4,8 +4,8 @@ import { sample } from 'es-toolkit';
 
 import { query } from '$app/server';
 
-import { genres, stations, type StationWithGenre } from './data';
-import { randomStationSchema, searchSchema } from './schema';
+import { genres, stations, type StationWithGenre } from '#server/data';
+import { randomStationSchema, searchSchema } from '#server/schema';
 
 export const getStations = query(searchSchema, ({ query }): StationWithGenre[] => {
 	const visibleStations = stations.filter(({ hidden }) => !hidden);

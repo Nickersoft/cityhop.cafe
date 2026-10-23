@@ -1,5 +1,5 @@
 import { createGenre } from '../../schema';
-import { Tags } from '$lib/enums';
+import { Tags } from '#lib/enums.js';
 
 export const jazz = createGenre({
 	name: 'Jazz',

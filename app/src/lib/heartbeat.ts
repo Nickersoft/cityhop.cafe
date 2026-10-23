@@ -1,10 +1,10 @@
 import { nanoid } from 'nanoid';
 
-import { env } from '$env/dynamic/public';
+import { PUBLIC_PH_TOKEN } from '$app/env/public';
 
-import { heartbeat } from '$server/heartbeat.remote';
+import { heartbeat } from '#lib/remote/heartbeat.remote';
 
-import { nowPlaying } from '$lib/state.svelte';
+import { nowPlaying } from '#lib/state.svelte.js';
 
 function createID() {
 	const distinctIDKey = 'distinct-id';
@@ -17,7 +17,7 @@ function createID() {
 }
 
 export default function setupHeartbeat() {
-	const token = env.PUBLIC_PH_TOKEN;
+	const token = PUBLIC_PH_TOKEN;
 
 	if (!token) {
 		return () => {};

@@ -17,20 +17,21 @@
 		"@iconify-json/ph": "^1.2.2",
 		"@iconify-json/simple-icons": "^1.2.77",
 		"@playwright/test": "^1.61.1",
-		"@sveltejs/adapter-vercel": "^6.3.4",
-		"@sveltejs/kit": "^2.69.2",
+		"@sveltejs/adapter-vercel": "^7.0.0",
+		"@sveltejs/kit": "^3.0.0",
 		"@sveltejs/vite-plugin-svelte": "^7.2.0",
 		"@tailwindcss/vite": "^4.3.2",
-		"svelte": "^5.56.4",
-		"svelte-check": "^4.7.2",
+		"svelte": "^5.57.1",
+		"svelte-check": "^4.7.5",
 		"tailwindcss": "^4.3.2",
+		"typescript": "^6",
 		"unplugin-icons": "^23.0.1",
-		"vite": "npm:@voidzero-dev/vite-plus-core@0.2.9",
-		"vite-plus": "^0.2.4"
+		"vite": "catalog:",
+		"vite-plus": "catalog:"
 	},
 	"dependencies": {
 		"@fontsource-variable/inter": "^5.2.8",
-		"bits-ui": "^2.18.1",
+		"bits-ui": "^2.20.2",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
 		"country-flag-icons": "^1.6.20",
@@ -51,6 +52,26 @@
 		"zod": "^4.4.3"
 	},
 	"overrides": {
-		"vite": "npm:@voidzero-dev/vite-plus-core@0.2.9"
+		"vite": "catalog:"
+	},
+	"imports": {
+		"#lib": "./src/lib/index.js",
+		"#lib/*": "./src/lib/*",
+		"#lib/remote/*.remote": "./src/lib/remote/*.remote.ts",
+		"#actions/*": "./src/actions/*",
+		"#components/ui": "./src/components/ui/index.ts",
+		"#components/controls": "./src/components/controls/index.ts",
+		"#components/modals": "./src/components/modals/index.ts",
+		"#components/*": "./src/components/*",
+		"#styles/*": "./src/styles/*",
+		"#server/data": "./src/server/data/index.ts",
+		"#server/data/scenes": "./src/server/data/scenes/index.ts",
+		"#server/data/stations": "./src/server/data/stations/index.ts",
+		"#server/schema": "./src/server/schema/index.ts",
+		"#server/*": "./src/server/*"
+	},
+	"catalog": {
+		"vite": "npm:@voidzero-dev/vite-plus-core@1.4.0",
+		"vite-plus": "1.4.0"
 	}
 }

@@ -2,17 +2,17 @@
 	import { getContext, untrack, type Component } from 'svelte';
 	import type { SVGAttributes } from 'svelte/elements';
 
-	import Search from '$components/search-ui.svelte';
-	import { FilterGroup, Stack, Typography, Button, ScrollArea } from '$components/ui';
+	import Search from '#components/search-ui.svelte';
+	import { FilterGroup, Stack, Typography, Button, ScrollArea } from '#components/ui';
 
-	import { Searcher, SearchResults } from '$lib/search.svelte';
-	import { nowPlaying } from '$lib/state.svelte';
-	import { ArrowLeft, Bicycle, Boat, Footprints, SteeringWheel, TrainSimple } from '$lib/icons';
-	import type { SearchResultItem } from '$lib/types';
-	import { isContinent, isCountry, isScene, isSceneGroup } from '$lib/guards';
-	import type { Tags } from '$lib/enums';
+	import { Searcher, SearchResults } from '#lib/search.svelte.js';
+	import { nowPlaying } from '#lib/state.svelte.js';
+	import { ArrowLeft, Bicycle, Boat, Footprints, SteeringWheel, TrainSimple } from '#lib/icons.js';
+	import type { SearchResultItem } from '#lib/types.js';
+	import { isContinent, isCountry, isScene, isSceneGroup } from '#lib/guards.js';
+	import type { Tags } from '#lib/enums.js';
 
-	import { getScenes } from '$server/scenes.remote';
+	import { getScenes } from '#lib/remote/scenes.remote';
 
 	import { enter, exit } from './transitions';
 	import { FILTER_LIST } from './consts';

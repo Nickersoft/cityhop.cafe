@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 
-	import { Typography } from '$components/ui';
-	import { HandPeace } from '$lib/icons';
-	import { getVisitors } from '$server/visitors.remote';
+	import { Typography } from '#components/ui';
+	import { HandPeace } from '#lib/icons.js';
+	import { getVisitors } from '#lib/remote/visitors.remote';
 
 	const visitorCount = await getVisitors();
 </script>

@@ -3,9 +3,9 @@
 	import { on } from 'svelte/events';
 	import { random } from 'es-toolkit';
 
-	import { nowPlaying, preferences } from '$lib/state.svelte';
-	import { YouTube } from '$components/ui';
-	import { hasPlaybackStartBeenRequested, START_PLAYBACK_EVENT } from '$lib/playback-events';
+	import { nowPlaying, preferences } from '#lib/state.svelte.js';
+	import { YouTube } from '#components/ui';
+	import { hasPlaybackStartBeenRequested, START_PLAYBACK_EVENT } from '#lib/playback-events.js';
 	import type { YouTubePlayer } from 'youtube';
 
 	let player = $state<YouTubePlayer | null>(null);

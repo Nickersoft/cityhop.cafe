@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Logo from '$components/logo.svelte';
+	import Logo from '#components/logo.svelte';
 
-	import { Typography, Stack, Button } from '$components/ui';
-	import { BAC_LINK, REQUEST_LINK } from '$lib/consts';
-	import { Hotkeys } from '$lib/enums';
-	import { Coffee } from '$lib/icons';
+	import { Typography, Stack, Button } from '#components/ui';
+	import { BAC_LINK, REQUEST_LINK } from '#lib/consts.js';
+	import { Hotkeys } from '#lib/enums.js';
+	import { Coffee } from '#lib/icons.js';
 </script>
 
 <header class="mb-5 w-full border-b pt-2 pb-3">

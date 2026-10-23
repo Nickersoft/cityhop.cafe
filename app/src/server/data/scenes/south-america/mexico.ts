@@ -1,6 +1,6 @@
 import { createCountry } from '../../../schema';
-import { SceneTypes } from '$lib/enums';
-import { Tags } from '$lib/enums';
+import { SceneTypes } from '#lib/enums.js';
+import { Tags } from '#lib/enums.js';
 import { genres } from '../../stations';
 
 export default createCountry({

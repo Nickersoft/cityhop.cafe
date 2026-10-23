@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { X } from '$lib/icons';
-	import { cn } from '$lib/utils';
+	import { X } from '#lib/icons.js';
+	import { cn } from '#lib/utils.js';
 	import { Dialog } from 'bits-ui';
 	import type { Snippet } from 'svelte';
 

@@ -2,8 +2,8 @@
 	import type { Snippet } from 'svelte';
 	import { Popover, type PopoverContentProps, type PopoverRootProps } from 'bits-ui';
 
-	import { ui } from '$lib/state.svelte';
-	import { cn } from '$lib/utils';
+	import { ui } from '#lib/state.svelte.js';
+	import { cn } from '#lib/utils.js';
 
 	interface Props extends PopoverRootProps {
 		trigger: Snippet<[{ props: Record<string, unknown> }]>;

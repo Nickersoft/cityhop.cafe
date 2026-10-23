@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import { ScrollArea } from 'bits-ui';
 	import type { Snippet } from 'svelte';
 

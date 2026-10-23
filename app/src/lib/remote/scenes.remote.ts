@@ -5,11 +5,11 @@ import { sample } from 'es-toolkit';
 import { get } from 'es-toolkit/compat';
 
 import { query } from '$app/server';
-import type { SearchResultItem } from '$lib/types';
+import type { SearchResultItem } from '#lib/types.js';
 
-import { scenes, continents, stations, genres } from './data';
-import type { Scene, Station } from './schema';
-import { randomSceneSchema, searchSchema } from './schema';
+import { scenes, continents, stations, genres } from '#server/data';
+import type { Scene, Station } from '#server/schema';
+import { randomSceneSchema, searchSchema } from '#server/schema';
 
 const jazzStations = stations.filter(({ genre }) => genre.name === genres.jazz.name) as Station[];
 const lofiStations = stations.filter(({ genre }) => genre.name === genres.lofi.name) as Station[];

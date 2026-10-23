@@ -3,15 +3,15 @@
 	import { on } from 'svelte/events';
 	import { random } from 'es-toolkit';
 
-	import { DEFAULT_VIDEO_END_OFFSET, DEFAULT_VIDEO_START_OFFSET } from '$lib/consts';
-	import { Button, YouTube } from '$components/ui';
-	import { nowPlaying, preferences, ui } from '$lib/state.svelte';
-	import { ArrowsIn, ArrowsOut } from '$lib/icons';
+	import { DEFAULT_VIDEO_END_OFFSET, DEFAULT_VIDEO_START_OFFSET } from '#lib/consts.js';
+	import { Button, YouTube } from '#components/ui';
+	import { nowPlaying, preferences, ui } from '#lib/state.svelte.js';
+	import { ArrowsIn, ArrowsOut } from '#lib/icons.js';
 	import {
 		clearPlaybackStartTimeout,
 		hasPlaybackStartBeenRequested,
 		START_PLAYBACK_EVENT
-	} from '$lib/playback-events';
+	} from '#lib/playback-events.js';
 	import type { YouTubePlayer } from 'youtube';
 
 	let videoDuration: number | undefined = $state();

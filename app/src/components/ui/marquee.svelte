@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import type { ClassValue } from 'clsx';
 	import type { Snippet } from 'svelte';
 

@@ -1,5 +1,5 @@
-import { getRandomScene } from '$server/scenes.remote';
-import { getRandomStation } from '$server/stations.remote';
+import { getRandomScene } from '#lib/remote/scenes.remote';
+import { getRandomStation } from '#lib/remote/stations.remote';
 
 import { Tags } from './enums';
 import { nowPlaying } from './state.svelte';

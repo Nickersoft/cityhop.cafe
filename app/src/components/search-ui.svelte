@@ -18,8 +18,8 @@
 	import { fade } from 'svelte/transition';
 	import { onDestroy } from 'svelte';
 
-	import { Search, X } from '$lib/icons';
-	import { Button, Spinner, Input, Stack } from '$components/ui';
+	import { Search, X } from '#lib/icons.js';
+	import { Button, Spinner, Input, Stack } from '#components/ui';
 
 	const {
 		leftButton,

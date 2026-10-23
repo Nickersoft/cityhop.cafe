@@ -1,11 +1,11 @@
 import { mapValues, groupBy, sortBy, debounce } from 'es-toolkit';
 
-import type { SceneTypes, Tags } from '$lib/enums';
-import type { SearchResultItem } from '$lib/types';
-import { isScene } from '$lib/guards';
+import type { SceneTypes, Tags } from '#lib/enums.js';
+import type { SearchResultItem } from '#lib/types.js';
+import { isScene } from '#lib/guards.js';
 
-import type { SearchParams } from '$server/schema';
-import type { Scene } from '$server/schema';
+import type { SearchParams } from '#server/schema';
+import type { Scene } from '#server/schema';
 
 export type SearchFn<T> = (params: SearchParams) => Promise<T[]>;
 

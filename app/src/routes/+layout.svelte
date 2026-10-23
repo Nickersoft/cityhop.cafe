@@ -2,10 +2,10 @@
 	import { onMount } from 'svelte';
 	import { Tooltip } from 'bits-ui';
 
-	import BaseHead from '$components/base-head.svelte';
+	import BaseHead from '#components/base-head.svelte';
 
-	import { Toaster } from '$components/ui';
-	import { isDark, preferences } from '$lib/state.svelte';
+	import { Toaster } from '#components/ui';
+	import { isDark, preferences } from '#lib/state.svelte.js';
 
 	let { children } = $props();
 

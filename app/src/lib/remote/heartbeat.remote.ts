@@ -1,10 +1,10 @@
 import z from 'zod';
-import { env } from '$env/dynamic/public';
+import { PUBLIC_PH_TOKEN } from '$app/env/public';
 import { PostHog } from 'posthog-node';
 
 import { getRequestEvent, query } from '$app/server';
 
-import { sceneSchema, stationSchema } from './schema';
+import { sceneSchema, stationSchema } from '#server/schema';
 
 export const heartbeat = query(
 	z.object({
@@ -13,13 +13,13 @@ export const heartbeat = query(
 		currentStation: stationSchema.nullable()
 	}),
 	async ({ distinctID, nowPlaying, currentStation }) => {
-		if (!env.PUBLIC_PH_TOKEN) {
+		if (!PUBLIC_PH_TOKEN) {
 			return true;
 		}
 
 		const { getClientAddress } = getRequestEvent();
 
-		const ph = new PostHog(env.PUBLIC_PH_TOKEN, {
+		const ph = new PostHog(PUBLIC_PH_TOKEN, {
 			host: 'https://app.posthog.com',
 			flushAt: 1,
 			flushInterval: 0
@@ -29,11 +29,7 @@ export const heartbeat = query(
 			distinctId: distinctID,
 			event: 'heartbeat',
 			disableGeoip: false,
-			properties: {
-				$ip: getClientAddress(),
-				nowPlaying: nowPlaying,
-				currentStation: currentStation
-			}
+			properties: { $ip: getClientAddress(), nowPlaying, currentStation }
 		});
 
 		await ph.shutdown();

@@ -1,4 +1,4 @@
-import { Tags, SceneTypes } from '$lib/enums';
+import { Tags, SceneTypes } from '#lib/enums.js';
 import { genres } from '../../stations';
 import { createCountry } from '../../../schema';
 

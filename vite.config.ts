@@ -3,7 +3,9 @@ import { defineConfig } from 'vite-plus';
 export default defineConfig({
 	staged: {
 		'*': ['vp check --fix'],
-		'app/**/*.svelte': ['vp exec --filter ./app -- svelte-check --tsconfig ./tsconfig.json --tsgo']
+		'app/**/*.svelte': [
+			'vp exec --filter ./app -- svelte-check --tsconfig ./tsconfig.json --tsgo-experimental-api'
+		]
 	},
 	lint: {
 		options: {

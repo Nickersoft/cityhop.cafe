@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
-import { getYouTubeLink } from '$lib/youtube';
+import { getYouTubeLink } from '#lib/youtube.js';
 
-import { Tags } from '$lib/enums';
+import { Tags } from '#lib/enums.js';
 
 export const stationSchema = z
 	.object({

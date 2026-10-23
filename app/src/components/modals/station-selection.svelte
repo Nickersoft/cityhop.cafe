@@ -1,16 +1,16 @@
 <script lang="ts">
-	import * as icons from '$lib/icons';
+	import * as icons from '#lib/icons.js';
 
 	import { fade, fly } from 'svelte/transition';
 	import { Accordion } from 'bits-ui';
 
-	import { ScrollArea, Typography } from '$components/ui';
-	import { Searcher } from '$lib/search.svelte';
-	import { nowPlaying } from '$lib/state.svelte';
-	import { getStations } from '../../server/stations.remote';
+	import { ScrollArea, Typography } from '#components/ui';
+	import { Searcher } from '#lib/search.svelte.js';
+	import { nowPlaying } from '#lib/state.svelte.js';
+	import { getStations } from '#lib/remote/stations.remote';
 	import type { StationWithGenre } from '../../server/data';
 
-	import Search from '$components/search-ui.svelte';
+	import Search from '#components/search-ui.svelte';
 	interface Props {
 		onClose: () => void;
 	}

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
+	import { cn } from '#lib/utils.js';
 	import type { Component } from 'svelte';
 	import type { SVGAttributes, SvelteHTMLElements } from 'svelte/elements';
 

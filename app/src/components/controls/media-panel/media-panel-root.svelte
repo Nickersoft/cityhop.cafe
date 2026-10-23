@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Stack } from '$components/ui';
+	import { Stack } from '#components/ui';
 	import type { Snippet } from 'svelte';
 
 	interface Props {
