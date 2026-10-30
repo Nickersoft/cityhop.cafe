@@ -24,7 +24,7 @@
 		"svelte": "^5.57.1",
 		"svelte-check": "^4.7.5",
 		"tailwindcss": "^4.3.2",
-		"typescript": "^6",
+		"typescript": "catalog:",
 		"unplugin-icons": "^23.0.1",
 		"vite": "catalog:",
 		"vite-plus": "catalog:"
@@ -72,6 +72,7 @@
 	},
 	"catalog": {
 		"vite": "npm:@voidzero-dev/vite-plus-core@1.4.0",
-		"vite-plus": "1.4.0"
+		"vite-plus": "1.4.0",
+		"typescript": "^6"
 	}
 }
