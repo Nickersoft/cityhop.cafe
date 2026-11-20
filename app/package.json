@@ -41,7 +41,7 @@
 		"fuzzysort": "^4.0.0",
 		"nanoid": "^6.0.0",
 		"posthog-js": "^1.398.2",
-		"posthog-node": "^5.40.0",
+		"posthog-node": "^6.0.0",
 		"svelte-meta-tags": "^5.0.1",
 		"svelte-persisted-state": "^1.4.1",
 		"svelte-sonner": "^1.1.1",
